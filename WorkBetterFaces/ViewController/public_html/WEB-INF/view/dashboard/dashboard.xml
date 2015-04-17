@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="dashboard">
+    <default-activity>Dashboard</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__11">
+      <managed-bean-name>dashboard</managed-bean-name>
+      <managed-bean-class>oracle.workbetter.view.dashboard.backing.DashboardBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+      <managed-property id="__29">
+        <property-name>dfState</property-name>
+        <property-class>oracle.workbetter.view.dashboard.DashboardFlowState</property-class>
+        <value>#{pageFlowScope.dashboardFlowState}</value>
+      </managed-property>
+    </managed-bean>
+    <managed-bean id="__28">
+      <managed-bean-name>dashboardFlowState</managed-bean-name>
+      <managed-bean-class>oracle.workbetter.view.dashboard.DashboardFlowState</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="Dashboard">
+      <page>/Dashboard.jsff</page>
+    </view>
+    <task-flow-call id="people">
+      <task-flow-reference>
+        <document>/WEB-INF/view/people/people.xml</document>
+        <id>people</id>
+      </task-flow-reference>
+      <input-parameter id="__4">
+        <name>fromDashboard</name>
+        <value>true</value>
+      </input-parameter>
+      <input-parameter id="__5">
+        <name>fromDashboardTileRequest</name>
+        <value>4</value>
+      </input-parameter>
+      <input-parameter id="__12">
+        <name>RowKeyID</name>
+        <value>100</value>
+      </input-parameter>
+      <input-parameter id="__15">
+        <name>Origin</name>
+        <value>Dashboard</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="people1">
+      <task-flow-reference>
+        <document>/WEB-INF/view/people/people.xml</document>
+        <id>people</id>
+      </task-flow-reference>
+      <input-parameter id="__6">
+        <name>fromDashboard</name>
+        <value>true</value>
+      </input-parameter>
+      <input-parameter id="__7">
+        <name>fromDashboardTileRequest</name>
+        <value>3</value>
+      </input-parameter>
+      <input-parameter id="__13">
+        <name>RowKeyID</name>
+        <value>100</value>
+      </input-parameter>
+      <input-parameter id="__16">
+        <name>Origin</name>
+        <value>Dashboard</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="people2">
+      <task-flow-reference>
+        <document>/WEB-INF/view/people/people.xml</document>
+        <id>people</id>
+      </task-flow-reference>
+      <input-parameter id="__9">
+        <name>fromDashboard</name>
+        <value>true</value>
+      </input-parameter>
+      <input-parameter id="__10">
+        <name>fromDashboardTileRequest</name>
+        <value>0</value>
+      </input-parameter>
+      <input-parameter id="__14">
+        <name>RowKeyID</name>
+        <value>100</value>
+      </input-parameter>
+      <input-parameter id="__17">
+        <name>Origin</name>
+        <value>Dashboard</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="organizations">
+      <task-flow-reference>
+        <document>/WEB-INF/view/organizations/organizations.xml</document>
+        <id>organizations</id>
+      </task-flow-reference>
+      <input-parameter id="__20">
+        <name>Origin</name>
+        <value>Dashboard</value>
+      </input-parameter>
+      <input-parameter id="__21">
+        <name>SummaryView</name>
+        <value>perf</value>
+      </input-parameter>
+      <input-parameter id="__22">
+        <name>RowKeyId</name>
+        <value>#{pageFlowScope.dashboardFlowState.drillOrgId}</value>
+      </input-parameter>
+      <input-parameter id="__23">
+        <name>TileRequested</name>
+        <value>0</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="organizations1">
+      <task-flow-reference>
+        <document>/WEB-INF/view/organizations/organizations.xml</document>
+        <id>organizations</id>
+      </task-flow-reference>
+      <input-parameter id="__24">
+        <name>RowKeyId</name>
+        <value>#{pageFlowScope.dashboardFlowState.drillOrgId}</value>
+      </input-parameter>
+      <input-parameter id="__25">
+        <name>Origin</name>
+        <value>Dashboard</value>
+      </input-parameter>
+      <input-parameter id="__26">
+        <name>TileRequested</name>
+        <value>0</value>
+      </input-parameter>
+      <input-parameter id="__27">
+        <name>SummaryView</name>
+        <value>comp</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>Dashboard</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>MyTeam</from-outcome>
+        <to-activity-id>people</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__3">
+        <from-outcome>MyActivities</from-outcome>
+        <to-activity-id>people1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>MySummary</from-outcome>
+        <to-activity-id>people2</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__18">
+        <from-outcome>OrgPerformance</from-outcome>
+        <to-activity-id>organizations</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__19">
+        <from-outcome>OrgCompensation</from-outcome>
+        <to-activity-id>organizations1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

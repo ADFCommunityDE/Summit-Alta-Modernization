@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="US-ASCII" ?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<adf-settings xmlns="http://xmlns.oracle.com/adf/settings">
+  <dvt-faces-settings xmlns="http://xmlns.oracle.com/dss/adf/faces/settings">
+    <geomap id="mapConfig1" mapViewerUrl="MapViewer" geocoderUrl="Geocoder"/>
+  </dvt-faces-settings>
+</adf-settings>

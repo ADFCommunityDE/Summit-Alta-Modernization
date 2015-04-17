@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="organizations">
+    <default-activity>HaveOrgId</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__19">
+      <name>RowKeyId</name>
+      <value>#{pageFlowScope.organizationsFlowState.rowKeyId}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__20">
+      <name>Origin</name>
+      <value>#{pageFlowScope.organizationsFlowState.origin}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__21">
+      <name>TileRequested</name>
+      <value>#{pageFlowScope.organizationsFlowState.selectedTile}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__22">
+      <name>SummaryView</name>
+      <value>#{pageFlowScope.organizationsFlowState.summaryView}</value>
+    </input-parameter-definition>
+    <managed-bean id="__5">
+      <managed-bean-name>searchOrg</managed-bean-name>
+      <managed-bean-class>oracle.workbetter.view.organizations.backing.SearchOrgBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__6">
+      <managed-bean-name>viewOrg</managed-bean-name>
+      <managed-bean-class>oracle.workbetter.view.organizations.backing.ViewOrgBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+      <managed-property id="__34">
+        <property-name>ofState</property-name>
+        <property-class>oracle.workbetter.view.organizations.OrganizationsFlowState</property-class>
+        <value>#{pageFlowScope.organizationsFlowState}</value>
+      </managed-property>
+    </managed-bean>
+    <managed-bean id="__4">
+      <managed-bean-name>organizationsFlowState</managed-bean-name>
+      <managed-bean-class>oracle.workbetter.view.organizations.OrganizationsFlowState</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchOrganizations">
+      <page>/SearchOrganizations.jsff</page>
+    </view>
+    <view id="ViewOrganization">
+      <page>/ViewOrganization.jsff</page>
+    </view>
+    <task-flow-call id="people">
+      <task-flow-reference>
+        <document>/WEB-INF/view/people/people.xml</document>
+        <id>people</id>
+      </task-flow-reference>
+      <input-parameter id="__10">
+        <name>fromDashboard</name>
+        <value>false</value>
+      </input-parameter>
+      <input-parameter id="__11">
+        <name>RowKeyID</name>
+        <value>#{pageFlowScope.organizationsFlowState.drillPersonId}</value>
+      </input-parameter>
+      <input-parameter id="__12">
+        <name>fromOrganization</name>
+        <value>true</value>
+      </input-parameter>
+      <input-parameter id="__8">
+        <name>Origin</name>
+        <value>ViewOrganization</value>
+      </input-parameter>
+    </task-flow-call>
+    <router id="HaveOrgId">
+      <case id="__9">
+        <expression>#{pageFlowScope.organizationsFlowState.rowKeyId!=null}</expression>
+        <outcome>yes</outcome>
+      </case>
+      <case id="__13">
+        <expression>#{pageFlowScope.organizationsFlowState.rowKeyId==null}</expression>
+        <outcome>no</outcome>
+      </case>
+      <default-outcome>no</default-outcome>
+    </router>
+    <method-call id="SetCurrentRowWithKeyValue">
+      <method>#{bindings.setCurrentRowWithKeyValue.execute}</method>
+      <outcome>
+        <fixed-outcome>setCurrentRowWithKeyValue</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="Return">
+      <case id="__25">
+        <expression>#{pageFlowScope.organizationsFlowState.origin == 'Dashboard'}</expression>
+        <outcome>outcome1</outcome>
+      </case>
+      <case id="__26">
+        <expression>#{pageFlowScope.organizationsFlowState.origin == null}</expression>
+        <outcome>outcome2</outcome>
+      </case>
+      <case id="__30">
+        <expression>#{pageFlowScope.organizationsFlowState.origin == 'Person'}</expression>
+        <outcome>outcome3</outcome>
+      </case>
+      <default-outcome>outcome2</default-outcome>
+    </router>
+    <task-flow-return id="ReturnToDashboard">
+      <outcome>
+        <name>ReturnToDashboard</name>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="ReturnToPerson">
+      <outcome>
+        <name>ReturnToPerson</name>
+      </outcome>
+    </task-flow-return>
+    <method-call id="SetCurrentRowWithKeyValue1">
+      <method>#{bindings.setCurrentRowWithKeyValue.execute}</method>
+      <outcome>
+        <fixed-outcome>setCurrentRowWithKeyValue</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>SearchOrganizations</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>ViewOrganization</from-outcome>
+        <to-activity-id>SetCurrentRowWithKeyValue1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>ViewOrganization</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>ViewPerson</from-outcome>
+        <to-activity-id>people</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__14">
+      <from-activity-id>HaveOrgId</from-activity-id>
+      <control-flow-case id="__15">
+        <from-outcome>no</from-outcome>
+        <to-activity-id>SearchOrganizations</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__16">
+        <from-outcome>yes</from-outcome>
+        <to-activity-id>SetCurrentRowWithKeyValue</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__17">
+      <from-activity-id>SetCurrentRowWithKeyValue</from-activity-id>
+      <control-flow-case id="__18">
+        <from-outcome>setCurrentRowWithKeyValue</from-outcome>
+        <to-activity-id>ViewOrganization</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__23">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__24">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>Return</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__27">
+      <from-activity-id>Return</from-activity-id>
+      <control-flow-case id="__28">
+        <from-outcome>outcome1</from-outcome>
+        <to-activity-id>ReturnToDashboard</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__29">
+        <from-outcome>outcome2</from-outcome>
+        <to-activity-id>SearchOrganizations</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__31">
+        <from-outcome>outcome3</from-outcome>
+        <to-activity-id>ReturnToPerson</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__32">
+      <from-activity-id>SetCurrentRowWithKeyValue1</from-activity-id>
+      <control-flow-case id="__33">
+        <from-outcome>setCurrentRowWithKeyValue</from-outcome>
+        <to-activity-id>ViewOrganization</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

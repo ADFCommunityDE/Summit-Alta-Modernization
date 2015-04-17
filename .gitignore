@@ -14,3 +14,4 @@ hs_err_pid*
 #ADF typical ignores
 .data
 classes/
+temp/

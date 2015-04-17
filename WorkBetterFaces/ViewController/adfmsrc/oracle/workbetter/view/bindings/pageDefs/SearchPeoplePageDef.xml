@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.14.23" id="SearchPeoplePageDef"
+                Package="oracle.workbetter.view.bindings.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="HRService" id="HRServiceIterator"/>
+    <accessorIterator MasterBinding="HRServiceIterator" Binds="employees" RangeSize="-1" DataControl="HRService"
+                      BeanClass="oracle.workbetter.model.Employee" id="employeesIterator"/>
+    <accessorIterator MasterBinding="HRServiceIterator" Binds="allEmployees" RangeSize="25" DataControl="HRService"
+                      BeanClass="oracle.workbetter.model.Employee" id="allEmployeesIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="employeesIterator" id="employees">
+      <nodeDefinition DefName="oracle.workbetter.model.Employee" Name="employees0">
+        <AttrNames>
+          <Item Value="empId"/>
+          <Item Value="firstName"/>
+          <Item Value="lastName"/>
+          <Item Value="title"/>
+          <Item Value="email"/>
+          <Item Value="mobile"/>
+          <Item Value="phone"/>
+          <Item Value="address"/>
+          <Item Value="city"/>
+          <Item Value="state"/>
+          <Item Value="country"/>
+          <Item Value="postal"/>
+          <Item Value="twitter"/>
+          <Item Value="facebook"/>
+          <Item Value="google"/>
+          <Item Value="linkedIn"/>
+          <Item Value="hireDate"/>
+          <Item Value="compRatio"/>
+          <Item Value="salary"/>
+          <Item Value="bonus"/>
+          <Item Value="commission"/>
+          <Item Value="rating"/>
+          <Item Value="potential"/>
+          <Item Value="deptId"/>
+          <Item Value="deptName"/>
+          <Item Value="mgrId"/>
+          <Item Value="mgrFirstName"/>
+          <Item Value="mgrLastName"/>
+          <Item Value="mgrImage"/>
+          <Item Value="image"/>
+          <Item Value="active"/>
+          <Item Value="tenure"/>
+          <Item Value="nboxPotential"/>
+          <Item Value="nboxRating"/>
+          <Item Value="reportCount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="employeesIterator" id="compRatio">
+      <AttrNames>
+        <Item Value="compRatio"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="employeesIterator" id="rating">
+      <AttrNames>
+        <Item Value="rating"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="employeesIterator" id="tenure">
+      <AttrNames>
+        <Item Value="tenure"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HRServiceIterator" id="empFilter">
+      <AttrNames>
+        <Item Value="empFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="filterEmployees" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterEmployees"
+                  IsViewObjectMethod="false" DataControl="HRService" InstanceName="data.HRService.dataProvider"/>
+    <attributeValues IterBinding="employeesIterator" id="salary">
+      <AttrNames>
+        <Item Value="salary"/>
+      </AttrNames>
+    </attributeValues>
+    <mapTheme IterBinding="employeesIterator" id="employees2" xmlns="http://xmlns.oracle.com/adfm/dvt">
+      <mapThemeDataMap convert="false" mapThemeType="point">
+        <data>
+          <item value="address" label="Address"/>
+        </data>
+        <item type="gen_form_2" street="address" city="city" region="state" country="country" postalCode="postal"
+              label="lastName"/>
+      </mapThemeDataMap>
+    </mapTheme>
+    <tree IterBinding="allEmployeesIterator" id="allEmployees">
+      <nodeDefinition DefName="oracle.workbetter.model.Employee" Name="allEmployees0">
+        <AttrNames>
+          <Item Value="empId"/>
+          <Item Value="firstName"/>
+          <Item Value="lastName"/>
+          <Item Value="title"/>
+          <Item Value="email"/>
+          <Item Value="mobile"/>
+          <Item Value="phone"/>
+          <Item Value="address"/>
+          <Item Value="city"/>
+          <Item Value="state"/>
+          <Item Value="country"/>
+          <Item Value="postal"/>
+          <Item Value="twitter"/>
+          <Item Value="facebook"/>
+          <Item Value="google"/>
+          <Item Value="linkedIn"/>
+          <Item Value="hireDate"/>
+          <Item Value="compRatio"/>
+          <Item Value="salary"/>
+          <Item Value="bonus"/>
+          <Item Value="commission"/>
+          <Item Value="rating"/>
+          <Item Value="potential"/>
+          <Item Value="deptId"/>
+          <Item Value="deptName"/>
+          <Item Value="mgrId"/>
+          <Item Value="mgrFirstName"/>
+          <Item Value="mgrLastName"/>
+          <Item Value="mgrImage"/>
+          <Item Value="image"/>
+          <Item Value="active"/>
+          <Item Value="tenure"/>
+          <Item Value="nboxPotential"/>
+          <Item Value="nboxRating"/>
+          <Item Value="teamAvgRating"/>
+          <Item Value="reportCount"/>
+          <Item Value="empMeetings"/>
+          <Item Value="empEvents"/>
+          <Item Value="groupSize"/>
+          <Item Value="groupAvgRating"/>
+          <Item Value="groupAvgPotential"/>
+          <Item Value="groupCompRatioAbove"/>
+          <Item Value="groupCompRatioIn"/>
+          <Item Value="groupCompRatioBelow"/>
+          <Item Value="groupMeetings"/>
+          <Item Value="groupEvents"/>
+          <Item Value="groupTrainings"/>
+          <Item Value="groupTimeOff"/>
+          <Item Value="notifyApproved"/>
+          <Item Value="notifyWaiting"/>
+          <Item Value="notifyRejected"/>
+          <Item Value="ratingDesc"/>
+          <Item Value="potentialDesc"/>
+          <Item Value="skillCount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="employeesIterator" id="empId">
+      <AttrNames>
+        <Item Value="empId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

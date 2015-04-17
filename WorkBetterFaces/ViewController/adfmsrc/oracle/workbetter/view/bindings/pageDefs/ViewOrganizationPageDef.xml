@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.14.23" id="ViewOrganizationPageDef"
+                Package="oracle.workbetter.view.bindings.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="HRService" id="HRServiceIterator"/>
+    <accessorIterator MasterBinding="HRServiceIterator" Binds="allDepartments" RangeSize="25" DataControl="HRService"
+                      BeanClass="oracle.workbetter.model.Department" id="departmentsIterator"/>
+    <accessorIterator MasterBinding="departmentsIterator" Binds="events" RangeSize="-1" DataControl="HRService"
+                      BeanClass="oracle.workbetter.model.Event" id="eventsIterator"/>
+    <accessorIterator MasterBinding="departmentsIterator" Binds="reports" RangeSize="25" DataControl="HRService"
+                      BeanClass="oracle.workbetter.model.Employee" id="reportsIterator"/>
+    <accessorIterator MasterBinding="reportsIterator" Binds="perfHistory" RangeSize="-1" DataControl="HRService"
+                      BeanClass="oracle.workbetter.model.Performance" id="perfHistoryIterator"/>
+    <accessorIterator MasterBinding="reportsIterator" Binds="pieComps" RangeSize="-1" DataControl="HRService"
+                      BeanClass="oracle.workbetter.model.CompItem" id="pieCompsIterator"/>
+    <accessorIterator MasterBinding="departmentsIterator" Binds="departmentManager" RangeSize="25"
+                      DataControl="HRService" BeanClass="oracle.workbetter.model.Employee"
+                      id="departmentManagerIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="departmentsIterator" id="deptId">
+      <AttrNames>
+        <Item Value="deptId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="deptName">
+      <AttrNames>
+        <Item Value="deptName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="address">
+      <AttrNames>
+        <Item Value="address"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="city">
+      <AttrNames>
+        <Item Value="city"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="state">
+      <AttrNames>
+        <Item Value="state"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="country">
+      <AttrNames>
+        <Item Value="country"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="postal">
+      <AttrNames>
+        <Item Value="postal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="deptMgrId">
+      <AttrNames>
+        <Item Value="deptMgrId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="deptMgrFirst">
+      <AttrNames>
+        <Item Value="deptMgrFirst"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="deptMgrLast">
+      <AttrNames>
+        <Item Value="deptMgrLast"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="deptMgrTitle">
+      <AttrNames>
+        <Item Value="deptMgrTitle"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="deptMgrEmail">
+      <AttrNames>
+        <Item Value="deptMgrEmail"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="latCoord">
+      <AttrNames>
+        <Item Value="latCoord"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="longCoord">
+      <AttrNames>
+        <Item Value="longCoord"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="avgTotalComp">
+      <AttrNames>
+        <Item Value="avgTotalComp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="avgCompRatio">
+      <AttrNames>
+        <Item Value="avgCompRatio"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="avgPerfRating">
+      <AttrNames>
+        <Item Value="avgPerfRating"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="avgPerfPotential">
+      <AttrNames>
+        <Item Value="avgPerfPotential"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="image">
+      <AttrNames>
+        <Item Value="image"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="deptMgrImage">
+      <AttrNames>
+        <Item Value="deptMgrImage"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="color">
+      <AttrNames>
+        <Item Value="color"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="showMeeting">
+      <AttrNames>
+        <Item Value="showMeeting"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="showEvent">
+      <AttrNames>
+        <Item Value="showEvent"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="showTraining">
+      <AttrNames>
+        <Item Value="showTraining"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="showTimeOff">
+      <AttrNames>
+        <Item Value="showTimeOff"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="reportCount">
+      <AttrNames>
+        <Item Value="reportCount"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="eventsIterator" id="events">
+      <nodeDefinition DefName="oracle.workbetter.model.Event" Name="events">
+        <AttrNames>
+          <Item Value="color"/>
+          <Item Value="description"/>
+          <Item Value="name"/>
+          <Item Value="start"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="reportsIterator" id="reports">
+     
+      <nodeDefinition DefName="oracle.workbetter.model.Employee" Name="reports1">
+        <AttrNames>
+          <Item Value="lastName"/>
+          <Item Value="title"/>
+          <Item Value="image"/>
+          <Item Value="firstName"/>
+          <Item Value="empId"/>
+          <Item Value="mgrId"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="reports">
+            <Properties>
+              <CustomProperties>
+                <Property Name="hierarchyType" Value="children"/>
+              </CustomProperties>
+            </Properties>
+          </Item>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="eventsIterator" id="Execute" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <attributeValues IterBinding="departmentsIterator" id="avgRating">
+      <AttrNames>
+        <Item Value="avgRating"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="reportsIterator" id="reports1">
+      <nodeDefinition DefName="oracle.workbetter.model.Employee" Name="reports10">
+        <AttrNames>
+          <Item Value="empId"/>
+          <Item Value="firstName"/>
+          <Item Value="lastName"/>
+          <Item Value="title"/>
+          <Item Value="email"/>
+          <Item Value="mobile"/>
+          <Item Value="phone"/>
+          <Item Value="address"/>
+          <Item Value="city"/>
+          <Item Value="state"/>
+          <Item Value="country"/>
+          <Item Value="postal"/>
+          <Item Value="twitter"/>
+          <Item Value="facebook"/>
+          <Item Value="google"/>
+          <Item Value="linkedIn"/>
+          <Item Value="hireDate"/>
+          <Item Value="compRatio"/>
+          <Item Value="salary"/>
+          <Item Value="bonus"/>
+          <Item Value="commission"/>
+          <Item Value="rating"/>
+          <Item Value="potential"/>
+          <Item Value="deptId"/>
+          <Item Value="deptName"/>
+          <Item Value="mgrId"/>
+          <Item Value="mgrFirstName"/>
+          <Item Value="mgrLastName"/>
+          <Item Value="mgrImage"/>
+          <Item Value="image"/>
+          <Item Value="active"/>
+          <Item Value="tenure"/>
+          <Item Value="nboxPotential"/>
+          <Item Value="nboxRating"/>
+          <Item Value="teamAvgRating"/>
+          <Item Value="reportCount"/>
+          <Item Value="empMeetings"/>
+          <Item Value="empEvents"/>
+          <Item Value="groupSize"/>
+          <Item Value="groupAvgRating"/>
+          <Item Value="groupAvgPotential"/>
+          <Item Value="groupCompRatioAbove"/>
+          <Item Value="groupCompRatioIn"/>
+          <Item Value="groupCompRatioBelow"/>
+          <Item Value="groupMeetings"/>
+          <Item Value="groupEvents"/>
+          <Item Value="groupTrainings"/>
+          <Item Value="groupTimeOff"/>
+          <Item Value="notifyApproved"/>
+          <Item Value="notifyWaiting"/>
+          <Item Value="notifyRejected"/>
+          <Item Value="ratingDesc"/>
+          <Item Value="potentialDesc"/>
+          <Item Value="skillCount"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="perfHistory"/>
+          <Item Value="pieComps"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="oracle.workbetter.model.Performance" Name="reports11">
+        <AttrNames>
+          <Item Value="perfId"/>
+          <Item Value="rating"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="oracle.workbetter.model.CompItem" Name="reports11">
+        <AttrNames>
+          <Item Value="itemValue"/>
+          <Item Value="itemLabel"/>
+          <Item Value="index"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="perfHistoryIterator" id="perfHistory">
+      <nodeDefinition DefName="oracle.workbetter.model.Performance" Name="perfHistory0">
+        <AttrNames>
+          <Item Value="rating"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="pieCompsIterator" id="pieComps">
+      <nodeDefinition DefName="oracle.workbetter.model.CompItem" Name="pieComps0">
+        <AttrNames>
+          <Item Value="itemValue"/>
+          <Item Value="itemLabel"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="departmentsIterator" id="managers">
+      <AttrNames>
+        <Item Value="managers"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="deptMeetings">
+      <AttrNames>
+        <Item Value="deptMeetings"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="deptEvents">
+      <AttrNames>
+        <Item Value="deptEvents"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="departmentManagerIterator" id="departmentManager">
+      
+      <nodeDefinition DefName="oracle.workbetter.model.Employee" Name="departmentManager1">
+        <AttrNames>
+          <Item Value="empId"/>
+          <Item Value="firstName"/>
+          <Item Value="lastName"/>
+          <Item Value="title"/>
+          <Item Value="email"/>
+          <Item Value="mobile"/>
+          <Item Value="image"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="reports">
+            <Properties>
+              <CustomProperties>
+                <Property Name="hierarchyType" Value="children"/>
+              </CustomProperties>
+            </Properties>
+          </Item>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

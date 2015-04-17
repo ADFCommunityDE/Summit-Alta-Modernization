@@ -1,0 +1,22 @@
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+  <Reference name="MapViewer" className="oracle.adf.model.connection.url.HttpURLConnection" xmlns="">
+    <Factory className="oracle.adf.model.connection.url.URLConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="MapViewer">
+        <Contents>
+          <urlconnection name="MapViewer" url="http://elocation.oracle.com/mapviewer"/>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
+  <Reference name="Geocoder" className="oracle.adf.model.connection.url.HttpURLConnection" xmlns="">
+    <Factory className="oracle.adf.model.connection.url.URLConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="Geocoder">
+        <Contents>
+          <urlconnection name="Geocoder" url="http://elocation.oracle.com/geocoder/gcserver"/>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
+</References>

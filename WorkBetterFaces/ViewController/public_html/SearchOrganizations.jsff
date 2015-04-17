@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:group id="g1">
+        <af:panelGridLayout id="pgl6">
+            <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr2">
+                <af:gridCell id="gc11" valign="middle">
+                    <af:outputFormatted value="Organizations" id="ol7" styleClass="WBPageTitleText"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="30%" id="gc6" halign="stretch" valign="middle">
+                    <af:inputText value="#{bindings.deptFilter.inputValue}" simple="true"
+                                  required="#{bindings.deptFilter.hints.mandatory}"
+                                  columns="#{bindings.deptFilter.hints.displayWidth}"
+                                  maximumLength="#{bindings.deptFilter.hints.precision}"
+                                  shortDesc="#{bindings.deptFilter.hints.tooltip}" id="it1" autoSubmit="true"
+                                  placeholder="Search" dimensionsFrom="parent">
+                        <f:validator binding="#{bindings.deptFilter.validator}"/>
+                    </af:inputText>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="auto" id="gc8" valign="middle" marginEnd="20px">
+                    <af:button actionListener="#{backingBeanScope.searchOrg.doSearchNRefresh}"
+                               disabled="#{!bindings.filterDepartments.enabled}" id="b1" partialTriggers="it1"
+                               icon="/resources/images/func_pagefilter_16_ena.png"
+                               depressedIcon="/resources/images/func_pagefilter_16_act.png"
+                               hoverIcon="/resources/images/func_pagefilter_16_hov.png"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="auto" id="gc10" valign="middle" halign="end">
+                    <af:navigationPane hint="bar" id="np1" styleClass="WBToggleBar">
+                        <af:commandNavigationItem id="ni1"
+                                                  selected="#{sessionScope.OrgDisplayType == 'list' or sessionScope.OrgDisplayType == null}"
+                                                  icon="#{sessionScope.OrgDisplayType == 'list' or sessionScope.OrgDisplayType == null ? '/resources/images/func_list-view_16_act.png' : '/resources/images/func_list-view_16_ena.png'}">
+                            <af:setPropertyListener type="action" from="list" to="#{sessionScope.OrgDisplayType}"/>
+                            <af:setPropertyListener from="false" to="#{sessionScope.showOrgGrid}" type="action"/>
+                        </af:commandNavigationItem>
+                        <af:commandNavigationItem id="ni3" selected="#{sessionScope.OrgDisplayType == 'grid'}"
+                                                  icon="#{sessionScope.OrgDisplayType == 'grid' ? '/resources/images/func_matrix_16_act.png' : '/resources/images/func_matrix_16_ena.png'}">
+                            <af:setPropertyListener from="grid" to="#{sessionScope.OrgDisplayType}" type="action"/>
+                            <af:setPropertyListener from="true" to="#{sessionScope.showOrgGrid}" type="action"/>
+                        </af:commandNavigationItem>
+                        <af:commandNavigationItem id="ni2" selected="#{sessionScope.OrgDisplayType == 'map'}"
+                                                  icon="#{sessionScope.OrgDisplayType == 'map' ? '/resources/images/func_worldglobe_16_act.png' : '/resources/images/func_worldglobe_16_ena.png'}">
+                            <af:setPropertyListener from="map" to="#{sessionScope.OrgDisplayType}" type="action"/>
+                            <af:setPropertyListener from="false" to="#{sessionScope.showOrgGrid}" type="action"/>
+                        </af:commandNavigationItem>
+                    </af:navigationPane>
+                </af:gridCell>
+            </af:gridRow>
+            <af:gridRow id="gr3">
+                <af:gridCell id="gc12" columnSpan="4" halign="stretch">
+                    <af:listView value="#{bindings.departments.collectionModel}" var="item"
+                                 emptyText="#{bindings.departments.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                 fetchSize="#{bindings.departments.rangeSize}" id="lv1" partialTriggers="::b1 ::it1"
+                                 selectedRowKeys="#{bindings.departments.collectionModel.selectedRow}"
+                                 selectionListener="#{bindings.departments.collectionModel.makeCurrent}"
+                                 rendered="#{sessionScope.OrgDisplayType != 'map'}" selection="single"
+                                 styleClass="#{sessionScope.showOrgGrid ? 'WBDisplayBlockCenter' : ''}">
+                        <af:listItem id="li1"
+                                     styleClass="#{sessionScope.showOrgGrid ? 'WBDisplayBlock WBDisplayBlockPadding WBDisplayBlockCenterUndo' : 'WBListPadding'}">
+                            <af:panelGridLayout id="pgl1" clientComponent="true" shortDesc="List View"
+                                                rendered="#{sessionScope.OrgDisplayType == 'list' or sessionScope.OrgDisplayType == null}">
+                                <af:gridRow marginTop="0px" height="auto" marginBottom="0px" id="gr1">
+                                    <af:gridCell marginStart="0px" width="80px" id="gc1" valign="middle"
+                                                 marginEnd="10px">
+                                        <af:image source="/resources/images/organizations/#{item.bindings.image.inputValue}" id="i1"
+                                                  styleClass="WBImage WBImageBorder"/>
+                                    </af:gridCell>
+                                    <af:gridCell marginStart="5px" id="gc2" valign="middle" marginEnd="25px"
+                                                 width="50%">
+                                        <af:panelGroupLayout id="pgl2" layout="vertical">
+                                            <af:outputFormatted value="#{item.bindings.deptName.inputValue}" id="of1"
+                                                                styleClass="WBNameText"/>
+                                            <af:outputFormatted value="#{item.bindings.city.inputValue}" id="of4"
+                                                                styleClass="WBJobTitleText"/>
+                                            <af:outputFormatted value="#{'CC'}#{item.bindings.deptId.inputValue}#{'A'}"
+                                                                id="of5" styleClass="WBDeptText"/>
+                                        </af:panelGroupLayout>
+                                    </af:gridCell>
+                                    <af:gridCell id="gc3" marginStart="5px" marginEnd="5px" valign="middle" width="50%">
+                                        <af:panelGroupLayout id="pgl8" layout="vertical">
+                                            <af:spacer width="10" height="18" id="s1"/>
+                                            <af:outputFormatted value="#{item.bindings.deptMgrFirst.inputValue} #{item.bindings.deptMgrLast.inputValue}"
+                                                                id="of9" styleClass="WBManagerName"/>
+                                            <af:outputFormatted value="#{item.bindings.deptMgrTitle.inputValue}"
+                                                                id="ol4" styleClass="WBManagerTitle"/>
+                                        </af:panelGroupLayout>
+                                    </af:gridCell>
+                                    <af:gridCell id="gc4" width="140px" valign="middle" halign="end">
+                                        <af:panelGroupLayout id="pgl3" layout="vertical" halign="end">
+                                            <af:outputFormatted value="#{item.bindings.avgTotalComp.inputValue}"
+                                                                id="of2" styleClass="WBMetricMedium WBMetric1Color">
+                                                <af:convertNumber pattern="'$'#,###"/>
+                                            </af:outputFormatted>
+                                            <af:outputLabel value="Avg Comp" id="ol3" styleClass="WBMetricLabelMedium"/>
+                                        </af:panelGroupLayout>
+                                    </af:gridCell>
+                                    <af:gridCell id="gc21" width="80px" valign="middle" halign="center"
+                                                 marginStart="15px">
+                                        <af:panelGroupLayout id="pgl9" layout="vertical" halign="center">
+                                            <af:outputFormatted value="#{item.bindings.avgRating.inputValue}" id="of12"
+                                                                styleClass="WBMetricMedium WBMetric4Color">
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{item.bindings.avgRating.format}"/>
+                                            </af:outputFormatted>
+                                            <af:outputLabel value="Avg Rating" id="ol5"
+                                                            styleClass="WBMetricLabelMedium"/>
+                                        </af:panelGroupLayout>
+                                    </af:gridCell>
+                                    <af:gridCell id="gc5" width="80px" valign="middle" halign="center">
+                                        <af:panelGroupLayout id="pgl4" layout="vertical" halign="center">
+                                            <af:outputFormatted value="#{item.bindings.reportCount.inputValue}" id="of3"
+                                                                styleClass="WBMetricMedium WBMetric4Color">
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{item.bindings.reportCount.format}"/>
+                                            </af:outputFormatted>
+                                            <af:outputLabel value="Employees" id="ol2"
+                                                            styleClass="WBMetricLabelMedium"/>
+                                        </af:panelGroupLayout>
+                                    </af:gridCell>
+                                </af:gridRow>
+                                <af:clientListener method="WBClient.clientClickProxy" type="click"/>
+                                <af:serverListener type="clientClickProxyEvent"
+                                                   method="#{backingBeanScope.searchOrg.doViewOrg}"/>
+                            </af:panelGridLayout>
+                            <af:panelBox id="pb1" showHeader="never" showDisclosure="false"
+                                         rendered="#{sessionScope.OrgDisplayType == 'grid'}">
+                                <f:facet name="toolbar"/>
+                                <af:panelGroupLayout id="pgl7" layout="vertical" styleClass="WBCardSize"
+                                                     shortDesc="Card View">
+                                    <af:panelGridLayout id="pgl15">
+                                        <af:gridRow marginTop="20px" height="auto" id="gr7">
+                                            <af:gridCell marginStart="0px" rowSpan="3" width="64px" id="gc15">
+                                                <af:image source="/resources/images/organizations/#{item.bindings.image.inputValue}"
+                                                          id="i2" styleClass="WBImageCard WBImageCardBorder"/>
+                                            </af:gridCell>
+                                            <af:gridCell marginStart="12px" width="60%" marginEnd="0px" id="gc16">
+                                                <af:outputFormatted value="#{item.bindings.deptName.inputValue}"
+                                                                    id="of6" styleClass="WBCardTitle"/>
+                                            </af:gridCell>
+                                        </af:gridRow>
+                                        <af:gridRow marginTop="2px" height="auto" id="gr8">
+                                            <af:gridCell marginStart="12px" width="60%" marginEnd="0px" id="gc17">
+                                                <af:outputFormatted value="#{item.bindings.city.inputValue}" id="of7"
+                                                                    styleClass="WBCardDescription"/>
+                                            </af:gridCell>
+                                        </af:gridRow>
+                                        <af:gridRow marginTop="2px" height="auto" marginBottom="0px" id="gr9">
+                                            <af:gridCell marginStart="12px" width="60%" marginEnd="0px" id="gc18">
+                                                <af:outputFormatted value="#{'CC'}#{item.bindings.deptId.inputValue}#{'A'}"
+                                                                    id="of8" styleClass="WBCardDescription"/>
+                                            </af:gridCell>
+                                        </af:gridRow>
+                                        <af:gridRow id="gr4" marginTop="37px">
+                                            <af:gridCell id="gc7" valign="bottom">
+                                                <af:panelGroupLayout id="pgl5" layout="horizontal">
+                                                    <af:spacer width="5" height="10" id="s2"/>
+                                                    <af:panelGroupLayout id="pgl10" layout="vertical">
+                                                        <af:outputFormatted value="#{item.bindings.deptMgrFirst.inputValue} #{item.bindings.deptMgrLast.inputValue}"
+                                                                            id="of13"
+                                                                            styleClass="WBCardManagerName WBCardManagerNameAlign"/>
+                                                        <af:outputFormatted value="#{item.bindings.deptMgrTitle.inputValue}"
+                                                                            id="of11" styleClass="WBCardManagerTitle"/>
+                                                    </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                            </af:gridCell>
+                                            <af:gridCell id="gc9"/>
+                                            <af:gridCell id="gc13" width="40%" valign="bottom">
+                                                <af:panelGroupLayout id="pgl11" layout="vertical" halign="center">
+                                                    <af:outputFormatted value="#{item.bindings.reportCount.inputValue}"
+                                                                        id="of10" styleClass="WBMetric WBMetric4Color">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{item.bindings.reportCount.format}"/>
+                                                    </af:outputFormatted>
+                                                    <af:outputFormatted value="Employees" id="ol1"
+                                                                        styleClass="WBMetricLabelMedium"/>
+                                                </af:panelGroupLayout>
+                                            </af:gridCell>
+                                        </af:gridRow>
+                                        <af:clientListener method="WBClient.clientClickProxy" type="click"/>
+                                        <af:serverListener type="clientClickProxyEvent"
+                                                           method="#{backingBeanScope.searchOrg.doViewOrg}"/>
+                                    </af:panelGridLayout>
+                                </af:panelGroupLayout>
+                            </af:panelBox>
+                        </af:listItem>
+                    </af:listView>
+                    <af:panelGridLayout id="pgl12" shortDesc="Map View"
+                                        rendered="#{sessionScope.OrgDisplayType == 'map'}">
+                        <af:gridRow marginTop="0px" height="550px" marginBottom="0px" id="gr17">
+                            <af:gridCell marginStart="0px" width="100%" marginEnd="0px" id="gc39" halign="stretch"
+                                         valign="stretch">
+                                <dvt:map id="map" startingX="-55.0" mapServerConfigId="mapConfig1"
+                                         baseMapName="ELOCATION.WORLD_MAP" mapZoom="2" styleClass="WBMapDimensions"
+                                         startingY="45.0" summary="Map of Departments">
+                                    <dvt:mapPointTheme id="mt1" value="#{bindings.departments1.geoMapModel}"
+                                                       clickListener="#{bindings.departments1.geoMapModel.processClickAction}"
+                                                       selectionListener="#{bindings.departments1.geoMapModel.processSelection}"
+                                                       builtInImage="PushPin_Red"/>
+                                    <dvt:mapOverview initialShown="false"/>
+                                </dvt:map>
+                            </af:gridCell>
+                        </af:gridRow>
+                    </af:panelGridLayout>
+                </af:gridCell>
+            </af:gridRow>
+        </af:panelGridLayout>
+        <!--Hidden button used by the server listener to navigate to ViewOrganization with the current row id-->
+        <af:button text="Hidden Navigation" id="h_navb1" action="ViewOrganization" visible="false">
+            <af:setActionListener from="#{bindings.departments.currentRow.dataProvider['deptId']}"
+                                  to="#{pageFlowScope.organizationsFlowState.rowKeyId}"/>
+        </af:button>
+    </af:group>
+</ui:composition>

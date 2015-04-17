@@ -1,0 +1,561 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <af:panelGroupLayout id="pglVPC" layout="vertical">
+        <!-- invoke the method to establish media query -->
+        <af:resource type="javascript">
+          wbMQ.setupMediaQuery('(min-width: 1024px)', 'pglvotlcon', 'voLayoutMode', 'portrait', 'btnLayoutLandscape', 'btnLayoutPortrait');
+        </af:resource>
+        <af:panelGridLayout id="pgl2">
+            <af:gridRow marginTop="0px" height="auto" id="gr1">
+                <af:gridCell marginStart="0px" columnSpan="4" marginEnd="0px" id="gc1">
+                    <af:link text="#{pageFlowScope.organizationsFlowState.backLinkText}" id="l1" action="Back"/>
+                </af:gridCell>
+            </af:gridRow>
+            <af:gridRow marginTop="10px" height="24px" id="gr2">
+                <af:gridCell marginStart="0px" width="120px" id="gc2" marginEnd="10px" rowSpan="3" valign="middle">
+                    <af:image source="/resources/images/organizations/#{bindings.image.inputValue}" id="i1"
+                              styleClass="WBImage ImageBorder"/>
+                </af:gridCell>
+                <af:gridCell marginStart="0px" width="50%" id="gc3" marginEnd="10px" valign="middle">
+                    <af:outputText value="#{bindings.deptName.inputValue}"
+                                   shortDesc="#{bindings.deptName.hints.tooltip}" id="it2"
+                                   styleClass="WBDetailNameText"/>
+                </af:gridCell>
+                <af:gridCell id="gc10" width="120px" marginEnd="10px" rowSpan="3" valign="middle">
+                    <af:image source="/resources/images/people/#{bindings.deptMgrImage.inputValue}" id="i2"
+                              styleClass="WBImage WBImageBorder"/>
+                </af:gridCell>
+                <af:gridCell id="gc12" width="256px" valign="middle">
+                    <af:link text="#{bindings.deptMgrFirst.inputValue} #{bindings.deptMgrLast.inputValue}"
+                             shortDesc="#{bindings.deptMgrFirst.hints.tooltip}" id="linkVP"
+                             styleClass="WBDetailDeptText" action="ViewPerson">
+                        <af:setPropertyListener from="#{bindings.deptMgrId.inputValue}"
+                                                to="#{pageFlowScope.organizationsFlowState.drillPersonId}"
+                                                type="action"/>
+                    </af:link>
+                </af:gridCell>
+            </af:gridRow>
+            <af:gridRow id="gr3" height="24px">
+                <af:gridCell id="gc5" valign="middle">
+                    <af:outputText value="#{bindings.city.inputValue}, #{bindings.state.inputValue}"
+                                   shortDesc="#{bindings.city.hints.tooltip}" id="it4"
+                                   styleClass="WBDetailJobTitleText"/>
+                </af:gridCell>
+                <af:gridCell id="gc7" valign="middle">
+                    <af:outputText value="#{bindings.deptMgrTitle.inputValue}" id="ot7" styleClass="WBDetailDeptText"/>
+                </af:gridCell>
+            </af:gridRow>
+            <af:gridRow id="gr4" height="24px">
+                <af:gridCell id="gc8" valign="middle">
+                    <af:outputText value="#{'CC'}#{bindings.deptId.inputValue}#{'A'}" id="it24"
+                                   styleClass="WBDetailDeptText"/>
+                </af:gridCell>
+                <af:gridCell id="gc11" valign="middle">
+                    <af:link id="l2" shortDesc="Email #{bindings.deptMgrEmail.inputValue}"
+                             destination="mailto:#{bindings.deptMgrEmail.inputValue}"
+                             text="#{bindings.deptMgrEmail.inputValue}" styleClass="WBDetailDeptText"/>
+                </af:gridCell>
+            </af:gridRow>
+        </af:panelGridLayout>
+        <!-- InfoTiles -->
+        <af:panelGroupLayout id="pglvotlcon" styleClass="WBViewPersonContainerMargin" clientComponent="true"
+                             valign="top" layout="#{orientationManager.infoTileGroupLayout}">
+            <af:clientAttribute name="voLayoutMode" value="#{orientationManager.orientation}"/>
+            <af:panelGroupLayout id="pgl1" styleClass="WBViewPersonTileContainer">
+                <!--   Handle the Custom event from the tile selection. Can't add it to the gridcell Wondering if
+                       we can still move them into the cells and individually wrap each with a serverlistner-->
+                <af:serverListener type="tileSelected" method="#{backingBeanScope.viewOrg.infoTileSelectionHandler}"/>
+                <af:declarativeComponent viewId="/components/infoTile/infoTile.jsff" id="inft0">
+                    <f:attribute name="selected" value="#{pageFlowScope.organizationsFlowState.selectedTile eq 0}"/>
+                    <f:attribute name="index" value="0"/>
+                    <f:attribute name="layout" value="#{orientationManager.infoTileLayout}"/>
+                    <f:attribute name="tileWidth" value="#{orientationManager.orgInfoTileWidth}"/>
+                    <f:attribute name="tileHeight" value="#{orientationManager.orgInfoTileHeight}"/>
+                    <f:facet name="tileContent">
+                        <af:panelGroupLayout layout="vertical" id="tcon2">
+                            <af:outputText value="Summary" id="title2" styleClass="WBInfoTileTitle"/>
+                            <af:panelGroupLayout id="pgl23"
+                                                 layout="#{orientationManager.portraitMode? 'vertical' : 'horizontal'}"
+                                                 halign="center">
+                                <af:panelGroupLayout id="pgl4" layout="vertical" halign="center"
+                                                     inlineStyle="width:150px;">
+                                    <af:outputText value="#{bindings.avgTotalComp.inputValue / 1000}" id="of2"
+                                                   styleClass="WBMetric WBMetric1Color">
+                                        <af:convertNumber pattern="'$'###.#'k'"/>
+                                    </af:outputText>
+                                    <af:outputText value="Average Comp" styleClass="WBDashboardLabel" id="ot5"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl24" layout="vertical" halign="center"
+                                                     inlineStyle="width:150px;">
+                                    <af:outputText value="#{bindings.avgRating.inputValue}"
+                                                   styleClass="WBMetric WBMetric4Color" id="ot3">
+                                        <af:convertNumber pattern="#.#"/>
+                                    </af:outputText>
+                                    <af:outputText value="Average Rating" styleClass="WBDashboardLabel" id="ot9"/>
+                                </af:panelGroupLayout>
+                                <!-- Workaround infoTile Issue. Any component with implicit clientComponent="true" will prevent selection-->
+                                <af:clientListener method="InfoTileComp.raiseSelectionEvent" type="click"/>
+                                <f:facet name="separator">
+                                    <af:spacer width="10" height="10" id="s11"/>
+                                </f:facet>
+                            </af:panelGroupLayout>
+                            <f:facet name="separator">
+                                <af:spacer width="10" height="10" id="s10"/>
+                            </f:facet>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:declarativeComponent>
+                <af:declarativeComponent viewId="/components/infoTile/infoTile.jsff" id="inft1">
+                    <f:attribute name="selected" value="#{pageFlowScope.organizationsFlowState.selectedTile eq 1}"/>
+                    <f:attribute name="index" value="1"/>
+                    <f:attribute name="layout" value="#{orientationManager.infoTileLayout}"/>
+                    <f:attribute name="tileWidth" value="#{orientationManager.orgInfoTileWidth}"/>
+                    <f:attribute name="tileHeight" value="#{orientationManager.orgInfoTileHeight}"/>
+                    <f:facet name="tileContent">
+                        <af:panelGroupLayout layout="vertical" id="pgl38">
+                            <af:outputText value="Timeline" id="ot16" styleClass="WBInfoTileTitle"/>
+                            <af:panelGroupLayout id="pgl35"
+                                                 layout="#{orientationManager.portraitMode ? 'vertical' : 'horizontal'}">
+                                <af:panelGroupLayout id="pgl36" layout="vertical" halign="center"
+                                                     inlineStyle="width:150px;">
+                                    <af:outputText value="#{bindings.deptEvents.inputValue}" id="ot6"
+                                                   styleClass="WBMetric WBMetric4Color"/>
+                                    <af:outputText value="Events" styleClass="WBDashboardLabel" id="ot12"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl37" layout="vertical" halign="center"
+                                                     inlineStyle="width:150px;">
+                                    <af:outputText value="#{bindings.deptMeetings.inputValue}"
+                                                   styleClass="WBMetric WBMetric4Color" id="ot14"/>
+                                    <af:outputText value="Meetings" styleClass="WBDashboardLabel" id="ot15"/>
+                                </af:panelGroupLayout>
+                                <!-- Workaround infoTile Issue. Any component with implicit clientComponent="true" will prevent selection-->
+                                <af:clientListener method="InfoTileComp.raiseSelectionEvent" type="click"/>
+                                <f:facet name="separator">
+                                    <af:spacer width="10" height="10" id="s15"/>
+                                </f:facet>
+                            </af:panelGroupLayout>
+                            <f:facet name="separator">
+                                <af:spacer width="10" height="10" id="s16"/>
+                            </f:facet>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:declarativeComponent>
+                <af:declarativeComponent viewId="/components/infoTile/infoTile.jsff" id="inft2">
+                    <f:attribute name="selected" value="#{pageFlowScope.organizationsFlowState.selectedTile eq 2}"/>
+                    <f:attribute name="index" value="2"/>
+                    <f:attribute name="layout" value="#{orientationManager.infoTileLayout}"/>
+                    <f:attribute name="tileWidth" value="#{orientationManager.orgInfoTileWidth}"/>
+                    <f:attribute name="tileHeight" value="#{orientationManager.orgInfoTileHeight}"/>
+                    <f:facet name="tileContent">
+                        <af:panelGroupLayout layout="vertical" id="pgl7">
+                            <af:outputText value="Team" id="ot2" styleClass="WBInfoTileTitle"/>
+                            <af:panelGroupLayout id="pgl22"
+                                                 layout="#{orientationManager.portraitMode ? 'vertical' : 'horizontal'}">
+                                <af:panelGroupLayout id="pgl39" layout="vertical" halign="center"
+                                                     inlineStyle="width:150px;">
+                                    <af:outputText value="#{bindings.managers.inputValue}" id="ot4"
+                                                   styleClass="WBMetric WBMetric4Color"/>
+                                    <af:outputText value="Managers" styleClass="WBDashboardLabel" id="ot13"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl40" layout="vertical" halign="center"
+                                                     inlineStyle="width:150px;">
+                                    <af:outputText value="#{bindings.reportCount.inputValue}"
+                                                   styleClass="WBMetric WBMetric4Color" id="ot17"/>
+                                    <af:outputText value="Employees" styleClass="WBDashboardLabel" id="ot18"/>
+                                </af:panelGroupLayout>
+                                <!-- Workaround infoTile Issue. Any component with implicit clientComponent="true" will prevent selection-->
+                                <af:clientListener method="InfoTileComp.raiseSelectionEvent" type="click"/>
+                                <f:facet name="separator">
+                                    <af:spacer width="10" height="10" id="s17"/>
+                                </f:facet>
+                            </af:panelGroupLayout>
+                            <f:facet name="separator">
+                                <af:spacer width="10" height="10" id="s18"/>
+                            </f:facet>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:declarativeComponent>
+            </af:panelGroupLayout>
+            <af:spacer width="10" id="vphsp" height="1" visible="#{orientationManager.portraitMode}"/>
+            <af:spacer width="1" id="vpvsp" height="10" visible="#{orientationManager.landscapeMode}"/>
+            <!-- Content from InfoTiles -->
+            <af:panelGroupLayout id="pgltlc" layout="vertical" styleClass="WBViewOrgTileContent AFStretchWidth"
+                                 valign="top">
+                <af:deck id="d1" displayedChild="#{'infd'}#{pageFlowScope.organizationsFlowState.selectedTile}"
+                         partialTriggers="pgl1">
+                    <af:transition triggerType="backNavigate"
+                                   transition="#{orientationManager.infoTileDeckBackTransition}"/>
+                    <af:transition triggerType="forwardNavigate"
+                                   transition="#{orientationManager.infoTileDeckForwardTransition}"/>
+                    <af:panelGroupLayout id="infd0" styleClass="AFStretchWidth" layout="vertical">
+                        <af:panelGroupLayout id="pgl13" layout="horizontal"
+                                             halign="#{orientationManager.portraitMode ? 'start' :'end'}">
+                            <af:button text="Performance" id="b1" type="radio"
+                                       selected="#{pageFlowScope.organizationsFlowState.summaryView == 'perf' or pageFlowScope.organizationsFlowState.summaryView == null}">
+                                <af:setPropertyListener from="perf"
+                                                        to="#{pageFlowScope.organizationsFlowState.summaryView}"
+                                                        type="action"/>
+                            </af:button>
+                            <af:button text="Compensation" id="b2" type="radio"
+                                       selected="#{pageFlowScope.organizationsFlowState.summaryView == 'comp'}">
+                                <af:setPropertyListener from="comp"
+                                                        to="#{pageFlowScope.organizationsFlowState.summaryView}"
+                                                        type="action"/>
+                            </af:button>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl8" styleClass="AFStretchWidth" layout="vertical"
+                                             partialTriggers="b1 b2">
+                            <af:spacer width="10" height="10" id="s12"/>
+                            <af:panelGroupLayout id="perf" layout="vertical"
+                                                 rendered="#{pageFlowScope.organizationsFlowState.summaryView== 'perf' or pageFlowScope.organizationsFlowState.summaryView == null}">
+                                <af:listView value="#{bindings.reports1.collectionModel}" var="item"
+                                             emptyText="#{bindings.reports1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                             fetchSize="#{bindings.reports1.rangeSize}" id="lv2">
+                                    <af:listItem id="li2">
+                                        <af:panelGroupLayout id="pgl26"
+                                                             layout="#{orientationManager.portraitMode ? 'vertical' : 'horizontal'}"
+                                                             styleClass="#{orientationManager.portraitMode ? 'WBPortraitContentDimensions' : 'AFStretchWidth'}">
+                                            <af:panelGridLayout id="pgl25" clientComponent="true" dimensionsFrom="auto"
+                                                                shortDesc="List View">
+                                                <af:gridRow marginTop="0px" height="auto" marginBottom="0px" id="gr6">
+                                                    <af:gridCell marginStart="0px" width="80px" id="gc30"
+                                                                 valign="middle" marginEnd="10px">
+                                                        <af:image source="/resources/images/people/#{item.bindings.image.inputValue}"
+                                                                  id="i4" styleClass="WBImage WBImageBorder"/>
+                                                    </af:gridCell>
+                                                    <af:gridCell marginStart="5px" id="gc34" valign="middle"
+                                                                 width="160px">
+                                                        <af:panelGroupLayout id="pgl28" layout="vertical">
+                                                            <af:outputFormatted value="#{item.bindings.firstName.inputValue} #{item.bindings.lastName.inputValue}"
+                                                                                id="of8" styleClass="WBNameText"/>
+                                                            <af:outputFormatted value="#{item.bindings.title.inputValue}"
+                                                                                id="of9" styleClass="WBJobTitleText"/>
+                                                            <af:outputFormatted value="#{item.bindings.deptName.inputValue}"
+                                                                                id="of10" styleClass="WBDeptText"/>
+                                                        </af:panelGroupLayout>
+                                                    </af:gridCell>
+                                                    <af:gridCell id="gc35" marginStart="5px" marginEnd="5px"
+                                                                 valign="middle"
+                                                                 width="#{orientationManager.portraitMode ? '50%' : '200px'}"
+                                                                 halign="end">
+                                                        <af:panelGroupLayout id="pgl29" layout="vertical"
+                                                                             halign="center">
+                                                            <af:outputFormatted value="#{item.bindings.teamAvgRating.inputValue}"
+                                                                                id="of11"
+                                                                                styleClass="WBMetricMedium WBMetric4Color">
+                                                                <af:convertNumber pattern="#.#"/>
+                                                            </af:outputFormatted>
+                                                            <af:outputLabel value="Average Team Rating" id="ol6"
+                                                                            styleClass="WBMetricLabelMedium"/>
+                                                        </af:panelGroupLayout>
+                                                    </af:gridCell>
+                                                </af:gridRow>
+                                                <af:clientListener method="WBClient.clientClickProxy" type="click"/>
+                                                <af:clientAttribute name="payload"
+                                                                    value="#{item.bindings.empId.inputValue}"/>
+                                                <af:serverListener type="clientClickProxyEvent"
+                                                                   method="#{backingBeanScope.viewOrg.drillIntoPerson}"/>
+                                                <!--af:clientListener method="listItemClickViewOrg" type="click"/>
+                                                <af:serverListener type="viewOrganization"
+                                                                   method="#{backingBeanScope.viewOrg.drillIntoPerson}"/-->
+                                            </af:panelGridLayout>
+                                            <af:spacer width="40" height="1" id="s13"
+                                                       visible="#{orientationManager.landscapeMode}"/>
+                                            <af:panelGridLayout id="pgl30" clientComponent="true" shortDesc="List View">
+                                                <af:gridRow marginTop="0px" height="auto" marginBottom="0px" id="gr7">
+                                                    <af:gridCell id="gc32" width="225px" valign="middle">
+                                                        <af:panelGroupLayout id="pgl17" layout="vertical"
+                                                                             halign="center">
+                                                            <dvt:sparkChart id="sparkchart1" subType="line"
+                                                                            axisScaledFromBaseline="off"
+                                                                            shortDesc="Performance History"
+                                                                            inlineStyle="width:220px;height:38px;">
+                                                                <af:iterator value="#{item.perfHistory}" var="row"
+                                                                             id="i5">
+                                                                    <dvt:sparkItem value="#{row.rating}" id="si1"
+                                                                                   markerDisplayed="true"/>
+                                                                </af:iterator>
+                                                            </dvt:sparkChart>
+                                                            <af:outputLabel value="Performance History" id="ol1"
+                                                                            styleClass="WBMetricLabelMedium"/>
+                                                        </af:panelGroupLayout>
+                                                    </af:gridCell>
+                                                    <af:gridCell id="gc31" width="75px" valign="middle" halign="center"
+                                                                 marginStart="#{orientationManager.portraitMode ? '43px' : '0px'}">
+                                                        <af:panelGroupLayout id="pgl27" layout="vertical"
+                                                                             halign="center">
+                                                            <af:outputFormatted value="#{item.bindings.tenure.inputValue}"
+                                                                                id="of7"
+                                                                                styleClass="WBMetricMedium WBMetric4Color">
+                                                                <af:convertNumber groupingUsed="false"
+                                                                                  pattern="#{item.bindings.tenure.format}"/>
+                                                            </af:outputFormatted>
+                                                            <af:outputLabel value="Tenure" id="ol5"
+                                                                            styleClass="WBMetricLabelMedium"/>
+                                                        </af:panelGroupLayout>
+                                                    </af:gridCell>
+                                                    <af:gridCell id="gc23" width="75px" valign="middle" halign="center">
+                                                        <af:panelGroupLayout id="pgl34" layout="vertical"
+                                                                             halign="center">
+                                                            <af:outputFormatted value="#{item.bindings.potential.inputValue}"
+                                                                                id="of13"
+                                                                                styleClass="WBMetricMedium #{item.bindings.potential.inputValue lt 3 ? 'WBMetric6Color' : 'WBMetric4Color'}">
+                                                                <af:convertNumber groupingUsed="false"
+                                                                                  pattern="#{item.bindings.potential.format}"/>
+                                                            </af:outputFormatted>
+                                                            <af:outputLabel value="Potential" id="ol7"
+                                                                            styleClass="WBMetricLabelMedium"/>
+                                                        </af:panelGroupLayout>
+                                                    </af:gridCell>
+                                                    <af:gridCell id="gc22" width="75px" valign="middle" halign="center">
+                                                        <af:panelGroupLayout id="pgl33" layout="vertical"
+                                                                             halign="center">
+                                                            <af:outputFormatted value="#{item.bindings.rating.inputValue}"
+                                                                                id="of12"
+                                                                                styleClass="WBMetricMedium #{item.bindings.rating.inputValue lt 3 ? 'WBMetric6Color' : 'WBMetric4Color'}">
+                                                                <af:convertNumber groupingUsed="false"
+                                                                                  pattern="#{item.bindings.rating.format}"/>
+                                                            </af:outputFormatted>
+                                                            <af:outputLabel value="Rating" id="ol4"
+                                                                            styleClass="WBMetricLabelMedium"/>
+                                                        </af:panelGroupLayout>
+                                                    </af:gridCell>
+                                                </af:gridRow>
+                                            </af:panelGridLayout>
+                                        </af:panelGroupLayout>
+                                    </af:listItem>
+                                </af:listView>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="comp" layout="vertical" partialTriggers="b1 b2"
+                                                 rendered="#{pageFlowScope.organizationsFlowState.summaryView == 'comp'}">
+                                <af:listView value="#{bindings.reports1.collectionModel}" var="item"
+                                             emptyText="#{bindings.reports1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                             fetchSize="#{bindings.reports1.rangeSize}" id="lv1">
+                                    <af:listItem id="li1">
+                                        <af:panelGroupLayout id="pgl3"
+                                                             layout="#{orientationManager.portraitMode ? 'vertical' : 'horizontal'}"
+                                                             styleClass="#{orientationManager.portraitMode ? 'WBPortraitContentDimensions' : 'AFStretchWidth'}">
+                                            <af:panelGridLayout id="pgl15" clientComponent="true" dimensionsFrom="auto"
+                                                                shortDesc="List View">
+                                                <af:gridRow marginTop="0px" height="auto" marginBottom="0px" id="gr8">
+                                                    <af:gridCell marginStart="0px" width="80px" id="gc17"
+                                                                 valign="middle" marginEnd="10px">
+                                                        <af:image source="/resources/images/people/#{item.bindings.image.inputValue}"
+                                                                  id="i3" styleClass="WBImage WBImageBorder"/>
+                                                    </af:gridCell>
+                                                    <af:gridCell marginStart="5px" id="gc18" valign="middle"
+                                                                 width="160px">
+                                                        <af:panelGroupLayout id="pgl16" layout="vertical">
+                                                            <af:outputFormatted value="#{item.bindings.firstName.inputValue} #{item.bindings.lastName.inputValue}"
+                                                                                id="of1" styleClass="WBNameText"/>
+                                                            <af:outputFormatted value="#{item.bindings.title.inputValue}"
+                                                                                id="of3" styleClass="WBJobTitleText"/>
+                                                            <af:outputFormatted value="#{item.bindings.deptName.inputValue}"
+                                                                                id="of4" styleClass="WBDeptText"/>
+                                                        </af:panelGroupLayout>
+                                                    </af:gridCell>
+                                                    <af:gridCell id="gc19" marginStart="5px" marginEnd="5px"
+                                                                 valign="middle"
+                                                                 width="#{orientationManager.portraitMode ? '50%' : '200px'}"
+                                                                 halign="end">
+                                                        <af:panelGroupLayout id="pgl18" layout="vertical" halign="end">
+                                                            <af:outputFormatted value="#{item.bindings.salary.inputValue + item.bindings.bonus.inputValue + item.bindings.commission.inputValue}"
+                                                                                id="of5"
+                                                                                styleClass="WBMetricMedium WBMetric1Color">
+                                                                <af:convertNumber pattern="'$'#,###"/>
+                                                            </af:outputFormatted>
+                                                            <af:outputLabel value="Annual" id="ol2"
+                                                                            styleClass="WBMetricLabelMedium"/>
+                                                        </af:panelGroupLayout>
+                                                    </af:gridCell>
+                                                </af:gridRow>
+                                                <af:clientListener method="WBClient.clientClickProxy" type="click"/>
+                                                <af:clientAttribute name="payload"
+                                                                    value="#{item.bindings.empId.inputValue}"/>
+                                                <af:serverListener type="clientClickProxyEvent"
+                                                                   method="#{backingBeanScope.viewOrg.drillIntoPerson}"/>
+                                                <!--af:clientListener method="listItemClickViewOrg" type="click"/>
+                                                <af:serverListener type="viewOrganization"
+                                                                   method="#{backingBeanScope.viewOrg.drillIntoPerson}"/-->
+                                            </af:panelGridLayout>
+                                            <af:spacer width="40" height="1" id="s14"
+                                                       visible="#{orientationManager.landscapeMode}"/>
+                                            <af:panelGridLayout id="pgl31" clientComponent="true" shortDesc="List View">
+                                                <af:gridRow marginTop="0px" height="auto" marginBottom="0px" id="gr9">
+                                                    <af:gridCell id="gc20" width="300px" valign="top" halign="start">
+                                                        <af:panelGroupLayout id="pgl41" layout="vertical"
+                                                                             halign="center">
+                                                            <dvt:treemap id="t1" value="#{item.pieComps}"
+                                                                         layout="sliceAndDiceHorizontal"
+                                                                         nodeSelection="none"
+                                                                         inlineStyle="height:40px;width:300px;border:none;"
+                                                                         var="row" summary="Compensation Treemap">
+                                                                <dvt:treemapNode value="#{row.itemValue}"
+                                                                                 label="#{row.itemLabel}"
+                                                                                 shortDesc="#{row.itemLabel}: #{row.itemValue}"
+                                                                                 fillColor="#{(row.itemLabel eq 'Salary')? '#68c182' : ((row.itemLabel eq 'Bonus')? '#267db3' : '#F4AA46')}"
+                                                                                 id="tn1"></dvt:treemapNode>
+                                                            </dvt:treemap>
+                                                            <af:outputLabel value="Total Compensation" id="ol8"
+                                                                            styleClass="WBMetricLabelMedium"/>
+                                                        </af:panelGroupLayout>
+                                                    </af:gridCell>
+                                                    <af:gridCell id="gc21"
+                                                                 width="#{orientationManager.portraitMode ? '50%' : '110px'}"
+                                                                 valign="middle" halign="end" marginStart="10px">
+                                                        <af:panelGroupLayout id="pgl32" layout="vertical"
+                                                                             halign="center">
+                                                            <af:outputFormatted value="#{item.bindings.compRatio.inputValue}"
+                                                                                id="of6"
+                                                                                styleClass="WBMetricMedium #{item.bindings.compRatio.inputValue lt 90 ? 'WBMetric6Color' : 'WBMetric4Color'}">
+                                                                <af:convertNumber groupingUsed="false"
+                                                                                  pattern="#{item.bindings.compRatio.format}"/>
+                                                            </af:outputFormatted>
+                                                            <af:outputLabel value="Comp Ratio" id="ol3"
+                                                                            styleClass="WBMetricLabelMedium"/>
+                                                        </af:panelGroupLayout>
+                                                    </af:gridCell>
+                                                </af:gridRow>
+                                            </af:panelGridLayout>
+                                        </af:panelGroupLayout>
+                                    </af:listItem>
+                                </af:listView>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="infd1" styleClass="AFStretchWidth" layout="vertical">
+                        <af:decorativeBox id="db2">
+                            <f:facet name="center">
+                                <af:panelGroupLayout layout="vertical" id="pgl5">
+                                    <af:panelGroupLayout layout="horizontal" id="pgl19">
+                                        <af:panelGroupLayout layout="vertical" styleClass="WBEventBar" id="pgl20"/>
+                                        <af:spacer width="5" id="s1"/>
+                                        <af:selectBooleanCheckbox value="#{bindings.showEvent.inputValue}" label="Event"
+                                                                  shortDesc="#{bindings.showEvent.hints.tooltip}"
+                                                                  autoSubmit="true" id="showEventsCheckBox"
+                                                                  rendered="#{pageFlowScope.organizationsFlowState.selectedTile eq 1}"/>
+                                        <af:spacer width="30" id="s4"/>
+                                        <af:panelGroupLayout layout="vertical" styleClass="WBMeetingBar" id="pgl9"/>
+                                        <af:spacer width="5" id="s2"/>
+                                        <af:selectBooleanCheckbox value="#{bindings.showMeeting.inputValue}"
+                                                                  label="Customer Meeting"
+                                                                  shortDesc="#{bindings.showMeeting.hints.tooltip}"
+                                                                  autoSubmit="true" id="showMeetingCheckbox"
+                                                                  rendered="#{pageFlowScope.organizationsFlowState.selectedTile eq 1}"/>
+                                        <af:spacer width="30" id="s5"/>
+                                        <af:panelGroupLayout layout="vertical" styleClass="WBTimeOffBar" id="pgl10"/>
+                                        <af:spacer width="5" id="s3"/>
+                                        <af:selectBooleanCheckbox value="#{bindings.showTimeOff.inputValue}"
+                                                                  label="Time Off"
+                                                                  shortDesc="#{bindings.showTimeOff.hints.tooltip}"
+                                                                  autoSubmit="true" id="showTimeOffCheckbox"
+                                                                  rendered="#{pageFlowScope.organizationsFlowState.selectedTile eq 1}"/>
+                                        <af:spacer width="30" id="s6"/>
+                                        <af:panelGroupLayout layout="vertical" styleClass="WBTrainingBar" id="pgl11"/>
+                                        <af:spacer width="5" id="s7"/>
+                                        <af:selectBooleanCheckbox value="#{bindings.showTraining.inputValue}"
+                                                                  label="Training"
+                                                                  shortDesc="#{bindings.showTraining.hints.tooltip}"
+                                                                  autoSubmit="true" id="showTrainingCheckbox"
+                                                                  rendered="#{pageFlowScope.organizationsFlowState.selectedTile eq 1}"/>
+                                    </af:panelGroupLayout>
+                                    <af:spacer height="5" id="s8"/>
+                                    <dvt:timeline id="tl1"
+                                                  orientation="#{orientationManager.portraitMode ? 'vertical' : 'horizontal'}"
+                                                  styleClass="#{orientationManager.portraitMode ? 'WBPortraitContentDimensions1' : 'WBLandscapeContentDimensions'}"
+                                                  startTime="#{backingBeanScope.viewOrg.timelineStart}"
+                                                  partialTriggers="::showEventsCheckBox ::showMeetingCheckbox ::showTimeOffCheckbox ::showTrainingCheckbox"
+                                                  endTime="#{backingBeanScope.viewOrg.timelineEnd}"
+                                                  summary="Timeline of Department Events" itemSelection="single">
+                                        <dvt:timelineSeries id="ts1" var="evt"
+                                                            value="#{bindings.events.collectionModel}">
+                                            <dvt:timelineItem value="#{evt.start}" id="ti1">
+                                                <af:panelGroupLayout id="pg1" layout="horizontal">
+                                                    <af:panelGroupLayout layout="vertical"
+                                                                         inlineStyle="#{orientationManager.portraitMode ? 'width:10px;height:20px;' : 'width:10px;height:40px;'};background-color:#{evt.color}"
+                                                                         id="pgl14"/>
+                                                    <af:spacer width="5" id="s9"/>
+                                                    <af:panelGroupLayout id="pg2"
+                                                                         layout="#{orientationManager.portraitMode ? 'horizontal' : 'vertical'}">
+                                                        <af:outputText value="#{evt.name}" styleClass="WBTitleText"
+                                                                       id="ot26"/>
+                                                        <af:spacer width="10"
+                                                                   rendered="#{orientationManager.portraitMode}"
+                                                                   id="s19"/>
+                                                        <af:outputText id="ot11" value="#{evt.description}"/>
+                                                    </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                                <f:facet name="overviewItem">
+                                                    <dvt:marker id="m1" fillColor="#{evt.color}" shape="circle"/>
+                                                </f:facet>
+                                            </dvt:timelineItem>
+                                        </dvt:timelineSeries>
+                                        <dvt:timeAxis id="ta1" scale="weeks" zoomOrder="months"/>
+                                        <dvt:timelineOverview id="ov1"
+                                                              inlineStyle="#{orientationManager.portraitMode ? 'width:60px' : 'height:60px'}">
+                                            <dvt:timeAxis id="ta2" scale="months"/>
+                                        </dvt:timelineOverview>
+                                    </dvt:timeline>
+                                </af:panelGroupLayout>
+                            </f:facet>
+                        </af:decorativeBox>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="infd2" styleClass="AFStretchWidth" layout="vertical">
+                        <af:decorativeBox id="db3">
+                            <f:facet name="center">
+                                <af:panelGroupLayout layout="vertical" id="pgl21">
+                                    <dvt:hierarchyViewer id="hv1" var="node" controlPanelBehavior="hidden"
+                                                         value="#{bindings.departmentManager.treeModel}"
+                                                         styleClass="#{orientationManager.portraitMode ? 'WBPortraitContentDimensions1' : 'WBLandscapeContentDimensions'} WBNoBorder"
+                                                         selectionListener="#{bindings.departmentManager.treeModel.makeCurrent}"
+                                                         detailWindow="none" summary="Department Employee Hierarchy"
+                                                         layout="#{orientationManager.portraitMode ? 'hier_horz_left' : 'hier_vert_top'}"
+                                                         levelFetchSize="4">
+                                        <dvt:link linkType="orthogonalRounded" id="l5"/>
+                                        <dvt:node type="oracle.workbetter.model.Employee" width="170" height="140"
+                                                  id="n1" clickBehavior="expandCollapse" showExpandChildren="false"
+                                                  showIsolate="false" showNavigateUp="false" styleClass="WBHVNode">
+                                            <f:facet name="zoom100">
+                                                <af:panelGroupLayout styleClass="AFStretchWidth AFHVNodeStretchHeight AFHVNodePadding"
+                                                                     layout="vertical" id="pgl42" halign="center">
+                                                    <af:panelGroupLayout layout="vertical" id="pgl43" halign="center">
+                                                        <af:image source="/resources/images/people/#{node.image}"
+                                                                  id="img1" styleClass="WBImage WBImageBorder"
+                                                                  shortDesc="Employee Image"/>
+                                                        <af:link action="ViewPerson" id="l7"
+                                                                 styleClass="AFHVNodeTitleTextStyle"
+                                                                 text="#{node.firstName} #{node.lastName}">
+                                                            <af:setPropertyListener from="#{node.empId}"
+                                                                                    to="#{pageFlowScope.organizationsFlowState.drillPersonId}"
+                                                                                    type="action"/>
+                                                        </af:link>
+                                                        <af:outputText value="#{node.title}"
+                                                                       shortDesc="#{node.hints.title.tooltip}"
+                                                                       styleClass="AFHVNodeTextStyle" id="ot10"/>
+                                                    </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                            </f:facet>
+                                        </dvt:node>
+                                    </dvt:hierarchyViewer>
+                                </af:panelGroupLayout>
+                            </f:facet>
+                        </af:decorativeBox>
+                    </af:panelGroupLayout>
+                </af:deck>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <!-- Hidden buttons used to change the orientation of the page.  Also button to navigate to ViewPerson from the listView of employees in the Organization
+        This button is being invoked from the drillIntoPerson method-->
+        <af:button visible="false" id="btnLayoutPortrait" partialSubmit="true">
+            <af:setActionListener from="portrait" to="#{orientationManager.orientation}"/>
+        </af:button>
+        <af:button visible="false" id="btnLayoutLandscape" partialSubmit="true">
+            <af:setActionListener from="landscape" to="#{orientationManager.orientation}"/>
+        </af:button>
+        <af:button visible="false" id="btnVP" action="ViewPerson"
+                   binding="#{backingBeanScope.viewOrg.actionProxyButton}"/>
+    </af:panelGroupLayout>
+</ui:composition>

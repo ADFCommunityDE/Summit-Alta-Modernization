@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:trh="http://myfaces.apache.org/trinidad/html">
+    <af:document title="Work Better" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:pageTemplate viewId="/oracle/templates/tabletFirstTemplate.jspx" id="pt1">
+                <f:facet name="header">
+                    <af:outputText value="Work Better Application" id="ot1"/>
+                </f:facet>
+                <f:facet name="status">
+                    <af:menuBar id="mb1">
+                        <af:menu text="#{bindings.firstName.inputValue} #{bindings.lastName.inputValue}" id="m2">
+                            <af:commandMenuItem text="Sign Out" id="cmi1"/>
+                        </af:menu>
+                    </af:menuBar>
+                </f:facet>
+                <f:facet name="appNav">
+                    <af:button text="Dashboard" id="b1" action="#{viewScope.IndexDynamicRegion.dashboard}"
+                               styleClass="AFAppNavbarButton" selected="true" type="radio"
+                               icon="/resources/images/naviBarFaces/navi_dashboard_24_ena.png"
+                               hoverIcon="/resources/images/naviBarFaces/navi_dashboard_24_hov.png"
+                               depressedIcon="/resources/images/naviBarFaces/navi_dashboard_24_act.png"/>
+                    <af:button text="People" id="b2" action="#{viewScope.IndexDynamicRegion.people}"
+                               styleClass="AFAppNavbarButton" type="radio"
+                               icon="/resources/images/naviBarFaces/navi_person_24_ena.png"
+                               hoverIcon="/resources/images/naviBarFaces/navi_person_24_hov.png"
+                               depressedIcon="/resources/images/naviBarFaces/navi_person_24_act.png"/>
+                    <af:button text="Organizations" id="b3" styleClass="AFAppNavbarButton"
+                               action="#{viewScope.IndexDynamicRegion.organizations}" type="radio"
+                               icon="/resources/images/naviBarFaces/navi_people_24_ena.png"
+                               hoverIcon="/resources/images/naviBarFaces/navi_people_24_hov.png"
+                               depressedIcon="/resources/images/naviBarFaces/navi_people_24_act.png" />
+                </f:facet>
+                <f:facet name="globalLinks"></f:facet>
+                <f:facet name="footer">
+                    <af:navigationPane hint="bar" id="np1">
+                        <af:commandNavigationItem id="ni1" text="About Oracle"/>
+                        <af:commandNavigationItem id="ni2" text="Contact Us"/>
+                        <af:commandNavigationItem id="ni3" text="Legal Notices"/>
+                        <af:commandNavigationItem id="ni4" text="Terms of Use"/>
+                        <af:commandNavigationItem id="ni5" text="Your Privacy Rights"/>
+                    </af:navigationPane>
+                </f:facet>
+                <f:facet name="center">
+                    <!--lsa remove style class when tablet first template fixed-->
+                    <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"
+                               partialTriggers=":::bBarFDC:b1 :::bBarFDC:b2 :::bBarFDC:b3"
+                               styleClass="ContentContainerWorkaround"/>
+                </f:facet>
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:attribute name="endWidth" value="0px"/>
+                <f:attribute name="startWidth" value="0px"/>
+                <f:attribute name="showFooter" value="true"/>
+            </af:pageTemplate>
+        </af:form>
+        <f:facet name="metaContainer">
+            <trh:meta name="apple-mobile-web-app-capable" content="yes"/>
+            <trh:meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
+            <af:resource type="javascript" source="resources/js/WBMediaQuery.js"/>
+            <af:resource type="javascript" source="resources/js/WBClientScript.js"/>
+        </f:facet>
+    </af:document>
+</f:view>

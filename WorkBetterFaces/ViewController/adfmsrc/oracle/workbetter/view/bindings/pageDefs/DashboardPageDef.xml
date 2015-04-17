@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="DashboardPageDef"
+                Package="oracle.workbetter.view.bindings.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="HRService" id="HRServiceIterator"/>
+    <accessorIterator MasterBinding="HRServiceIterator" Binds="dashboard" RangeSize="25" DataControl="HRService"
+                      BeanClass="oracle.workbetter.model.Dashboard" id="dashboardIterator"/>
+    <accessorIterator MasterBinding="dashboardIterator" Binds="avgComps" RangeSize="-1" DataControl="HRService"
+                      BeanClass="oracle.workbetter.model.CompItem" id="avgCompsIterator"/>
+    <accessorIterator MasterBinding="dashboardIterator" Binds="avgPerfs" RangeSize="-1" DataControl="HRService"
+                      BeanClass="oracle.workbetter.model.CompItem" id="avgPerfsIterator"/>
+    <accessorIterator MasterBinding="dashboardIterator" Binds="profile" RangeSize="25" DataControl="HRService"
+                      BeanClass="oracle.workbetter.model.Employee" id="profileIterator"/>
+    <accessorIterator MasterBinding="dashboardIterator" Binds="attritionHistory" RangeSize="-1" DataControl="HRService"
+                      BeanClass="oracle.workbetter.model.CompItem" id="attritionHistoryIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="avgCompsIterator" id="avgComps" ChangeEventPolicy="ppr">
+      <nodeDefinition DefName="oracle.workbetter.model.CompItem" Name="avgComps">
+        <AttrNames>
+          <Item Value="itemValue"/>
+          <Item Value="itemLabel"/>
+          <Item Value="index"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="avgPerfsIterator" id="avgPerfs" ChangeEventPolicy="ppr">
+      <nodeDefinition DefName="oracle.workbetter.model.CompItem" Name="avgPerfs">
+        <AttrNames>
+          <Item Value="itemValue"/>
+          <Item Value="itemLabel"/>
+          <Item Value="index"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="profileIterator" id="empId">
+      <AttrNames>
+        <Item Value="empId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="firstName">
+      <AttrNames>
+        <Item Value="firstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="lastName">
+      <AttrNames>
+        <Item Value="lastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="title">
+      <AttrNames>
+        <Item Value="title"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="email">
+      <AttrNames>
+        <Item Value="email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="mobile">
+      <AttrNames>
+        <Item Value="mobile"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="phone">
+      <AttrNames>
+        <Item Value="phone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="address">
+      <AttrNames>
+        <Item Value="address"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="city">
+      <AttrNames>
+        <Item Value="city"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="state">
+      <AttrNames>
+        <Item Value="state"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="country">
+      <AttrNames>
+        <Item Value="country"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="postal">
+      <AttrNames>
+        <Item Value="postal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="twitter">
+      <AttrNames>
+        <Item Value="twitter"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="facebook">
+      <AttrNames>
+        <Item Value="facebook"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="google">
+      <AttrNames>
+        <Item Value="google"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="linkedIn">
+      <AttrNames>
+        <Item Value="linkedIn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="hireDate">
+      <AttrNames>
+        <Item Value="hireDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="compRatio">
+      <AttrNames>
+        <Item Value="compRatio"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="salary">
+      <AttrNames>
+        <Item Value="salary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="bonus">
+      <AttrNames>
+        <Item Value="bonus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="commission">
+      <AttrNames>
+        <Item Value="commission"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="rating">
+      <AttrNames>
+        <Item Value="rating"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="potential">
+      <AttrNames>
+        <Item Value="potential"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="deptId">
+      <AttrNames>
+        <Item Value="deptId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="deptName">
+      <AttrNames>
+        <Item Value="deptName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="mgrId">
+      <AttrNames>
+        <Item Value="mgrId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="mgrFirstName">
+      <AttrNames>
+        <Item Value="mgrFirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="mgrLastName">
+      <AttrNames>
+        <Item Value="mgrLastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="mgrImage">
+      <AttrNames>
+        <Item Value="mgrImage"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="image">
+      <AttrNames>
+        <Item Value="image"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="active">
+      <AttrNames>
+        <Item Value="active"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="tenure">
+      <AttrNames>
+        <Item Value="tenure"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="nboxPotential">
+      <AttrNames>
+        <Item Value="nboxPotential"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="nboxRating">
+      <AttrNames>
+        <Item Value="nboxRating"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="ratingDesc">
+      <AttrNames>
+        <Item Value="ratingDesc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="potentialDesc">
+      <AttrNames>
+        <Item Value="potentialDesc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="profileIterator" id="reportCount">
+      <AttrNames>
+        <Item Value="reportCount"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="attritionHistoryIterator" id="attritionHistory">
+      <nodeDefinition DefName="oracle.workbetter.model.CompItem" Name="attritionHistory0">
+        <AttrNames>
+          <Item Value="itemValue"/>
+          <Item Value="itemLabel"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="dashboardIterator" id="notifyApproved">
+      <AttrNames>
+        <Item Value="notifyApproved"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="dashboardIterator" id="notifyWaiting">
+      <AttrNames>
+        <Item Value="notifyWaiting"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="dashboardIterator" id="notifyRejected">
+      <AttrNames>
+        <Item Value="notifyRejected"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="dashboardIterator" id="groupSize">
+      <AttrNames>
+        <Item Value="groupSize"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="dashboardIterator" id="teamSize">
+      <AttrNames>
+        <Item Value="teamSize"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="dashboardIterator" id="groupAvgRating">
+      <AttrNames>
+        <Item Value="groupAvgRating"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="dashboardIterator" id="groupAvgPotential">
+      <AttrNames>
+        <Item Value="groupAvgPotential"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="dashboardIterator" id="groupCompRatioAbove">
+      <AttrNames>
+        <Item Value="groupCompRatioAbove"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="dashboardIterator" id="groupCompRatioIn">
+      <AttrNames>
+        <Item Value="groupCompRatioIn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="dashboardIterator" id="groupCompRatioBelow">
+      <AttrNames>
+        <Item Value="groupCompRatioBelow"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="dashboardIterator" id="groupMeetings">
+      <AttrNames>
+        <Item Value="groupMeetings"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="dashboardIterator" id="groupEvents">
+      <AttrNames>
+        <Item Value="groupEvents"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="dashboardIterator" id="groupTimeoff">
+      <AttrNames>
+        <Item Value="groupTimeoff"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="dashboardIterator" id="groupTrainings">
+      <AttrNames>
+        <Item Value="groupTrainings"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="dashboardIterator" id="empMeetings">
+      <AttrNames>
+        <Item Value="empMeetings"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="dashboardIterator" id="empEvents">
+      <AttrNames>
+        <Item Value="empEvents"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.14.23" id="DataBindings"
+             SeparateXMLFiles="false" Package="oracle.workbetter.view.bindings" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/index.jsf" usageId="view_indexPageDef"/>
+    <page path="/SearchPeople.jsff" usageId="view_SearchPeoplePageDef"/>
+    <page path="/ViewPerson.jsff" usageId="view_ViewPersonPageDef"/>
+    <page path="/SearchOrganizations.jsff" usageId="view_SearchOrganizationsPageDef"/>
+    <page path="/ViewOrganization.jsff" usageId="view_ViewOrganizationPageDef"/>
+    <page path="/Dashboard.jsff" usageId="view_DashboardPageDef"/>
+    <page path="/WEB-INF/view/people/people.xml#people@SetCurrentRowWithKeyValue"
+          usageId="view_people_people_SetCurrentRowWithKeyValuePageDef"/>
+    <page path="/WEB-INF/view/organizations/organizations.xml#organizations@SetCurrentRowWithKeyValue"
+          usageId="view_organizations_organizations_SetCurrentRowWithKeyValuePageDef"/>
+    <page path="/WEB-INF/view/people/people.xml#people@SetCurrentRowWithKeyValue2"
+          usageId="view_people_people_SetCurrentRowWithKeyValue2PageDef"/>
+    <page path="/WEB-INF/view/people/people.xml#people@SetCurrentRowWithKeyValue3"
+          usageId="view_people_people_SetCurrentRowWithKeyValue3PageDef"/>
+    <page path="/WEB-INF/view/organizations/organizations.xml#organizations@SetCurrentRowWithKeyValue1"
+          usageId="view_organizations_organizations_SetCurrentRowWithKeyValue1PageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_indexPageDef" path="oracle.workbetter.view.bindings.pageDefs.indexPageDef"/>
+    <page id="view_SearchPeoplePageDef" path="oracle.workbetter.view.bindings.pageDefs.SearchPeoplePageDef"/>
+    <page id="view_ViewPersonPageDef" path="oracle.workbetter.view.bindings.pageDefs.ViewPersonPageDef"/>
+    <page id="view_SearchOrganizationsPageDef"
+          path="oracle.workbetter.view.bindings.pageDefs.SearchOrganizationsPageDef"/>
+    <page id="view_ViewOrganizationPageDef" path="oracle.workbetter.view.bindings.pageDefs.ViewOrganizationPageDef"/>
+    <page id="view_DashboardPageDef" path="oracle.workbetter.view.bindings.pageDefs.DashboardPageDef"/>
+    <page id="view_people_people_SetCurrentRowWithKeyValuePageDef"
+          path="oracle.workbetter.view.bindings.pageDefs.people_people_SetCurrentRowWithKeyValuePageDef"/>
+    <page id="view_organizations_organizations_SetCurrentRowWithKeyValuePageDef"
+          path="oracle.workbetter.view.bindings.pageDefs.organizations_organizations_SetCurrentRowWithKeyValuePageDef"/>
+    <page id="view_people_people_SetCurrentRowWithKeyValue2PageDef"
+          path="oracle.workbetter.view.bindings.pageDefs.people_people_SetCurrentRowWithKeyValue2PageDef"/>
+    <page id="view_people_people_SetCurrentRowWithKeyValue3PageDef"
+          path="oracle.workbetter.view.bindings.pageDefs.people_people_SetCurrentRowWithKeyValue3PageDef"/>
+    <page id="view_organizations_organizations_SetCurrentRowWithKeyValue1PageDef"
+          path="oracle.workbetter.view.bindings.pageDefs.organizations_organizations_SetCurrentRowWithKeyValue1PageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="HRService" path="oracle.workbetter.model.HRService"/>
+  </dataControlUsages>
+</Application>

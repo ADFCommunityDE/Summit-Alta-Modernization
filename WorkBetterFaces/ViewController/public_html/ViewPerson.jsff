@@ -1,0 +1,731 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:group id="g3">
+        <af:panelGroupLayout id="pglVPC" layout="vertical">
+            <!-- invoke the method to establish media query -->
+            <af:resource type="javascript">
+              wbMQ.setupMediaQuery('(min-width: 1024px)', 'pgltlcon', 'vpLayoutMode', 'portrait', 'btnLayoutLandscape', 'btnLayoutPortrait');
+            </af:resource>
+            <!-- Top Info Section -->
+            <af:link text="#{pageFlowScope.peopleFlowState.backLinkText}" id="l1" action="Back"/>
+            <af:spacer width="10" height="10" id="s9"/>
+            <af:panelGridLayout id="pgl2">
+                <af:gridRow id="gr14" height="auto">
+                    <af:gridCell id="gc22" rowSpan="3" width="120px" marginEnd="10px" valign="middle">
+                        <af:image source="/resources/images/people/#{bindings.image.inputValue}" id="i1"
+                                  styleClass="WBImage WBImageBorder"/>
+                    </af:gridCell>
+                    <af:gridCell id="gc23" width="38%" styleClass="WBDetailNameText" marginEnd="10px" valign="middle">
+                        <af:outputText value="#{bindings.firstName.inputValue} #{bindings.lastName.inputValue}"
+                                       shortDesc="#{bindings.firstName.hints.tooltip}" id="it2"/>
+                    </af:gridCell>
+                    <af:gridCell id="gc24" width="37%" marginEnd="10px" valign="middle">
+                        <af:link shortDesc="#{bindings.phone.hints.tooltip}" id="it7"
+                                 icon="/resources/images/func_phone_16@2x.png" text="#{bindings.phone.inputValue}"
+                                 styleClass="WBFuncIcon WBFuncIconNoLink" disabled="true"/>
+                    </af:gridCell>
+                    <af:gridCell id="gc25" width="25%" valign="middle">
+                        <af:link id="l3" icon="/resources/images/func_twitter_16@2x.png" styleClass="WBFuncIcon"
+                                 text="#{bindings.twitter.inputValue}" destination="http://www.twitter.com"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="gr15" height="auto">
+                    <af:gridCell id="gc27" valign="middle">
+                        <af:outputText value="#{bindings.title.inputValue}" styleClass="WBDetailJobTitleText"
+                                       shortDesc="#{bindings.title.hints.tooltip}" id="it4"/>
+                    </af:gridCell>
+                    <af:gridCell id="gc28" valign="middle">
+                        <af:link shortDesc="#{bindings.mobile.hints.tooltip}" id="it6"
+                                 icon="/resources/images/func_mobilePhone_16@2x.png"
+                                 text="#{bindings.mobile.inputValue}" styleClass="WBFuncIcon WBFuncIconNoLink"
+                                 disabled="true"/>
+                    </af:gridCell>
+                    <af:gridCell id="gc29" valign="middle">
+                        <af:link id="l2" icon="/resources/images/func_facebook_16@2x.png" styleClass="WBFuncIcon"
+                                 text="#{bindings.facebook.inputValue}" destination="http://www.facebook.com"
+                                 action="DrillToOrg"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="gr16" height="auto">
+                    <af:gridCell id="gc30" valign="middle">
+                        <af:link text="#{bindings.deptName.inputValue}" styleClass="WBDetailDeptText"
+                                 shortDesc="#{bindings.title.hints.tooltip}" id="l8" action="DrillToOrg">
+                            <af:setPropertyListener from="#{bindings.deptId.inputValue}"
+                                                    to="#{pageFlowScope.peopleFlowState.drillOrgId}" type="action"/>
+                        </af:link>
+                    </af:gridCell>
+                    <af:gridCell id="gc31" valign="middle">
+                        <af:link shortDesc="#{bindings.email.hints.tooltip}" id="it5"
+                                 icon="/resources/images/func_email_16@2x.png" text="#{bindings.email.inputValue}"
+                                 styleClass="WBFuncIcon" destination="mailto:#{bindings.email.inputValue}"/>
+                    </af:gridCell>
+                    <af:gridCell id="gc32" valign="middle">
+                        <af:link id="l4" icon="/resources/images/func_linkedin_16_2x.png" styleClass="WBFuncIcon"
+                                 text="#{bindings.linkedIn.inputValue}" destination="http://www.linkedin.com"/>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+            <!-- InfoTiles -->
+            <af:panelGroupLayout id="pgltlcon" styleClass="WBViewPersonContainerMargin" clientComponent="true"
+                                 valign="top"
+                                 layout="#{orientationManager.infoTileGroupLayout}">
+                <af:clientAttribute name="vpLayoutMode" value="#{orientationManager.orientation}"/>
+                <af:panelGroupLayout id="pgl1" styleClass="WBViewPersonTileContainer" partialTriggers="hv1:l7">
+                    <!--      Handle the Custom event from the tile selection.  -->
+                    <af:serverListener type="tileSelected"
+                                       method="#{backingBeanScope.viewPerson.infoTileSelectionHandler}"/>
+                    <af:declarativeComponent viewId="/components/infoTile/infoTile.jsff" id="inft0">
+                        <f:attribute name="selected" value="#{pageFlowScope.peopleFlowState.selectedTile eq 0}"/>
+                        <f:attribute name="index" value="0"/>
+                        <f:attribute name="layout"
+                                     value="#{orientationManager.infoTileLayout}"/>
+                        <f:attribute name="tileWidth"
+                                     value="#{orientationManager.personInfoTileWidth}"/>
+                        <f:attribute name="tileHeight"
+                                     value="#{orientationManager.personInfoTileHeight}"/>
+                        <!-- Summary InfoTile -->
+                        <f:facet name="tileContent">
+                            <af:panelGroupLayout layout="vertical" id="tcon0">
+                                <af:outputText value="About" id="title0" styleClass="WBInfoTileTitle"/>
+                                <af:panelGridLayout styleClass="AFStretchWidth" id="pgl15">
+                                    <af:gridRow marginTop="10px" id="gr2">
+                                        <af:gridCell width="50%" halign="center" valign="middle" marginStart="5px"
+                                                     marginEnd="5px" id="gc7">
+                                            <af:outputText value="#{bindings.skillCount.inputValue}"
+                                                           styleClass="WBMetric WBMetric4Color" id="ot3"/>
+                                        </af:gridCell>
+                                        <af:gridCell id="gc1" width="20px" rowSpan="2"/>
+                                        <af:gridCell width="50%" halign="center" valign="middle" marginStart="5px"
+                                                     marginEnd="5px" id="gc8">
+                                            <af:outputText value="#{bindings.tenure.inputValue}"
+                                                           styleClass="WBMetric WBMetric4Color" id="ot8"/>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                    <af:gridRow id="gr3">
+                                        <af:gridCell halign="center" valign="middle" marginStart="5px" marginEnd="5px"
+                                                     id="gc10">
+                                            <af:outputText value="Skills" styleClass="WBDashboardLabel" id="ot11"/>
+                                        </af:gridCell>
+                                        <af:gridCell halign="center" valign="middle" marginStart="5px" marginEnd="5px"
+                                                     id="gc26">
+                                            <af:outputText value="Tenure" styleClass="WBDashboardLabel" id="ot12"/>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                    <!-- Workaround infoTile Issue. Any component with implicit clientComponent="true" will prevent selection-->
+                                    <af:clientListener method="InfoTileComp.raiseSelectionEvent" type="click"/>
+                                </af:panelGridLayout>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                    </af:declarativeComponent>
+                    <af:declarativeComponent viewId="/components/infoTile/infoTile.jsff" id="inft1">
+                        <f:attribute name="selected" value="#{pageFlowScope.peopleFlowState.selectedTile eq 1}"/>
+                        <f:attribute name="index" value="1"/>
+                        <f:attribute name="layout"
+                                     value="#{orientationManager.infoTileLayout}"/>
+                        <f:attribute name="tileWidth"
+                                     value="#{ orientationManager.personInfoTileWidth}"/>
+                        <f:attribute name="tileHeight"
+                                     value="#{orientationManager.personInfoTileHeight}"/>
+                        <!-- Performance InfoTile -->
+                        <f:facet name="tileContent">
+                            <af:panelGroupLayout layout="vertical" id="tcon1">
+                                <af:outputText value="Performance" id="title1" styleClass="WBInfoTileTitle"/>
+                                <af:panelGridLayout styleClass="AFStretchWidth" id="pgl16">
+                                    <af:gridRow marginTop="10px" id="gr17">
+                                        <af:gridCell width="50%" halign="center" valign="middle" marginStart="5px"
+                                                     marginEnd="5px" id="gc33">
+                                            <af:outputText value="#{bindings.rating.inputValue}"
+                                                           styleClass="WBMetric #{bindings.rating.inputValue lt 3 ? 'WBMetric6Color' : 'WBMetric4Color'}"
+                                                           id="ot13"/>
+                                        </af:gridCell>
+                                        <af:gridCell id="gc3" width="20px" rowSpan="2"/>
+                                        <af:gridCell width="50%" halign="center" valign="middle" marginStart="5px"
+                                                     marginEnd="5px" id="gc34">
+                                            <af:outputText value="#{bindings.potential.inputValue}"
+                                                           styleClass="WBMetric #{bindings.potential.inputValue lt 3 ? 'WBMetric6Color' : 'WBMetric4Color'}"
+                                                           id="ot14"/>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                    <af:gridRow id="gr18">
+                                        <af:gridCell halign="center" valign="middle" marginStart="5px" marginEnd="5px"
+                                                     id="gc35">
+                                            <af:outputText value="Rating" styleClass="WBDashboardLabel" id="ot15"/>
+                                        </af:gridCell>
+                                        <af:gridCell halign="center" valign="middle" marginStart="5px" marginEnd="5px"
+                                                     id="gc36">
+                                            <af:outputText value="Potential" styleClass="WBDashboardLabel" id="ot16"/>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                    <!-- Workaround infoTile Issue. Any component with implicit clientComponent="true" will prevent selection-->
+                                    <af:clientListener method="InfoTileComp.raiseSelectionEvent" type="click"/>
+                                </af:panelGridLayout>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                    </af:declarativeComponent>
+                    <af:declarativeComponent viewId="/components/infoTile/infoTile.jsff" id="inft2">
+                        <f:attribute name="selected" value="#{pageFlowScope.peopleFlowState.selectedTile eq 2}"/>
+                        <f:attribute name="index" value="2"/>
+                        <f:attribute name="layout"
+                                     value="#{orientationManager.infoTileLayout}"/>
+                        <f:attribute name="tileWidth"
+                                     value="#{orientationManager.personInfoTileWidth}"/>
+                        <f:attribute name="tileHeight"
+                                     value="#{orientationManager.personInfoTileHeight}"/>
+                        <!-- Compensation InfoTile -->
+                        <f:facet name="tileContent">
+                            <af:panelGroupLayout layout="vertical" id="tcon2">
+                                <af:outputText value="Compensation" id="title2" styleClass="WBInfoTileTitle"/>
+                                <af:panelGridLayout id="pgl19">
+                                    <af:gridRow marginTop="10px" id="gr19">
+                                        <af:gridCell width="50%" halign="center" valign="middle" marginStart="5px"
+                                                     marginEnd="25px" id="gc37">
+                                            <af:outputText value="#{(bindings.salary.inputValue)/1000}"
+                                                           styleClass="WBMetric WBMetric4Color" id="ot17">
+                                                <af:convertNumber pattern="#"/>
+                                            </af:outputText>
+                                            <af:outputText value="k" styleClass="WBInfoTileModifier WBMetric4Color"
+                                                           id="ot18"/>
+                                        </af:gridCell>
+                                        <af:gridCell width="50%" halign="center" valign="middle" marginStart="25px"
+                                                     marginEnd="5px" id="gc38">
+                                            <af:outputText value="#{bindings.compRatio.inputValue}"
+                                                           styleClass="WBMetric #{bindings.compRatio.inputValue lt 90 ? 'WBMetric6Color' : 'WBMetric4Color'}"
+                                                           id="ot19">
+                                                <af:convertNumber pattern="#"/>
+                                            </af:outputText>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                    <af:gridRow id="gr20">
+                                        <af:gridCell halign="center" valign="middle" marginStart="5px" marginEnd="25px"
+                                                     id="gc39">
+                                            <af:outputText value="Salary" styleClass="WBDashboardLabel" id="ot20"/>
+                                        </af:gridCell>
+                                        <af:gridCell halign="center" valign="middle" marginStart="25px" marginEnd="5px"
+                                                     id="gc40">
+                                            <af:outputText value="Ratio" styleClass="WBDashboardLabel" id="ot21"/>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                    <!-- Workaround infoTile Issue. Any component with implicit clientComponent="true" will prevent selection-->
+                                    <af:clientListener method="InfoTileComp.raiseSelectionEvent" type="click"/>
+                                </af:panelGridLayout>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                    </af:declarativeComponent>
+                    <af:declarativeComponent viewId="/components/infoTile/infoTile.jsff" id="inft3">
+                        <f:attribute name="selected" value="#{pageFlowScope.peopleFlowState.selectedTile eq 3}"/>
+                        <f:attribute name="index" value="3"/>
+                        <f:attribute name="layout"
+                                     value="#{orientationManager.infoTileLayout}"/>
+                        <f:attribute name="tileWidth"
+                                     value="#{orientationManager.personInfoTileWidth}"/>
+                        <f:attribute name="tileHeight"
+                                     value="#{orientationManager.personInfoTileHeight}"/>
+                        <!-- Timeline InfoTile -->
+                        <f:facet name="tileContent">
+                            <af:panelGroupLayout layout="vertical" id="pgl10">
+                                <af:outputText value="Timeline" id="title3" styleClass="WBInfoTileTitle"/>
+                                <af:panelGridLayout id="tlTAct" styleClass="AFStretchWidth" shortDesc="Next 7 Days">
+                                    <af:gridRow id="rl1TAct" marginTop="10px">
+                                        <af:gridCell id="cf1TAct" width="50%" halign="center">
+                                            <af:outputText id="numMeetings" value="#{bindings.empMeetings.inputValue}"
+                                                           styleClass="WBMetric WBMetric4Color"/>
+                                        </af:gridCell>
+                                        <af:gridCell id="gc4" width="20px" rowSpan="2"/>
+                                        <af:gridCell id="cf2TAct" width="50%" halign="center">
+                                            <af:outputText id="numTrain" value="#{bindings.empEvents.inputValue}"
+                                                           styleClass="WBMetric WBMetric4Color"/>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                    <af:gridRow id="rl2TAct">
+                                        <af:gridCell id="cf3TAct" halign="center">
+                                            <af:outputText id="ot1TAct" value="Meetings" styleClass="WBDashboardLabel"/>
+                                        </af:gridCell>
+                                        <af:gridCell id="cf4TAct" halign="center">
+                                            <af:outputText id="ot2TAct" value="Events" styleClass="WBDashboardLabel"/>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                    <!-- Workaround infoTile Issue. Any component with implicit clientComponent="true" will prevent selection-->
+                                    <af:clientListener method="InfoTileComp.raiseSelectionEvent" type="click"/>
+                                </af:panelGridLayout>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                    </af:declarativeComponent>
+                    <af:declarativeComponent viewId="/components/infoTile/infoTile.jsff" id="inft4">
+                        <f:attribute name="selected" value="#{pageFlowScope.peopleFlowState.selectedTile eq 4}"/>
+                        <f:attribute name="index" value="4"/>
+                        <f:attribute name="layout"
+                                     value="#{orientationManager.infoTileLayout}"/>
+                        <f:attribute name="tileWidth"
+                                     value="#{orientationManager.personInfoTileWidth}"/>
+                        <f:attribute name="tileHeight"
+                                     value="#{orientationManager.personInfoTileHeight}"/>
+                        <!-- Team InfoTile -->
+                        <f:facet name="tileContent">
+                            <af:panelGroupLayout layout="vertical" id="tcon4">
+                                <af:outputText value="Team" id="title4" styleClass="WBInfoTileTitle"/>
+                                <af:panelGridLayout styleClass="AFStretchWidth" id="pgl21">
+                                    <af:gridRow marginTop="10px" id="gr21">
+                                        <af:gridCell width="50%" halign="center" valign="middle" marginStart="5px"
+                                                     marginEnd="5px" id="gc41">
+                                            <af:outputText value="#{bindings.groupSize.inputValue}"
+                                                           styleClass="WBMetric WBMetric4Color" id="ot22"/>
+                                        </af:gridCell>
+                                        <af:gridCell id="gc6" width="20px" rowSpan="2"/>
+                                        <af:gridCell width="50%" halign="center" valign="middle" marginStart="5px"
+                                                     marginEnd="5px" id="gc42">
+                                            <af:outputText value="#{bindings.reportCount.inputValue}"
+                                                           styleClass="WBMetric WBMetric4Color" id="ot23"/>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                    <af:gridRow id="gr22">
+                                        <af:gridCell halign="center" valign="middle" marginStart="5px" marginEnd="5px"
+                                                     id="gc43">
+                                            <af:outputText value="Group" styleClass="WBDashboardLabel" id="ot24"/>
+                                        </af:gridCell>
+                                        <af:gridCell halign="center" valign="middle" marginStart="5px" marginEnd="5px"
+                                                     id="gc44">
+                                            <af:outputText value="Directs" styleClass="WBDashboardLabel" id="ot27"/>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                    <!-- Workaround infoTile Issue. Any component with implicit clientComponent="true" will prevent selection-->
+                                    <af:clientListener method="InfoTileComp.raiseSelectionEvent" type="click"/>
+                                </af:panelGridLayout>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                    </af:declarativeComponent>
+                </af:panelGroupLayout>
+                <af:spacer width="10" id="vphsp" height="1" visible="#{orientationManager.portraitMode}"/>
+                <af:spacer width="1" id="vpvsp" height="10" visible="#{orientationManager.landscapeMode}"/>
+                <!-- Content from InfoTiles -->
+                <af:panelGroupLayout id="pgltlc" layout="vertical" styleClass="AFStretchWidth WBViewPersonTileContent"
+                                     valign="top">
+                    <af:deck id="d1" displayedChild="#{'infd'}#{pageFlowScope.peopleFlowState.selectedTile}"
+                             partialTriggers="pgl1">
+                        <af:transition triggerType="backNavigate"
+                                       transition="#{orientationManager.infoTileDeckBackTransition}"/>
+                        <af:transition triggerType="forwardNavigate"
+                                       transition="#{orientationManager.infoTileDeckForwardTransition}"/>
+                        <!-- Summary -->
+                        <af:panelGroupLayout id="infd0" styleClass="AFStretchWidth" layout="vertical">
+                            <af:decorativeBox id="db1">
+                                <f:facet name="center">
+                                    <af:panelGroupLayout id="pgl8"
+                                                         layout="#{orientationManager.portraitMode ? 'vertical' : 'horizontal'}"
+                                                         valign="top">
+                                        <af:spacer width="10" id="s3"/>
+                                        <af:panelGridLayout id="pgl7"
+                                                            inlineStyle="#{orientationManager.portraitMode ? 'width:500px;' : 'width:450px;'}">
+                                            <af:gridRow id="gr11" height="10px"
+                                                        rendered="#{orientationManager.landscapeMode}">
+                                                <af:gridCell id="gc19" columnSpan="2"/>
+                                            </af:gridRow>
+                                            <af:gridRow height="auto" id="gr8">
+                                                <af:gridCell width="50%" id="gc15">
+                                                    <af:panelGroupLayout id="pgl12" layout="vertical">
+                                                        <af:outputLabel value="HIRE DATE" styleClass="WBTitleText"
+                                                                        id="ol1"/>
+                                                        <af:outputText value="#{bindings.hireDate.inputValue}" id="ot2">
+                                                            <af:convertDateTime pattern="MMMMM d, yyyy"/>
+                                                        </af:outputText>
+                                                    </af:panelGroupLayout>
+                                                </af:gridCell>
+                                                <af:gridCell width="50%" id="gc16">
+                                                    <af:panelGroupLayout id="pgl13" layout="vertical">
+                                                        <af:outputLabel value="ADDRESS" styleClass="WBTitleText"
+                                                                        id="ol3"/>
+                                                        <af:outputText value="#{bindings.address.inputValue}" id="ot4"/>
+                                                        <af:outputText value="#{bindings.city.inputValue}" id="ot5"/>
+                                                        <af:outputText value="#{bindings.state.inputValue == bindings.city.inputValue ? '' : bindings.state.inputValue} #{bindings.postal.inputValue} #{bindings.country.inputValue}"
+                                                                       id="ot9"/>
+                                                    </af:panelGroupLayout>
+                                                </af:gridCell>
+                                            </af:gridRow>
+                                            <af:gridRow id="gr13" height="10px">
+                                                <af:gridCell id="gc21" columnSpan="2"/>
+                                            </af:gridRow>
+                                            <af:gridRow id="gr10">
+                                                <af:gridCell id="gc18" columnSpan="2">
+                                                    <af:panelGroupLayout id="pgl14" layout="vertical">
+                                                        <af:outputLabel value="MANAGER" styleClass="WBTitleText"
+                                                                        id="ol2"/>
+                                                        <af:link actionListener="#{bindings.setCurrentRowWithKeyValue.execute}"
+                                                                 text="#{bindings.mgrFirstName.inputValue} #{bindings.mgrLastName.inputValue}"
+                                                                 disabled="#{!bindings.setCurrentRowWithKeyValue.enabled}"
+                                                                 id="l6"
+                                                                 icon="/resources/images/people/#{bindings.mgrImage.inputValue}"
+                                                                 styleClass="WBImageLink WBImageLinkBorder"
+                                                                 iconPosition="top"
+                                                                 rendered="#{bindings.mgrId.inputValue != 0}">
+                                                            <af:setPropertyListener from="#{bindings.mgrId.inputValue}"
+                                                                                    to="#{pageFlowScope.peopleFlowState.rowKeyId}"
+                                                                                    type="action"/>
+                                                        </af:link>
+                                                    </af:panelGroupLayout>
+                                                </af:gridCell>
+                                            </af:gridRow>
+                                            <af:gridRow id="gr12" height="20px">
+                                                <af:gridCell id="gc20" columnSpan="2"/>
+                                            </af:gridRow>
+                                            <af:gridRow id="gr1" height="30px">
+                                                <af:gridCell id="gc2" columnSpan="2">
+                                                    <af:outputLabel value="SKILLS" styleClass="WBTitleText" id="ol7"/>
+                                                </af:gridCell>
+                                            </af:gridRow>
+                                            <af:gridRow height="auto" id="gr9">
+                                                <af:gridCell id="gc17" columnSpan="2">
+                                                    <af:iterator value="#{bindings.skills1.collectionModel}" var="row"
+                                                                 id="i2">
+                                                        <af:outputLabel value="#{row.skill} "
+                                                                        inlineStyle="font-size:#{row.level*3+10}px;"
+                                                                        id="ol4"/>
+                                                    </af:iterator>
+                                                </af:gridCell>
+                                            </af:gridRow>
+                                            <!-- Workaround infoTile Issue. Any component with implicit clientComponent="true" will prevent selection-->
+                                            <af:clientListener method="InfoTileComp.raiseSelectionEvent" type="click"/>
+                                        </af:panelGridLayout>
+                                        <af:spacer width="50" height="10" id="s10"/>
+                                        <af:panelGroupLayout layout="vertical" halign="left" valign="top" id="pgl25">
+                                            <af:spacer id="s6" width="1"
+                                                       height="#{orientationManager.portraitMode ? 30 : 5}"/>
+                                            <af:outputText id="ol6" value="LOCATION" styleClass="WBTitleText"/>
+                                            <af:spacer width="10" height="10" id="s8"/>
+                                            <dvt:map summary="employee location" id="map" startingX="0.0"
+                                                     mapServerConfigId="mapConfig1" baseMapName="ELOCATION.WORLD_MAP"
+                                                     mapZoom="9" inlineStyle="width:450px;height:400px" startingY="0.0"
+                                                     autoZoomThemeId="mt1" autoZoomStrategy="CENTERATZOOMLEVEL">
+                                                <dvt:mapPointTheme id="mt1" value="#{bindings.me.geoMapModel}"
+                                                                   builtInImage="PushPin_Red" leftClickBehavior="none"/>
+                                                <dvt:mapOverview initialShown="false"/>
+                                            </dvt:map>
+                                        </af:panelGroupLayout>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                            </af:decorativeBox>
+                        </af:panelGroupLayout>
+                        <!-- Performance -->
+                        <af:panelGroupLayout id="infd1" layout="vertical" styleClass="AFStretchWidth">
+                            <af:decorativeBox id="db2">
+                                <f:facet name="center">
+                                    <af:panelGroupLayout layout="#{orientationManager.portraitMode ? 'vertical' : 'horizontal'}"
+                                                         styleClass="#{orientationManager.portraitMode ? 'WBPortraitContentDimensions1' : 'WBLandscapeContentDimensions'}"
+                                                         id="pgl17" valign="top">
+                                        <af:spacer width="10" id="s12"/>
+                                        <af:panelGroupLayout layout="vertical" id="pgl5" halign="left" valign="top">
+                                            <af:spacer id="s7" width="1" height="5"
+                                                       rendered="#{orientationManager.landscapeMode}"/>
+                                            <af:outputLabel value="PERFORMANCE HISTORY" styleClass="WBTitleText"
+                                                            id="ol8"/>
+                                            <dvt:comboChart id="lineChart1" var="row"
+                                                            value="#{bindings.perfHistory.collectionModel}"
+                                                            timeAxisType="enabled"
+                                                            inlineStyle="width:450px;height:300px;">
+                                                <af:transition transition="auto" triggerType="display">
+                                                    <!--af:transition is supported at run time but flagging it as an error at design time is a known issue in 12.1.3-->
+                                                    <?audit suppress oracle.jdeveloper.jsp.check-valid-parent?>
+                                                </af:transition>
+                                                <dvt:chartLegend position="top" id="cl1"/>
+                                                <dvt:chartYAxis maximum="5.1" majorIncrement="1" id="cya2"/>
+                                                <f:facet name="seriesStamp">
+                                                    <af:group id="g1">
+                                                        <dvt:chartSeriesStyle series="Rating" color="#4a85c5"
+                                                                              id="css1"/>
+                                                        <dvt:chartSeriesStyle series="Potential" color="#F4AA46"
+                                                                              id="css2"/>
+                                                    </af:group>
+                                                </f:facet>
+                                                <f:facet name="dataStamp">
+                                                    <af:group id="g2">
+                                                        <dvt:chartDataItem id="di9" value="#{row.rating}"
+                                                                           group="#{row.effective}" series="Rating"/>
+                                                        <dvt:chartDataItem id="di10" value="#{row.potential}"
+                                                                           group="#{row.effective}" series="Potential"/>
+                                                    </af:group>
+                                                </f:facet>
+                                            </dvt:comboChart>
+                                        </af:panelGroupLayout>
+                                        <af:spacer id="sp1" width="40" height="10"/>
+                                        <af:panelGroupLayout layout="vertical" id="pgl18" halign="left" valign="middle"
+                                                             styleClass="AFStretchWidth">
+                                            <af:spacer id="s4" width="1" height="5"/>
+                                            <af:outputLabel value="RATING COMPARED TO PEERS" styleClass="WBTitleText"
+                                                            id="ol9"/>
+                                            <af:spacer width="50" height="30" id="s13"/>
+                                            <af:panelGridLayout id="pgl6" dimensionsFrom="parent">
+                                                <af:iterator value="#{bindings.colleagues1.collectionModel}" var="row"
+                                                             id="i3">
+                                                    <af:gridRow id="gr7" height="20px">
+                                                        <af:gridCell valign="top" halign="center" width="100%"
+                                                                     id="gc45">
+                                                            <dvt:statusMeterGauge minimum="0" maximum="5"
+                                                                                  visualEffects="none"
+                                                                                  shortDesc="#{row.empName}: #{row.rating}"
+                                                                                  color="#{row.empId == bindings.empId.inputValue ? '#F29F72' : '#F7C5AA'}"
+                                                                                  plotArea="off" value="#{row.rating}"
+                                                                                  inlineStyle="width:250px;height:20px;"
+                                                                                  id="smg1">
+                                                                <af:transition transition="auto" triggerType="display">
+                                                                    <!--af:transition is supported at run time but flagging it as an error at design time is a known issue in 12.1.3-->
+                                                                    <?audit suppress oracle.jdeveloper.jsp.check-valid-parent?>
+                                                                </af:transition>
+                                                                <dvt:gaugeMetricLabel rendered="false" id="gml1"/>
+                                                            </dvt:statusMeterGauge>
+                                                        </af:gridCell>
+                                                    </af:gridRow>
+                                                </af:iterator>
+                                                <!-- Workaround infoTile Issue. Any component with implicit clientComponent="true" will prevent selection-->
+                                                <af:clientListener method="InfoTileComp.raiseSelectionEvent"
+                                                                   type="click"/>
+                                            </af:panelGridLayout>
+                                        </af:panelGroupLayout>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                            </af:decorativeBox>
+                        </af:panelGroupLayout>
+                        <!-- Compensation -->
+                        <af:panelGroupLayout id="infd2" layout="vertical" styleClass="AFStretchWidth">
+                            <af:decorativeBox id="db3">
+                                <f:facet name="center">
+                                    <af:panelGroupLayout id="pglcp"
+                                                         layout="#{orientationManager.portraitMode ? 'vertical' : 'horizontal'}"
+                                                         styleClass="#{orientationManager.portraitMode ? 'WBPortraitContentDimensions' : 'WBLandscapeContentDimensions'}"
+                                                         valign="top">
+                                        <!-- History -->
+                                        <af:spacer width="10" id="s14"/>
+                                        <af:panelGroupLayout layout="vertical" id="pglhst" halign="left">
+                                            <af:spacer id="s5" width="1" height="5"
+                                                       rendered="#{orientationManager.landscapeMode}"/>
+                                            <af:outputText id="ot6" value="HISTORY" styleClass="WBTitleText"/>
+                                            <af:spacer height="10" id="s15"/>
+                                            <dvt:barChart var="row" timeAxisType="enabled" stack="on"
+                                                          value="#{bindings.compHistory1.collectionModel}"
+                                                          inlineStyle="width:450px;height:300px;" id="bc1">
+                                                <af:transition transition="auto" triggerType="display">
+                                                    <!--af:transition is supported at run time but flagging it as an error at design time is a known issue in 12.1.3-->
+                                                    <?audit suppress oracle.jdeveloper.jsp.check-valid-parent?>
+                                                </af:transition>
+                                                <dvt:chartLegend id="cl5" rendered="false"/>
+                                                <f:facet name="dataStamp">
+                                                    <af:group id="g5">
+                                                        <dvt:chartDataItem id="di11" value="#{row.salary}"
+                                                                           series="#{bindings.salary.hints.label}"
+                                                                           group="#{row.effective}" color="#68c182"/>
+                                                        <dvt:chartDataItem id="di12" value="#{row.bonus}"
+                                                                           series="#{bindings.bonus.hints.label}"
+                                                                           group="#{row.effective}" color="#4a85c5"/>
+                                                        <dvt:chartDataItem id="di13" value="#{row.commission}"
+                                                                           series="#{bindings.commission.hints.label}"
+                                                                           group="#{row.effective}" color="#F4AA46"/>
+                                                    </af:group>
+                                                </f:facet>
+                                            </dvt:barChart>
+                                            <af:spacer id="s11" width="1" height="25"/>
+                                        </af:panelGroupLayout>
+                                        <af:spacer width="50" height="30" id="s16"/>
+                                        <af:panelGroupLayout layout="vertical" id="pglcrnt" halign="left">
+                                            <af:spacer id="sphcrnt" width="1" height="5"
+                                                       rendered="#{orientationManager.landscapeMode}"/>
+                                            <af:outputText id="ot7" value="CURRENT" styleClass="WBTitleText"/>
+                                            <af:panelGroupLayout layout="vertical" halign="center"
+                                                                 inlineStyle="width:450px" id="pgl26">
+                                                <af:spacer width="50" id="s17"/>
+                                                <dvt:pieChart id="pieChart2" value="#{bindings.pieComps.treeModel}"
+                                                              var="chartRow" inlineStyle="width:200px;height:200px;"
+                                                              sliceLabelPosition="none">
+                                                    <af:transition transition="auto" triggerType="display">
+                                                        <?audit suppress oracle.jdeveloper.jsp.check-valid-parent?>
+                                                        <!--af:transition is supported at run time but flagging it as an error at design time is a known issue in 12.1.3-->
+                                                    </af:transition>
+                                                    <dvt:chartLegend id="cl2" rendered="false"/>
+                                                    <dvt:pieDataItem label="#{chartRow.itemLabel}"
+                                                                     value="#{chartRow.itemValue}" borderColor="#FFFFFF"
+                                                                     id="pdi1">
+                                                        <dvt:attributeGroups value="#{chartRow.itemLabel}" id="ag1">
+                                                            <dvt:attributeMatchRule id="amr1" group="Salary">
+                                                                <f:attribute name="color" value="#68c182"/>
+                                                            </dvt:attributeMatchRule>
+                                                            <dvt:attributeMatchRule id="amr2" group="Bonus">
+                                                                <f:attribute name="color" value="#4a85c5"/>
+                                                            </dvt:attributeMatchRule>
+                                                            <dvt:attributeMatchRule id="amr3" group="Commission">
+                                                                <f:attribute name="color" value="#F4AA46"/>
+                                                            </dvt:attributeMatchRule>
+                                                        </dvt:attributeGroups>
+                                                    </dvt:pieDataItem>
+                                                </dvt:pieChart>
+                                                <af:spacer height="15px" id="s18"/>
+                                                <af:panelGridLayout id="pgl4" inlineStyle="width:250px;">
+                                                    <af:gridRow marginTop="0px" height="auto" id="gr4">
+                                                        <af:gridCell marginStart="5px" width="60%" id="gc5">
+                                                            <af:panelGroupLayout layout="horizontal" id="pgl24"
+                                                                                 halign="start">
+                                                                <af:panelGroupLayout layout="vertical" id="s21"
+                                                                                     styleClass="WBSalaryBar"/>
+                                                                <af:spacer width="5px" id="s20"/>
+                                                                <af:outputLabel id="ol5" value="Salary"
+                                                                                styleClass="WBCardTitle"/>
+                                                            </af:panelGroupLayout>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="40%" marginEnd="5px"
+                                                                     id="gc9" valign="middle" halign="end">
+                                                            <af:outputText value="#{bindings.salary.inputValue}"
+                                                                           styleClass="WBCompensationLegendSalary"
+                                                                           id="ol15">
+                                                                <af:convertNumber pattern="'$'#,###"/>
+                                                            </af:outputText>
+                                                        </af:gridCell>
+                                                    </af:gridRow>
+                                                    <af:gridRow marginTop="0px" height="auto" id="gr5">
+                                                        <af:gridCell marginStart="5px" width="60%" id="gc11">
+                                                            <af:panelGroupLayout layout="horizontal" id="pgl22"
+                                                                                 halign="start">
+                                                                <af:panelGroupLayout layout="vertical" id="pgl27"
+                                                                                     styleClass="WBBonusBar"/>
+                                                                <af:spacer width="5px;" id="s22"/>
+                                                                <af:outputLabel value="Bonus" styleClass="WBCardTitle"
+                                                                                id="ol16"/>
+                                                            </af:panelGroupLayout>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="40%" marginEnd="5px"
+                                                                     id="gc12" valign="middle" halign="end">
+                                                            <af:outputText value="#{bindings.bonus.inputValue}"
+                                                                           styleClass="WBCompensationLegendBonus"
+                                                                           id="ol19">
+                                                                <af:convertNumber pattern="'$'#,###"/>
+                                                            </af:outputText>
+                                                        </af:gridCell>
+                                                    </af:gridRow>
+                                                    <af:gridRow marginTop="0px" height="auto" marginBottom="5px"
+                                                                id="gr6">
+                                                        <af:gridCell marginStart="5px" width="60%" id="gc13">
+                                                            <af:panelGroupLayout layout="horizontal" id="pgl23"
+                                                                                 halign="start">
+                                                                <af:panelGroupLayout layout="vertical" id="pgl28"
+                                                                                     styleClass="WBCommissionBar"/>
+                                                                <af:spacer width="5px" id="s24"/>
+                                                                <af:outputLabel value="Commission"
+                                                                                styleClass="WBCardTitle" id="ol18"/>
+                                                            </af:panelGroupLayout>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="40%" marginEnd="5px"
+                                                                     valign="middle" id="gc14" halign="end">
+                                                            <af:outputText value="#{bindings.commission.inputValue}"
+                                                                           styleClass="WBCompensationLegendCommission"
+                                                                           id="ot25">
+                                                                <af:convertNumber pattern="'$'#,###"/>
+                                                            </af:outputText>
+                                                        </af:gridCell>
+                                                    </af:gridRow>
+                                                    <!-- Workaround infoTile Issue. Any component with implicit clientComponent="true" will prevent selection-->
+                                                    <af:clientListener method="InfoTileComp.raiseSelectionEvent"
+                                                                       type="click"/>
+                                                </af:panelGridLayout>
+                                            </af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                        <!-- Compensation Ratio -->
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                            </af:decorativeBox>
+                        </af:panelGroupLayout>
+                        <!-- Timeline -->
+                        <af:panelGroupLayout id="infd3" layout="vertical" styleClass="AFStretchWidth">
+                            <af:decorativeBox id="db4">
+                                <f:facet name="center">
+                                    <af:panelGroupLayout layout="vertical" id="pgl3">
+                                        <dvt:timeline id="tl1" startTime="#{backingBeanScope.viewPerson.timelineStart}"
+                                                      endTime="#{backingBeanScope.viewPerson.timelineEnd}"
+                                                      orientation="#{orientationManager.portraitMode ? 'vertical' : 'horizontal'}"
+                                                      styleClass="#{orientationManager.portraitMode ? 'WBPortraitContentDimensions1' : 'WBLandscapeContentDimensions'}"
+                                                      summary="Timeline of Employee Events" itemSelection="single">
+                                            <dvt:timelineSeries id="ts1" var="evt"
+                                                                value="#{bindings.events1.collectionModel}">
+                                                <dvt:timelineItem value="#{evt.start}" id="ti1">
+                                                    <af:panelGroupLayout id="pg1" layout="horizontal" valign="middle">
+                                                        <af:panelGroupLayout layout="vertical"
+                                                                             inlineStyle="#{orientationManager.portraitMode ? 'width:10px;height:20px;' : 'width:10px;height:40px;'};background-color:#{evt.color}"
+                                                                             id="pgl20"/>
+                                                        <af:spacer width="5" id="s1"/>
+                                                        <af:panelGroupLayout id="pg2"
+                                                                             layout="#{orientationManager.portraitMode ? 'horizontal' : 'vertical'}">
+                                                            <af:outputText value="#{evt.name}" styleClass="WBTitleText"
+                                                                           id="ot26"/>
+                                                            <af:spacer width="10"
+                                                                       rendered="#{orientationManager.portraitMode}"
+                                                                       id="s2"/>
+                                                            <af:outputText id="ot1" value="#{evt.description}"/>
+                                                        </af:panelGroupLayout>
+                                                    </af:panelGroupLayout>
+                                                    <f:facet name="overviewItem">
+                                                        <dvt:marker id="m1" fillColor="#{evt.color}" shape="circle"/>
+                                                    </f:facet>
+                                                </dvt:timelineItem>
+                                            </dvt:timelineSeries>
+                                            <dvt:timeAxis id="ta1" scale="weeks" zoomOrder="months"/>
+                                            <dvt:timelineOverview id="ov1"
+                                                                  inlineStyle="#{orientationManager.portraitMode ? 'width:60px' : 'height:60px'}">
+                                                <dvt:timeAxis id="ta2" scale="months"/>
+                                            </dvt:timelineOverview>
+                                        </dvt:timeline>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                            </af:decorativeBox>
+                        </af:panelGroupLayout>
+                        <!-- Team -->
+                        <af:panelGroupLayout id="infd4" layout="vertical" styleClass="AFStretchWidth">
+                            <af:decorativeBox id="db5">
+                                <f:facet name="center">
+                                    <dvt:hierarchyViewer id="hv1" var="node" controlPanelBehavior="hidden"
+                                                         value="#{bindings.me1.treeModel}"
+                                                         styleClass="#{orientationManager.portraitMode ? 'WBPortraitContentDimensions1' : 'WBLandscapeContentDimensions'} WBNoBorder"
+                                                         selectionListener="#{bindings.me1.treeModel.makeCurrent}"
+                                                         detailWindow="none" summary="My Team"
+                                                         layout="#{orientationManager.portraitMode ? 'hier_horz_left' : 'hier_vert_top'}"
+                                                         levelFetchSize="6">
+                                        <dvt:link linkType="orthogonalRounded" id="l5"/>
+                                        <dvt:node type="oracle.workbetter.model.Employee" width="170" height="140"
+                                                  id="n1" clickBehavior="expandCollapse" showExpandChildren="false"
+                                                  showIsolate="false" showNavigateUp="false" styleClass="WBHVNode">
+                                            <f:facet name="zoom100">
+                                                <af:panelGroupLayout styleClass="AFStretchWidth AFHVNodeStretchHeight AFHVNodePadding"
+                                                                     layout="vertical" id="pgl9" halign="center">
+                                                    <af:panelGroupLayout layout="vertical" id="pgl11" halign="center">
+                                                        <af:image source="/resources/images/people/#{node.image}"
+                                                                  id="img1" styleClass="WBImage WBImageBorder"
+                                                                  shortDesc="Employee Image"/>
+                                                        <af:link actionListener="#{bindings.setCurrentRowWithKeyValue.execute}"
+                                                                 id="l7" styleClass="AFHVNodeTitleTextStyle"
+                                                                 text="#{node.firstName} #{node.lastName}">
+                                                            <af:setPropertyListener type="action" from="0"
+                                                                                    to="#{pageFlowScope.peopleFlowState.selectedTile}"/>
+                                                            <af:setPropertyListener from="#{node.empId}"
+                                                                                    to="#{pageFlowScope.peopleFlowState.rowKeyId}"
+                                                                                    type="action"/>
+                                                        </af:link>
+                                                        <af:outputText value="#{node.title}"
+                                                                       shortDesc="#{node.hints.title.tooltip}"
+                                                                       styleClass="AFHVNodeTextStyle" id="ot10"/>
+                                                    </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                            </f:facet>
+                                        </dvt:node>
+                                    </dvt:hierarchyViewer>
+                                </f:facet>
+                            </af:decorativeBox>
+                        </af:panelGroupLayout>
+                    </af:deck>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <!-- Hidden buttons used to change the orientation of the page -->
+        <af:button visible="false" id="btnLayoutPortrait" partialSubmit="true">
+            <af:setActionListener from="portrait" to="#{orientationManager.orientation}"/>
+        </af:button>
+        <af:button visible="false" id="btnLayoutLandscape" partialSubmit="true">
+            <af:setActionListener from="landscape" to="#{orientationManager.orientation}"/>
+        </af:button>
+    </af:group>
+</ui:composition>
+

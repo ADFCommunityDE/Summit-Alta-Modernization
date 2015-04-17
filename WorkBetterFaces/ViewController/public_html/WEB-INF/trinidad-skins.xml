@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<skins xmlns="http://myfaces.apache.org/trinidad/skin">
+  <skin>
+    <id>WorkBetter.desktop</id>
+    <family>WorkBetter</family>
+    <extends>alta-v1.desktop</extends>
+    <render-kit-id>org.apache.myfaces.trinidad.desktop</render-kit-id>
+    <style-sheet-name>resources/skins/WorkBetter/WorkBetter.css</style-sheet-name>
+    <bundle-name>oracle.workbetter.view.skin.skinBundle</bundle-name>
+  </skin>
+</skins>

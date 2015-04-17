@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.14.23"
+                id="people_people_SetCurrentRowWithKeyValue3PageDef" Package="oracle.workbetter.view.bindings.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="root" RangeSize="25" DataControl="HRService" id="HRServiceIterator"/>
+    <accessorIterator MasterBinding="HRServiceIterator" Binds="allEmployees" RangeSize="25" DataControl="HRService"
+                      BeanClass="oracle.workbetter.model.Employee" id="allEmployeesIterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="allEmployeesIterator" id="setCurrentRowWithKeyValue" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKeyValue">
+      <NamedData NDName="rowKey" NDValue="#{pageFlowScope.peopleFlowState.rowKeyId}" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

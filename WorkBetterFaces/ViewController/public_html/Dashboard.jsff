@@ -1,0 +1,377 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGroupLayout id="pgl4">
+        <af:link action="MyTeam" id="cl2">
+            <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+            <af:panelGroupLayout id="pb2"
+                                 styleClass="WBDisplayBlock WBDisplayBlockMargin WBDashboardCardSize WBDashboardCard">
+                <af:panelGroupLayout id="pgl3" layout="vertical">
+                    <af:outputFormatted value="My Team" id="of4" styleClass="WBDashboardCardTitle"/>
+                    <af:panelGridLayout id="pglbdgs">
+                        <af:gridRow id="grbdgs1">
+                            <af:gridCell id="gcbdgs1" width="50%" halign="stretch">
+                                <af:panelGroupLayout id="pgltm1" halign="center" layout="vertical">
+                                    <af:image source="/resources/images/qual_mygroup_70.png" shortDesc="My Group"
+                                              styleClass="WBDashboardCardIcon" id="i1"/>
+                                    <af:outputText id="groupBadge" value="#{bindings.groupSize.inputValue}"
+                                                   styleClass="WBDashboardCardBadge"/>
+                                </af:panelGroupLayout>
+                            </af:gridCell>
+                            <af:gridCell id="gcbdgs2" width="50%" halign="stretch">
+                                <af:panelGroupLayout id="pgltm2" halign="center" layout="vertical">
+                                    <af:image source="/resources/images/qual_myorg_70.png" styleClass="WBDashboardCardIcon"
+                                              shortDesc="My Directs" id="i2"/>
+                                    <af:outputText id="directBadge" value="#{bindings.teamSize.inputValue}"
+                                                   styleClass="WBDashboardCardBadge"/>
+                                </af:panelGroupLayout>
+                            </af:gridCell>
+                        </af:gridRow>
+                        <af:gridRow id="grbdgs2" marginTop="10px">
+                            <af:gridCell id="gcbdgs3" halign="center">
+                                <af:outputText id="groupLbl" value="My Group" styleClass="WBDashboardLabel"/>
+                            </af:gridCell>
+                            <af:gridCell id="gcbdgs4" halign="center">
+                                <af:outputText id="directLbl" value="My Directs" styleClass="WBDashboardLabel"/>
+                            </af:gridCell>
+                        </af:gridRow>
+                    </af:panelGridLayout>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:link>
+        <af:panelGroupLayout id="pb3"
+                             styleClass="WBDisplayBlock WBDisplayBlockMargin WBDashboardCardSize WBDashboardCard">
+            <af:panelGroupLayout id="pgl6" layout="vertical">
+                <af:outputFormatted value="My Notifications" id="of1" styleClass="WBDashboardCardTitle"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pglntc" layout="vertical">
+                <af:panelGroupLayout id="pglntr1" layout="horizontal">
+                    <af:image id="imgAppr" source="/resources/images/qual_approved_32_full.png" shortDesc="Approved Icon"
+                              inlineStyle="vertical-align: middle;"/>
+                    <af:spacer id="spAppr1" width="10" height="1"/>
+                    <af:outputText id="otApprNum" value="#{bindings.notifyApproved.inputValue}"
+                                   styleClass="WBDashboardMetricLabel"/>
+                    <af:spacer id="spAppr2" width="10" height="1"/>
+                    <af:outputText id="otAppr" value="Approved" styleClass="WBDashboardMetricLabel"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="cfNotifyDiv1" styleClass="WBDashboardDivider">
+                    <af:spacer id="spNotifyDiv1" width="1" height="1"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pglntr2" layout="horizontal">
+                    <af:image id="imgAppr1" source="/resources/images/qual_info_32_full.png" shortDesc="Info Icon"
+                              inlineStyle="vertical-align: middle;"/>
+                    <af:spacer id="spAppr3" width="10" height="1"/>
+                    <af:outputText id="otApprNum2" value="#{bindings.notifyWaiting.inputValue}"
+                                   styleClass="WBDashboardMetricLabel"/>
+                    <af:spacer id="spAppr4" width="10" height="1"/>
+                    <af:outputText id="otAppr2" value="Waiting" styleClass="WBDashboardMetricLabel"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="cfNotifyDiv2" styleClass="WBDashboardDivider">
+                    <af:spacer id="spNotifyDiv2" width="1" height="1"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pglntr3" layout="horizontal">
+                    <af:image id="imgAppr2" source="/resources/images/qual_reject_32_full.png" shortDesc="Reject Icon"
+                              inlineStyle="vertical-align: middle;"/>
+                    <af:spacer id="spAppr5" width="10" height="1"/>
+                    <af:outputText id="otApprNum3" value="#{bindings.notifyRejected.inputValue}"
+                                   styleClass="WBDashboardMetricLabel"/>
+                    <af:spacer id="spAppr6" width="10" height="1"/>
+                    <af:outputText id="otAppr3" value="Rejected" styleClass="WBDashboardMetricLabel"/>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:link id="d1" action="MyActivities">
+            <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+            <af:panelGroupLayout id="pb4"
+                                 styleClass="WBDisplayBlock WBDisplayBlockMargin WBDashboardCardSize WBDashboardCard">
+                <af:panelGroupLayout id="pgl1" layout="vertical">
+                    <af:outputFormatted value="My Activities" id="of3" styleClass="WBDashboardCardTitle"/>
+                </af:panelGroupLayout>
+                <af:panelGridLayout id="tlActs">
+                    <af:gridRow id="rl1Acts">
+                        <af:gridCell id="cf1Acts" width="50%" halign="stretch">
+                            <af:panelGroupLayout id="pglActs1" halign="center" layout="vertical">
+                                <af:image id="cal" source="/resources/images/qual_appointments_48_full.png"
+                                          styleClass="WBDashboardCardIcon" shortDesc="Appointments Icon"/>
+                                <af:outputText id="apptBadge" value="#{bindings.empMeetings.inputValue}"
+                                               styleClass="WBDashboardCardBadge"/>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                        <af:gridCell id="cf2Acts" width="50%" halign="stretch">
+                            <af:panelGroupLayout id="pglActs2" halign="center" layout="vertical">
+                                <af:image id="tasks" source="/resources/images/qual_tasks_48_full.png"
+                                          styleClass="WBDashboardCardIcon" shortDesc="Events Icon"/>
+                                <af:outputText id="taskBadge" value="#{bindings.empEvents.inputValue}"
+                                               styleClass="WBDashboardCardBadge"/>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow id="rl2Acts" marginTop="10px">
+                        <af:gridCell id="cf3Acts" halign="center">
+                            <af:outputText id="ot1Acts" value="Meetings" styleClass="WBDashboardLabel"/>
+                        </af:gridCell>
+                        <af:gridCell id="cf4Acts" halign="center">
+                            <af:outputText id="ot2Acts" value="Events" styleClass="WBDashboardLabel"/>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+                <af:panelGroupLayout id="pglAft" halign="center" layout="vertical"
+                                     styleClass="AFStretchWidth WBDashboardTimeFrame">
+                    <af:outputText id="otFootAct" value="Next 7 Days"/>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:link>
+        <af:panelGroupLayout id="pb5"
+                             styleClass="WBDisplayBlock WBDisplayBlockMargin WBDashboardCardSize WBDashboardCard">
+            <af:panelGroupLayout id="pgl2" layout="vertical">
+                <af:outputFormatted value="My Team Activites" id="of2" styleClass="WBDashboardCardTitle"/>
+            </af:panelGroupLayout>
+            <af:panelGridLayout id="tlTAct">
+                <af:gridRow id="rl1TAct" marginTop="-2px">
+                    <af:gridCell id="cf1TAct" width="50%" halign="center">
+                        <af:outputText id="numMeetings" value="#{bindings.groupMeetings.inputValue}"
+                                       styleClass="WBMetric WBMetric3Color"/>
+                    </af:gridCell>
+                    <af:gridCell id="cf2TAct" width="50%" halign="center">
+                        <af:outputText id="numTrain" value="#{bindings.groupTrainings.inputValue}"
+                                       styleClass="WBMetric WBMetric4Color"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="rl2TAct" marginTop="-2px">
+                    <af:gridCell id="cf3TAct" halign="center">
+                        <af:outputText id="ot1TAct" value="Meetings" styleClass="WBDashboardLabel"/>
+                    </af:gridCell>
+                    <af:gridCell id="cf4TAct" halign="center">
+                        <af:outputText id="ot2TAct" value="Training" styleClass="WBDashboardLabel"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="rl3TAct">
+                    <af:gridCell id="cf5TAct" width="50%" halign="center">
+                        <af:outputText id="numVac" value="#{bindings.groupEvents.inputValue}"
+                                       styleClass="WBMetric WBMetric1Color"/>
+                    </af:gridCell>
+                    <af:gridCell id="cf6TAct" width="50%" halign="center">
+                        <af:outputText id="numTime" value="#{bindings.groupTimeoff.inputValue}"
+                                       styleClass="WBMetric WBMetric2Color"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="rl4TAct">
+                    <af:gridCell id="cf7TAct" halign="center">
+                        <af:outputText id="ot3TAct" value="Events" styleClass="WBDashboardLabel"/>
+                    </af:gridCell>
+                    <af:gridCell id="cf8TAct" halign="center">
+                        <af:outputText id="ot4TAct" value="Time Off" styleClass="WBDashboardLabel"/>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+            <af:panelGroupLayout id="pglTft" halign="center" layout="vertical" styleClass="WBDashboardTimeFrame">
+                <af:outputText id="otFootTAct" value="Next 7 Days"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pb6"
+                             styleClass="WBDisplayBlock WBDisplayBlockMargin WBDashboardCardSize WBDashboardCard">
+            <af:panelGroupLayout id="pgl7" layout="vertical">
+                <af:outputFormatted value="Compensation Ratio" id="of5" styleClass="WBDashboardCardTitle"/>
+            </af:panelGroupLayout>
+            <af:panelGridLayout id="tlCR">
+                <af:gridRow id="rl1CR" marginBottom="4px">
+                    <af:gridCell id="cf1CR" width="100%">
+                        <af:outputText id="ot1CR" value="Above Range" styleClass="WBDashboardMetricLabel"/>
+                    </af:gridCell>
+                    <af:gridCell id="cf2CR" halign="end">
+                        <af:outputText id="ot2CR" value="#{bindings.groupCompRatioAbove.inputValue}"
+                                       styleClass="WBMetricSmall WBMetricSmall2Color"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="rlCRDiv1" marginBottom="6px">
+                    <af:gridCell id="cfCRDiv1" columnSpan="2" halign="stretch">
+                        <af:panelGroupLayout id="cfCRpgl1" styleClass="WBDashboardDivider">
+                            <af:spacer id="spCrDiv1" width="1" height="1"/>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="rl2CR" marginBottom="4px">
+                    <af:gridCell id="cf3CR" width="100%">
+                        <af:outputText id="ot3CR" value="In Range" styleClass="WBDashboardMetricLabel"/>
+                    </af:gridCell>
+                    <af:gridCell id="cf4CR" halign="end">
+                        <af:outputText id="ot4CR" value="#{bindings.groupCompRatioIn.inputValue}"
+                                       styleClass="WBMetricSmall WBMetricSmall1Color"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="rlCRDiv2" marginBottom="6px">
+                    <af:gridCell id="cfCRDiv2" columnSpan="2" halign="stretch">
+                        <af:panelGroupLayout id="cfCRpgl2" styleClass="WBDashboardDivider">
+                            <af:spacer id="spCrDiv2" width="1" height="1"/>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="rl3CR">
+                    <af:gridCell id="cf5CR" width="100%">
+                        <af:outputText id="ot5CR" value="Below Range" styleClass="WBDashboardMetricLabel"/>
+                    </af:gridCell>
+                    <af:gridCell id="cf6CR" halign="end">
+                        <af:outputText id="ot6CR" value="#{bindings.groupCompRatioBelow.inputValue}"
+                                       styleClass="WBMetricSmall WBMetricSmall2Color"/>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+            <af:panelGroupLayout id="pglCRF" halign="center" layout="vertical" styleClass="WBDashboardFooterSmall">
+                <af:outputText id="otFootCRto" value="Across My Organization"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pb7"
+                             styleClass="WBDisplayBlock WBDisplayBlockMargin WBDashboardCardSize WBDashboardCard">
+            <af:panelGroupLayout id="pgl8" layout="vertical">
+                <af:outputFormatted value="Average Compensation" id="of6" styleClass="WBDashboardCardTitle"/>
+                <dvt:horizontalBarChart id="horizontalBarChart1" var="row" value="#{bindings.avgComps.collectionModel}"
+                                        inlineStyle="width:200px;height:150px"
+                                        selectionListener="#{backingBeanScope.dashboard.compensationChartSelectionListener}"
+                                        dataSelection="single">
+                    <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+                    <f:facet name="dataStamp">
+                        <dvt:chartDataItem id="di1" value="#{row.itemValue}" group="#{row.itemLabel}"
+                                           series="Average Compensation"
+                                           color="#{(row.index == 0)? '#A2BF39' : ((row.index le 2)? '#C7D988' : '#E3ECC3')}"></dvt:chartDataItem>
+                    </f:facet>
+                    <!--The attribute barGapRatio is not fully supported in JDeveloper/ADF 12.1.3 release-->
+                    <f:attribute name="barGapRatio" value="0.2"/>
+                    <dvt:chartLegend rendered="false" id="l1"/>
+                    <dvt:chartXAxis id="cxa1">
+                        <dvt:chartTickLabel id="ctl1" rendered="false"/>
+                        <dvt:majorTick rendered="false" id="mt1"/>
+                        <dvt:chartAxisLine id="cal1" rendered="false"/>
+                    </dvt:chartXAxis>
+                    <dvt:chartYAxis id="cya1">
+                        <dvt:chartTickLabel id="ctl2" rendered="false"/>
+                        <dvt:majorTick rendered="false" id="mt2"/>
+                        <dvt:chartAxisLine id="cal2" rendered="false"/>
+                    </dvt:chartYAxis>
+                    <dvt:chartValueFormat id="cvf1">
+                        <af:convertNumber integerOnly="true" type="number"/>
+                    </dvt:chartValueFormat>
+                </dvt:horizontalBarChart>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pglACF" halign="center" layout="vertical" styleClass="WBDashboardFooterSmall">
+                <af:outputText id="otFootActo" value="Top Six Organizations" styleClass=""/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pb8"
+                             styleClass="WBDisplayBlock WBDisplayBlockMargin WBDashboardCardSize WBDashboardCard">
+            <af:panelGroupLayout id="pgltar" layout="vertical">
+                <af:outputFormatted value="Average Ratings" id="ofar" styleClass="WBDashboardCardTitle"/>
+            </af:panelGroupLayout>
+            <af:panelGridLayout id="tlRate">
+                <af:gridRow id="rl1Rate">
+                    <af:gridCell id="cf1Rate" width="50%" halign="start" valign="top" rowSpan="4">
+                        <af:image id="people" source="/resources/images/qual_averageratings_94_full.png"
+                                  inlineStyle="margin-top:4px" shortDesc="People"/>
+                    </af:gridCell>
+                    <af:gridCell id="cf2Rate" width="50%" halign="end">
+                        <af:outputText id="perfNum" value="#{bindings.groupAvgRating.inputValue}"
+                                       styleClass="WBMetric WBMetric1Color">
+                            <af:convertNumber id="cn1" maxFractionDigits="1" minIntegerDigits="1" type="number"/>
+                        </af:outputText>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="rl2Rate">
+                    <af:gridCell id="cf3Rate" halign="end">
+                        <af:outputText id="otPerf" value="Performance" styleClass="WBDashboardLabel"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="rl3Rate" marginTop="10px">
+                    <af:gridCell id="cf4Rate" width="50%" halign="end">
+                        <af:outputText id="potNum" value="#{bindings.groupAvgPotential.inputValue}"
+                                       styleClass="WBMetric WBMetric2Color">
+                            <af:convertNumber id="cn2" maxFractionDigits="1" minIntegerDigits="1" type="number"/>
+                        </af:outputText>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="rl4Rate">
+                    <af:gridCell id="cf5Rate" halign="end">
+                        <af:outputText id="otPot" value="Potential" styleClass="WBDashboardLabel"/>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+            <af:panelGroupLayout id="pglARF" halign="center" layout="vertical" styleClass="WBDashboardFooterSmall">
+                <af:outputText id="otFootARto" value="Across My Organization" styleClass=""/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pb9"
+                             styleClass="WBDisplayBlock WBDisplayBlockMargin WBDashboardCardSize WBDashboardCard">
+            <af:panelGroupLayout id="pgl9" layout="vertical">
+                <af:outputFormatted value="Average Performance" id="of7" styleClass="WBDashboardCardTitle"/>
+                <dvt:horizontalBarChart id="horizontalBarChart2" inlineStyle="width:200px;height:150px" var="row"
+                                        value="#{bindings.avgPerfs.collectionModel}"
+                                        dataSelection="single"
+                                        selectionListener="#{backingBeanScope.dashboard.performanceChartSelectionListener}">
+                    <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+                    <f:facet name="dataStamp">
+                        <dvt:chartDataItem id="di2" value="#{row.itemValue}" group="#{row.itemLabel}"
+                                           series="Average Performance"
+                                           color="#{(row.index == 0)? '#F29F72' : ((row.index le 2)? '#F7C5AA' : '#FBE2D4')}"/>
+                    </f:facet>
+                     <!--The attribute barGapRatio is not fully supported in JDeveloper/ADF 12.1.3 release-->
+                    <f:attribute name="barGapRatio" value="0.2"/>
+                    <dvt:chartLegend rendered="false" id="cl1"/>
+                    <dvt:chartXAxis id="cxa2">
+                        <dvt:chartTickLabel id="ctl3" rendered="false"/>
+                        <dvt:majorTick rendered="false" id="mt3"/>
+                        <dvt:chartAxisLine id="cal3" rendered="false"/>
+                    </dvt:chartXAxis>
+                    <dvt:chartYAxis id="cya2">
+                        <dvt:chartTickLabel id="ctl4" rendered="false"/>
+                        <dvt:majorTick rendered="false" id="mt4"/>
+                        <dvt:chartAxisLine id="cal4" rendered="false"/>
+                    </dvt:chartYAxis>
+                    <dvt:chartValueFormat id="cvf2">
+                        <af:convertNumber integerOnly="true" type="number"/>
+                    </dvt:chartValueFormat>
+                </dvt:horizontalBarChart>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pglAPF" halign="center" layout="vertical" styleClass="WBDashboardFooterSmall">
+                <af:outputText id="otFootAPto" value="Top Six Organizations"/>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pb10"
+                             styleClass="WBDisplayBlock WBDisplayBlockMargin WBDashboardCardSize WBDashboardCard">
+            <af:panelGroupLayout id="pglpt" layout="vertical">
+                <af:outputFormatted value="Attrition History" id="ofpt" styleClass="WBDashboardCardTitle"/>
+                <af:panelGroupLayout layout="vertical" halign="center" id="pgl11">
+                    <dvt:sunburst id="t2" value="#{bindings.attritionHistory.treeModel}" var="row"
+                                  inlineStyle="width:140px;height:140px;" nodeSelection="none"
+                                  summary="Attrition History Sunburst">
+                        <af:switcher facetName="#{row.hierTypeBinding.name}" id="s2">
+                            <f:facet name="attritionHistory0">
+                                <dvt:sunburstNode value="#{row.itemValue}"
+                                                  shortDesc="#{row.itemLabel}: #{fn:substring(row.itemValue, 0, fn:indexOf(row.itemValue, '.'))} Employees"
+                                                  id="sn2">
+                                    <dvt:attributeGroups value="#{row.index}" type="color" id="ag2"/>
+                                </dvt:sunburstNode>
+                            </f:facet>
+                        </af:switcher>
+                    </dvt:sunburst>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl5" halign="center" layout="vertical" styleClass="WBDashboardFooterSmall">
+                    <af:outputText id="ot1" value="Across My Organization"/>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:link id="d2" action="MySummary">
+            <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+            <af:panelGroupLayout id="pb11"
+                                 styleClass="WBDisplayBlock WBDisplayBlockMargin WBDashboardCardSize WBDashboardCard">
+                <af:panelGroupLayout id="pglab" layout="vertical">
+                    <af:outputFormatted value="About Me" id="ofab" styleClass="WBDashboardCardTitle"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl10" halign="center" layout="vertical">
+                    <af:image id="me" source="/resources/images/people/#{bindings.image.inputValue}"
+                              shortDesc="Photo of #{bindings.firstName.inputValue} #{bindings.lastName.inputValue}"
+                              styleClass="WBPersonImage"/>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </af:link>
+    </af:panelGroupLayout>
+</ui:composition>

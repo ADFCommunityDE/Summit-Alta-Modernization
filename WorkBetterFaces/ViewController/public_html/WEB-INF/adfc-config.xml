@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="US-ASCII" ?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="index">
+    <page>/index.jsf</page>
+  </view>
+  <managed-bean id="__1">
+    <managed-bean-name>IndexDynamicRegion</managed-bean-name>
+    <managed-bean-class>oracle.workbetter.view.controller.IndexDynamicRegion</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__2">
+    <managed-bean-name>orientationManager</managed-bean-name>
+    <managed-bean-class>oracle.workbetter.view.common.OrientionManager</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

@@ -1,0 +1,532 @@
+/**ADFFaces_Skin_File / DO NOT REMOVE**/
+@charset "UTF-8";
+@namespace af "http://xmlns.oracle.com/adf/faces/rich";
+@namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
+/*Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.*/
+
+/*remove this once the tablet template fix comes in with the patch*/
+.ContentContainerWorkaround {
+    text-align: left;
+}
+/* Image Styles */
+.WBImage {
+    width: 80px;
+    height: 80px;
+}
+.WBImageBorder {
+    border-radius: 40px;
+    border: 1px solid -tr-property-ref(".AFPanelBorderColor:alias", "color");
+}
+.WBImageLink af|link::image {
+    width: 80px;
+    height: 80px;
+}
+.WBImageLinkBorder af|link::image{
+    border-radius: 40px;
+    border: 1px solid -tr-property-ref(".AFPanelBorderColor:alias", "color");
+}
+.WBImageCard {
+    width: 54px;
+    height: 54px;
+}
+.WBImageCardBorder {
+    border-radius: 48px;
+    border: 1px solid -tr-property-ref(".AFPanelBorderColor:alias", "color");
+}
+
+
+/*Ultimately UX can provide functional icons that are 24x24 but since the current icons are
+32x32 we can scale them with these WBFuncIcon styleclasses*/
+.WBFuncIcon af|link::image {
+    height: 24px;
+    width: 24px;
+}
+
+.WBFuncIcon af|link::text {
+    font-size:16px;
+}
+
+.WBFuncIconNoLink af|link::text {
+    color: -tr-property-ref(".AFTextColor:alias","color");
+}
+
+.WBFuncIcon af|commandNavigationItem::icon-style {
+    height: 24px; 
+    width: 24px; 
+}
+.WBFuncIcon af|navigationPane-bar::icon-style {
+    height: 24px; 
+    width: 24px; 
+}
+
+
+/* End of Image Styles */
+/* Beginning of Metric Styles these are the colored numbers like tenure rating compRatio.  */
+.WBMetric {
+  font-size: 40px;
+  font-weight: bold;
+}
+.WBMetricMedium {
+    font-size: 32px;
+}
+
+.WBMetricSmall{
+font-size: 18px;
+font-weight: bold;
+}
+
+.WBMetricLabel{
+font-size: 11px;
+font-weight: normal;    
+}
+
+/*used for metric label in list view and the org card view, both of which have a little more room*/
+.WBMetricLabelMedium{
+font-size: 12px;
+font-weight: normal;    
+}
+
+
+.WBMetric1Color {
+    color: #3caf85;
+}
+
+.WBMetric2Color {
+    color: #F4AA46;
+}
+
+.WBMetric3Color {
+    color: #47BDEF;
+}
+.WBMetric4Color {
+    color: #4a85c5;
+}
+.WBMetric5Color {
+    color: #ffffff;
+}
+
+.WBMetric6Color {
+    color: #ed6647;
+}
+
+.WBMetricSmall1Color{
+color: #68c182;
+}
+.WBMetricSmall2Color{
+color: #f8953b;}
+
+
+/* Style class for laying out child components in columns and rows like we do on the grid view
+of searchPeople and searchOrganizations*/
+.WBDisplayBlock {
+    display: inline-block;
+}
+/*The margin is needed if using a panelgrouplayout iterated with the displayblock.  List items
+ have padding, but it is a little to much.  Depending on which component is used depends on which style
+ class is needed.  */
+.WBDisplayBlockMargin {
+    margin: 5px 5px 5px 5px;
+}
+
+af|listItem.WBDisplayBlockPadding  {
+    padding: 5px;
+}
+af|listItem.WBDisplayBlock {
+    background-color: transparent; 
+    border-bottom: 0px solid transparent; 
+}
+
+af|listItem.WBListPadding  {
+    padding: 5px 10px 0px 10px;
+}
+
+/*The WBDisplayBlockCenter allows us to not only flow the items in the list view, but to center them.
+The Undo is needed so that the child of the layouts don't have thier text center aligned so we are basically
+resetting it back*/
+af|listView.WBDisplayBlockCenter {
+text-align: center;
+}
+WBDisplayBlockCenterUndo {
+text-align: left;
+}
+
+/*StyleClass to use for the various titles need.  Should be the same as a panelbox title but doesn't
+have the chrome of panelBox*/
+.WBNameText{
+    font-weight: bold;
+    font-size: 18px;
+}
+.WBJobTitleText{
+     font-size: 14px;
+}
+.WBDeptText{
+    font-size: 12px;
+}
+.WBManagerName{
+ font-size: 14px;
+ font-weight:bold;
+}    
+
+.WBManagerTitle{
+ font-size: 12px;
+}    
+
+.WBDetailNameText{
+    font-weight: bold;
+    font-size: 22px;
+}
+.WBDetailJobTitleText{
+     font-size: 18px;
+}
+.WBDetailDeptText{
+        font-size: 16px;
+}
+.WBDetailDeptText af|link::text {
+    font-size:16px;
+}
+
+.WBTitleText {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.WBPageTitleText {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.WBCardTitle {
+    font-size: 18px;}
+    
+.WBCardDescription {
+    font-size: 14px;}
+    
+.WBCardManagerName{
+ font-size: 16px;
+ 
+}    
+.WBCardManagerNameAlign{
+line-height: 33px;
+ 
+}    
+
+.WBCardManagerTitle{
+ font-size: 12px;
+}    
+
+.WBCardDescriptionBold{
+
+ font-weight: bold;
+}    
+    
+.WBCardSize{
+    width: 288px;
+    height: 220px
+}    
+
+af|panelBox.WBCardBackSide  {
+    border-color: #6a6a6d; 
+   
+}
+
+.WBCardBackSide af|panelBox::content:core:default{
+  background-color: #747477;
+  color: #ffffff;
+}
+.WBCardBackSide af|panelBox::center:core:default{
+  background-color: #747477;
+  color: #ffffff;}
+
+.WBCardBackSide af|panelBox::footer-center:core:default
+  {
+  background-color: #747477;
+  color: #ffffff;
+}
+
+.WBInfoTileTitle {
+    font-weight: bold;
+    /*font-size: 14px;*/
+}
+
+.WBInfoTileModifier {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+
+.WBDashboardCardSize{
+  height: 206px; 
+  width: 201px;
+  vertical-align: top;
+  position: relative;
+  padding: 14px 14px;
+  border: 1px solid #E7E7E9;
+}
+
+.WBDashboardCard {
+  background-color: #ffffff;
+}
+
+.WBDashboardCard af|panelBox::center{
+padding-top: 20px;
+padding-right: 20px;
+padding-bottom: 20px;
+padding-left: 20px;
+}
+
+.WBDashboardCard af|panelBox::content{
+  padding: 0px;
+}
+
+.WBDashboardCard af|panelBox{
+border-color: #e7e7e9;
+padding-top: 20px;
+padding-right: 20px;
+padding-bottom: 20px;
+padding-left: 20px;
+}
+
+
+.WBDashboardCardTitle{
+font-size: 16px;
+font-weight: bold;
+display: inline-block;
+padding-bottom: 14px;
+    color: #000000; 
+}
+
+.WBDashboardLabel{
+font-size: 14px;
+color: #000000;
+opacity: .85;
+display: inline-block;
+}
+
+.WBDashboardMetricLabel{
+font-size: 16px;
+color: #878c90;
+font-weight: bold;
+}
+
+.WBDashboardDescription{
+font-size: 14px;
+color: #000000;
+opacity: .85;
+}
+
+.WBDashboardTimeFrame{
+color: #afbac6;
+font-weight: bold;
+font-size: 24px;
+text-align: center;
+position: absolute;
+left: 0px;
+right: 0px;
+bottom: 14px;
+}
+
+.WBDashboardCardIcon{
+  padding-top: 28px;
+}
+
+.WBDashboardCardBadge{
+  background-color: #0572CE;
+  color: white;
+  border: 4px solid white;
+  border-radius: 26px;
+  padding: 4px 7px;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: bold;
+  position: absolute;
+  right: 10px;
+  top: 2px;
+  min-width: 23px;
+}
+
+.WBDashboardCardBadge:rtl{
+  left: 5px;
+}
+
+.WBDashboardDivider {
+  padding-top: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #D5DFE5;
+  height: 0;
+  line-height: 0;
+  display: block;
+}
+
+.WBDashboardFooterSmall {
+  color: #767676;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  bottom: 14px;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+}
+
+.WBPersonImage {
+  width:140px;
+  height:140px;
+  border:6px solid #FFF;
+  box-shadow:0 0 2px rgba(0,0,0,0.4);
+  border-radius:50%;
+  margin:4px;
+}
+
+.WBViewPersonTimeFrame{
+color: #afbac6;
+font-weight: bold;
+font-size: 16px;
+text-align: center;
+}
+
+.WBHVNode {
+  background-color: white;
+  border-color: transparent;
+}
+
+af|dvt-node {
+  -tr-focus-border-color: transparent;  
+}
+
+.WBDGImageBorder {
+    border: 1px solid -tr-property-ref(".AFPanelBorderColor:alias", "color");
+}
+
+.WBViewPersonContainerMargin {
+  margin-top: 15px;
+}
+
+.WBViewPersonTileContainer {
+  display: inline-block;
+}
+
+.WBViewPersonTileContent {
+  overflow: hidden;
+}
+.WBViewOrgTileContent{
+  overflow: hidden;
+  }
+
+.WBViewOrgSummaryListView{
+
+  min-width: 750px;
+}
+
+.AFBrandingBar af|statusIndicator {
+       padding: 0;
+}
+
+af|button:leading.AFAppNavbarButton af|button::image {
+padding: 0px 0px 4px 0px;
+}
+
+.WBToggleBar af|navigationPane-bar::separator-icon-style{
+    border-left: 0px solid #D6DFE6; 
+    margin-left: 5px; 
+    margin-right: 5px; 
+}
+
+/* Dimensions used by the Map in the Search People and Search Organization pages */
+.WBMapDimensions{
+height: 100%;
+width: 100%;
+}
+
+
+.AFDvtCategory1Color:alias {
+  color: #3caf85;
+}
+
+.AFDvtCategory2Color:alias {
+  color: #4a85c5;
+}
+
+.WBPortraitContentDimensions {
+    width: 500px;
+}
+
+/* Style used by content in the View Person and View Organization pages in portrait orientation */
+.WBPortraitContentDimensions1 {
+    width:500px;
+    height:630px;
+}
+
+/* Style used by content in the View Person and View Organization pages in landscape orientation */
+.WBLandscapeContentDimensions {
+    width:950px;
+    height:370px;
+}
+
+/* No border style used by Hierarchy Viewer and Diagram in the View Person and View Organization pages */
+.WBNoBorder {
+    border-style:none;
+}
+
+.WBCompensationLegendSalary {
+ font-size: 18px;
+ font-weight: bold;
+ color: #68c182;
+}
+
+.WBCompensationLegendBonus {
+ font-size: 18px;
+ font-weight: bold;
+ color: #4a85c5;
+}
+
+.WBCompensationLegendCommission {
+ font-size: 18px;
+ font-weight: bold;
+ color: #F4AA46;
+}
+
+/* Styles used to create colored bars for timeline filter checkboxes in the View Organization page */
+.WBSalaryBar {
+    background-color: #68c182;
+    width: 5px;
+    height: 20px;
+}
+
+.WBBonusBar {
+    background-color: #4a85c5;
+    width: 5px;
+    height: 20px;
+}
+
+.WBCommissionBar {
+    background-color: #F4AA46;
+    width: 5px;
+    height: 20px;
+}
+
+/* Styles used to create colored bars for timeline filter checkboxes in the View Organization page */
+.WBEventBar {
+    background-color: #68c182;
+    width: 10px;
+    height: 25px;
+}
+
+.WBMeetingBar {
+    background-color: #267DB3;
+    width: 10px;
+    height: 25px;
+}
+
+.WBTimeOffBar {
+    background-color: #8561C8;
+    width: 10px;
+    height: 25px;
+}
+
+.WBTrainingBar {
+    background-color: #FAD55C;
+    width: 10px;
+    height: 25px;
+}
+

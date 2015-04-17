@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.14.23" id="SearchOrganizationsPageDef"
+                Package="oracle.workbetter.view.bindings.pageDefs">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="root" RangeSize="25" DataControl="HRService" id="HRServiceIterator"/>
+        <accessorIterator MasterBinding="HRServiceIterator" Binds="departments" RangeSize="-1" DataControl="HRService"
+                          BeanClass="oracle.workbetter.model.Department" id="departmentsIterator"/>
+                           <accessorIterator MasterBinding="HRServiceIterator" Binds="allDepartments" RangeSize="25" DataControl="HRService"
+                      BeanClass="oracle.workbetter.model.Department" id="allDepartmentsIterator"/>
+    </executables>
+    <bindings>
+        <tree IterBinding="departmentsIterator" id="departments">
+            <nodeDefinition DefName="oracle.workbetter.model.Department" Name="departments0">
+                <AttrNames>
+                    <Item Value="deptId"/>
+                    <Item Value="deptName"/>
+                    <Item Value="city"/>
+                    <Item Value="deptMgrFirst"/>
+                    <Item Value="deptMgrLast"/>
+                       <Item Value="deptMgrTitle"/>
+                    <Item Value="image"/>
+                    <Item Value="reportCount"/>
+                         <Item Value="avgRating"/>
+                             <Item Value="avgTotalComp"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <tree IterBinding="allDepartmentsIterator" id="allDepartments">
+      <nodeDefinition DefName="oracle.workbetter.model.Department" Name="allDepartments0">
+        <AttrNames>
+          <Item Value="deptId"/>
+          <Item Value="deptName"/>
+          <Item Value="address"/>
+          <Item Value="city"/>
+          <Item Value="state"/>
+          <Item Value="country"/>
+          <Item Value="postal"/>
+          <Item Value="deptMgrId"/>
+          <Item Value="deptMgrFirst"/>
+          <Item Value="deptMgrLast"/>
+          <Item Value="deptMgrTitle"/>
+          <Item Value="deptMgrEmail"/>
+          <Item Value="latCoord"/>
+          <Item Value="longCoord"/>
+          <Item Value="avgTotalComp"/>
+          <Item Value="avgCompRatio"/>
+          <Item Value="avgPerfRating"/>
+          <Item Value="avgPerfPotential"/>
+          <Item Value="image"/>
+          <Item Value="deptMgrImage"/>
+          <Item Value="color"/>
+          <Item Value="showMeeting"/>
+          <Item Value="showEvent"/>
+          <Item Value="showTraining"/>
+          <Item Value="showTimeOff"/>
+          <Item Value="reportCount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+        <attributeValues IterBinding="HRServiceIterator" id="deptFilter">
+            <AttrNames>
+                <Item Value="deptFilter"/>
+            </AttrNames>
+        </attributeValues>
+        <methodAction id="filterDepartments" RequiresUpdateModel="true" Action="invokeMethod"
+                      MethodName="filterDepartments" IsViewObjectMethod="false" DataControl="HRService"
+                      InstanceName="data.HRService.dataProvider"/>
+        <mapTheme IterBinding="departmentsIterator" id="departments1" xmlns="http://xmlns.oracle.com/adfm/dvt">
+            <mapThemeDataMap convert="false" mapThemeType="point">
+                <data>
+                    <item value="reportCount" label="Employees"/>
+                </data>
+                <item type="gen_form_2" street="address" city="city" region="state" country="country"
+                      postalCode="postal" label="deptName"/>
+            </mapThemeDataMap>
+        </mapTheme>
+    </bindings>
+</pageDefinition>
