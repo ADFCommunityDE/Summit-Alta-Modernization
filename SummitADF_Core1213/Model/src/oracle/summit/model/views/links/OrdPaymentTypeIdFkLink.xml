@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OrdPaymentTypeIdFkLink"
+  Version="11.1.1.60.13">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewLinkDefEnd
+    Name="PaymentTypeVO"
+    Cardinality="1"
+    Owner="oracle.summit.model.views.PaymentTypeVO"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="PaymentTypeVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.summit.model.views.PaymentTypeVO.Id"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="OrdVO"
+    Cardinality="-1"
+    Owner="oracle.summit.model.views.OrdVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="OrdVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.summit.model.views.OrdVO.PaymentTypeId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="oracle.summit.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

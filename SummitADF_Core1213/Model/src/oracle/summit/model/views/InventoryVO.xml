@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="InventoryVO"
+  Version="12.1.2.66.62"
+  SelectList="InventoryEO.PRODUCT_ID, 
+       InventoryEO.WAREHOUSE_ID, 
+       InventoryEO.AMOUNT_IN_STOCK, 
+       InventoryEO.REORDER_POINT, 
+       InventoryEO.MAX_IN_STOCK, 
+       InventoryEO.OUT_OF_STOCK_EXPLANATION, 
+       InventoryEO.RESTOCK_DATE, 
+       WarehouseEO.CITY, 
+       WarehouseEO.ID, 
+       ImageEO.FILENAME, 
+       ImageEO.ID AS ID1, 
+       ProductEO.NAME, 
+       ProductEO.ID AS ID2, 
+       ProductEO.SHORT_DESC"
+  FromList="S_INVENTORY InventoryEO, S_WAREHOUSE WarehouseEO, S_PRODUCT ProductEO, S_IMAGE ImageEO"
+  Where="((InventoryEO.WAREHOUSE_ID = WarehouseEO.ID) AND (InventoryEO.PRODUCT_ID = ProductEO.ID)) AND (ProductEO.IMAGE_ID = ImageEO.ID)"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="oracle.summit.base.SummitViewRowImpl"
+  ComponentClass="oracle.summit.base.SummitViewObjectImpl"
+  PageIterMode="Full"
+  InheritPersonalization="merge">
+  <EntityUsage
+    Name="InventoryEO"
+    Entity="oracle.summit.model.entities.InventoryEO"/>
+  <EntityUsage
+    Name="WarehouseEO"
+    Entity="oracle.summit.model.entities.WarehouseEO"
+    Association="oracle.summit.model.entities.assoc.SInventoryWarehouseIdFkAssoc"
+    AssociationEnd="oracle.summit.model.entities.assoc.SInventoryWarehouseIdFkAssoc.WarehouseEO"
+    SourceUsage="oracle.summit.model.views.InventoryVO.InventoryEO"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="oracle.summit.model.entities.InventoryEO.WarehouseId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="oracle.summit.model.entities.WarehouseEO.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="ProductEO"
+    Entity="oracle.summit.model.entities.ProductEO"
+    Association="oracle.summit.model.entities.assoc.SInventoryProductIdFkAssoc"
+    AssociationEnd="oracle.summit.model.entities.assoc.SInventoryProductIdFkAssoc.ProductEO"
+    SourceUsage="oracle.summit.model.views.InventoryVO.InventoryEO"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="oracle.summit.model.entities.InventoryEO.ProductId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="oracle.summit.model.entities.ProductEO.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="ImageEO"
+    Entity="oracle.summit.model.entities.ImageEO"
+    Association="oracle.summit.model.entities.assoc.SProductImageIdFkAssoc"
+    AssociationEnd="oracle.summit.model.entities.assoc.SProductImageIdFkAssoc.ImageEO"
+    SourceUsage="oracle.summit.model.views.InventoryVO.ProductEO"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="oracle.summit.model.entities.ProductEO.ImageId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="oracle.summit.model.entities.ImageEO.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="ProductId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ProductId"
+    EntityUsage="InventoryEO"
+    AliasName="PRODUCT_ID"/>
+  <ViewAttribute
+    Name="WarehouseId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="WarehouseId"
+    EntityUsage="InventoryEO"
+    AliasName="WAREHOUSE_ID"/>
+  <ViewAttribute
+    Name="AmountInStock"
+    PrecisionRule="true"
+    EntityAttrName="AmountInStock"
+    EntityUsage="InventoryEO"
+    AliasName="AMOUNT_IN_STOCK">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.InventoryVO.AmountInStock_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReorderPoint"
+    PrecisionRule="true"
+    EntityAttrName="ReorderPoint"
+    EntityUsage="InventoryEO"
+    AliasName="REORDER_POINT">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.InventoryVO.ReorderPoint_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MaxInStock"
+    PrecisionRule="true"
+    EntityAttrName="MaxInStock"
+    EntityUsage="InventoryEO"
+    AliasName="MAX_IN_STOCK">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.InventoryVO.MaxInStock_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OutOfStockExplanation"
+    PrecisionRule="true"
+    EntityAttrName="OutOfStockExplanation"
+    EntityUsage="InventoryEO"
+    AliasName="OUT_OF_STOCK_EXPLANATION">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.InventoryVO.OutOfStockExplanation_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RestockDate"
+    PrecisionRule="true"
+    EntityAttrName="RestockDate"
+    EntityUsage="InventoryEO"
+    AliasName="RESTOCK_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.InventoryVO.RestockDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="City"
+    PrecisionRule="true"
+    EntityAttrName="City"
+    EntityUsage="WarehouseEO"
+    AliasName="CITY"/>
+  <ViewAttribute
+    Name="Id"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="WarehouseEO"
+    AliasName="ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Filename"
+    PrecisionRule="true"
+    EntityAttrName="Filename"
+    EntityUsage="ImageEO"
+    AliasName="FILENAME"/>
+  <ViewAttribute
+    Name="Id1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="ImageEO"
+    AliasName="ID1"/>
+  <ViewAttribute
+    Name="Name"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Name"
+    EntityUsage="ProductEO"
+    AliasName="NAME"/>
+  <ViewAttribute
+    Name="Id2"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="ProductEO"
+    AliasName="ID2"/>
+  <ViewAttribute
+    Name="ShortDesc"
+    PrecisionRule="true"
+    EntityAttrName="ShortDesc"
+    EntityUsage="ProductEO"
+    AliasName="SHORT_DESC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.InventoryVO.ShortDesc_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="ProductId"/>
+    <Item Value="WarehouseId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="oracle.summit.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

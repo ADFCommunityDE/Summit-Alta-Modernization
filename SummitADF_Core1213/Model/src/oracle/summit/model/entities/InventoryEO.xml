@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity xmlns="http://xmlns.oracle.com/bc4j" Name="InventoryEO"
+        DBObjectType="table" DBObjectName="S_INVENTORY" AliasName="InventoryEO"
+        BindingStyle="OracleName"
+        RowClass="oracle.summit.base.SummitEntityImpl"
+   Version="12.1.2.64.15"
+   DefClass="oracle.summit.base.SummitEntityDefImpl">
+   <Attribute Name="ProductId" IsNotNull="true" Precision="7" Scale="0"
+              ColumnName="PRODUCT_ID" SQLType="NUMERIC"
+              Type="oracle.jbo.domain.Number" ColumnType="NUMBER"
+              TableName="S_INVENTORY" PrimaryKey="true">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22"/>
+      </DesignTime>
+   </Attribute>
+   <Attribute Name="WarehouseId" IsNotNull="true" Precision="7" Scale="0"
+              ColumnName="WAREHOUSE_ID" SQLType="NUMERIC"
+              Type="oracle.jbo.domain.Number" ColumnType="NUMBER"
+              TableName="S_INVENTORY" PrimaryKey="true">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22"/>
+      </DesignTime>
+   </Attribute>
+   <Attribute Name="AmountInStock" Precision="9" Scale="0"
+              ColumnName="AMOUNT_IN_STOCK" SQLType="NUMERIC"
+              Type="oracle.jbo.domain.Number" ColumnType="NUMBER"
+              TableName="S_INVENTORY">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22"/>
+      </DesignTime>
+   </Attribute>
+   <Attribute Name="ReorderPoint" Precision="9" Scale="0"
+              ColumnName="REORDER_POINT" SQLType="NUMERIC"
+              Type="oracle.jbo.domain.Number" ColumnType="NUMBER"
+              TableName="S_INVENTORY">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22"/>
+      </DesignTime>
+   </Attribute>
+   <Attribute Name="MaxInStock" Precision="9" Scale="0"
+              ColumnName="MAX_IN_STOCK" SQLType="NUMERIC"
+              Type="oracle.jbo.domain.Number" ColumnType="NUMBER"
+              TableName="S_INVENTORY">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="22"/>
+      </DesignTime>
+   </Attribute>
+   <Attribute Name="OutOfStockExplanation" Precision="255"
+              ColumnName="OUT_OF_STOCK_EXPLANATION" SQLType="VARCHAR"
+              Type="java.lang.String" ColumnType="VARCHAR2"
+              TableName="S_INVENTORY">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="255"/>
+      </DesignTime>
+   </Attribute>
+   <Attribute Name="RestockDate" ColumnName="RESTOCK_DATE" SQLType="TIMESTAMP"
+              Type="java.sql.Date" ColumnType="DATE" TableName="S_INVENTORY">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7"/>
+      </DesignTime>
+   </Attribute>
+   <AccessorAttribute Name="ProductEO"
+                      Association="oracle.summit.model.entities.assoc.SInventoryProductIdFkAssoc"
+                      AssociationEnd="oracle.summit.model.entities.assoc.SInventoryProductIdFkAssoc.ProductEO"
+                      AssociationOtherEnd="oracle.summit.model.entities.assoc.SInventoryProductIdFkAssoc.InventoryEO"
+                      Type="oracle.summit.base.SummitEntityImpl"
+                      IsUpdateable="true"/>
+   <AccessorAttribute Name="WarehouseEO"
+                      Association="oracle.summit.model.entities.assoc.SInventoryWarehouseIdFkAssoc"
+                      AssociationEnd="oracle.summit.model.entities.assoc.SInventoryWarehouseIdFkAssoc.WarehouseEO"
+                      AssociationOtherEnd="oracle.summit.model.entities.assoc.SInventoryWarehouseIdFkAssoc.InventoryEO"
+                      Type="oracle.summit.base.SummitEntityImpl"
+                      IsUpdateable="true"/>
+   <Key Name="SInventoryProdidWaridPk" PrimaryKey="true">
+      <DesignTime>
+         <Attr Name="_DBObjectName" Value="S_INVENTORY_PRODID_WARID_PK"/>
+      </DesignTime>
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.summit.model.entities.InventoryEO.ProductId"/>
+         <Item Value="oracle.summit.model.entities.InventoryEO.WarehouseId"/>
+      </AttrArray>
+   </Key>
+   <Key Name="SInventoryProductIdNn">
+      <DesignTime>
+         <Attr Name="_DBObjectName" Value="S_INVENTORY_PRODUCT_ID_NN"/>
+         <Attr Name="_checkCondition" Value="PRODUCT_ID IS NOT NULL"/>
+         <Attr Name="_isCheck" Value="true"/>
+      </DesignTime>
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.summit.model.entities.InventoryEO.ProductId"/>
+      </AttrArray>
+   </Key>
+   <Key Name="SInventoryWarehouseIdNn">
+      <DesignTime>
+         <Attr Name="_DBObjectName" Value="S_INVENTORY_WAREHOUSE_ID_NN"/>
+         <Attr Name="_checkCondition" Value="WAREHOUSE_ID IS NOT NULL"/>
+         <Attr Name="_isCheck" Value="true"/>
+      </DesignTime>
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.summit.model.entities.InventoryEO.WarehouseId"/>
+      </AttrArray>
+   </Key>
+   <Key Name="SInventoryProductIdFk">
+      <DesignTime>
+         <Attr Name="_referencedKey" Value="S_PRODUCT_ID_PK"/>
+         <Attr Name="_isForeign" Value="true"/>
+         <Attr Name="_DBObjectName" Value="S_INVENTORY_PRODUCT_ID_FK"/>
+      </DesignTime>
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.summit.model.entities.InventoryEO.ProductId"/>
+      </AttrArray>
+   </Key>
+   <Key Name="SInventoryWarehouseIdFk">
+      <DesignTime>
+         <Attr Name="_referencedKey" Value="S_WAREHOUSE_ID_PK"/>
+         <Attr Name="_isForeign" Value="true"/>
+         <Attr Name="_DBObjectName" Value="S_INVENTORY_WAREHOUSE_ID_FK"/>
+      </DesignTime>
+      <AttrArray Name="Attributes">
+         <Item Value="oracle.summit.model.entities.InventoryEO.WarehouseId"/>
+      </AttrArray>
+   </Key>
+</Entity>

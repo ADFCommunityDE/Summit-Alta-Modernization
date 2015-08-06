@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ItemVO"
+  Version="12.1.2.66.11"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="oracle.summit.model.views.ItemVORowImpl"
+  ComponentClass="oracle.summit.base.SummitViewObjectImpl"
+  RowInterface="oracle.summit.model.views.common.ItemVORow"
+  ClientRowProxyName="oracle.summit.model.views.client.ItemVORowClient"
+  PageIterMode="Full"
+  InheritPersonalization="merge"
+  SelectList="ItemEO.ORD_ID, 
+       ItemEO.ITEM_ID, 
+       ItemEO.PRODUCT_ID, 
+       ItemEO.PRICE, 
+       ItemEO.QUANTITY, 
+       ItemEO.QUANTITY_SHIPPED, 
+       ProductEO.NAME, 
+       ProductEO.ID, 
+       ProductEO.SHORT_DESC, 
+       ProductEO.SUGGESTED_WHLSL_PRICE"
+  FromList="S_ITEM ItemEO, S_PRODUCT ProductEO"
+  Where="ItemEO.PRODUCT_ID = ProductEO.ID">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="ProductVO1"
+    ViewObjectName="oracle.summit.model.views.ProductVO"
+    OrderBy="ProductEO.NAME"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ProductId"
+    ListVOName="ProductVO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ProductId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Name"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+      <Item Value="Name"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Id"/>
+      <Item Value="Name"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="hide"/>
+  </ListBinding>
+  <EntityUsage
+    Name="ItemEO"
+    Entity="oracle.summit.model.entities.ItemEO"/>
+  <EntityUsage
+    Name="ProductEO"
+    Entity="oracle.summit.model.entities.ProductEO"
+    Association="oracle.summit.model.entities.assoc.SItemProductIdFkAssoc"
+    AssociationEnd="oracle.summit.model.entities.assoc.SItemProductIdFkAssoc.ProductEO"
+    SourceUsage="oracle.summit.model.views.ItemVO.ItemEO"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="oracle.summit.model.entities.ItemEO.ProductId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="oracle.summit.model.entities.ProductEO.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="OrdId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="OrdId"
+    EntityUsage="ItemEO"
+    AliasName="ORD_ID"
+    />
+  <ViewAttribute
+    Name="ItemId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ItemId"
+    EntityUsage="ItemEO"
+    AliasName="ITEM_ID"
+    IsUpdateable="false"
+    >
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.ItemVO.ItemId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProductId"
+    LOVName="LOV_ProductId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ProductId"
+    EntityUsage="ItemEO"
+    AliasName="PRODUCT_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.ItemVO.ProductId_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+<FMT_FORMATTER
+          ResId="oracle.summit.model.views.ItemVO.ProductId_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="oracle.summit.model.views.ItemVO.ProductId_FMT_FORMAT"/>
+        
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Price"
+    PrecisionRule="true"
+    EntityAttrName="Price"
+    EntityUsage="ItemEO"
+    AliasName="PRICE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.ItemVO.Price_LABEL"/>
+        <FMT_FORMATTER
+          ResId="oracle.summit.model.views.ItemVO.Price_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Quantity"
+    PrecisionRule="true"
+    EntityAttrName="Quantity"
+    EntityUsage="ItemEO"
+    AliasName="QUANTITY"
+    DefaultValue="1">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.ItemVO.Quantity_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="QuantityShipped"
+    PrecisionRule="true"
+    EntityAttrName="QuantityShipped"
+    EntityUsage="ItemEO"
+    AliasName="QUANTITY_SHIPPED">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.ItemVO.QuantityShipped_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Name"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Name"
+    EntityUsage="ProductEO"
+    AliasName="NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.ItemVO.Name_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Id"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="ProductEO"
+    AliasName="ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ItemTotal"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[(Quantity != null ? Quantity : 0) * (Price != null ? Price : 0)]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="oracle.summit.model.views.ItemVO.ItemTotal_FMT_FORMATTER"/>
+        <LABEL
+          ResId="oracle.summit.model.views.ItemVO.ItemTotal_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ImageNameFromDB"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    DefaultValue="No image">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[(ProductId != null ? adf.object.readImageNameFromDB(new oracle.jbo.domain.Number(ProductId)) : null)]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="ProductId"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ShortDesc"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="ShortDesc"
+    EntityUsage="ProductEO"
+    AliasName="SHORT_DESC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.ItemVO.ShortDesc_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SuggestedWhlslPrice"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="SuggestedWhlslPrice"
+    EntityUsage="ProductEO"
+    AliasName="SUGGESTED_WHLSL_PRICE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.ItemVO.SuggestedWhlslPrice_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="OrdId"/>
+    <Item Value="ItemId"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="InventoryVO"
+    ViewLink="oracle.summit.model.views.links.InventoryForProductItemLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ClientRowInterface
+    Name="__rowClientInterface">
+    <Method
+      Name="deleteOrderItem"
+      MethodName="deleteOrderItem">
+      <Return
+        Type="void"
+        Name="_return_type_"/>
+    </Method>
+  </ClientRowInterface>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="oracle.summit.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

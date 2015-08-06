@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.64.44" id="InventoryControlPageDef"
+                Package="oracle.summit.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="LowStock" RangeSize="25" DataControl="BackOfficeAppModuleDataControl"
+              id="LowStockIterator"/>
+  </executables>
+  <bindings>
+    <tree id="Inventory" IterBinding="LowStockIterator">
+      <nodeDefinition DefName="oracle.summit.model.views.LowStockVO" Name="LowStockVO10">
+        <AttrNames>
+          <Item Value="ProductId"/>
+          <Item Value="AmountInStock"/>
+          <Item Value="City"/>
+          <Item Value="Filename"/>
+          <Item Value="Id1"/>
+          <Item Value="Id2"/>
+          <Item Value="MaxInStock"/>
+          <Item Value="Name"/>
+          <Item Value="OutOfStockExplanation"/>
+          <Item Value="ReorderPoint"/>
+          <Item Value="RestockDate"/>
+          <Item Value="ShortDesc"/>
+          <Item Value="WarehouseId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="BackOfficeAppModule"
+  Version="12.1.2.66.68"
+  ComponentClass="oracle.summit.model.services.BackOfficeAppModuleImpl"
+  ClearCacheOnRollback="true">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewUsage
+    Name="Customers"
+    ViewObjectName="oracle.summit.model.views.CustomerVO"/>
+  <ViewUsage
+    Name="OrdersForCustomer"
+    ViewObjectName="oracle.summit.model.views.OrdVO"/>
+  <ViewUsage
+    Name="ItemsForOrder"
+    ViewObjectName="oracle.summit.model.views.ItemVO"/>
+  <ViewUsage
+    Name="SalesPeople"
+    ViewObjectName="oracle.summit.model.views.EmpVO">
+    <ViewCriteriaUsage
+      Name="FilterByTitleIdVC"
+      FullName="oracle.summit.model.views.EmpVO.FilterByTitleIdVC"/>
+    <ParameterMap>
+      <PIMap Variable="TitleIdBind">
+        <TransientExpression><![CDATA[2]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
+  <ViewUsage
+    Name="InventoryForOrderItem"
+    ViewObjectName="oracle.summit.model.views.InventoryVO"/>
+  <ViewUsage
+    Name="Countries"
+    ViewObjectName="oracle.summit.model.views.CountryVO"/>
+  <ViewUsage
+    Name="Inventory"
+    ViewObjectName="oracle.summit.model.views.InventoryVO"/>
+  <ViewUsage
+    Name="PaymentOption"
+    ViewObjectName="oracle.summit.model.views.PaymentOptionVO"/>
+  <ViewUsage
+    Name="LowStock"
+    ViewObjectName="oracle.summit.model.views.LowStockVO"/>
+  <ViewLinkUsage
+    Name="OrdCustomerIdFkLink1"
+    ViewLinkObjectName="oracle.summit.model.views.links.OrdCustomerIdFkLink"
+    SrcViewUsageName="oracle.summit.model.services.BackOfficeAppModule.Customers"
+    DstViewUsageName="oracle.summit.model.services.BackOfficeAppModule.OrdersForCustomer"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="ItemOrdIdFkLink1"
+    ViewLinkObjectName="oracle.summit.model.views.links.ItemOrdIdFkLink"
+    SrcViewUsageName="oracle.summit.model.services.BackOfficeAppModule.OrdersForCustomer"
+    DstViewUsageName="oracle.summit.model.services.BackOfficeAppModule.ItemsForOrder"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="InventoryForProductItemLink1"
+    ViewLinkObjectName="oracle.summit.model.views.links.InventoryForProductItemLink"
+    SrcViewUsageName="oracle.summit.model.services.BackOfficeAppModule.ItemsForOrder"
+    DstViewUsageName="oracle.summit.model.services.BackOfficeAppModule.InventoryForOrderItem"
+    Reversed="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="oracle.summit.model.ModelBundle"/>
+  </ResourceBundle>
+</AppModule>

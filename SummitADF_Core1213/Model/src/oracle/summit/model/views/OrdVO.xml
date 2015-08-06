@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OrdVO"
+  Version="12.1.3.9.1"
+  SelectList="OrdEO.ID, 
+       OrdEO.CUSTOMER_ID, 
+       OrdEO.DATE_ORDERED, 
+       OrdEO.DATE_SHIPPED, 
+       OrdEO.SALES_REP_ID, 
+       OrdEO.TOTAL, 
+       OrdEO.PAYMENT_TYPE_ID, 
+       OrdEO.ORDER_FILLED, 
+       EmpEO.LAST_NAME, 
+       EmpEO.ID AS ID1, 
+       CustomerEO.NAME, 
+       CustomerEO.ID AS ID2, 
+       OrdEO.PAYMENT_OPTION_ID"
+  FromList="S_ORD OrdEO, S_EMP EmpEO, S_CUSTOMER CustomerEO"
+  Where="(OrdEO.SALES_REP_ID = EmpEO.ID) AND (OrdEO.CUSTOMER_ID = CustomerEO.ID(+))"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="oracle.summit.model.views.OrdVORowImpl"
+  ComponentClass="oracle.summit.base.SummitViewObjectImpl"
+  PageIterMode="Full"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="YesNoVO1"
+    ViewObjectName="oracle.summit.model.views.readonly.YesNoVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PaymentTypeVO1"
+    ViewObjectName="oracle.summit.model.views.PaymentTypeVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SalesRepsVO"
+    ViewObjectName="oracle.summit.model.views.EmpVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="FilterByTitleIdVC"
+      FullName="oracle.summit.model.views.EmpVO.FilterByTitleIdVC"/>
+    <ParameterMap>
+      <PIMap Variable="TitleIdBind">
+        <TransientExpression><![CDATA[2]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_OrderFilled"
+    ListVOName="YesNoVO1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="OrderFilled"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DataValue"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="StringValue"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PaymentTypeId"
+    ListVOName="PaymentTypeVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PaymentTypeId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PaymentType"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_SalesRepId"
+    ListVOName="SalesRepsVO"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    MRUCount="3">
+    <AttrArray Name="AttrNames">
+      <Item Value="SalesRepId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FirstName"/>
+      <Item Value="LastName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="hide"/>
+  </ListBinding>
+  <EntityUsage
+    Name="OrdEO"
+    Entity="oracle.summit.model.entities.OrdEO"/>
+  <EntityUsage
+    Name="EmpEO"
+    Entity="oracle.summit.model.entities.EmpEO"
+    Association="oracle.summit.model.entities.assoc.SOrdSalesRepIdFkAssoc"
+    AssociationEnd="oracle.summit.model.entities.assoc.SOrdSalesRepIdFkAssoc.EmpEO"
+    SourceUsage="oracle.summit.model.views.OrdVO.OrdEO"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="oracle.summit.model.entities.OrdEO.SalesRepId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="oracle.summit.model.entities.EmpEO.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="CustomerEO"
+    Entity="oracle.summit.model.entities.CustomerEO"
+    Association="oracle.summit.model.entities.assoc.SOrdCustomerIdFkAssoc"
+    AssociationEnd="oracle.summit.model.entities.assoc.SOrdCustomerIdFkAssoc.CustomerEO"
+    SourceUsage="oracle.summit.model.views.OrdVO.OrdEO"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="LEFT OUTER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="oracle.summit.model.entities.OrdEO.CustomerId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="oracle.summit.model.entities.CustomerEO.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="OrdEO"
+    AliasName="ID"
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.OrdVO.Id_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CustomerId"
+    EntityUsage="OrdEO"
+    AliasName="CUSTOMER_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.OrdVO.CustomerId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DateOrdered"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="DateOrdered"
+    EntityUsage="OrdEO"
+    AliasName="DATE_ORDERED">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="oracle.summit.model.views.OrdVO.DateOrdered_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="oracle.summit.model.views.OrdVO.DateOrdered_FMT_FORMAT"/>
+        <LABEL
+          ResId="oracle.summit.model.views.OrdVO.DateOrdered_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DateShipped"
+    PrecisionRule="true"
+    EntityAttrName="DateShipped"
+    EntityUsage="OrdEO"
+    AliasName="DATE_SHIPPED">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="oracle.summit.model.views.OrdVO.DateShipped_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="oracle.summit.model.views.OrdVO.DateShipped_FMT_FORMAT"/>
+        <LABEL
+          ResId="oracle.summit.model.views.OrdVO.DateShipped_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SalesRepId"
+    LOVName="LOV_SalesRepId"
+    PrecisionRule="true"
+    EntityAttrName="SalesRepId"
+    EntityUsage="OrdEO"
+    AliasName="SALES_REP_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.CustomerVO.SalesRepId_LABEL"/>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Total"
+    PrecisionRule="true"
+    EntityAttrName="Total"
+    EntityUsage="OrdEO"
+    AliasName="TOTAL">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.OrdVO.Total_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PaymentTypeId"
+    LOVName="LOV_PaymentTypeId"
+    PrecisionRule="true"
+    EntityAttrName="PaymentTypeId"
+    EntityUsage="OrdEO"
+    AliasName="PAYMENT_TYPE_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.OrdVO.PaymentTypeId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrderFilled"
+    LOVName="LOV_OrderFilled"
+    PrecisionRule="true"
+    EntityAttrName="OrderFilled"
+    EntityUsage="OrdEO"
+    AliasName="ORDER_FILLED">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.OrdVO.OrderFilled_LABEL"/>
+        <CONTROLTYPE
+          Value="radio"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastName"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastName"
+    EntityUsage="EmpEO"
+    AliasName="LAST_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.CustomerVO.LastName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Id1"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="EmpEO"
+    AliasName="ID1">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Name"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Name"
+    EntityUsage="CustomerEO"
+    AliasName="NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.OrdVO.Name_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Id2"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="CustomerEO"
+    AliasName="ID2">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TimeToShip"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.calculateTimeToShip(DateOrdered, DateShipped)]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PaymentOptionId"
+    PrecisionRule="true"
+    EntityAttrName="PaymentOptionId"
+    EntityUsage="OrdEO"
+    AliasName="PAYMENT_OPTION_ID"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Id"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="ItemVO"
+    ViewLink="oracle.summit.model.views.links.ItemOrdIdFkLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="oracle.summit.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

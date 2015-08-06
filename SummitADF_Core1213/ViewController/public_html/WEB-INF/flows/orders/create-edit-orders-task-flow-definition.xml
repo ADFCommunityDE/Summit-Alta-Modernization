@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="create-edit-orders-task-flow-definition">
+    <default-activity id="__1">Orders</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <view id="Orders">
+      <page>/orders/Orders.jsff</page>
+    </view>
+    <task-flow-return id="exit">
+      <outcome id="__2">
+        <name>exit</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__3">
+      <from-activity-id id="__4">Orders</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome id="__7">exit</from-outcome>
+        <to-activity-id id="__6">exit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

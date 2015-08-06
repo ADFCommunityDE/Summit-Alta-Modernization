@@ -1,0 +1,992 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<table xmlns="http://xmlns.oracle.com/jdeveloper/1211/offlinedb">
+  <name>S_ITEM</name>
+  <columns>
+    <column>
+      <name>ORD_ID</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>precision</key>
+            <value class="java.lang.String">7</value>
+          </entry>
+          <entry>
+            <key>scale</key>
+            <value class="java.lang.Long">0</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <providerClass>oracle.javatools.db.ora.OracleDatabaseImpl</providerClass>
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+        <properties>
+          <entry>
+            <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+            <value class="oracle.javatools.db.ReferenceID">
+              <parent class="oracle.javatools.db.ReferenceID">
+                <name>ORD_ID</name>
+                <parent class="oracle.javatools.db.ReferenceID">
+                  <name>S_ITEM</name>
+                  <identifier class="java.math.BigDecimal">52732</identifier>
+                  <schemaName>SUMMIT</schemaName>
+                  <type>TABLE</type>
+                </parent>
+                <type>COLUMN</type>
+              </parent>
+              <type>DataTypeUsage</type>
+            </value>
+          </entry>
+        </properties>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>ORD_ID</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>S_ITEM</name>
+              <identifier class="java.math.BigDecimal">52732</identifier>
+              <schemaName>SUMMIT</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>ITEM_ID</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>precision</key>
+            <value class="java.lang.String">7</value>
+          </entry>
+          <entry>
+            <key>scale</key>
+            <value class="java.lang.Long">0</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <providerClass>oracle.javatools.db.ora.OracleDatabaseImpl</providerClass>
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+        <properties>
+          <entry>
+            <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+            <value class="oracle.javatools.db.ReferenceID">
+              <parent class="oracle.javatools.db.ReferenceID">
+                <name>ITEM_ID</name>
+                <parent class="oracle.javatools.db.ReferenceID">
+                  <name>S_ITEM</name>
+                  <identifier class="java.math.BigDecimal">52732</identifier>
+                  <schemaName>SUMMIT</schemaName>
+                  <type>TABLE</type>
+                </parent>
+                <type>COLUMN</type>
+              </parent>
+              <type>DataTypeUsage</type>
+            </value>
+          </entry>
+        </properties>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>ITEM_ID</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>S_ITEM</name>
+              <identifier class="java.math.BigDecimal">52732</identifier>
+              <schemaName>SUMMIT</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>PRODUCT_ID</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>precision</key>
+            <value class="java.lang.String">7</value>
+          </entry>
+          <entry>
+            <key>scale</key>
+            <value class="java.lang.Long">0</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <providerClass>oracle.javatools.db.ora.OracleDatabaseImpl</providerClass>
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+        <properties>
+          <entry>
+            <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+            <value class="oracle.javatools.db.ReferenceID">
+              <parent class="oracle.javatools.db.ReferenceID">
+                <name>PRODUCT_ID</name>
+                <parent class="oracle.javatools.db.ReferenceID">
+                  <name>S_ITEM</name>
+                  <identifier class="java.math.BigDecimal">52732</identifier>
+                  <schemaName>SUMMIT</schemaName>
+                  <type>TABLE</type>
+                </parent>
+                <type>COLUMN</type>
+              </parent>
+              <type>DataTypeUsage</type>
+            </value>
+          </entry>
+        </properties>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>PRODUCT_ID</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>S_ITEM</name>
+              <identifier class="java.math.BigDecimal">52732</identifier>
+              <schemaName>SUMMIT</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>PRICE</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>precision</key>
+            <value class="java.lang.String">11</value>
+          </entry>
+          <entry>
+            <key>scale</key>
+            <value class="java.lang.Long">2</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <providerClass>oracle.javatools.db.ora.OracleDatabaseImpl</providerClass>
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+        <properties>
+          <entry>
+            <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+            <value class="oracle.javatools.db.ReferenceID">
+              <parent class="oracle.javatools.db.ReferenceID">
+                <name>PRICE</name>
+                <parent class="oracle.javatools.db.ReferenceID">
+                  <name>S_ITEM</name>
+                  <identifier class="java.math.BigDecimal">52732</identifier>
+                  <schemaName>SUMMIT</schemaName>
+                  <type>TABLE</type>
+                </parent>
+                <type>COLUMN</type>
+              </parent>
+              <type>DataTypeUsage</type>
+            </value>
+          </entry>
+        </properties>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>PRICE</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>S_ITEM</name>
+              <identifier class="java.math.BigDecimal">52732</identifier>
+              <schemaName>SUMMIT</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>QUANTITY</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>precision</key>
+            <value class="java.lang.String">9</value>
+          </entry>
+          <entry>
+            <key>scale</key>
+            <value class="java.lang.Long">0</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <providerClass>oracle.javatools.db.ora.OracleDatabaseImpl</providerClass>
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+        <properties>
+          <entry>
+            <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+            <value class="oracle.javatools.db.ReferenceID">
+              <parent class="oracle.javatools.db.ReferenceID">
+                <name>QUANTITY</name>
+                <parent class="oracle.javatools.db.ReferenceID">
+                  <name>S_ITEM</name>
+                  <identifier class="java.math.BigDecimal">52732</identifier>
+                  <schemaName>SUMMIT</schemaName>
+                  <type>TABLE</type>
+                </parent>
+                <type>COLUMN</type>
+              </parent>
+              <type>DataTypeUsage</type>
+            </value>
+          </entry>
+        </properties>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>QUANTITY</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>S_ITEM</name>
+              <identifier class="java.math.BigDecimal">52732</identifier>
+              <schemaName>SUMMIT</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>QUANTITY_SHIPPED</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>precision</key>
+            <value class="java.lang.String">9</value>
+          </entry>
+          <entry>
+            <key>scale</key>
+            <value class="java.lang.Long">0</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <providerClass>oracle.javatools.db.ora.OracleDatabaseImpl</providerClass>
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+        <properties>
+          <entry>
+            <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+            <value class="oracle.javatools.db.ReferenceID">
+              <parent class="oracle.javatools.db.ReferenceID">
+                <name>QUANTITY_SHIPPED</name>
+                <parent class="oracle.javatools.db.ReferenceID">
+                  <name>S_ITEM</name>
+                  <identifier class="java.math.BigDecimal">52732</identifier>
+                  <schemaName>SUMMIT</schemaName>
+                  <type>TABLE</type>
+                </parent>
+                <type>COLUMN</type>
+              </parent>
+              <type>DataTypeUsage</type>
+            </value>
+          </entry>
+        </properties>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>QUANTITY_SHIPPED</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>S_ITEM</name>
+              <identifier class="java.math.BigDecimal">52732</identifier>
+              <schemaName>SUMMIT</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+  </columns>
+  <constraints>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>S_ITEM_ITEM_ID_NN</name>
+      <checkConditionFragment class="oracle.javatools.db.sql.WhereObject">
+        <arguments>
+          <argument class="oracle.javatools.db.sql.Comparison">
+            <comparator>44</comparator>
+            <leftExpression class="oracle.javatools.db.sql.ColumnUsage">
+              <objectID class="oracle.javatools.db.NameBasedID">
+                <name>ITEM_ID</name>
+                <parent class="oracle.javatools.db.NameBasedID">
+                  <name>S_ITEM</name>
+                  <schemaName>SUMMIT</schemaName>
+                  <type>TABLE</type>
+                </parent>
+                <type>COLUMN</type>
+              </objectID>
+              <outerJoin>false</outerJoin>
+              <properties>
+                <entry>
+                  <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+                  <value class="oracle.javatools.db.ReferenceID">
+                    <parent class="oracle.javatools.db.ReferenceID">
+                      <parent class="oracle.javatools.db.ReferenceID">
+                        <parent class="oracle.javatools.db.ReferenceID">
+                          <name>S_ITEM_ITEM_ID_NN</name>
+                          <parent class="oracle.javatools.db.ReferenceID">
+                            <name>S_ITEM</name>
+                            <identifier class="java.math.BigDecimal">52732</identifier>
+                            <schemaName>SUMMIT</schemaName>
+                            <type>TABLE</type>
+                          </parent>
+                          <subType>CheckConstraint</subType>
+                          <type>CONSTRAINT</type>
+                        </parent>
+                        <type>WHERE</type>
+                      </parent>
+                      <type>SQLFragment</type>
+                    </parent>
+                    <type>SQLFragment</type>
+                  </value>
+                </entry>
+              </properties>
+              <qualified>false</qualified>
+            </leftExpression>
+            <priorOnLeft>false</priorOnLeft>
+            <priorOnRight>false</priorOnRight>
+            <properties>
+              <entry>
+                <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+                <value class="oracle.javatools.db.ReferenceID">
+                  <parent class="oracle.javatools.db.ReferenceID">
+                    <parent class="oracle.javatools.db.ReferenceID">
+                      <name>S_ITEM_ITEM_ID_NN</name>
+                      <parent class="oracle.javatools.db.ReferenceID">
+                        <name>S_ITEM</name>
+                        <identifier class="java.math.BigDecimal">52732</identifier>
+                        <schemaName>SUMMIT</schemaName>
+                        <type>TABLE</type>
+                      </parent>
+                      <subType>CheckConstraint</subType>
+                      <type>CONSTRAINT</type>
+                    </parent>
+                    <type>WHERE</type>
+                  </parent>
+                  <type>SQLFragment</type>
+                </value>
+              </entry>
+            </properties>
+          </argument>
+        </arguments>
+        <operator>372</operator>
+        <properties>
+          <entry>
+            <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+            <value class="oracle.javatools.db.ReferenceID">
+              <parent class="oracle.javatools.db.ReferenceID">
+                <name>S_ITEM_ITEM_ID_NN</name>
+                <parent class="oracle.javatools.db.ReferenceID">
+                  <name>S_ITEM</name>
+                  <identifier class="java.math.BigDecimal">52732</identifier>
+                  <schemaName>SUMMIT</schemaName>
+                  <type>TABLE</type>
+                </parent>
+                <subType>CheckConstraint</subType>
+                <type>CONSTRAINT</type>
+              </parent>
+              <type>WHERE</type>
+            </value>
+          </entry>
+        </properties>
+      </checkConditionFragment>
+      <enabled>true</enabled>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>S_ITEM_ITEM_ID_NN</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>S_ITEM</name>
+              <identifier class="java.math.BigDecimal">52732</identifier>
+              <schemaName>SUMMIT</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <subType>CheckConstraint</subType>
+            <type>CONSTRAINT</type>
+          </value>
+        </entry>
+      </properties>
+    </constraint>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>S_ITEM_ORD_ID_NN</name>
+      <checkConditionFragment class="oracle.javatools.db.sql.WhereObject">
+        <arguments>
+          <argument class="oracle.javatools.db.sql.Comparison">
+            <comparator>44</comparator>
+            <leftExpression class="oracle.javatools.db.sql.ColumnUsage">
+              <objectID class="oracle.javatools.db.NameBasedID">
+                <name>ORD_ID</name>
+                <parent class="oracle.javatools.db.NameBasedID">
+                  <name>S_ITEM</name>
+                  <schemaName>SUMMIT</schemaName>
+                  <type>TABLE</type>
+                </parent>
+                <type>COLUMN</type>
+              </objectID>
+              <outerJoin>false</outerJoin>
+              <properties>
+                <entry>
+                  <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+                  <value class="oracle.javatools.db.ReferenceID">
+                    <parent class="oracle.javatools.db.ReferenceID">
+                      <parent class="oracle.javatools.db.ReferenceID">
+                        <parent class="oracle.javatools.db.ReferenceID">
+                          <name>S_ITEM_ORD_ID_NN</name>
+                          <parent class="oracle.javatools.db.ReferenceID">
+                            <name>S_ITEM</name>
+                            <identifier class="java.math.BigDecimal">52732</identifier>
+                            <schemaName>SUMMIT</schemaName>
+                            <type>TABLE</type>
+                          </parent>
+                          <subType>CheckConstraint</subType>
+                          <type>CONSTRAINT</type>
+                        </parent>
+                        <type>WHERE</type>
+                      </parent>
+                      <type>SQLFragment</type>
+                    </parent>
+                    <type>SQLFragment</type>
+                  </value>
+                </entry>
+              </properties>
+              <qualified>false</qualified>
+            </leftExpression>
+            <priorOnLeft>false</priorOnLeft>
+            <priorOnRight>false</priorOnRight>
+            <properties>
+              <entry>
+                <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+                <value class="oracle.javatools.db.ReferenceID">
+                  <parent class="oracle.javatools.db.ReferenceID">
+                    <parent class="oracle.javatools.db.ReferenceID">
+                      <name>S_ITEM_ORD_ID_NN</name>
+                      <parent class="oracle.javatools.db.ReferenceID">
+                        <name>S_ITEM</name>
+                        <identifier class="java.math.BigDecimal">52732</identifier>
+                        <schemaName>SUMMIT</schemaName>
+                        <type>TABLE</type>
+                      </parent>
+                      <subType>CheckConstraint</subType>
+                      <type>CONSTRAINT</type>
+                    </parent>
+                    <type>WHERE</type>
+                  </parent>
+                  <type>SQLFragment</type>
+                </value>
+              </entry>
+            </properties>
+          </argument>
+        </arguments>
+        <operator>372</operator>
+        <properties>
+          <entry>
+            <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+            <value class="oracle.javatools.db.ReferenceID">
+              <parent class="oracle.javatools.db.ReferenceID">
+                <name>S_ITEM_ORD_ID_NN</name>
+                <parent class="oracle.javatools.db.ReferenceID">
+                  <name>S_ITEM</name>
+                  <identifier class="java.math.BigDecimal">52732</identifier>
+                  <schemaName>SUMMIT</schemaName>
+                  <type>TABLE</type>
+                </parent>
+                <subType>CheckConstraint</subType>
+                <type>CONSTRAINT</type>
+              </parent>
+              <type>WHERE</type>
+            </value>
+          </entry>
+        </properties>
+      </checkConditionFragment>
+      <enabled>true</enabled>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>S_ITEM_ORD_ID_NN</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>S_ITEM</name>
+              <identifier class="java.math.BigDecimal">52732</identifier>
+              <schemaName>SUMMIT</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <subType>CheckConstraint</subType>
+            <type>CONSTRAINT</type>
+          </value>
+        </entry>
+      </properties>
+    </constraint>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>S_ITEM_PRODUCT_ID_NN</name>
+      <checkConditionFragment class="oracle.javatools.db.sql.WhereObject">
+        <arguments>
+          <argument class="oracle.javatools.db.sql.Comparison">
+            <comparator>44</comparator>
+            <leftExpression class="oracle.javatools.db.sql.ColumnUsage">
+              <objectID class="oracle.javatools.db.NameBasedID">
+                <name>PRODUCT_ID</name>
+                <parent class="oracle.javatools.db.NameBasedID">
+                  <name>S_ITEM</name>
+                  <schemaName>SUMMIT</schemaName>
+                  <type>TABLE</type>
+                </parent>
+                <type>COLUMN</type>
+              </objectID>
+              <outerJoin>false</outerJoin>
+              <properties>
+                <entry>
+                  <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+                  <value class="oracle.javatools.db.ReferenceID">
+                    <parent class="oracle.javatools.db.ReferenceID">
+                      <parent class="oracle.javatools.db.ReferenceID">
+                        <parent class="oracle.javatools.db.ReferenceID">
+                          <name>S_ITEM_PRODUCT_ID_NN</name>
+                          <parent class="oracle.javatools.db.ReferenceID">
+                            <name>S_ITEM</name>
+                            <identifier class="java.math.BigDecimal">52732</identifier>
+                            <schemaName>SUMMIT</schemaName>
+                            <type>TABLE</type>
+                          </parent>
+                          <subType>CheckConstraint</subType>
+                          <type>CONSTRAINT</type>
+                        </parent>
+                        <type>WHERE</type>
+                      </parent>
+                      <type>SQLFragment</type>
+                    </parent>
+                    <type>SQLFragment</type>
+                  </value>
+                </entry>
+              </properties>
+              <qualified>false</qualified>
+            </leftExpression>
+            <priorOnLeft>false</priorOnLeft>
+            <priorOnRight>false</priorOnRight>
+            <properties>
+              <entry>
+                <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+                <value class="oracle.javatools.db.ReferenceID">
+                  <parent class="oracle.javatools.db.ReferenceID">
+                    <parent class="oracle.javatools.db.ReferenceID">
+                      <name>S_ITEM_PRODUCT_ID_NN</name>
+                      <parent class="oracle.javatools.db.ReferenceID">
+                        <name>S_ITEM</name>
+                        <identifier class="java.math.BigDecimal">52732</identifier>
+                        <schemaName>SUMMIT</schemaName>
+                        <type>TABLE</type>
+                      </parent>
+                      <subType>CheckConstraint</subType>
+                      <type>CONSTRAINT</type>
+                    </parent>
+                    <type>WHERE</type>
+                  </parent>
+                  <type>SQLFragment</type>
+                </value>
+              </entry>
+            </properties>
+          </argument>
+        </arguments>
+        <operator>372</operator>
+        <properties>
+          <entry>
+            <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+            <value class="oracle.javatools.db.ReferenceID">
+              <parent class="oracle.javatools.db.ReferenceID">
+                <name>S_ITEM_PRODUCT_ID_NN</name>
+                <parent class="oracle.javatools.db.ReferenceID">
+                  <name>S_ITEM</name>
+                  <identifier class="java.math.BigDecimal">52732</identifier>
+                  <schemaName>SUMMIT</schemaName>
+                  <type>TABLE</type>
+                </parent>
+                <subType>CheckConstraint</subType>
+                <type>CONSTRAINT</type>
+              </parent>
+              <type>WHERE</type>
+            </value>
+          </entry>
+        </properties>
+      </checkConditionFragment>
+      <enabled>true</enabled>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>S_ITEM_PRODUCT_ID_NN</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>S_ITEM</name>
+              <identifier class="java.math.BigDecimal">52732</identifier>
+              <schemaName>SUMMIT</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <subType>CheckConstraint</subType>
+            <type>CONSTRAINT</type>
+          </value>
+        </entry>
+      </properties>
+    </constraint>
+    <constraint class="oracle.javatools.db.FKConstraint">
+      <name>S_ITEM_ORD_ID_FK</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>ORD_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>S_ITEM</name>
+            <schemaName>SUMMIT</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <onDeleteAction>RESTRICT</onDeleteAction>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>S_ITEM_ORD_ID_FK</name>
+            <childObjectNames>
+              <childObjectName>ORD_ID</childObjectName>
+            </childObjectNames>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>S_ITEM</name>
+              <identifier class="java.math.BigDecimal">52732</identifier>
+              <schemaName>SUMMIT</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <subType>FKConstraint</subType>
+            <type>CONSTRAINT</type>
+          </value>
+        </entry>
+      </properties>
+      <referenceID class="oracle.javatools.db.NameBasedID">
+        <name>S_ORD_ID_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>S_ORD</name>
+          <schemaName>SUMMIT</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <type>CONSTRAINT</type>
+      </referenceID>
+    </constraint>
+    <constraint class="oracle.javatools.db.FKConstraint">
+      <name>S_ITEM_PRODUCT_ID_FK</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>PRODUCT_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>S_ITEM</name>
+            <schemaName>SUMMIT</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <onDeleteAction>RESTRICT</onDeleteAction>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>S_ITEM_PRODUCT_ID_FK</name>
+            <childObjectNames>
+              <childObjectName>PRODUCT_ID</childObjectName>
+            </childObjectNames>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>S_ITEM</name>
+              <identifier class="java.math.BigDecimal">52732</identifier>
+              <schemaName>SUMMIT</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <subType>FKConstraint</subType>
+            <type>CONSTRAINT</type>
+          </value>
+        </entry>
+      </properties>
+      <referenceID class="oracle.javatools.db.NameBasedID">
+        <name>S_PRODUCT_ID_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>S_PRODUCT</name>
+          <schemaName>SUMMIT</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <type>CONSTRAINT</type>
+      </referenceID>
+    </constraint>
+    <constraint class="oracle.javatools.db.PKConstraint">
+      <name>S_ITEM_ORDID_ITEMID_PK</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>ORD_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>S_ITEM</name>
+            <schemaName>SUMMIT</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <type>COLUMN</type>
+        </columnID>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>ITEM_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>S_ITEM</name>
+            <schemaName>SUMMIT</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <indexID class="oracle.javatools.db.NameBasedID">
+        <name>S_ITEM_ORDID_ITEMID_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>S_ITEM</name>
+          <schemaName>SUMMIT</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>SUMMIT</schemaName>
+        <type>INDEX</type>
+      </indexID>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>S_ITEM_ORDID_ITEMID_PK</name>
+            <childObjectNames>
+              <childObjectName>ORD_ID</childObjectName>
+              <childObjectName>ITEM_ID</childObjectName>
+            </childObjectNames>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>S_ITEM</name>
+              <identifier class="java.math.BigDecimal">52732</identifier>
+              <schemaName>SUMMIT</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <subType>PKConstraint</subType>
+            <type>CONSTRAINT</type>
+          </value>
+        </entry>
+      </properties>
+    </constraint>
+    <constraint class="oracle.javatools.db.UniqueConstraint">
+      <name>S_ITEM_ORDID_PRODID_UK</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>ORD_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>S_ITEM</name>
+            <schemaName>SUMMIT</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <type>COLUMN</type>
+        </columnID>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>PRODUCT_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>S_ITEM</name>
+            <schemaName>SUMMIT</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <indexID class="oracle.javatools.db.NameBasedID">
+        <name>S_ITEM_ORDID_PRODID_UK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>S_ITEM</name>
+          <schemaName>SUMMIT</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>SUMMIT</schemaName>
+        <type>INDEX</type>
+      </indexID>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>S_ITEM_ORDID_PRODID_UK</name>
+            <childObjectNames>
+              <childObjectName>ORD_ID</childObjectName>
+              <childObjectName>PRODUCT_ID</childObjectName>
+            </childObjectNames>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>S_ITEM</name>
+              <identifier class="java.math.BigDecimal">52732</identifier>
+              <schemaName>SUMMIT</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <subType>UniqueConstraint</subType>
+            <type>CONSTRAINT</type>
+          </value>
+        </entry>
+      </properties>
+    </constraint>
+  </constraints>
+  <indexes>
+    <indexe>
+      <name>S_ITEM_ORDID_ITEMID_PK</name>
+      <columnExpressions>
+        <columnExpression>
+          <expression class="oracle.javatools.db.sql.ColumnUsage">
+            <objectID class="oracle.javatools.db.NameBasedID">
+              <name>ORD_ID</name>
+              <parent class="oracle.javatools.db.NameBasedID">
+                <name>S_ITEM</name>
+                <schemaName>SUMMIT</schemaName>
+                <type>TABLE</type>
+              </parent>
+              <type>COLUMN</type>
+            </objectID>
+            <outerJoin>false</outerJoin>
+            <qualified>true</qualified>
+          </expression>
+          <order>ASC</order>
+        </columnExpression>
+        <columnExpression>
+          <expression class="oracle.javatools.db.sql.ColumnUsage">
+            <objectID class="oracle.javatools.db.NameBasedID">
+              <name>ITEM_ID</name>
+              <parent class="oracle.javatools.db.NameBasedID">
+                <name>S_ITEM</name>
+                <schemaName>SUMMIT</schemaName>
+                <type>TABLE</type>
+              </parent>
+              <type>COLUMN</type>
+            </objectID>
+            <outerJoin>false</outerJoin>
+            <qualified>true</qualified>
+          </expression>
+          <order>ASC</order>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>UNIQUE</indexType>
+      <parallelDegree>1</parallelDegree>
+      <schema>
+        <name>SUMMIT</name>
+      </schema>
+      <systemGenerated>true</systemGenerated>
+    </indexe>
+    <indexe>
+      <name>S_ITEM_ORDID_PRODID_UK</name>
+      <columnExpressions>
+        <columnExpression>
+          <expression class="oracle.javatools.db.sql.ColumnUsage">
+            <objectID class="oracle.javatools.db.NameBasedID">
+              <name>ORD_ID</name>
+              <parent class="oracle.javatools.db.NameBasedID">
+                <name>S_ITEM</name>
+                <schemaName>SUMMIT</schemaName>
+                <type>TABLE</type>
+              </parent>
+              <type>COLUMN</type>
+            </objectID>
+            <outerJoin>false</outerJoin>
+            <qualified>true</qualified>
+          </expression>
+          <order>ASC</order>
+        </columnExpression>
+        <columnExpression>
+          <expression class="oracle.javatools.db.sql.ColumnUsage">
+            <objectID class="oracle.javatools.db.NameBasedID">
+              <name>PRODUCT_ID</name>
+              <parent class="oracle.javatools.db.NameBasedID">
+                <name>S_ITEM</name>
+                <schemaName>SUMMIT</schemaName>
+                <type>TABLE</type>
+              </parent>
+              <type>COLUMN</type>
+            </objectID>
+            <outerJoin>false</outerJoin>
+            <qualified>true</qualified>
+          </expression>
+          <order>ASC</order>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>UNIQUE</indexType>
+      <parallelDegree>1</parallelDegree>
+      <schema>
+        <name>SUMMIT</name>
+      </schema>
+      <systemGenerated>true</systemGenerated>
+    </indexe>
+  </indexes>
+  <properties>
+    <entry>
+      <key>OfflineDBConstants.IMPORT_SOURCE_CONNECTION</key>
+      <value class="java.lang.String">Connection1</value>
+    </entry>
+    <entry>
+      <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+      <value class="oracle.javatools.db.ReferenceID">
+        <name>S_ITEM</name>
+        <identifier class="java.math.BigDecimal">52732</identifier>
+        <schemaName>SUMMIT</schemaName>
+        <type>TABLE</type>
+      </value>
+    </entry>
+    <entry>
+      <key>OracleStorageProperties</key>
+      <value class="oracle.javatools.db.ora.OracleStorageProperties">
+        <bufferMode>DEFAULT</bufferMode>
+        <freelistGroups>1</freelistGroups>
+        <freelists>1</freelists>
+        <initialExtent>1638400</initialExtent>
+        <initrans>1</initrans>
+        <logging>true</logging>
+        <maxExtent>2147483645</maxExtent>
+        <minExtent>1</minExtent>
+        <percentFree>10</percentFree>
+        <percentUsed>40</percentUsed>
+        <properties>
+          <entry>
+            <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+            <value class="oracle.javatools.db.ReferenceID">
+              <parent class="oracle.javatools.db.ReferenceID">
+                <name>S_ITEM</name>
+                <identifier class="java.math.BigDecimal">52732</identifier>
+                <schemaName>SUMMIT</schemaName>
+                <type>TABLE</type>
+              </parent>
+              <type>OracleStorageProperties</type>
+            </value>
+          </entry>
+        </properties>
+        <tablespaceID class="oracle.javatools.db.ReferenceID">
+          <name>SYSTEM</name>
+          <type>TABLESPACE</type>
+        </tablespaceID>
+      </value>
+    </entry>
+    <entry>
+      <key>TableType</key>
+      <value class="oracle.javatools.db.Table$TableType">NORMAL</value>
+    </entry>
+  </properties>
+  <schema>
+    <name>SUMMIT</name>
+  </schema>
+</table>

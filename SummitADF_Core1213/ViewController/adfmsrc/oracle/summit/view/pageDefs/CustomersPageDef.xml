@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.59.23" id="CustomersPageDef"
+                Package="oracle.summit.view.pageDefs">
+   <parameters/>
+   <executables>
+      <variableIterator id="variables"/>
+      <page path="oracle.ui.pattern.dynamicShell.model.dynamicTabShellDefinition"
+            id="pageTemplateBinding"/>
+      <iterator Binds="Customers" RangeSize="-1"
+                DataControl="BackOfficeAppModuleDataControl"
+                id="CustomersIterator" ChangeEventPolicy="ppr"/>
+      <iterator Binds="OrdersForCustomer" RangeSize="-1"
+                DataControl="BackOfficeAppModuleDataControl"
+                id="OrdersForCustomerIterator" ChangeEventPolicy="ppr"/>
+      <iterator Binds="SalesPeople" RangeSize="35"
+                DataControl="BackOfficeAppModuleDataControl"
+                id="SalesPeopleIterator"/>
+      <taskFlow id="orderstaskflowdefinition1"
+                taskFlowId="/WEB-INF/flows/orders/create-edit-orders-task-flow-definition.xml#create-edit-orders-task-flow-definition"
+                activation="deferred"
+                xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+      <searchRegion Criteria="CustomerViewCriteria"
+                    Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                    Binds="CustomersIterator" id="CustomerViewCriteriaQuery"/>
+      <iterator Binds="Countries" RangeSize="25"
+                DataControl="BackOfficeAppModuleDataControl"
+                id="CountriesIterator"/>
+   </executables>
+   <bindings>
+      <attributeValues IterBinding="CustomersIterator" id="Id">
+         <AttrNames>
+            <Item Value="Id"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="CustomersIterator" id="Name">
+         <AttrNames>
+            <Item Value="Name"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="CustomersIterator" id="Phone">
+         <AttrNames>
+            <Item Value="Phone"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="CustomersIterator" id="Address">
+         <AttrNames>
+            <Item Value="Address"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="CustomersIterator" id="City">
+         <AttrNames>
+            <Item Value="City"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="CustomersIterator" id="State">
+         <AttrNames>
+            <Item Value="State"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="CustomersIterator" id="ZipCode">
+         <AttrNames>
+            <Item Value="ZipCode"/>
+         </AttrNames>
+      </attributeValues>
+      <list IterBinding="CustomersIterator" StaticList="false"
+            Uses="LOV_CreditRatingId" id="CreditRating" DTSupportsMRU="false"/>
+      <listOfValues StaticList="false" IterBinding="CustomersIterator"
+                    Uses="LOV_SalesRepId" id="SalesRepId"/>
+      <attributeValues IterBinding="CustomersIterator" id="Comments">
+         <AttrNames>
+            <Item Value="Comments"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="CustomersIterator" id="LastName">
+         <AttrNames>
+            <Item Value="LastName"/>
+         </AttrNames>
+      </attributeValues>
+      <tree IterBinding="OrdersForCustomerIterator" id="OrdersForCustomer">
+         <nodeDefinition DefName="oracle.summit.model.views.OrdVO" Name="OrdersForCustomer0">
+            <AttrNames>
+               <Item Value="Id"/>
+               <Item Value="CustomerId"/>
+               <Item Value="DateOrdered"/>
+               <Item Value="DateShipped"/>
+               <Item Value="Total"/>
+               <Item Value="PaymentTypeId"/>
+               <Item Value="OrderFilled"/>
+               <Item Value="LastName"/>
+               <Item Value="TimeToShip"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <tree IterBinding="SalesPeopleIterator" id="SalesPeople">
+         <nodeDefinition DefName="oracle.summit.model.views.EmpVO"
+                         Name="SalesPeople0">
+            <AttrNames>
+               <Item Value="Id"/>
+               <Item Value="FirstName"/>
+               <Item Value="LastName"/>
+            </AttrNames>
+            <Accessors>
+               <Item Value="CustomerVO"/>
+            </Accessors>
+         </nodeDefinition>
+         <nodeDefinition DefName="oracle.summit.model.views.CustomerVO"
+                         Name="SalesPeople1"
+                         TargetIterator="${bindings.CustomersIterator}">
+            <AttrNames>
+               <Item Value="Id"/>
+               <Item Value="Name"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <action IterBinding="OrdersForCustomerIterator" id="CreateInsert"
+              RequiresUpdateModel="true" Action="createInsertRow"/>
+      <attributeValues IterBinding="CustomersIterator" id="OrderAverage">
+         <AttrNames>
+            <Item Value="OrderAverage"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="OrdersForCustomerIterator" id="Id1">
+         <AttrNames>
+            <Item Value="Id"/>
+         </AttrNames>
+      </attributeValues>
+      <action DataControl="BackOfficeAppModuleDataControl" id="Commit"
+              RequiresUpdateModel="true" Action="commitTransaction"/>
+      <action DataControl="BackOfficeAppModuleDataControl" id="Rollback"
+              RequiresUpdateModel="false" Action="rollbackTransaction"/>
+      <list IterBinding="CustomersIterator" StaticList="false"
+            Uses="LOV_CountryId" id="CountryId" DTSupportsMRU="true"/>
+      <tree IterBinding="CustomersIterator" id="Customers">
+         <nodeDefinition DefName="oracle.summit.model.views.CustomerVO"
+                         Name="Customers0">
+            <AttrNames>
+               <Item Value="Name"/>
+               <Item Value="City"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <methodAction IterBinding="CustomersIterator"
+                    id="unsetCustomerViewCriteria" RequiresUpdateModel="true"
+                    Action="invokeMethod" MethodName="unsetCustomerViewCriteria"
+                    IsViewObjectMethod="true"
+                    DataControl="BackOfficeAppModuleDataControl"
+                    InstanceName="BackOfficeAppModuleDataControl.Customers"/>
+      <action IterBinding="OrdersForCustomerIterator" id="Delete"
+              InstanceName="BackOfficeAppModuleDataControl.OrdersForCustomer"
+              DataControl="BackOfficeAppModuleDataControl"
+              RequiresUpdateModel="false" Action="removeCurrentRow"/>
+      <tree IterBinding="CountriesIterator" id="Countries">
+         <nodeDefinition DefName="oracle.summit.model.views.CountryVO"
+                         Name="Countries0">
+            <AttrNames>
+               <Item Value="Country"/>
+            </AttrNames>
+            <Accessors>
+               <Item Value="CustomerVO"/>
+            </Accessors>
+         </nodeDefinition>
+         <nodeDefinition DefName="oracle.summit.model.views.CustomerVO"
+                         Name="Countries1"
+                         TargetIterator="${bindings.CustomersIterator}">
+            <AttrNames>
+               <Item Value="Id"/>
+               <Item Value="Name"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <attributeValues IterBinding="CustomersIterator" id="Rating">
+         <AttrNames>
+            <Item Value="Rating"/>
+         </AttrNames>
+      </attributeValues>
+   </bindings>
+</pageDefinition>

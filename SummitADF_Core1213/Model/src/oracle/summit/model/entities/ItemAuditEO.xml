@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ItemAuditEO"
+  Version="12.1.2.64.15"
+  DBObjectType="table"
+  DBObjectName="S_ITEM_AUDIT"
+  AliasName="ItemAuditEO"
+  BindingStyle="OracleName"
+  RowClass="oracle.summit.base.SummitEntityImpl"
+  DefClass="oracle.summit.base.SummitEntityDefImpl">
+  <Attribute
+    Name="A"
+    ColumnName="A"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="S_ITEM_AUDIT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="RowID"
+    IsUpdateable="false"
+    ColumnName="ROWID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="ROWID"
+    TableName="S_ITEM_AUDIT"
+    PrimaryKey="true"/>
+</Entity>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.56.60" id="DataBindings" SeparateXMLFiles="false"
+             Package="oracle.summit.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/index.jsf" usageId="oracle_summit_view_indexPageDef"/>
+    <page path="/Customers.jsff" usageId="oracle_summit_view_CustomersPageDef"/>
+    <page path="/orders/Orders.jsff"
+          usageId="oracle_summit_view_OrdersPageDef"/>
+    <page path="/carousel/InventoryControl.jsff" usageId="oracle_summit_view_InventoryControlTestPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="oracle_summit_view_CustomersPageDef"
+          path="oracle.summit.view.pageDefs.CustomersPageDef"/>
+    <page id="oracle_summit_view_indexPageDef"
+          path="oracle.summit.view.pageDefs.indexPageDef"/>
+    <page id="oracle_summit_view_OrdersPageDef"
+          path="oracle.summit.view.pageDefs.OrdersPageDef"/>
+    <page id="oracle_summit_view_InventoryControlTestPageDef"
+          path="oracle.summit.view.pageDefs.InventoryControlPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="BackOfficeAppModuleDataControl"
+                     Package="oracle.summit.model.services"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="BackOfficeAppModuleLocal"
+                     syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

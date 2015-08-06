@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="customer-task-flow-definition">
+    <default-activity id="__1">Customers</default-activity>
+    <managed-bean id="__11">
+      <managed-bean-name id="__9">CustomersBackingBean</managed-bean-name>
+      <managed-bean-class id="__10">oracle.summit.backing.CustomersBackingBean</managed-bean-class>
+      <managed-bean-scope id="__8">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="Customers">
+      <page>/Customers.jsff</page>
+    </view>
+    <critical/>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

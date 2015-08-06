@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CustomerVO"
+  Version="12.1.3.9.1"
+  SelectList="CustomerEO.ID, 
+       CustomerEO.NAME, 
+       CustomerEO.PHONE, 
+       CustomerEO.ADDRESS, 
+       CustomerEO.CITY, 
+       CustomerEO.STATE, 
+       CustomerEO.COUNTRY_ID, 
+       CustomerEO.ZIP_CODE, 
+       CustomerEO.CREDIT_RATING_ID, 
+       CustomerEO.SALES_REP_ID, 
+       CustomerEO.COMMENTS, 
+       EmpEO.ID AS ID1, 
+       EmpEO.LAST_NAME, 
+       CreditRatingEO.RATING, 
+       CreditRatingEO.ID AS ID2"
+  FromList="S_CUSTOMER CustomerEO, S_EMP EmpEO, S_CREDIT_RATING CreditRatingEO"
+  Where="(CustomerEO.SALES_REP_ID = EmpEO.ID) AND (CustomerEO.CREDIT_RATING_ID = CreditRatingEO.ID)"
+  OrderBy="NAME"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="oracle.summit.base.SummitViewRowImpl"
+  ComponentClass="oracle.summit.model.views.CustomerVOImpl"
+  ComponentInterface="oracle.summit.model.views.common.CustomerVO"
+  ClientProxyName="oracle.summit.model.views.client.CustomerVOClient"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="EmpVO1"
+    ViewObjectName="oracle.summit.model.views.EmpVO"
+    OrderBy="EmpEO.LAST_NAME"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="FilterByTitleIdVC"
+      FullName="oracle.summit.model.views.EmpVO.FilterByTitleIdVC"/>
+    <ParameterMap>
+      <PIMap Variable="TitleIdBind">
+        <TransientExpression><![CDATA[2]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="RegionVO1"
+    ViewObjectName="oracle.summit.model.views.RegionVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="CreditRatingVO1"
+    ViewObjectName="oracle.summit.model.views.CreditRatingVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="CountryVO1"
+    ViewObjectName="oracle.summit.model.views.CountryVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="StatesVOList"
+    ViewObjectName="oracle.summit.model.views.readonly.StatesVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="param_countryId">
+        <TransientExpression><![CDATA[CountryId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_SalesRepId"
+    ListVOName="EmpVO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SalesRepId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Id"/>
+      <Item Value="FirstName"/>
+      <Item Value="LastName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="hide"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CreditRatingId"
+    ListVOName="CreditRatingVO1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CreditRatingId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CreditRating"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CountryId"
+    ListVOName="CountryVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CountryId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Country"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_State"
+    ListVOName="StatesVOList"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="State"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="State"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="State"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="CustomerEO"
+    Entity="oracle.summit.model.entities.CustomerEO"/>
+  <EntityUsage
+    Name="EmpEO"
+    Entity="oracle.summit.model.entities.EmpEO"
+    Association="oracle.summit.model.entities.assoc.SSalesRepIdFkAssoc"
+    AssociationEnd="oracle.summit.model.entities.assoc.SSalesRepIdFkAssoc.EmpEO"
+    SourceUsage="oracle.summit.model.views.CustomerVO.CustomerEO"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="oracle.summit.model.entities.CustomerEO.SalesRepId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="oracle.summit.model.entities.EmpEO.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="CreditRatingEO"
+    Entity="oracle.summit.model.entities.CreditRatingEO"
+    Association="oracle.summit.model.entities.assoc.SCustomerCreditRatingIdFkAssoc"
+    AssociationEnd="oracle.summit.model.entities.assoc.SCustomerCreditRatingIdFkAssoc.CreditRatingEO"
+    SourceUsage="oracle.summit.model.views.CustomerVO.CustomerEO"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="oracle.summit.model.entities.CustomerEO.CreditRatingId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="oracle.summit.model.entities.CreditRatingEO.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="Id"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="CustomerEO"
+    AliasName="ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.CustomerVO.Id_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Name"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Name"
+    EntityUsage="CustomerEO"
+    AliasName="NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.CustomerVO.Name_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Phone"
+    IsQueriable="false"
+    PrecisionRule="true"
+    EntityAttrName="Phone"
+    EntityUsage="CustomerEO"
+    AliasName="PHONE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.CustomerVO.Phone_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Address"
+    IsQueriable="false"
+    PrecisionRule="true"
+    EntityAttrName="Address"
+    EntityUsage="CustomerEO"
+    AliasName="ADDRESS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.CustomerVO.Address_LABEL"/>
+        <DISPLAYWIDTH
+          Value="80"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="City"
+    PrecisionRule="true"
+    EntityAttrName="City"
+    EntityUsage="CustomerEO"
+    AliasName="CITY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.CustomerVO.City_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="State"
+    PrecisionRule="true"
+    EntityAttrName="State"
+    EntityUsage="CustomerEO"
+    AliasName="STATE"
+    LOVName="LOV_State">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.CustomerVO.State_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CountryId"
+    LOVName="LOV_CountryId"
+    PrecisionRule="true"
+    EntityAttrName="CountryId"
+    EntityUsage="CustomerEO"
+    AliasName="COUNTRY_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.CustomerVO.CountryId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ZipCode"
+    PrecisionRule="true"
+    EntityAttrName="ZipCode"
+    EntityUsage="CustomerEO"
+    AliasName="ZIP_CODE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.CustomerVO.ZipCode_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreditRatingId"
+    LOVName="LOV_CreditRatingId"
+    PrecisionRule="true"
+    EntityAttrName="CreditRatingId"
+    EntityUsage="CustomerEO"
+    AliasName="CREDIT_RATING_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.CustomerVO.CreditRatingId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SalesRepId"
+    LOVName="LOV_SalesRepId"
+    PrecisionRule="true"
+    EntityAttrName="SalesRepId"
+    EntityUsage="CustomerEO"
+    AliasName="SALES_REP_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.CustomerVO.SalesRepId_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Comments"
+    PrecisionRule="true"
+    EntityAttrName="Comments"
+    EntityUsage="CustomerEO"
+    AliasName="COMMENTS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.CustomerVO.Comments_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Id1"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="EmpEO"
+    AliasName="ID1">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastName"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastName"
+    EntityUsage="EmpEO"
+    AliasName="LAST_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.CustomerVO.LastName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrderAverage"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[OrdVO.avg("Total")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="oracle.summit.model.views.CustomerVO.OrderAverage_LABEL"/>
+        <TOOLTIP
+          ResId="oracle.summit.model.views.CustomerVO.OrderAverage_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Rating"
+    PrecisionRule="true"
+    EntityAttrName="Rating"
+    EntityUsage="CreditRatingEO"
+    AliasName="RATING"/>
+  <ViewAttribute
+    Name="Id2"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="CreditRatingEO"
+    AliasName="ID2"/>
+  <ViewCriteria
+    Name="CustomerViewCriteria"
+    ViewObjectName="oracle.summit.model.views.CustomerVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow3"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Name"
+        ViewAttribute="Name"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="City"
+        ViewAttribute="City"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Id"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="OrdVO"
+    ViewLink="oracle.summit.model.views.links.OrdCustomerIdFkLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="unsetCustomerViewCriteria"
+      MethodName="unsetCustomerViewCriteria">
+      <Return
+        Type="void"
+        Name="_return_type_"/>
+    </Method>
+  </ClientInterface>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="oracle.summit.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

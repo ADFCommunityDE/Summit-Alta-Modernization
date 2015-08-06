@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets">
+  <af:panelHeader text="Inventory Items (Low Stock) " id="ph1">
+    <af:panelSplitter id="ps1" orientation="vertical">
+      <f:facet name="first">
+        <af:carousel currentItemKey="#{bindings.Inventory.treeModel.rootCurrencyRowKey}"
+                     value="#{bindings.Inventory.treeModel}" var="item" id="c1" partialTriggers="::t1"
+                     carouselSpinListener="#{InventoryControl.handleCarouselSpin}">
+          <f:facet name="nodeStamp">
+            <af:carouselItem id="ci1" partialTriggers="::t1" text="#{item.Name} #{item.AmountInStock}">
+              <af:image source="/images/products/#{item.Filename}" shortDesc="#{item.Name}" id="i1"/>
+            </af:carouselItem>
+          </f:facet>
+        </af:carousel>
+      </f:facet>
+      <f:facet name="second">
+        <af:table value="#{bindings.Inventory.collectionModel}" var="row" rows="#{bindings.Inventory.rangeSize}"
+                  emptyText="#{bindings.Inventory.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.Inventory.rangeSize}" rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.Inventory.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.Inventory.collectionModel.makeCurrent}" rowSelection="single"
+                  id="t1" columnStretching="last" partialTriggers="::c1">
+          <af:column headerText="#{bindings.Inventory.hints.Name.label}" id="c2">
+            <af:outputText value="#{row.Name}" shortDesc="#{bindings.Inventory.hints.Name.tooltip}" id="ot6"/>
+          </af:column>
+          <af:column headerText="#{bindings.Inventory.hints.AmountInStock.label}" id="c3">
+            <af:outputText value="#{row.AmountInStock}"
+                           shortDesc="#{bindings.Inventory.hints.AmountInStock.tooltip}" id="ot3">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.Inventory.hints.AmountInStock.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column headerText="#{bindings.Inventory.hints.ReorderPoint.label}" id="c4">
+            <af:outputText value="#{row.ReorderPoint}" shortDesc="#{bindings.Inventory.hints.ReorderPoint.tooltip}"
+                           id="ot1">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.Inventory.hints.ReorderPoint.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column headerText="#{bindings.Inventory.hints.ShortDesc.label}" id="c6">
+            <af:outputText value="#{row.ShortDesc}" shortDesc="#{bindings.Inventory.hints.ShortDesc.tooltip}"
+                           id="ot5"/>
+          </af:column>
+          <af:column headerText="#{bindings.Inventory.hints.MaxInStock.label}" id="c9">
+            <af:outputText value="#{row.MaxInStock}" shortDesc="#{bindings.Inventory.hints.MaxInStock.tooltip}"
+                           id="ot4">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.Inventory.hints.MaxInStock.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column headerText="#{bindings.Inventory.hints.OutOfStockExplanation.label}" id="c5">
+            <af:outputText value="#{row.OutOfStockExplanation}"
+                           shortDesc="#{bindings.Inventory.hints.OutOfStockExplanation.tooltip}" id="ot2"/>
+          </af:column>
+        </af:table>
+      </f:facet>
+    </af:panelSplitter>
+  </af:panelHeader>
+</ui:composition>

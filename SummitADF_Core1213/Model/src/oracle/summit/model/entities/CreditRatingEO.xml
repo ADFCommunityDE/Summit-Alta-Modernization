@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CreditRatingEO"
+  Version="12.1.3.9.1"
+  DBObjectType="table"
+  DBObjectName="S_CREDIT_RATING"
+  AliasName="CreditRatingEO"
+  BindingStyle="OracleName"
+  RowClass="oracle.summit.base.SummitEntityImpl"
+  DefClass="oracle.summit.base.SummitEntityDefImpl">
+  <Attribute
+    Name="Id"
+    IsNotNull="true"
+    Precision="7"
+    Scale="0"
+    ColumnName="ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="S_CREDIT_RATING"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreditRating"
+    IsUnique="true"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="CREDIT_RATING"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_CREDIT_RATING">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Description"
+    Precision="200"
+    ColumnName="DESCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_CREDIT_RATING">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Rating"
+    ColumnName="RATING"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="S_CREDIT_RATING"/>
+  <AccessorAttribute
+    Name="CustomerEO"
+    Association="oracle.summit.model.entities.assoc.SCustomerCreditRatingIdFkAssoc"
+    AssociationEnd="oracle.summit.model.entities.assoc.SCustomerCreditRatingIdFkAssoc.CustomerEO"
+    AssociationOtherEnd="oracle.summit.model.entities.assoc.SCustomerCreditRatingIdFkAssoc.CreditRatingEO"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="SCreditRatingPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="S_CREDIT_RATING_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.summit.model.entities.CreditRatingEO.Id"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SCreditRatingUk">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="S_CREDIT_RATING_UK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.summit.model.entities.CreditRatingEO.CreditRating"/>
+    </AttrArray>
+  </Key>
+</Entity>

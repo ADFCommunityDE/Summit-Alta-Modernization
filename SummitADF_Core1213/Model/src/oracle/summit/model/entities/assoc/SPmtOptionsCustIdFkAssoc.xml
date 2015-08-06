@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SPmtOptionsCustIdFkAssoc"
+  Version="12.1.2.64.42"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="CustomerEO"
+    Cardinality="1"
+    Source="true"
+    Owner="oracle.summit.model.entities.CustomerEO">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="CustomerEO"/>
+      <Attr Name="_foreignKey" Value="oracle.summit.model.entities.CustomerEO.SCustomerIdPk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.summit.model.entities.CustomerEO.Id"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="PaymentOptionEO"
+    Cardinality="-1"
+    Owner="oracle.summit.model.entities.PaymentOptionEO">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="PaymentOptionEO"/>
+      <Attr Name="_foreignKey" Value="oracle.summit.model.entities.PaymentOptionEO.SPmtOptionsCustIdFk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.summit.model.entities.PaymentOptionEO.CustomerId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

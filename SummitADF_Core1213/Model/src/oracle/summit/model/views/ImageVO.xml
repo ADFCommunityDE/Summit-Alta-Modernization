@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ImageVO"
+  Version="11.1.1.56.60"
+  SelectList="ImageEO.ID, 
+       ImageEO.FORMAT, 
+       ImageEO.USE_FILENAME, 
+       ImageEO.FILENAME, 
+       ImageEO.IMAGE"
+  FromList="S_IMAGE ImageEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="oracle.summit.base.SummitViewRowImpl"
+  ComponentClass="oracle.summit.base.SummitViewObjectImpl"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="ImageEO"
+    Entity="oracle.summit.model.entities.ImageEO"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="ImageEO"
+    AliasName="ID"/>
+  <ViewAttribute
+    Name="Format"
+    PrecisionRule="true"
+    EntityAttrName="Format"
+    EntityUsage="ImageEO"
+    AliasName="FORMAT"/>
+  <ViewAttribute
+    Name="UseFilename"
+    PrecisionRule="true"
+    EntityAttrName="UseFilename"
+    EntityUsage="ImageEO"
+    AliasName="USE_FILENAME"/>
+  <ViewAttribute
+    Name="Filename"
+    PrecisionRule="true"
+    EntityAttrName="Filename"
+    EntityUsage="ImageEO"
+    AliasName="FILENAME"/>
+  <ViewAttribute
+    Name="Image"
+    IsQueriable="false"
+    PrecisionRule="true"
+    EntityAttrName="Image"
+    EntityUsage="ImageEO"
+    AliasName="IMAGE"/>
+  <ViewLinkAccessor
+    Name="ProductVO"
+    ViewLink="oracle.summit.model.views.links.ProductImageIdFkLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

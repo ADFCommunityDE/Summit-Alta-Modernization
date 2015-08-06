@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation"
+  Name="ItemEO"
+  Version="12.1.3.9.1"
+  DBObjectType="table"
+  DBObjectName="S_ITEM"
+  AliasName="ItemEO"
+  BindingStyle="OracleName"
+  RowClass="oracle.summit.model.entities.ItemEOImpl"
+  DefClass="oracle.summit.base.SummitEntityDefImpl"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Access"/>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="OrdId"
+    IsNotNull="true"
+    Precision="7"
+    Scale="0"
+    ColumnName="ORD_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="S_ITEM"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="ItemId"
+    ColumnName="ITEM_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.DBSequence"
+    ColumnType="NUMBER"
+    TableName="S_ITEM"
+    PrimaryKey="true"
+    IsUpdateable="while_insert"
+    DefaultValue="@0"
+    Domain="oracle.jbo.domain.DBSequence"
+    RetrievedOnInsert="true"
+    Precision="7"
+    Scale="0">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="ProductId"
+    IsUnique="true"
+    IsNotNull="true"
+    Precision="7"
+    Scale="0"
+    ColumnName="PRODUCT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="S_ITEM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <validation:ExistsValidationBean
+      Name="ProductId_Rule_0"
+      ResId="oracle.summit.model.entities.ItemEO.ProductId_Rule_0"
+      OperandType="EO"
+      AssocName="oracle.summit.model.entities.assoc.SItemProductIdFkAssoc"/>
+  </Attribute>
+  <Attribute
+    Name="Price"
+    Precision="11"
+    Scale="2"
+    ColumnName="PRICE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="S_ITEM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Quantity"
+    DefaultValue="0"
+    Precision="9"
+    Scale="0"
+    ColumnName="QUANTITY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="S_ITEM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="QuantityShipped"
+    DefaultValue="0"
+    Precision="9"
+    Scale="0"
+    ColumnName="QUANTITY_SHIPPED"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="S_ITEM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="OrdEO"
+    Association="oracle.summit.model.entities.assoc.SItemOrdIdFkAssoc"
+    AssociationEnd="oracle.summit.model.entities.assoc.SItemOrdIdFkAssoc.OrdEO"
+    AssociationOtherEnd="oracle.summit.model.entities.assoc.SItemOrdIdFkAssoc.ItemEO"
+    Type="oracle.summit.base.SummitEntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="ProductEO"
+    Association="oracle.summit.model.entities.assoc.SItemProductIdFkAssoc"
+    AssociationEnd="oracle.summit.model.entities.assoc.SItemProductIdFkAssoc.ProductEO"
+    AssociationOtherEnd="oracle.summit.model.entities.assoc.SItemProductIdFkAssoc.ItemEO"
+    Type="oracle.summit.base.SummitEntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SItemItemIdNn">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="S_ITEM_ITEM_ID_NN"/>
+      <Attr Name="_checkCondition" Value="ITEM_ID IS NOT NULL"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"><Item Value="oracle.summit.model.entities.ItemEO.ItemId"/></AttrArray>
+  </Key>
+  <Key
+    Name="SItemOrdIdNn">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="S_ITEM_ORD_ID_NN"/>
+      <Attr Name="_checkCondition" Value="ORD_ID IS NOT NULL"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"><Item Value="oracle.summit.model.entities.ItemEO.OrdId"/></AttrArray>
+  </Key>
+  <Key
+    Name="SItemOrdidItemidPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="S_ITEM_ORDID_ITEMID_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.summit.model.entities.ItemEO.ItemId"/>
+      <Item Value="oracle.summit.model.entities.ItemEO.OrdId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SItemOrdidProdidUk">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="S_ITEM_ORDID_PRODID_UK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.summit.model.entities.ItemEO.OrdId"/>
+      <Item Value="oracle.summit.model.entities.ItemEO.ProductId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SItemProductIdNn">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="S_ITEM_PRODUCT_ID_NN"/>
+      <Attr Name="_checkCondition" Value="PRODUCT_ID IS NOT NULL"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"><Item Value="oracle.summit.model.entities.ItemEO.ProductId"/></AttrArray>
+  </Key>
+  <Key
+    Name="SysC001360873">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C001360873"/>
+      <Attr Name="_checkCondition" Value='"ORD_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.summit.model.entities.ItemEO.OrdId"/>
+    </AttrArray>
+  </Key>
+<Key
+    Name="SysC001360874">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C001360874"/>
+      <Attr Name="_checkCondition" Value='"ITEM_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.summit.model.entities.ItemEO.ItemId"/>
+    </AttrArray>
+  </Key>
+
+  <Key
+    Name="SysC001360875">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C001360875"/>
+      <Attr Name="_checkCondition" Value='"PRODUCT_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.summit.model.entities.ItemEO.ProductId"/>
+    </AttrArray>
+  </Key><Key
+    Name="SItemOrdIdFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="S_ORD_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="S_ITEM_ORD_ID_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.summit.model.entities.ItemEO.OrdId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SItemProductIdFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="S_PRODUCT_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="S_ITEM_PRODUCT_ID_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.summit.model.entities.ItemEO.ProductId"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="oracle.summit.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

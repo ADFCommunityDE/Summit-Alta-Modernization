@@ -1,0 +1,25 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ProviderSettings xmlns="http://xmlns.oracle.com/ide/hash">
+   <hash n="dataTypeSettings">
+      <value n="sourceKey" v="oracle.javatools.db.ora.Oracle11g"/>
+   </hash>
+   <value n="id" v="176f1395-012b-1000-8001-0a0a0a0acc2c"/>
+   <value n="name" v="SUMMITOffline"/>
+   <hash n="oracle.jdeveloper.offlinedb.model.ProviderDefaultTemplateSettings">
+      <hash n="default-template-ids">
+         <value n="FUNCTION"/>
+         <value n="MATERIALIZED VIEW"/>
+         <value n="MATERIALIZED VIEW LOG"/>
+         <value n="PACKAGE"/>
+         <value n="PROCEDURE"/>
+         <value n="SCHEMA"/>
+         <value n="SEQUENCE"/>
+         <value n="SYNONYM"/>
+         <value n="TABLE"/>
+         <value n="TABLESPACE"/>
+         <value n="TRIGGER"/>
+         <value n="TYPE"/>
+         <value n="VIEW"/>
+      </hash>
+   </hash>
+</ProviderSettings>

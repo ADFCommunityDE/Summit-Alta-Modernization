@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.59.23" id="OrdersPageDef"
+                Package="oracle.summit.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="OrdersForCustomer" RangeSize="25"
+              DataControl="BackOfficeAppModuleDataControl"
+              id="OrdersForCustomerIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="ItemsForOrder" RangeSize="25"
+              DataControl="BackOfficeAppModuleDataControl"
+              id="ItemsForOrderIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="InventoryForOrderItem" RangeSize="-1"
+              DataControl="BackOfficeAppModuleDataControl"
+              id="InventoryForOrderItemIterator" ChangeEventPolicy="ppr"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="OrdersForCustomerIterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrdersForCustomerIterator" id="CustomerId">
+      <AttrNames>
+        <Item Value="CustomerId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrdersForCustomerIterator" id="DateOrdered">
+      <AttrNames>
+        <Item Value="DateOrdered"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrdersForCustomerIterator" id="DateShipped">
+      <AttrNames>
+        <Item Value="DateShipped"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrdersForCustomerIterator" id="Total">
+      <AttrNames>
+        <Item Value="Total"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="OrdersForCustomerIterator" StaticList="false"
+          Uses="LOV_OrderFilled" id="OrderFilled" DTSupportsMRU="false"/>
+    <attributeValues IterBinding="OrdersForCustomerIterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrdersForCustomerIterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ItemsForOrderIterator" id="ItemsForOrder">
+      <nodeDefinition DefName="oracle.summit.model.views.ItemVO"
+                      Name="ItemsForOrder0">
+        <AttrNames>
+          <Item Value="ProductId"/>
+          <Item Value="Name"/>
+          <Item Value="Price"/>
+          <Item Value="Quantity"/>
+          <Item Value="ItemTotal"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ItemsForOrderIterator" id="ShortDesc">
+      <AttrNames>
+        <Item Value="ShortDesc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ItemsForOrderIterator" id="ImageNameFromDB"
+                     ChangeEventPolicy="ppr">
+      <AttrNames>
+        <Item Value="ImageNameFromDB"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="ItemsForOrderIterator" id="Create"
+            RequiresUpdateModel="true" Action="createRow"/>
+    <methodAction IterBinding="ItemsForOrderIterator" id="deleteOrderItem"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="deleteOrderItem" IsViewObjectMethod="false"
+                  DataControl="BackOfficeAppModuleDataControl"
+                  InstanceName="bindings.ItemsForOrderIterator.currentRow"
+                  IsLocalObjectReference="true"/>
+    <action IterBinding="ItemsForOrderIterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <list IterBinding="OrdersForCustomerIterator" StaticList="false"
+          Uses="LOV_PaymentTypeId" id="PaymentType" DTSupportsMRU="true"/>
+    <attributeValues IterBinding="ItemsForOrderIterator" id="ProductName">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ItemsForOrderIterator"
+                     id="SuggestedWhlslPrice">
+      <AttrNames>
+        <Item Value="SuggestedWhlslPrice"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false" IterBinding="OrdersForCustomerIterator"
+                  Uses="LOV_SalesRepId" id="SalesRepId1"/>
+    <tree IterBinding="InventoryForOrderItemIterator" id="InventoryForOrderItem">
+      <nodeDefinition DefName="oracle.summit.model.views.InventoryVO" Name="InventoryForOrderItem10">
+        <AttrNames>
+          <Item Value="AmountInStock"/>
+          <Item Value="City"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

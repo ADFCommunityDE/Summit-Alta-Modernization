@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Report xmlns="http://xmlns.oracle.com/ide/hash">
+   <value n="Name" v="TABLE_COLUMNS"/>
+   <hash n="OutputProperties">
+      <hash n="oracle.javatools.report.writer.HTMLOutputProperties">
+         <value n="Boilerplate" v="&lt;h1>Table Report&lt;/h1>&#xA;&lt;p>Query used:&lt;/p>&#xA;&lt;pre>&lt;query/>&lt;/pre>&#xA;&lt;p>The report output is:&lt;/p>&#xA;&lt;report/>&#xA;&lt;p>Report complete. &lt;rows/> row(s) returned.&lt;/p>&#xA;"/>
+         <value n="ColumnHeaders" v="true"/>
+         <url n="OutputURL" path="table_cols.html"/>
+         <value n="Stylesheet" v=""/>
+         <value n="Title" v="Title of Report"/>
+      </hash>
+   </hash>
+   <hash n="Query">
+      <value n="QueryText" v="SELECT &#xA;    REL.SCHEMA &quot;Schema&quot;, &#xA;    REL.NAME &quot;Table Name&quot;, &#xA;    COL.NAME &quot;Column Name&quot;, &#xA;    COL.DATA_TYPE_NAME &quot;Datatype&quot;, &#xA;    COL.DATA_TYPE_PRECISION &quot;Precision&quot;, &#xA;    COL.DATA_TYPE_SCALE &quot;Scale&quot;, &#xA;    COL.NOT_NULL &quot;Mandatory&quot; &#xA;FROM &#xA;    DB_COLUMNS COL JOIN DB_OBJECTS REL ON COL.PARENT_ID = REL.ID &#xA;ORDER BY &#xA;    REL.SCHEMA, &#xA;    REL.NAME, &#xA;    COL.NAME"/>
+   </hash>
+   <value n="QueryType" v="StructuredQuery"/>
+   <hash n="Roots">
+      <hash n="oracle.jdevimpl.offlinedb.report.OfflineDBReportRoot">
+         <value n="id" v="176f1395-012b-1000-8001-0a0a0a0acc2c"/>
+         <url n="url" path="database/DATABASE1/DATABASE1.offlinedb"/>
+      </hash>
+   </hash>
+</Report>

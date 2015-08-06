@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Report xmlns="http://xmlns.oracle.com/ide/hash">
+   <value n="Name" v="TABLE_NO_PKS"/>
+   <hash n="Query">
+      <value n="QueryText" v="SELECT &#xA;    T.SCHEMA || '.' || T.NAME &quot;Table&quot; &#xA;FROM &#xA;    DB_PKCONSTRAINTS C RIGHT JOIN DB_TABLES T ON C.PARENT_ID = T.ID &#xA;WHERE &#xA;    C.NAME IS NULL"/>
+   </hash>
+   <value n="QueryType" v="StructuredQuery"/>
+   <hash n="Roots">
+      <hash n="oracle.jdevimpl.offlinedb.report.OfflineDBReportRoot">
+         <value n="id" v="176f1395-012b-1000-8001-0a0a0a0acc2c"/>
+         <url n="url" path="database/DATABASE1/DATABASE1.offlinedb"/>
+      </hash>
+   </hash>
+</Report>

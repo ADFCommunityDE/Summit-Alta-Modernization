@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Report xmlns="http://xmlns.oracle.com/ide/hash">
+   <value n="Name" v="OBJECT_COUNT"/>
+   <hash n="Query">
+      <value n="QueryText" v="SELECT &#xA;    DB_OBJECTS.TYPE &quot;Object Type&quot;, &#xA;    COUNT(DB_OBJECTS.SCHEMA || '.' || DB_OBJECTS.NAME) &quot;Number Of Objects&quot; &#xA;FROM &#xA;    DB_OBJECTS &#xA;GROUP BY &#xA;    DB_OBJECTS.TYPE"/>
+   </hash>
+   <value n="QueryType" v="StructuredQuery"/>
+   <hash n="Roots">
+      <hash n="oracle.jdevimpl.offlinedb.report.OfflineDBReportRoot">
+         <value n="id" v="176f1395-012b-1000-8001-0a0a0a0acc2c"/>
+         <url n="url" path="database/DATABASE1/DATABASE1.offlinedb"/>
+      </hash>
+   </hash>
+</Report>
