@@ -12,6 +12,16 @@
 hs_err_pid*
 
 #ADF typical ignores
-.data
-classes/
-temp/
+**/.data/**
+**/classes/**
+**/deploy/**
+**/target/**
+**/.adf/**
+**/cwallet.sso*
+**/connections.xml
+
+#mac os specific
+.DS_Store
+
+#general development
+**/*.log
