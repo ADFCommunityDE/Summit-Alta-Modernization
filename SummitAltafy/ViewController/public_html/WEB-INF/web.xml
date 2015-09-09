@@ -23,6 +23,10 @@
     <servlet-name>MapProxyServlet</servlet-name>
     <servlet-class>oracle.adf.view.faces.bi.webapp.MapProxyServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>adflibResources</servlet-name>
+    <servlet-class>oracle.adf.library.webapp.ResourceServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>/faces/*</url-pattern>
@@ -51,6 +55,10 @@
     <servlet-name>resources</servlet-name>
     <url-pattern>/bi/*</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>adflibResources</servlet-name>
+    <url-pattern>/adflib/*</url-pattern>
+  </servlet-mapping>
   <filter>
     <filter-name>trinidad</filter-name>
     <filter-class>org.apache.myfaces.trinidad.webapp.TrinidadFilter</filter-class>
@@ -58,6 +66,10 @@
   <filter>
     <filter-name>ServletADFFilter</filter-name>
     <filter-class>oracle.adf.share.http.ServletADFFilter</filter-class>
+  </filter>
+  <filter>
+    <filter-name>ADFLibraryFilter</filter-name>
+    <filter-class>oracle.adf.library.webapp.LibraryFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>trinidad</filter-name>
@@ -69,6 +81,12 @@
   <filter-mapping>
     <filter-name>ServletADFFilter</filter-name>
     <servlet-name>Faces Servlet</servlet-name>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>ADFLibraryFilter</filter-name>
+    <url-pattern>/*</url-pattern>
     <dispatcher>FORWARD</dispatcher>
     <dispatcher>REQUEST</dispatcher>
   </filter-mapping>
@@ -118,6 +136,10 @@
   <context-param>
     <param-name>javax.faces.FACELETS_RESOURCE_RESOLVER</param-name>
     <param-value>oracle.adfinternal.view.faces.facelets.rich.AdfFaceletsResourceResolver</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.faces.FACELETS_VIEW_MAPPINGS</param-name>
+    <param-value>*.jsf;*.xhtml</param-value>
   </context-param>
   <mime-mapping>
     <extension>swf</extension>
