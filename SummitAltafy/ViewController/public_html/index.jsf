@@ -7,9 +7,12 @@
                 <f:facet name="header"/>
                 <f:facet name="status"/>
                 <f:facet name="appNav">
-                    <af:link text="dashboard" action="#{viewScope.Page.dashboard}" id="l1"/>
-                    <af:link text="inventory-control" action="#{viewScope.Page.inventorycontrol}" id="l3"/>
-                    <af:link text="summit-management" action="#{viewScope.Page.summitmanagement}" id="l2"/>
+                    <af:button text="Dashboard" action="#{viewScope.Page.dashboard}" id="l1"
+                               styleClass="AFAppNavbarButton" selected="true" type="radio"/>
+                    <af:button text="Inventory Control" action="#{viewScope.Page.inventorycontrol}" id="l3"
+                               styleClass="AFAppNavbarButton" selected="false" type="radio"/>
+                    <af:button text="Summit Management" action="#{viewScope.Page.summitmanagement}" id="l2"
+                               styleClass="AFAppNavbarButton" selected="false" type="radio"/>
                 </f:facet>
                 <f:facet name="globalLinks"/>
                 <f:facet name="footer"/>
