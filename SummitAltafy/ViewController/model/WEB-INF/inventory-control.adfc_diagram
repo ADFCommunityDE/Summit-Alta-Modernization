@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">__inventory-control1</property>
+      <property
+         name="page">/fragments/inventory-control.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>__inventory-control1&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">319.3672</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">258.0166</property>
+   </View>
+</SDM>

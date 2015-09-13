@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View3">
+      <property
+         name="activityId">summit-management1</property>
+      <property
+         name="page">/fragments/summit-management.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>summit-management1&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">72.36719</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">92.177734</property>
+   </View>
+</SDM>
