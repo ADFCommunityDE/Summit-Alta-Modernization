@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="dashboardPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SCustomerView1" RangeSize="25" DataControl="AppModuleDataControl" id="SCustomerView1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SCustomerView1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SCustomerView1Iterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SCustomerView1Iterator" id="Phone">
+      <AttrNames>
+        <Item Value="Phone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SCustomerView1Iterator" id="Address">
+      <AttrNames>
+        <Item Value="Address"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SCustomerView1Iterator" id="City">
+      <AttrNames>
+        <Item Value="City"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SCustomerView1Iterator" id="State">
+      <AttrNames>
+        <Item Value="State"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SCustomerView1Iterator" id="CountryId">
+      <AttrNames>
+        <Item Value="CountryId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SCustomerView1Iterator" id="CreditRatingId">
+      <AttrNames>
+        <Item Value="CreditRatingId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SCustomerView1Iterator" id="SalesRepId">
+      <AttrNames>
+        <Item Value="SalesRepId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SCustomerView1Iterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

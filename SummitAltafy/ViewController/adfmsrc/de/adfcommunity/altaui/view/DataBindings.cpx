@@ -8,8 +8,17 @@
   </definitionFactories>
   <pageMap>
     <page path="/index.jsf" usageId="de_adfcommunity_altaui_view_indexPageDef"/>
+    <page path="/fragments/dashboard.jsff" usageId="de_adfcommunity_altaui_view_dashboardPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="de_adfcommunity_altaui_view_indexPageDef" path="de.adfcommunity.altaui.view.pageDefs.indexPageDef"/>
+    <page id="de_adfcommunity_altaui_view_dashboardPageDef" path="fragments.dashboardPageDef"/>
   </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleDataControl" Package="de.adfcommunity.altaui.model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
 </Application>
