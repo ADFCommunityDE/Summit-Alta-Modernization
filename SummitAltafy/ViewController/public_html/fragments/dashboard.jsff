@@ -1,6 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
   <af:panelGroupLayout id="pgl1">
     <af:outputText id="ot1" value="Dashboard"/>
+    <dvt:thematicMap basemap="world" id="tm1" 
+                     summary="A world map containing all the customers in their respective lands.">
+      <dvt:areaLayer layer="countries" id="al1"/>
+    </dvt:thematicMap>
   </af:panelGroupLayout>
 </ui:composition>
