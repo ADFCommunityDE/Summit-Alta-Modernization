@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AppModule"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true">
+  <ViewUsage
+    Name="SCustomerView1"
+    ViewObjectName="de.adfcommunity.altaui.model.SCustomerView"/>
+  <ViewUsage
+    Name="SCustomerView1_1"
+    ViewObjectName="de.adfcommunity.altaui.model.SCustomerView1"/>
+</AppModule>
