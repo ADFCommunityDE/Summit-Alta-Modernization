@@ -2,10 +2,27 @@
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
                 xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
   <af:panelGroupLayout id="pgl1">
-    <af:outputText id="ot1" value="Dashboard"/>
-    <dvt:thematicMap basemap="world" id="tm1" 
-                     summary="A world map containing all the customers in their respective lands.">
-      <dvt:areaLayer layer="countries" id="al1"/>
+    <dvt:thematicMap id="tm2" basemap="world"
+    summary="A world map containing all the customers in their respective lands.">
+      <dvt:pointDataLayer id="pl1" value="">
+                      <dvt:pointLocation id="loc2" type="pointName" pointName="DEU_MUNICH">
+                        <dvt:marker id="m2" shape="circle" scaleX="1" scaleY="1" rendered="true" 
+                            gradientEffect="auto" labelDisplay="on" value="Muench Sports" labelPosition="bottom"/>
+        </dvt:pointLocation>
+      </dvt:pointDataLayer>
+      <dvt:pointDataLayer id="pdl1" value="">
+                      <dvt:pointLocation id="pl2" type="pointName" pointName="USA_LOS_ANGELES">
+                        <dvt:marker id="m1" shape="circle" scaleX="1" scaleY="1" rendered="true" 
+                            gradientEffect="auto" labelDisplay="on" value="Bike-n-more" labelPosition="bottom"/>
+        </dvt:pointLocation>
+      </dvt:pointDataLayer>
+      <dvt:pointDataLayer id="pdl2" value="">
+                      <dvt:pointLocation id="pl3" type="pointName" pointName="CHN_SHANGHAI">
+                        <dvt:marker id="m3" shape="circle" scaleX="1" scaleY="1" rendered="true" 
+                            gradientEffect="auto" labelDisplay="on" value="Simms Athletics" labelPosition="bottom"/>
+        </dvt:pointLocation>
+      </dvt:pointDataLayer>
+      <dvt:areaLayer layer="continents" id="al2"/>
     </dvt:thematicMap>
   </af:panelGroupLayout>
 </ui:composition>
