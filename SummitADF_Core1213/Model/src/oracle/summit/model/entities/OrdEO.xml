@@ -5,7 +5,7 @@
   xmlns="http://xmlns.oracle.com/bc4j"
   xmlns:validation="http://xmlns.oracle.com/adfm/validation"
   Name="OrdEO"
-  Version="12.1.3.9.1"
+  Version="12.1.3.10.8"
   DBObjectType="table"
   DBObjectName="S_ORD"
   AliasName="OrdEO"
@@ -34,8 +34,7 @@
     PrimaryKey="true"
     IsUpdateable="false"
     RetrievedOnInsert="true"
-    DefaultValue="@0"
-    IsNotNull="true">
+    DefaultValue="@0">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="22"/>
     </DesignTime>
@@ -156,35 +155,6 @@ else
     <DesignTime>
       <Attr Name="_DisplaySize" Value="1"/>
     </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="PaymentOptionId"
-    Precision="7"
-    Scale="0"
-    ColumnName="PAYMENT_OPTION_ID"
-    SQLType="NUMERIC"
-    Type="java.lang.Integer"
-    ColumnType="NUMBER"
-    TableName="S_ORD">
-    <validation:ListValidationBean
-      Name="PaymentOptionIdinPaymentOptionEO"
-      ResId="oracle.summit.model.entities.OrdEO.PaymentOptionId_Rule_0"
-      Description="Check the Payment Option is valid"
-      OnAttribute="PaymentOptionId"
-      OperandType="JBO"
-      Inverse="false"
-      ListValue="oracle.summit.model.views.PaymentOptionVO.Id"
-      MessageFlavor="IGNORE_DETAILS">
-      <validation:ResExpressions
-        Name="PaymentOptionIdinPaymentOptionEO_ResExprList">
-        <validation:Expression
-          Name="paymentOptionIdList"><![CDATA[def paymentOptionIdList = []
-while ( PaymentOptionsVA.hasNext() ) {
-PaymentOptionsVA.next()
-paymentOptionIdList.add(PaymentOptionsVA.currentRow.Id) }
-return paymentOptionIdList]]></validation:Expression>
-      </validation:ResExpressions>
-    </validation:ListValidationBean>
   </Attribute>
   <AccessorAttribute
     Name="ItemEO"

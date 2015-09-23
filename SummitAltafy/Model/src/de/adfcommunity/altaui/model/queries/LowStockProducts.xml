@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="LowStockProducts"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  SelectList="Inventory.PRODUCT_ID, 
+       Inventory.WAREHOUSE_ID, 
+       Inventory.AMOUNT_IN_STOCK, 
+       Inventory.REORDER_POINT, 
+       Inventory.MAX_IN_STOCK, 
+       Inventory.OUT_OF_STOCK_EXPLANATION, 
+       Inventory.RESTOCK_DATE, 
+       Warehouse.CITY, 
+       Warehouse.ID, 
+       Product.NAME, 
+       Product.ID AS ID1, 
+       Product.SUGGESTED_WHLSL_PRICE, 
+       Product.WHLSL_UNITS"
+  FromList="S_INVENTORY Inventory, S_WAREHOUSE Warehouse, S_PRODUCT Product, S_IMAGE Image"
+  Where="((Inventory.WAREHOUSE_ID = Warehouse.ID) AND (Inventory.PRODUCT_ID = Product.ID)) AND (Product.IMAGE_ID = Image.ID) AND (Inventory.AMOUNT_IN_STOCK &lt; Inventory.REORDER_POINT)"
+  RangeSize="-1">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="de.adfcommunity.altaui.model.queries.LowStockProducts_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="Inventory"
+    Entity="de.adfcommunity.altaui.model.entities.Inventory"/>
+  <EntityUsage
+    Name="Warehouse"
+    Entity="de.adfcommunity.altaui.model.entities.Warehouse"
+    Association="de.adfcommunity.altaui.model.entities.assoc.SInventoryWarehouseIdFkAssoc"
+    AssociationEnd="de.adfcommunity.altaui.model.entities.assoc.SInventoryWarehouseIdFkAssoc.Warehouse"
+    SourceUsage="de.adfcommunity.altaui.model.queries.LowStockProducts.Inventory"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="de.adfcommunity.altaui.model.entities.Inventory.WarehouseId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="de.adfcommunity.altaui.model.entities.Warehouse.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Product"
+    Entity="de.adfcommunity.altaui.model.entities.Product"
+    Association="de.adfcommunity.altaui.model.entities.assoc.SInventoryProductIdFkAssoc"
+    AssociationEnd="de.adfcommunity.altaui.model.entities.assoc.SInventoryProductIdFkAssoc.Product"
+    SourceUsage="de.adfcommunity.altaui.model.queries.LowStockProducts.Inventory"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="de.adfcommunity.altaui.model.entities.Inventory.ProductId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="de.adfcommunity.altaui.model.entities.Product.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Image"
+    Entity="de.adfcommunity.altaui.model.entities.Image"
+    Association="de.adfcommunity.altaui.model.entities.assoc.SProductImageIdFkAssoc"
+    AssociationEnd="de.adfcommunity.altaui.model.entities.assoc.SProductImageIdFkAssoc.Image"
+    SourceUsage="de.adfcommunity.altaui.model.queries.LowStockProducts.Product"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="de.adfcommunity.altaui.model.entities.Product.ImageId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="de.adfcommunity.altaui.model.entities.Image.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="ProductId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ProductId"
+    EntityUsage="Inventory"
+    AliasName="PRODUCT_ID"/>
+  <ViewAttribute
+    Name="WarehouseId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="WarehouseId"
+    EntityUsage="Inventory"
+    AliasName="WAREHOUSE_ID"/>
+  <ViewAttribute
+    Name="AmountInStock"
+    PrecisionRule="true"
+    EntityAttrName="AmountInStock"
+    EntityUsage="Inventory"
+    AliasName="AMOUNT_IN_STOCK"/>
+  <ViewAttribute
+    Name="ReorderPoint"
+    PrecisionRule="true"
+    EntityAttrName="ReorderPoint"
+    EntityUsage="Inventory"
+    AliasName="REORDER_POINT"/>
+  <ViewAttribute
+    Name="MaxInStock"
+    PrecisionRule="true"
+    EntityAttrName="MaxInStock"
+    EntityUsage="Inventory"
+    AliasName="MAX_IN_STOCK"/>
+  <ViewAttribute
+    Name="OutOfStockExplanation"
+    PrecisionRule="true"
+    EntityAttrName="OutOfStockExplanation"
+    EntityUsage="Inventory"
+    AliasName="OUT_OF_STOCK_EXPLANATION"/>
+  <ViewAttribute
+    Name="RestockDate"
+    PrecisionRule="true"
+    EntityAttrName="RestockDate"
+    EntityUsage="Inventory"
+    AliasName="RESTOCK_DATE"/>
+  <ViewAttribute
+    Name="City"
+    PrecisionRule="true"
+    EntityAttrName="City"
+    EntityUsage="Warehouse"
+    AliasName="CITY"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Warehouse"
+    AliasName="ID"/>
+  <ViewAttribute
+    Name="Name"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Name"
+    EntityUsage="Product"
+    AliasName="NAME"/>
+  <ViewAttribute
+    Name="Id1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Product"
+    AliasName="ID1"/>
+  <ViewAttribute
+    Name="SuggestedWhlslPrice"
+    PrecisionRule="true"
+    EntityAttrName="SuggestedWhlslPrice"
+    EntityUsage="Product"
+    AliasName="SUGGESTED_WHLSL_PRICE"/>
+  <ViewAttribute
+    Name="WhlslUnits"
+    PrecisionRule="true"
+    EntityAttrName="WhlslUnits"
+    EntityUsage="Product"
+    AliasName="WHLSL_UNITS"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="ProductId"/>
+    <Item Value="WarehouseId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="de.adfcommunity.altaui.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

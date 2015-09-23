@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="ItemVO"
-  Version="12.1.2.66.11"
+  Version="12.1.3.10.8"
   BindingStyle="OracleName"
   CustomQuery="false"
   RowClass="oracle.summit.model.views.ItemVORowImpl"
@@ -209,12 +209,10 @@
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
     SQLType="VARCHAR">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[(Quantity != null ? Quantity : 0) * (Price != null ? Price : 0)]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Properties>
       <SchemaBasedProperties>
-        <FMT_FORMATTER
-          ResId="oracle.summit.model.views.ItemVO.ItemTotal_FMT_FORMATTER"/>
         <LABEL
           ResId="oracle.summit.model.views.ItemVO.ItemTotal_LABEL"/>
       </SchemaBasedProperties>
@@ -231,8 +229,8 @@
     AliasName="VIEW_ATTR"
     SQLType="VARCHAR"
     DefaultValue="No image">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[(ProductId != null ? adf.object.readImageNameFromDB(new oracle.jbo.domain.Number(ProductId)) : null)]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Dependencies>
       <Item
         Value="ProductId"/>

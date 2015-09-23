@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LowStockVO"
-  Version="12.1.2.66.62"
+  Version="12.1.3.10.8"
   InheritPersonalization="merge"
   SelectList="InventoryEO.PRODUCT_ID, 
        InventoryEO.WAREHOUSE_ID, 

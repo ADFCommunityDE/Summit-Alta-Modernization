@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SInventoryProductIdFkLink"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  EntityAssociation="de.adfcommunity.altaui.model.entities.assoc.SInventoryProductIdFkAssoc">
+  <ViewLinkDefEnd
+    Name="ProductView"
+    Cardinality="1"
+    Source="true"
+    Owner="de.adfcommunity.altaui.model.queries.ProductView">
+    <DesignTime>
+      <Attr Name="_finderName" Value="ProductView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="de.adfcommunity.altaui.model.queries.ProductView.Id"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="InventoryView"
+    Cardinality="-1"
+    Owner="de.adfcommunity.altaui.model.queries.InventoryView">
+    <DesignTime>
+      <Attr Name="_finderName" Value="InventoryView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="de.adfcommunity.altaui.model.queries.InventoryView.ProductId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

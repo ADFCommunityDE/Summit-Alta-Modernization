@@ -105,16 +105,6 @@ public class OrdEOImpl extends SummitEntityImpl {
             }
         }
         ,
-        PaymentOptionId {
-            public Object get(OrdEOImpl obj) {
-                return obj.getPaymentOptionId();
-            }
-
-            public void put(OrdEOImpl obj, Object value) {
-                obj.setPaymentOptionId((Integer) value);
-            }
-        }
-        ,
         ItemEO {
             public Object get(OrdEOImpl obj) {
                 return obj.getItemEO();
@@ -165,7 +155,8 @@ public class OrdEOImpl extends SummitEntityImpl {
             }
         }
         ;
-        private static AttributesEnum[] vals = null;
+        static AttributesEnum[] vals = null;
+        ;
         private static int firstIndex = 0;
 
         public abstract Object get(OrdEOImpl object);
@@ -201,7 +192,6 @@ public class OrdEOImpl extends SummitEntityImpl {
     public static final int TOTAL = AttributesEnum.Total.index();
     public static final int PAYMENTTYPEID = AttributesEnum.PaymentTypeId.index();
     public static final int ORDERFILLED = AttributesEnum.OrderFilled.index();
-    public static final int PAYMENTOPTIONID = AttributesEnum.PaymentOptionId.index();
     public static final int ITEMEO = AttributesEnum.ItemEO.index();
     public static final int CUSTOMEREO = AttributesEnum.CustomerEO.index();
     public static final int EMPEO = AttributesEnum.EmpEO.index();
@@ -328,21 +318,6 @@ public class OrdEOImpl extends SummitEntityImpl {
         setAttributeInternal(ORDERFILLED, value);
     }
 
-    /**
-     * Gets the attribute value for PaymentOptionId, using the alias name PaymentOptionId.
-     * @return the value of PaymentOptionId
-     */
-    public Integer getPaymentOptionId() {
-        return (Integer)getAttributeInternal(PAYMENTOPTIONID);
-    }
-
-    /**
-     * Sets <code>value</code> as the attribute value for PaymentOptionId.
-     * @param value value to set the PaymentOptionId
-     */
-    public void setPaymentOptionId(Integer value) {
-        setAttributeInternal(PAYMENTOPTIONID, value);
-    }
 
     /**
      * Gets the attribute value for PaymentTypeId, using the alias name PaymentTypeId.

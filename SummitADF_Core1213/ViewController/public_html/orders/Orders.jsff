@@ -141,8 +141,6 @@
                                       shortDesc="#{bindings.ItemsForOrder.hints.Price.tooltip}" id="it8"
                                       partialTriggers="productIdId">
                           <f:validator binding="#{row.bindings.Price.validator}"/>
-                          <af:convertNumber groupingUsed="false"
-                                            pattern="#{bindings.ItemsForOrder.hints.Price.format}"/>
                         </af:inputText>
                       </af:column>
                       <af:column sortProperty="#{bindings.ItemsForOrder.hints.Quantity.name}" sortable="false"
@@ -168,8 +166,6 @@
                                       shortDesc="#{bindings.ItemsForOrder.hints.ItemTotal.tooltip}" id="it11"
                                       partialTriggers="productIdId">
                           <f:validator binding="#{row.bindings.ItemTotal.validator}"/>
-                          <af:convertNumber groupingUsed="false"
-                                            pattern="#{bindings.ItemsForOrder.hints.ItemTotal.format}"/>
                         </af:inputText>
                       </af:column>
                     </af:table>

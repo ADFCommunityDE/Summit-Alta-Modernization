@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Image"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="S_IMAGE"
+  AliasName="Image"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="Id"
+    IsNotNull="true"
+    Precision="7"
+    Scale="0"
+    ColumnName="ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="S_IMAGE"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="Format"
+    Precision="25"
+    ColumnName="FORMAT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_IMAGE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UseFilename"
+    Precision="1"
+    ColumnName="USE_FILENAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_IMAGE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Filename"
+    Precision="255"
+    ColumnName="FILENAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_IMAGE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="255"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Image"
+    IsQueriable="false"
+    ColumnName="IMAGE"
+    SQLType="BLOB"
+    Type="oracle.jbo.domain.BlobDomain"
+    ColumnType="BLOB"
+    TableName="S_IMAGE"/>
+  <AccessorAttribute
+    Name="Product"
+    Association="de.adfcommunity.altaui.model.entities.assoc.SProductImageIdFkAssoc"
+    AssociationEnd="de.adfcommunity.altaui.model.entities.assoc.SProductImageIdFkAssoc.Product"
+    AssociationOtherEnd="de.adfcommunity.altaui.model.entities.assoc.SProductImageIdFkAssoc.Image"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="SImageFormatCk">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="S_IMAGE_FORMAT_CK"/>
+      <Attr Name="_checkCondition" Value="FORMAT IN ('JFIFF', 'JTIFF')"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="SImageIdNn">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="S_IMAGE_ID_NN"/>
+      <Attr Name="_checkCondition" Value="ID IS NOT NULL"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="SImageIdPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="S_IMAGE_ID_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="de.adfcommunity.altaui.model.entities.Image.Id"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SImageUseFilenameCk">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="S_IMAGE_USE_FILENAME_CK"/>
+      <Attr Name="_checkCondition" Value="USE_FILENAME IN ('Y', 'N')"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+</Entity>

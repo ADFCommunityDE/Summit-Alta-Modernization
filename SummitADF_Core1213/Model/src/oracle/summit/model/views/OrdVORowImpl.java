@@ -27,33 +27,72 @@ public class OrdVORowImpl extends SummitViewRowImpl {
     public static final int ENTITY_CUSTOMEREO = 2;
 
     /**
+     * AttributesEnum: generated enum for identifying attributes and accessors. DO NOT MODIFY.
+     */
+    public enum AttributesEnum {
+        Id,
+        CustomerId,
+        DateOrdered,
+        DateShipped,
+        SalesRepId,
+        Total,
+        PaymentTypeId,
+        OrderFilled,
+        LastName,
+        Id1,
+        Name,
+        Id2,
+        TimeToShip,
+        ItemVO,
+        YesNoVO1,
+        PaymentTypeVO1,
+        SalesRepsVO;
+        static AttributesEnum[] vals = null;
+        ;
+        private static final int firstIndex = 0;
+
+        public int index() {
+            return AttributesEnum.firstIndex() + ordinal();
+        }
+
+        public static final int firstIndex() {
+            return firstIndex;
+        }
+
+        public static int count() {
+            return AttributesEnum.firstIndex() + AttributesEnum.staticValues().length;
+        }
+
+        public static final AttributesEnum[] staticValues() {
+            if (vals == null) {
+                vals = AttributesEnum.values();
+            }
+            return vals;
+        }
+    }
+
+    public static final int ID = AttributesEnum.Id.index();
+    public static final int CUSTOMERID = AttributesEnum.CustomerId.index();
+    public static final int DATEORDERED = AttributesEnum.DateOrdered.index();
+    public static final int DATESHIPPED = AttributesEnum.DateShipped.index();
+    public static final int SALESREPID = AttributesEnum.SalesRepId.index();
+    public static final int TOTAL = AttributesEnum.Total.index();
+    public static final int PAYMENTTYPEID = AttributesEnum.PaymentTypeId.index();
+    public static final int ORDERFILLED = AttributesEnum.OrderFilled.index();
+    public static final int LASTNAME = AttributesEnum.LastName.index();
+    public static final int ID1 = AttributesEnum.Id1.index();
+    public static final int NAME = AttributesEnum.Name.index();
+    public static final int ID2 = AttributesEnum.Id2.index();
+    public static final int TIMETOSHIP = AttributesEnum.TimeToShip.index();
+    public static final int ITEMVO = AttributesEnum.ItemVO.index();
+    public static final int YESNOVO1 = AttributesEnum.YesNoVO1.index();
+    public static final int PAYMENTTYPEVO1 = AttributesEnum.PaymentTypeVO1.index();
+    public static final int SALESREPSVO = AttributesEnum.SalesRepsVO.index();
+
+    /**
      * This is the default constructor (do not remove).
      */
     public OrdVORowImpl() {
-    }
-
-    /**
-     * Gets OrdEO entity object.
-     * @return the OrdEO
-     */
-    public OrdEOImpl getOrdEO() {
-        return (OrdEOImpl)getEntity(0);
-    }
-
-    /**
-     * Gets EmpEO entity object.
-     * @return the EmpEO
-     */
-    public SummitEntityImpl getEmpEO() {
-        return (SummitEntityImpl)getEntity(1);
-    }
-
-    /**
-     * Gets CustomerEO entity object.
-     * @return the CustomerEO
-     */
-    public CustomerEOImpl getCustomerEO() {
-        return (CustomerEOImpl) getEntity(2);
     }
 
 

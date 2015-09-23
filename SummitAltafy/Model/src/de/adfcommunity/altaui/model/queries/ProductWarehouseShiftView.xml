@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProductWarehouseShiftView"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="de.adfcommunity.altaui.model.queries.ProductWarehouseShiftView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="bindProductId"
+    Kind="viewcriteria"
+    Type="java.lang.Integer"/>
+  <Variable
+    Name="bindWarehouseId"
+    Kind="viewcriteria"
+    Type="java.lang.Integer"/>
+  <EntityUsage
+    Name="Inventory"
+    Entity="de.adfcommunity.altaui.model.entities.Inventory"/>
+  <EntityUsage
+    Name="Product"
+    Entity="de.adfcommunity.altaui.model.entities.Product"
+    Association="de.adfcommunity.altaui.model.entities.assoc.SInventoryProductIdFkAssoc"
+    AssociationEnd="de.adfcommunity.altaui.model.entities.assoc.SInventoryProductIdFkAssoc.Product"
+    SourceUsage="de.adfcommunity.altaui.model.queries.ProductWarehouseShiftView.Inventory"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="de.adfcommunity.altaui.model.entities.Inventory.ProductId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="de.adfcommunity.altaui.model.entities.Product.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Warehouse"
+    Entity="de.adfcommunity.altaui.model.entities.Warehouse"
+    Association="de.adfcommunity.altaui.model.entities.assoc.SInventoryWarehouseIdFkAssoc"
+    AssociationEnd="de.adfcommunity.altaui.model.entities.assoc.SInventoryWarehouseIdFkAssoc.Warehouse"
+    SourceUsage="de.adfcommunity.altaui.model.queries.ProductWarehouseShiftView.Inventory"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="de.adfcommunity.altaui.model.entities.Inventory.WarehouseId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="de.adfcommunity.altaui.model.entities.Warehouse.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Countries"
+    Entity="de.adfcommunity.altaui.model.entities.Countries"
+    Association="de.adfcommunity.altaui.model.entities.assoc.CountryOfWarehouseAssoc"
+    AssociationEnd="de.adfcommunity.altaui.model.entities.assoc.CountryOfWarehouseAssoc.Countries"
+    SourceUsage="de.adfcommunity.altaui.model.queries.ProductWarehouseShiftView.Warehouse"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="de.adfcommunity.altaui.model.entities.Warehouse.CountryId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="de.adfcommunity.altaui.model.entities.Countries.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="AmountInStock"
+    PrecisionRule="true"
+    EntityAttrName="AmountInStock"
+    EntityUsage="Inventory"
+    AliasName="AMOUNT_IN_STOCK"/>
+  <ViewAttribute
+    Name="ProductId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ProductId"
+    EntityUsage="Inventory"
+    AliasName="PRODUCT_ID"/>
+  <ViewAttribute
+    Name="WarehouseId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="WarehouseId"
+    EntityUsage="Inventory"
+    AliasName="WAREHOUSE_ID"/>
+  <ViewAttribute
+    Name="Name"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Name"
+    EntityUsage="Product"
+    AliasName="NAME"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Product"
+    AliasName="ID"/>
+  <ViewAttribute
+    Name="Address"
+    PrecisionRule="true"
+    EntityAttrName="Address"
+    EntityUsage="Warehouse"
+    AliasName="ADDRESS"/>
+  <ViewAttribute
+    Name="Id1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Warehouse"
+    AliasName="ID1"/>
+  <ViewAttribute
+    Name="City"
+    PrecisionRule="true"
+    EntityAttrName="City"
+    EntityUsage="Warehouse"
+    AliasName="CITY"/>
+  <ViewAttribute
+    Name="State"
+    PrecisionRule="true"
+    EntityAttrName="State"
+    EntityUsage="Warehouse"
+    AliasName="STATE"/>
+  <ViewAttribute
+    Name="ZipCode"
+    PrecisionRule="true"
+    EntityAttrName="ZipCode"
+    EntityUsage="Warehouse"
+    AliasName="ZIP_CODE"/>
+  <ViewAttribute
+    Name="Country"
+    IsUnique="true"
+    PrecisionRule="true"
+    EntityAttrName="Country"
+    EntityUsage="Countries"
+    AliasName="COUNTRY"/>
+  <ViewAttribute
+    Name="Id2"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Countries"
+    AliasName="ID2"/>
+  <ViewAttribute
+    Name="CountryCode"
+    PrecisionRule="true"
+    EntityAttrName="CountryCode"
+    EntityUsage="Countries"
+    AliasName="COUNTRY_CODE"/>
+  <ViewCriteria
+    Name="ShiftPossibilitiesCriteria"
+    ViewObjectName="de.adfcommunity.altaui.model.queries.ProductWarehouseShiftView"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="ProductWarehouseShiftViewCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ProductId"
+        ViewAttribute="ProductId"
+        Operator="="
+        Conjunction="AND"
+        Value=":bindProductId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="WarehouseId"
+        ViewAttribute="WarehouseId"
+        Operator="&lt;>"
+        Conjunction="AND"
+        Value=":bindWarehouseId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="ProductId"/>
+    <Item Value="WarehouseId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="de.adfcommunity.altaui.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

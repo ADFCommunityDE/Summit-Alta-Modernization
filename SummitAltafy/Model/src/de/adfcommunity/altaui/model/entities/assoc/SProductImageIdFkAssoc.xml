@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SProductImageIdFkAssoc"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="Image"
+    Cardinality="1"
+    Source="true"
+    Owner="de.adfcommunity.altaui.model.entities.Image">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Image"/>
+      <Attr Name="_foreignKey" Value="de.adfcommunity.altaui.model.entities.Image.SImageIdPk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="de.adfcommunity.altaui.model.entities.Image.Id"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="Product"
+    Cardinality="-1"
+    Owner="de.adfcommunity.altaui.model.entities.Product">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Product"/>
+      <Attr Name="_foreignKey" Value="de.adfcommunity.altaui.model.entities.Product.SProductImageIdFk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="de.adfcommunity.altaui.model.entities.Product.ImageId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>
