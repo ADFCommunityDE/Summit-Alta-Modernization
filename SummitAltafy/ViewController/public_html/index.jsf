@@ -22,8 +22,10 @@
                     <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"
                                partialTriggers=":::bBarFDC:l1 :::bBarFDC:l2 :::bBarFDC:l3"/>
                 </f:facet>
-                <f:facet name="start"/>
-                <f:facet name="end"/>
+                <f:attribute name="minWidth" value="700px"/>
+                <f:attribute name="endWidth" value="170px"/>
+                <f:attribute name="startWidth" value="170px"/>
+                <f:attribute name="showAppNavbar" value="true"/>
             </af:pageTemplate>
         </af:form>
     </af:document>
