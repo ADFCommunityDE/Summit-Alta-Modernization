@@ -9,7 +9,7 @@
                     <dvt:marker id="m2" shortDesc="#{row.Name} in #{row.City}" labelDisplay="on" labelPosition="bottom"/>
                 </dvt:pointLocation>
             </dvt:pointDataLayer>
-            <dvt:areaLayer layer="continents" id="al2"/>
+            <dvt:areaLayer layer="countries" id="al2"/>
         </dvt:thematicMap>
     </af:panelGroupLayout>
 </ui:composition>
