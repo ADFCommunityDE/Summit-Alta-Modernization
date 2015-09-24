@@ -5,6 +5,8 @@
     <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
              className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
     <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
   </definitionFactories>
   <pageMap>
     <page path="/index.jsf" usageId="de_adfcommunity_altaui_view_indexPageDef"/>
