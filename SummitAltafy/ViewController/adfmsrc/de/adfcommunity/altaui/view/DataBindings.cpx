@@ -8,8 +8,19 @@
   </definitionFactories>
   <pageMap>
     <page path="/index.jsf" usageId="de_adfcommunity_altaui_view_indexPageDef"/>
+    <page path="/WEB-INF/summit-management/low-stock-products-landing.jsff"
+          usageId="de_adfcommunity_altaui_view_low_stock_products_landingPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="de_adfcommunity_altaui_view_indexPageDef" path="de.adfcommunity.altaui.view.pageDefs.indexPageDef"/>
+    <page id="de_adfcommunity_altaui_view_low_stock_products_landingPageDef"
+          path="summit_management.low_stock_products_landingPageDef"/>
   </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AltaSummitServiceDataControl" Package="de.adfcommunity.altaui.model.services"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AltaSummitServiceLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
 </Application>

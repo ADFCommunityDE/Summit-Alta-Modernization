@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:listView value="#{bindings.LowStockProducts.collectionModel}" var="item"
+                 emptyText="#{bindings.LowStockProducts.viewable ? 'No data to display.' : 'Access Denied.'}"
+                 fetchSize="#{bindings.LowStockProducts.rangeSize}" id="lv1">
+      <af:listItem id="li1">
+        <af:panelGridLayout id="pgl2">
+          <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr1">
+            <af:gridCell marginStart="5px" width="80%" id="gc1">
+              <af:panelGroupLayout id="pgl3" layout="horizontal">
+                <af:spacer width="20" height="10" id="s1"/>
+                <dvt:ledGauge id="ledGauge1" type="circle" value="#{item.StockRatio}">
+                  <dvt:gaugeThreshold id="thr1" color="#FFFF00"/>
+                  <dvt:gaugeThreshold id="gt1" color="#FF0000" maximum="0.3"/>
+                  <dvt:gaugeMetricLabel id="gml1" rendered="false"/>
+                </dvt:ledGauge>
+                <af:outputFormatted value="#{item.AmountInStock}" id="of1" styleClass="ListItemText"/>
+                <af:outputFormatted value="of" id="of2" styleClass="ListItemText"/>
+                <af:outputFormatted value="#{item.MaxInStock}" id="of3" styleClass="ListItemText"/>
+                <af:icon name="info" id="i1">
+                  <af:showPopupBehavior popupId="infioPopup" triggerType="mouseHover" align="endAfter" alignId="i1"/>
+                </af:icon>
+                <af:popup childCreation="deferred" autoCancel="disabled" id="infioPopup">
+                  <af:noteWindow id="nw1">
+                    <af:outputFormatted value="#{item.OutOfStockExplanation}" id="of4"/>
+                  </af:noteWindow>
+                </af:popup>
+                <f:facet name="separator">
+                  <af:spacer width="20" height="10" id="s2"/>
+                </f:facet>
+              </af:panelGroupLayout>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="20%" marginEnd="5px" id="gc2"/>
+          </af:gridRow>
+        </af:panelGridLayout>
+      </af:listItem>
+    </af:listView>
+  </af:panelGroupLayout>
+</ui:composition>

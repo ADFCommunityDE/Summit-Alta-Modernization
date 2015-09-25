@@ -155,4 +155,7 @@
   <listener>
     <listener-class>oracle.adf.mbean.share.connection.ADFConnectionLifeCycleCallBack</listener-class>
   </listener>
+  <listener>
+    <listener-class>oracle.bc4j.mbean.BC4JConfigLifeCycleCallBack</listener-class>
+  </listener>
 </web-app>

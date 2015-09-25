@@ -175,6 +175,27 @@
     EntityAttrName="WhlslUnits"
     EntityUsage="Product"
     AliasName="WHLSL_UNITS"/>
+  <ViewAttribute
+    Name="StockRatio"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression
+      trustMode="untrusted"><![CDATA[AmountInStock / ReorderPoint]]></TransientExpression>
+    <RecalcCondition
+      trustMode="untrusted"><![CDATA[true]]></RecalcCondition>
+    <Dependencies>
+      <Item
+        Value="AmountInStock"/>
+      <Item
+        Value="ReorderPoint"/>
+    </Dependencies>
+  </ViewAttribute>
   <AttrArray Name="KeyAttributes">
     <Item Value="ProductId"/>
     <Item Value="WarehouseId"/>

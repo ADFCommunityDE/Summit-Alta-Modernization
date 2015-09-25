@@ -3,7 +3,7 @@
                 xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
     <c:set var="viewcontrollerBundle" value="#{adfBundle['de.adfcommunity.altaui.view.bundle.images']}"/>
     <af:panelGroupLayout id="pgl1" layout="horizontal" halign="center">
-        <af:link id="l1">
+        <af:link id="l1" action="low-stock-products">
             <?audit suppress oracle.jdeveloper.jsp.validate-children?>
             <af:panelGroupLayout id="pgl2" layout="vertical" halign="center" styleClass="Tile">
                 <af:outputFormatted value="Low Stock Products" id="of1" styleClass="TileHeaderText"/>

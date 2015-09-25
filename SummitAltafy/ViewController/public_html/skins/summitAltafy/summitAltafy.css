@@ -16,3 +16,9 @@
     font-size: x-large; 
     font-weight: bold; 
 }
+
+.ListItemText{
+    font-size:large; 
+    color:Black;
+    font-weight:bold;
+}

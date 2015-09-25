@@ -3,20 +3,49 @@
    <OverallProperties
       id="OverallProperties1"/>
    <View
-      id="View3">
+      id="View4">
       <property
-         name="activityId">summit-management1</property>
+         name="activityId">__summit-management</property>
       <property
          name="page">/fragments/summit-management.jsff</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>summit-management1&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>__summit-management&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">72.36719</property>
+         name="y">161.0459</property>
       <property
          name="pageFragment">true</property>
       <property
-         name="x">92.177734</property>
+         name="x">44.120117</property>
    </View>
+   <TaskFlowCall
+      id="TaskFlowCall5">
+      <property
+         name="taskFlowId">low-stock-products</property>
+      <property
+         name="activityId">low-stock-products</property>
+      <property
+         name="documentReference">/WEB-INF/summit-management/low-stock-products.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>low-stock-products&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">51.24707</property>
+      <property
+         name="x">334.0</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="View4"
+      to="TaskFlowCall5">
+      <property
+         name="fromOutcome">low-stock-products</property>
+      <property
+         name="sdm:polyPoints">R50,85.12012,160.69531,293.0,50.896484,L50</property>
+   </ControlFlowCase>
 </SDM>
