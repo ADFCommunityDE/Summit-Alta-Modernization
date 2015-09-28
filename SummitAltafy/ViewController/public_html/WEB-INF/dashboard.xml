@@ -8,6 +8,24 @@
     <view id="__dashboard">
       <page>/fragments/dashboard.jsff</page>
     </view>
+    <task-flow-call id="call_management-taskflow">
+      <task-flow-reference>
+        <document>/WEB-INF/summit-management.xml</document>
+        <id>summit-management</id>
+      </task-flow-reference>
+      <input-parameter id="__3">
+        <name>customerId</name>
+        <value>#{pageFlowScope.customerId}</value>
+        <pass-by-value/>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>__dashboard</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>showManagement</from-outcome>
+        <to-activity-id>call_management-taskflow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
     <use-page-fragments/>
   </task-flow-definition>
 </adfc-config>

@@ -1,11 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
                 xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
-  <af:panelGroupLayout id="pgl1">
-    <af:outputText id="ot1" value="Dashboard"/>
-    <dvt:thematicMap basemap="world" id="tm1" 
-                     summary="A world map containing all the customers in their respective lands.">
-      <dvt:areaLayer layer="countries" id="al1"/>
-    </dvt:thematicMap>
-  </af:panelGroupLayout>
+    <af:panelGroupLayout id="pgl1">
+        <dvt:thematicMap id="tm2" basemap="world" summary="WIP Thematic Map of all customers and their locations."
+        tooltipDisplay="shortDescOnly">
+            <dvt:pointDataLayer id="dl2" value="#{bindings.SCustomerView13.collectionModel}" var="row">
+                <dvt:pointLocation type="pointXY" pointX="#{row.CountryId}" pointY="#{row.Id}" id="pl2">
+                    <dvt:marker id="m2" shortDesc="#{row.Name} in #{row.City}" labelDisplay="on" labelPosition="bottom"
+                                action="showManagement">
+                        <af:setPropertyListener from="#{row.Id}" to="#{pageFlowScope.customerId}"
+                                                type="action"/>
+                    </dvt:marker>
+                </dvt:pointLocation>
+            </dvt:pointDataLayer>
+            <dvt:areaLayer layer="countries" id="al2"/>
+        </dvt:thematicMap>
+    </af:panelGroupLayout>
 </ui:composition>

@@ -4,58 +4,18 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
-    <iterator Binds="SCustomerView1" RangeSize="25" DataControl="AppModuleDataControl" id="SCustomerView1Iterator"/>
+    <iterator Binds="SCustomerView1" RangeSize="-1" DataControl="AppModuleDataControl" id="SCustomerView1Iterator"/>
   </executables>
   <bindings>
-    <attributeValues IterBinding="SCustomerView1Iterator" id="Id">
-      <AttrNames>
-        <Item Value="Id"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="SCustomerView1Iterator" id="Name">
-      <AttrNames>
-        <Item Value="Name"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="SCustomerView1Iterator" id="Phone">
-      <AttrNames>
-        <Item Value="Phone"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="SCustomerView1Iterator" id="Address">
-      <AttrNames>
-        <Item Value="Address"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="SCustomerView1Iterator" id="City">
-      <AttrNames>
-        <Item Value="City"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="SCustomerView1Iterator" id="State">
-      <AttrNames>
-        <Item Value="State"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="SCustomerView1Iterator" id="CountryId">
-      <AttrNames>
-        <Item Value="CountryId"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="SCustomerView1Iterator" id="CreditRatingId">
-      <AttrNames>
-        <Item Value="CreditRatingId"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="SCustomerView1Iterator" id="SalesRepId">
-      <AttrNames>
-        <Item Value="SalesRepId"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="SCustomerView1Iterator" id="Comments">
-      <AttrNames>
-        <Item Value="Comments"/>
-      </AttrNames>
-    </attributeValues>
+    <tree IterBinding="SCustomerView1Iterator" id="SCustomerView13">
+      <nodeDefinition DefName="de.adfcommunity.altaui.model.SCustomerView" Name="SCustomerView130">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="CountryId"/>
+          <Item Value="City"/>
+          <Item Value="Name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
   </bindings>
 </pageDefinition>
