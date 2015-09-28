@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="EmpVO"
-  Version="12.1.2.64.15"
+  Version="12.1.3.10.8"
   SelectList="EmpEO.ID, 
        EmpEO.LAST_NAME, 
        EmpEO.FIRST_NAME, 
@@ -16,7 +16,7 @@
        EmpEO.DEPT_ID, 
        EmpEO.SALARY, 
        EmpEO.COMMISSION_PCT, 
-       EmpEO.EMAIL"
+       EmpEO.USERID AS EMAIL"
   FromList="S_EMP EmpEO"
   BindingStyle="OracleName"
   CustomQuery="false"
