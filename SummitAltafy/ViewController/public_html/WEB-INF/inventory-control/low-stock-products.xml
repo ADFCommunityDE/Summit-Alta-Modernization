@@ -6,7 +6,7 @@
       <shared/>
     </data-control-scope>
     <view id="low-stock-products-landing">
-      <page>/WEB-INF/summit-management/low-stock-products-landing.jsff</page>
+      <page>/WEB-INF/inventory-control/low-stock-products-landing.jsff</page>
     </view>
     <use-page-fragments/>
   </task-flow-definition>

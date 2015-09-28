@@ -8,7 +8,7 @@
   </definitionFactories>
   <pageMap>
     <page path="/index.jsf" usageId="de_adfcommunity_altaui_view_indexPageDef"/>
-    <page path="/WEB-INF/summit-management/low-stock-products-landing.jsff"
+    <page path="/WEB-INF/inventory-control/low-stock-products-landing.jsff"
           usageId="de_adfcommunity_altaui_view_low_stock_products_landingPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
