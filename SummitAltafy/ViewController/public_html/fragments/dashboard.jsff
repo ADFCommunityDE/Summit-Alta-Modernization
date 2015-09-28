@@ -9,8 +9,8 @@
                     <dvt:marker id="m2" shortDesc="#{row.Name} in #{row.City}" labelDisplay="on" labelPosition="bottom"
                                 action="showManagement">
                         <?audit suppress oracle.jdeveloper.jsp.validate-children?>
-                        <af:setPropertyListener from="#{row.Id}" to="#{pageFlowScope.customerId}"
-                                                type="action"/>
+                        <af:setActionListener from="#{row.Id}" to="#{pageFlowScope.customerId}"/>
+                                                
                     </dvt:marker>
                 </dvt:pointLocation>
             </dvt:pointDataLayer>
