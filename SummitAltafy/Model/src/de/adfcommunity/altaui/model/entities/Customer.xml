@@ -3,7 +3,7 @@
 <!---->
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="SCustomer"
+  Name="Customer"
   Version="12.1.3.10.8"
   InheritPersonalization="merge"
   DBObjectType="table"
@@ -133,6 +133,20 @@
       <Attr Name="_DisplaySize" Value="255"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="GeoLocation"
+    ColumnName="GEO_LOCATION"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="S_CUSTOMER"/>
+  <AccessorAttribute
+    Name="GeoLocations"
+    Association="de.adfcommunity.altaui.model.entities.assoc.CustomerGeoLocationsAssoc"
+    AssociationEnd="de.adfcommunity.altaui.model.entities.assoc.CustomerGeoLocationsAssoc.GeoLocations"
+    AssociationOtherEnd="de.adfcommunity.altaui.model.entities.assoc.CustomerGeoLocationsAssoc.Customer"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
   <Key
     Name="SCustomerIdNn">
     <DesignTime>
@@ -149,7 +163,7 @@
       <Attr Name="_DBObjectName" Value="S_CUSTOMER_ID_PK"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="de.adfcommunity.altaui.model.SCustomer.Id"/>
+      <Item Value="de.adfcommunity.altaui.model.entities.Customer.Id"/>
     </AttrArray>
   </Key>
   <Key
@@ -169,7 +183,7 @@
       <Attr Name="_DBObjectName" Value="S_CUSTOMER_CREDIT_RATING_FK"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="de.adfcommunity.altaui.model.SCustomer.CreditRatingId"/>
+      <Item Value="de.adfcommunity.altaui.model.entities.Customer.CreditRatingId"/>
     </AttrArray>
   </Key>
   <Key
@@ -180,7 +194,18 @@
       <Attr Name="_DBObjectName" Value="S_SALES_REP_ID_FK"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="de.adfcommunity.altaui.model.SCustomer.SalesRepId"/>
+      <Item Value="de.adfcommunity.altaui.model.entities.Customer.SalesRepId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_Customer">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="S_GEO_LOCATIONS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_CUSTOMER"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="de.adfcommunity.altaui.model.entities.Customer.GeoLocation"/>
     </AttrArray>
   </Key>
 </Entity>

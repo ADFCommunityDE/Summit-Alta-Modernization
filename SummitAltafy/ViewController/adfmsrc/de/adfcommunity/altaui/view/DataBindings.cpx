@@ -17,7 +17,7 @@
     <page id="de_adfcommunity_altaui_view_dashboardPageDef" path="fragments.dashboardPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
-    <BC4JDataControl id="AppModuleDataControl" Package="de.adfcommunity.altaui.model"
+    <BC4JDataControl id="AppModuleDataControl" Package="de.adfcommunity.altaui.model.services"
                      FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
                      SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
                      SupportsSortCollection="true" Configuration="AppModuleLocal" syncMode="Immediate"
