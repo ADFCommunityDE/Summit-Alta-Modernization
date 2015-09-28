@@ -7,7 +7,14 @@
                 <f:facet name="header">
                     <af:outputText value="Summit Alta UI Demo" id="ot1"/>
                 </f:facet>
-                <f:facet name="status"/>
+                <f:facet name="status">
+                    <af:link id="cl1" text="Sign in" partialSubmit="true">
+                        <af:showPopupBehavior popupId="p1" triggerType="click" alignId="cl1" />
+                    </af:link>
+                    <af:popup id="p1">
+                        <af:outputText id="ot2" value="No Signin possible yet."/>
+                    </af:popup>
+                </f:facet>
                 <f:facet name="appNav">
                     <af:button text="Dashboard" action="#{viewScope.Page.dashboard}" id="l1"
                                styleClass="AFAppNavbarButton" selected="true" type="radio"/>
