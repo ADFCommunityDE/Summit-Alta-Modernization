@@ -16,18 +16,18 @@
                     </af:popup>
                 </f:facet>
                 <f:facet name="appNav">
-                    <af:button text="Dashboard" action="#{viewScope.Page.dashboard}" id="l1"
+                    <af:button text="Dashboard" action="#{viewScope.Page.dashboard}" id="appNavDashboard"
                                styleClass="AFAppNavbarButton" selected="true" type="radio"/>
-                    <af:button text="Inventory Control" action="#{viewScope.Page.inventorycontrol}" id="l3"
+                    <af:button text="Inventory Control" action="#{viewScope.Page.inventorycontrol}" id="appNavInventoryControl"
                                styleClass="AFAppNavbarButton" selected="false" type="radio"/>
-                    <af:button text="Summit Management" action="#{viewScope.Page.summitmanagement}" id="l2"
+                    <af:button text="Summit Management" action="#{viewScope.Page.summitmanagement}" id="appNavSummitManagement"
                                styleClass="AFAppNavbarButton" selected="false" type="radio"/>
                 </f:facet>
                 <f:facet name="globalLinks"/>
                 <f:facet name="footer"/>
                 <f:facet name="center">
                     <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"
-                               partialTriggers=":::bBarFDC:l1 :::bBarFDC:l2 :::bBarFDC:l3"/>
+                               partialTriggers=":::bBarFDC:appNavDashboard :::bBarFDC:appNavInventoryControl :::bBarFDC:appNavSummitManagement"/>
                 </f:facet>
                 <f:facet name="start"/>
                 <f:facet name="end"/>
