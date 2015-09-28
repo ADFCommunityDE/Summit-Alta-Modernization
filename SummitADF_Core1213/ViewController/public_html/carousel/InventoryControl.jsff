@@ -26,13 +26,11 @@
           <af:column headerText="#{bindings.Inventory.hints.AmountInStock.label}" id="c3">
             <af:outputText value="#{row.AmountInStock}"
                            shortDesc="#{bindings.Inventory.hints.AmountInStock.tooltip}" id="ot3">
-              <af:convertNumber groupingUsed="false" pattern="#{bindings.Inventory.hints.AmountInStock.format}"/>
             </af:outputText>
           </af:column>
           <af:column headerText="#{bindings.Inventory.hints.ReorderPoint.label}" id="c4">
             <af:outputText value="#{row.ReorderPoint}" shortDesc="#{bindings.Inventory.hints.ReorderPoint.tooltip}"
                            id="ot1">
-              <af:convertNumber groupingUsed="false" pattern="#{bindings.Inventory.hints.ReorderPoint.format}"/>
             </af:outputText>
           </af:column>
           <af:column headerText="#{bindings.Inventory.hints.ShortDesc.label}" id="c6">
@@ -42,7 +40,6 @@
           <af:column headerText="#{bindings.Inventory.hints.MaxInStock.label}" id="c9">
             <af:outputText value="#{row.MaxInStock}" shortDesc="#{bindings.Inventory.hints.MaxInStock.tooltip}"
                            id="ot4">
-              <af:convertNumber groupingUsed="false" pattern="#{bindings.Inventory.hints.MaxInStock.format}"/>
             </af:outputText>
           </af:column>
           <af:column headerText="#{bindings.Inventory.hints.OutOfStockExplanation.label}" id="c5">

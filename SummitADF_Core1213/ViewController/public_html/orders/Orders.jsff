@@ -64,8 +64,6 @@
                                        id="plam1">
                 <af:outputFormatted value="&lt;b>&lt;u>#{bindings.Total.inputValue}&lt;/u>&lt;/b>"
                                     id="of2">
-                  <af:convertNumber groupingUsed="false"
-                                    pattern="#{bindings.Total.format}"/>
                 </af:outputFormatted>
               </af:panelLabelAndMessage>
             </af:panelFormLayout>
@@ -152,8 +150,6 @@
                                       maximumLength="#{bindings.ItemsForOrder.hints.Quantity.precision}"
                                       shortDesc="#{bindings.ItemsForOrder.hints.Quantity.tooltip}" id="it1">
                           <f:validator binding="#{row.bindings.Quantity.validator}"/>
-                          <af:convertNumber groupingUsed="false"
-                                            pattern="#{bindings.ItemsForOrder.hints.Quantity.format}"/>
                         </af:inputText>
                       </af:column>
                       <af:column sortProperty="#{bindings.ItemsForOrder.hints.ItemTotal.name}" sortable="false"
