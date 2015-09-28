@@ -5,6 +5,12 @@
     <data-control-scope>
       <shared/>
     </data-control-scope>
+    <input-parameter-definition id="__1">
+      <description>The id of the customer that should be diplayed when launching the summit management view.</description>
+      <display-name>Customer ID</display-name>
+      <name>customerId</name>
+      <class>java.lang.Integer</class>
+    </input-parameter-definition>
     <view id="__summit-management">
       <page>/fragments/summit-management.jsff</page>
     </view>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
   <af:panelGroupLayout id="pgl1">
-    <af:outputText id="ot1" value="Summit-Management"/>
+    <af:outputText id="ot1" value="Summit-Management - display customer #{pageFlowScope.customerId}"/>
   </af:panelGroupLayout>
 </ui:composition>

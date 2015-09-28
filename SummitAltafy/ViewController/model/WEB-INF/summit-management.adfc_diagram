@@ -3,20 +3,22 @@
    <OverallProperties
       id="OverallProperties1"/>
    <View
-      id="View3">
+      id="View4">
       <property
-         name="activityId">summit-management1</property>
+         name="activityId">__summit-management</property>
       <property
          name="page">/fragments/summit-management.jsff</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>summit-management1&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>__summit-management&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">72.36719</property>
+         name="y">163.10156</property>
       <property
          name="pageFragment">true</property>
       <property
-         name="x">92.177734</property>
+         name="x">44.38379</property>
    </View>
 </SDM>
