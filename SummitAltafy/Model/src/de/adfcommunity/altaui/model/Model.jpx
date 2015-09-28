@@ -10,16 +10,38 @@
   <DesignTime>
     <Attr Name="_jprName" Value="../../../../../Model.jpr"/>
     <Attr Name="_jbo.TypeMapEntries" Value="OracleApps"/>
-    <Attr Name="_NamedConnection" Value="summit"/>
-    <Attr Name="_appModuleNames0" Value="de.adfcommunity.altaui.model.AppModule"/>
+    <Attr Name="_NamedConnection" Value="summit_adf"/>
+    <Attr Name="_appModuleNames0" Value="de.adfcommunity.altaui.model.services.AppModule"/>
   </DesignTime>
   <Containee
-    Name="model"
-    PackageName="de.adfcommunity.altaui.model"
+    Name="assoc"
+    PackageName="de.adfcommunity.altaui.model.entities.assoc"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AS" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="entities"
+    PackageName="de.adfcommunity.altaui.model.entities"
     ObjectType="JboPackage">
     <DesignTime>
       <Attr Name="_EO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="queries"
+    PackageName="de.adfcommunity.altaui.model.queries"
+    ObjectType="JboPackage">
+    <DesignTime>
       <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="services"
+    PackageName="de.adfcommunity.altaui.model.services"
+    ObjectType="JboPackage">
+    <DesignTime>
       <Attr Name="_AM" Value="true"/>
     </DesignTime>
   </Containee>

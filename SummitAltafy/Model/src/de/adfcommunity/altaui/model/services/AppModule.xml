@@ -9,8 +9,8 @@
   ClearCacheOnRollback="true">
   <ViewUsage
     Name="SCustomerView1"
-    ViewObjectName="de.adfcommunity.altaui.model.SCustomerView"/>
+    ViewObjectName="de.adfcommunity.altaui.model.queries.CustomerView"/>
   <ViewUsage
     Name="SCustomerView1_1"
-    ViewObjectName="de.adfcommunity.altaui.model.SCustomerView1"/>
+    ViewObjectName="de.adfcommunity.altaui.model.queries.CustomerView1"/>
 </AppModule>

@@ -3,7 +3,7 @@
 <!---->
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="SCustomerView1"
+  Name="CustomerView1"
   Version="12.1.3.10.8"
   InheritPersonalization="merge"
   BindingStyle="OracleName"
