@@ -13,6 +13,7 @@ connect C##summit_adf/summit_adf
 @@create_sequences
 @@create_functions
 @@create_packages
+@@data/S_GEO_LOCATIONS_Data
 @@data/S_REGION_Data
 @@data/S_COUNTRIES_Data
 @@data/S_DEPT_Data
