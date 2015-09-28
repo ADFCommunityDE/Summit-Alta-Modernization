@@ -15,7 +15,7 @@
       </task-flow-reference>
       <input-parameter id="__3">
         <name>customerId</name>
-        <value>100</value>
+        <value>#{pageFlowScope.customerId}</value>
         <pass-by-value/>
       </input-parameter>
     </task-flow-call>

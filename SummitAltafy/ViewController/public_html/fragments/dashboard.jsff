@@ -7,7 +7,10 @@
             <dvt:pointDataLayer id="dl2" value="#{bindings.SCustomerView13.collectionModel}" var="row">
                 <dvt:pointLocation type="pointXY" pointX="#{row.CountryId}" pointY="#{row.Id}" id="pl2">
                     <dvt:marker id="m2" shortDesc="#{row.Name} in #{row.City}" labelDisplay="on" labelPosition="bottom"
-                                action="showManagement"/>
+                                action="showManagement">
+                        <af:setPropertyListener from="#{row.Id}" to="#{pageFlowScope.customerId}"
+                                                type="action"/>
+                    </dvt:marker>
                 </dvt:pointLocation>
             </dvt:pointDataLayer>
             <dvt:areaLayer layer="countries" id="al2"/>
