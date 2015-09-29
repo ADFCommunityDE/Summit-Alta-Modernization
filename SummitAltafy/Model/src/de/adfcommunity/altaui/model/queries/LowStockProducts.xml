@@ -25,7 +25,7 @@
        Image.ID AS ID2, 
        Image.FILENAME"
   FromList="S_INVENTORY Inventory, S_WAREHOUSE Warehouse, S_PRODUCT Product, S_IMAGE Image"
-  Where="((Inventory.WAREHOUSE_ID = Warehouse.ID) AND (Inventory.PRODUCT_ID = Product.ID)) AND (Product.IMAGE_ID = Image.ID) AND (Inventory.AMOUNT_IN_STOCK &lt; Inventory.REORDER_POINT)"
+  Where="((Inventory.WAREHOUSE_ID = Warehouse.ID) AND (Inventory.PRODUCT_ID = Product.ID)) AND (Product.IMAGE_ID = Image.ID) AND (Inventory.AMOUNT_IN_STOCK &lt;= Inventory.REORDER_POINT)"
   RangeSize="-1">
   <Properties>
     <SchemaBasedProperties>
@@ -188,7 +188,7 @@
     AliasName="VIEW_ATTR"
     SQLType="NUMERIC">
     <TransientExpression
-      trustMode="untrusted"><![CDATA[AmountInStock / ReorderPoint]]></TransientExpression>
+      trustMode="untrusted"><![CDATA[AmountInStock / ReorderPoint * 100 / SuggestedWhlslPrice]]></TransientExpression>
     <RecalcCondition
       trustMode="untrusted"><![CDATA[true]]></RecalcCondition>
     <Dependencies>
@@ -196,6 +196,8 @@
         Value="AmountInStock"/>
       <Item
         Value="ReorderPoint"/>
+      <Item
+        Value="SuggestedWhlslPrice"/>
     </Dependencies>
   </ViewAttribute>
   <ViewAttribute

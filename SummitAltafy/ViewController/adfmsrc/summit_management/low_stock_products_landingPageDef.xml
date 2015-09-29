@@ -5,7 +5,11 @@
   <executables>
     <variableIterator id="variables"/>
     <iterator Binds="LowStockProducts" RangeSize="25" DataControl="AltaSummitServiceDataControl"
-              id="LowStockProductsIterator"/>
+              id="LowStockProductsIterator">
+      <sortCriteria>
+        <sort attribute="StockRatio" ascending="true"/>
+      </sortCriteria>
+    </iterator>
   </executables>
   <bindings>
     <tree IterBinding="LowStockProductsIterator" id="LowStockProducts">
