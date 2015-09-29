@@ -6,8 +6,8 @@
         <dvt:thematicMap id="tm2" basemap="world" summary="WIP Thematic Map of all customers and their locations."
         tooltipDisplay="shortDescOnly">
             <dvt:pointDataLayer id="dl2" value="#{bindings.SCustomerView1.collectionModel}" var="row">
-                <dvt:pointLocation type="pointXY" pointX="#{row.Id}" pointY="#{row.Id}" id="pl2">
-                    <dvt:marker id="m2" shortDesc="#{row.Latitude}, #{row.Longitude}" labelDisplay="on" labelPosition="bottom"
+                <dvt:pointLocation type="pointXY" pointX="#{row.Longitude}" pointY="#{row.Latitude}" id="pl2">
+                    <dvt:marker id="m2" shortDesc="#{row.Name} in #{row.City}" labelDisplay="on" labelPosition="bottom"
                                 action="showManagement">
                         <?audit suppress oracle.jdeveloper.jsp.validate-children?>
                         <af:setActionListener from="#{row.Id}" to="#{pageFlowScope.customerId}"/>                                                
