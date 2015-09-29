@@ -3,17 +3,17 @@
                 Package="fragments">
   <parameters/>
   <executables>
-    <variableIterator id="variables"/>
     <iterator Binds="SCustomerView1" RangeSize="-1" DataControl="AppModuleDataControl" id="SCustomerView1Iterator"/>
   </executables>
   <bindings>
-    <tree IterBinding="SCustomerView1Iterator" id="SCustomerView13">
-      <nodeDefinition DefName="de.adfcommunity.altaui.model.SCustomerView" Name="SCustomerView130">
+    <tree IterBinding="SCustomerView1Iterator" id="SCustomerView1">
+      <nodeDefinition DefName="de.adfcommunity.altaui.model.queries.CustomerView" Name="SCustomerView10">
         <AttrNames>
+          <Item Value="Latitude"/>
+          <Item Value="Longitude"/>
           <Item Value="Id"/>
-          <Item Value="CountryId"/>
-          <Item Value="City"/>
           <Item Value="Name"/>
+          <Item Value="City"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
