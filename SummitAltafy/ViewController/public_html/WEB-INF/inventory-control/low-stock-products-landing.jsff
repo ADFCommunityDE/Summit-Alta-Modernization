@@ -7,12 +7,12 @@
                  emptyText="#{bindings.LowStockProducts.viewable ? 'No data to display.' : 'Access Denied.'}"
                  fetchSize="#{bindings.LowStockProducts.rangeSize}" id="lv1">
       <af:listItem id="li1">
-        <af:panelGridLayout id="pgl2">
+        <af:panelGridLayout id="pgl2" dimensionsFrom="children">
           <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr1">
-            <af:gridCell marginStart="5px" width="80%" id="gc1">
+            <af:gridCell marginStart="5px" width="65%" id="gc1" valign="middle">
               <af:panelGroupLayout id="pgl3" layout="horizontal">
                 <af:spacer width="20" height="10" id="s1"/>
-                <dvt:ledGauge id="ledGauge1" type="circle" value="#{item.StockRatio}">
+                <dvt:ledGauge id="ledGauge1" type="rectangle" value="#{item.StockRatio}">
                   <dvt:gaugeThreshold id="thr1" color="#FFFF00"/>
                   <dvt:gaugeThreshold id="gt1" color="#FF0000" maximum="0.3"/>
                   <dvt:gaugeMetricLabel id="gml1" rendered="false"/>
@@ -20,6 +20,7 @@
                 <af:outputFormatted value="#{item.AmountInStock}" id="of1" styleClass="ListItemText"/>
                 <af:outputFormatted value="of" id="of2" styleClass="ListItemText"/>
                 <af:outputFormatted value="#{item.MaxInStock}" id="of3" styleClass="ListItemText"/>
+                <af:outputFormatted value="items in stock" id="of5" styleClass="ListItemText"/>
                 <af:icon name="info" id="i1">
                   <af:showPopupBehavior popupId="infioPopup" triggerType="mouseHover" align="endAfter" alignId="i1"/>
                 </af:icon>
@@ -29,11 +30,18 @@
                   </af:noteWindow>
                 </af:popup>
                 <f:facet name="separator">
-                  <af:spacer width="20" height="10" id="s2"/>
+                  <af:spacer width="10" height="10" id="s2"/>
                 </f:facet>
               </af:panelGroupLayout>
             </af:gridCell>
-            <af:gridCell marginStart="5px" width="20%" marginEnd="5px" id="gc2"/>
+            <af:gridCell id="gc2" width="35%" valign="middle">
+              <af:panelGroupLayout id="pgl4" layout="horizontal">
+                <af:image source="/resources/images/products/#{item.Filename}" shortDesc="#{item.Filename}" id="i2"
+                          styleClass="ListItemImages"/>
+                <af:spacer width="10" height="10" id="s3"/>
+                <af:outputFormatted value="#{item.Name}" id="of6" styleClass="ListItemText"/>
+              </af:panelGroupLayout>
+            </af:gridCell>
           </af:gridRow>
         </af:panelGridLayout>
       </af:listItem>

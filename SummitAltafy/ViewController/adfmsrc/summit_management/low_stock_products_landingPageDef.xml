@@ -25,6 +25,7 @@
           <Item Value="SuggestedWhlslPrice"/>
           <Item Value="WhlslUnits"/>
           <Item Value="StockRatio"/>
+          <Item Value="Filename"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

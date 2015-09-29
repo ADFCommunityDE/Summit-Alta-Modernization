@@ -21,7 +21,9 @@
        Product.NAME, 
        Product.ID AS ID1, 
        Product.SUGGESTED_WHLSL_PRICE, 
-       Product.WHLSL_UNITS"
+       Product.WHLSL_UNITS, 
+       Image.ID AS ID2, 
+       Image.FILENAME"
   FromList="S_INVENTORY Inventory, S_WAREHOUSE Warehouse, S_PRODUCT Product, S_IMAGE Image"
   Where="((Inventory.WAREHOUSE_ID = Warehouse.ID) AND (Inventory.PRODUCT_ID = Product.ID)) AND (Product.IMAGE_ID = Image.ID) AND (Inventory.AMOUNT_IN_STOCK &lt; Inventory.REORDER_POINT)"
   RangeSize="-1">
@@ -196,6 +198,19 @@
         Value="ReorderPoint"/>
     </Dependencies>
   </ViewAttribute>
+  <ViewAttribute
+    Name="Id2"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Image"
+    AliasName="ID2"/>
+  <ViewAttribute
+    Name="Filename"
+    PrecisionRule="true"
+    EntityAttrName="Filename"
+    EntityUsage="Image"
+    AliasName="FILENAME"/>
   <AttrArray Name="KeyAttributes">
     <Item Value="ProductId"/>
     <Item Value="WarehouseId"/>
