@@ -2,6 +2,7 @@
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
                 xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
     <af:panelGroupLayout id="pgl1">
+        <af:outputFormatted value="My Customers" id="of1" inlineStyle="font-weight:bold;"/>
         <dvt:thematicMap id="tm2" basemap="world" summary="WIP Thematic Map of all customers and their locations."
         tooltipDisplay="shortDescOnly">
             <dvt:pointDataLayer id="dl2" value="#{bindings.SCustomerView13.collectionModel}" var="row">
