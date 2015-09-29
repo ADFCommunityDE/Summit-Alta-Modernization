@@ -21,11 +21,10 @@
     PrimaryKey="true"/>
   <Attribute
     Name="Latitude"
-    Precision="20"
     ColumnName="LATITUDE"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
     TableName="S_GEO_LOCATIONS">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="20"/>
@@ -33,11 +32,10 @@
   </Attribute>
   <Attribute
     Name="Longitude"
-    Precision="20"
     ColumnName="LONGITUDE"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
     TableName="S_GEO_LOCATIONS">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="20"/>
