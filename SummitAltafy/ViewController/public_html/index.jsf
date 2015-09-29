@@ -7,20 +7,27 @@
                 <f:facet name="header">
                     <af:outputText value="Summit Alta UI Demo" id="ot1"/>
                 </f:facet>
-                <f:facet name="status"/>
+                <f:facet name="status">
+                    <af:link id="cl1" text="Sign in" partialSubmit="true">
+                        <af:showPopupBehavior popupId="p1" triggerType="click" alignId="cl1" />
+                    </af:link>
+                    <af:popup id="p1">
+                        <af:outputText id="ot2" value="No Signin possible yet."/>
+                    </af:popup>
+                </f:facet>
                 <f:facet name="appNav">
-                    <af:button text="Dashboard" action="#{viewScope.Page.dashboard}" id="l1"
+                    <af:button text="Dashboard" action="#{viewScope.Page.dashboard}" id="appNavDashboard"
                                styleClass="AFAppNavbarButton" selected="true" type="radio"/>
-                    <af:button text="Inventory Control" action="#{viewScope.Page.inventorycontrol}" id="l3"
+                    <af:button text="Inventory Control" action="#{viewScope.Page.inventorycontrol}" id="appNavInventoryControl"
                                styleClass="AFAppNavbarButton" selected="false" type="radio"/>
-                    <af:button text="Summit Management" action="#{viewScope.Page.summitmanagement}" id="l2"
+                    <af:button text="Summit Management" action="#{viewScope.Page.summitmanagement}" id="appNavSummitManagement"
                                styleClass="AFAppNavbarButton" selected="false" type="radio"/>
                 </f:facet>
                 <f:facet name="globalLinks"/>
                 <f:facet name="footer"/>
                 <f:facet name="center">
                     <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"
-                               partialTriggers=":::bBarFDC:l1 :::bBarFDC:l2 :::bBarFDC:l3"/>
+                               partialTriggers=":::bBarFDC:appNavDashboard :::bBarFDC:appNavInventoryControl :::bBarFDC:appNavSummitManagement"/>
                 </f:facet>
                 <f:attribute name="minWidth" value="700px"/>
                 <f:attribute name="endWidth" value="170px"/>
