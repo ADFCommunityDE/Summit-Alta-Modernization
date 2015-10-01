@@ -8,7 +8,7 @@
             <dvt:pointDataLayer id="dl2" value="#{bindings.SCustomerView1.collectionModel}" var="row">
                 <dvt:pointLocation type="pointXY" pointX="#{row.Longitude}" pointY="#{row.Latitude}" id="pl2">
                     <dvt:marker id="m2" shortDesc="#{row.Name} in #{row.City}" labelDisplay="on" labelPosition="bottom"
-                                action="showManagement">
+                                action="showManagement" fillColor="#{row.Id == 201 ? '#ff0000' : '#00ff00'}">
                         <?audit suppress oracle.jdeveloper.jsp.validate-children?>
                         <af:setActionListener from="#{row.Id}" to="#{pageFlowScope.customerId}"/>                                                
                     </dvt:marker>
