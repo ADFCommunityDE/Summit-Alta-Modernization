@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CountriesOfCustomersLink"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="de.adfcommunity.altaui.model.queries.links.CountriesOfCustomersLink_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="CountriesView1"
+    Cardinality="1"
+    Source="true"
+    Owner="de.adfcommunity.altaui.model.queries.CountriesView">
+    <DesignTime>
+      <Attr Name="_accessor" Value="true"/>
+      <Attr Name="_finderName" Value="CountriesView1"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="de.adfcommunity.altaui.model.queries.CountriesView.Id"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="CustomersView"
+    Cardinality="-1"
+    Owner="de.adfcommunity.altaui.model.queries.CustomersView">
+    <DesignTime>
+      <Attr Name="_finderName" Value="CustomersView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="de.adfcommunity.altaui.model.queries.CustomersView.CountryId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="de.adfcommunity.altaui.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

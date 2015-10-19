@@ -26,4 +26,19 @@
       FullName="de.adfcommunity.altaui.model.queries.ProductWarehouseShiftView.ShiftPossibilitiesCriteria"
       Required="true"/>
   </ViewUsage>
+  <ViewUsage
+    Name="CustomersView1"
+    ViewObjectName="de.adfcommunity.altaui.model.queries.CustomersView"/>
+  <ViewUsage
+    Name="CountriesView"
+    ViewObjectName="de.adfcommunity.altaui.model.queries.CountriesView"/>
+  <ViewUsage
+    Name="CustomersView"
+    ViewObjectName="de.adfcommunity.altaui.model.queries.CustomersView"/>
+  <ViewLinkUsage
+    Name="ViewLink"
+    ViewLinkObjectName="de.adfcommunity.altaui.model.queries.links.CountriesOfCustomersLink"
+    SrcViewUsageName="de.adfcommunity.altaui.model.services.AltaSummitService.CountriesView"
+    DstViewUsageName="de.adfcommunity.altaui.model.services.AltaSummitService.CustomersView"
+    Reversed="false"/>
 </AppModule>
