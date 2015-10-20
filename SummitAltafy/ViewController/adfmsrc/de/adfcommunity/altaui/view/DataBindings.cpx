@@ -10,11 +10,13 @@
     <page path="/index.jsf" usageId="de_adfcommunity_altaui_view_indexPageDef"/>
     <page path="/WEB-INF/inventory-control/low-stock-products-landing.jsff"
           usageId="de_adfcommunity_altaui_view_low_stock_products_landingPageDef"/>
+    <page path="/fragments/customer-navigation.jsff" usageId="de_adfcommunity_altaui_view_customer_navigationPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="de_adfcommunity_altaui_view_indexPageDef" path="de.adfcommunity.altaui.view.pageDefs.indexPageDef"/>
     <page id="de_adfcommunity_altaui_view_low_stock_products_landingPageDef"
           path="summit_management.low_stock_products_landingPageDef"/>
+    <page id="de_adfcommunity_altaui_view_customer_navigationPageDef" path="fragments.customer_navigationPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="AltaSummitServiceDataControl" Package="de.adfcommunity.altaui.model.services"

@@ -5,4 +5,9 @@
     <managed-bean-class>de.adfcommunity.altaui.view.PageBean</managed-bean-class>
     <managed-bean-scope>view</managed-bean-scope>
   </managed-bean>
+  <managed-bean id="__2">
+    <managed-bean-name>CustomerNavigation</managed-bean-name>
+    <managed-bean-class>de.adfcommunity.altaui.view.CustomerNavigationBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
 </adfc-config>
