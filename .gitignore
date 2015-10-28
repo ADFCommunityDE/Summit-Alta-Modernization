@@ -19,6 +19,7 @@ hs_err_pid*
 **/.adf/**
 **/cwallet.sso*
 **/connections.xml
+**/*.adfc_diagram
 
 #mac os specific
 .DS_Store
