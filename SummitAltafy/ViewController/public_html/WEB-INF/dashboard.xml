@@ -10,7 +10,7 @@
     </view>
     <task-flow-call id="low-stock-products">
       <task-flow-reference>
-        <document>/WEB-INF/inventory-control/low-stock-products.xml</document>
+        <document>/WEB-INF/low-stock-products.xml</document>
         <id>low-stock-products</id>
       </task-flow-reference>
     </task-flow-call>
