@@ -11,6 +11,10 @@
           <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr1">
             <af:gridCell marginStart="5px" width="65%" id="gc1" valign="middle">
               <af:panelGroupLayout id="pgl3" layout="horizontal">
+                <af:link text="Refill" id="l1" action="refillStock">
+                  <af:setPropertyListener from="#{item.WarehouseId}" to="#{pageFlowScope.warehouseId}" type="action"/>
+                  <af:setPropertyListener from="#{item.ProductId}" to="#{pageFlowScope.productId}" type="action"/>
+                </af:link>
                 <af:spacer width="20" height="10" id="s1"/>
                 <dvt:ledGauge id="ledGauge1" type="rectangle" value="#{item.StockRatio}">
                   <dvt:gaugeThreshold id="thr1" color="#FFFF00"/>

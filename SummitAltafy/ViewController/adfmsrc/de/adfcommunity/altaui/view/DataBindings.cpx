@@ -10,11 +10,18 @@
     <page path="/index.jsf" usageId="de_adfcommunity_altaui_view_indexPageDef"/>
     <page path="/WEB-INF/inventory-control/low-stock-products-landing.jsff"
           usageId="de_adfcommunity_altaui_view_low_stock_products_landingPageDef"/>
+    <page path="/WEB-INF/inventory-control/refill-stock.xml#refill-stock@ExecuteWithParams"
+          usageId="de_adfcommunity_altaui_view_refill_stock_refill_stock_ExecuteWithParamsPageDef"/>
+    <page path="/WEB-INF/inventory-control/refill-stock-main.jsff"
+          usageId="de_adfcommunity_altaui_view_refill_stock_mainPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="de_adfcommunity_altaui_view_indexPageDef" path="de.adfcommunity.altaui.view.pageDefs.indexPageDef"/>
     <page id="de_adfcommunity_altaui_view_low_stock_products_landingPageDef"
           path="summit_management.low_stock_products_landingPageDef"/>
+    <page id="de_adfcommunity_altaui_view_refill_stock_refill_stock_ExecuteWithParamsPageDef"
+          path="inventory_control.refill_stock_refill_stock_ExecuteWithParamsPageDef"/>
+    <page id="de_adfcommunity_altaui_view_refill_stock_mainPageDef" path="inventory_control.refill_stock_mainPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="AltaSummitServiceDataControl" Package="de.adfcommunity.altaui.model.services"

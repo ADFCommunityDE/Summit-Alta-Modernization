@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelHeader text="panelHeader 1" id="ph1">
+    <f:facet name="context"/>
+    <f:facet name="menuBar"/>
+    <f:facet name="toolbar"/>
+    <f:facet name="legend"/>
+    <f:facet name="info"/>
+    <af:panelGroupLayout id="pgl1">
+      <af:button text="Save" id="b1" action="back_save"/>
+      <af:button text="Abort" id="b2" action="back_abort"/>
+      <af:panelSplitter id="ps1">
+        <f:facet name="first"/>
+        <f:facet name="second">
+          <af:listView id="lv1" value="#{bindings.ProductWarehouseShift.collectionModel}" var="item">
+            <f:facet name="groupHeaderStamp"/>
+            <af:listItem id="li1">
+              <af:panelGroupLayout id="pgl2" layout="horizontal" valign="middle">
+                <af:outputLabel value="#{item.Country}" id="ol1"/>
+                <af:outputLabel value="#{item.City}" id="ol2"/>
+                <af:outputLabel value="#{item.Address}" id="ol3"/>
+                <af:inputNumberSlider label="#{bindings.AmountInStock.hints.label}" id="ins1"
+                                      value="#{item.AmountInStock}" maximum="#{item.AmountInStock}" simple="true"/>
+              </af:panelGroupLayout>
+            </af:listItem>
+          </af:listView>
+        </f:facet>
+      </af:panelSplitter>
+    </af:panelGroupLayout>
+  </af:panelHeader>
+</ui:composition>

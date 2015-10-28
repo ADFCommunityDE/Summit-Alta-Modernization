@@ -6,6 +6,14 @@
     <variableIterator id="variables"/>
     <taskFlow id="dynamicRegion1" taskFlowId="${viewScope.Page.dynamicTaskFlowId}" activation="deferred"
               xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <iterator Binds="LowStockProducts" RangeSize="10" DataControl="AltaSummitServiceDataControl"
+              id="LowStockProductsIterator"/>
   </executables>
-  <bindings/>
+  <bindings>
+    <attributeValues IterBinding="LowStockProductsIterator" id="ProductId">
+      <AttrNames>
+        <Item Value="ProductId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
 </pageDefinition>

@@ -7,7 +7,7 @@
       <property
          name="activityId">low-stock-products-landing</property>
       <property
-         name="page">/WEB-INF/summit-management/low-stock-products-landing.jsff</property>
+         name="page">/WEB-INF/inventory-control/low-stock-products-landing.jsff</property>
       <property
          name="start">true</property>
       <property
@@ -17,8 +17,55 @@
       <property
          name="y">263.1953</property>
       <property
-         name="x">358.0</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">358.0</property>
    </View>
+   <TaskFlowCall
+      id="TaskFlowCall3">
+      <property
+         name="taskFlowId">refill-stock</property>
+      <property
+         name="activityId">refill-stock</property>
+      <property
+         name="documentReference">/WEB-INF/inventory-control/refill-stock.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>refill-stock&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">265.1494</property>
+      <property
+         name="x">596.5</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="TaskFlowCall3">
+      <property
+         name="fromOutcome">refillStock</property>
+      <property
+         name="sdm:polyPoints">R50,399.0,262.84473,555.5,264.79883,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="TaskFlowCall3"
+      to="View2">
+      <property
+         name="fromOutcome">back_abort</property>
+      <property
+         name="sdm:polyPoints">L54,555.4563,268.29883,399.0,266.34473,R54</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="TaskFlowCall3"
+      to="View2">
+      <property
+         name="fromOutcome">back_save</property>
+      <property
+         name="sdm:polyPoints">L42,555.5,257.79883,399.0874,255.84473,R42</property>
+   </ControlFlowCase>
 </SDM>

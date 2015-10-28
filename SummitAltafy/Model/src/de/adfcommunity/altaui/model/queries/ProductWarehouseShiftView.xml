@@ -173,6 +173,12 @@
     EntityAttrName="CountryCode"
     EntityUsage="Countries"
     AliasName="COUNTRY_CODE"/>
+  <ViewAttribute
+    Name="MaxInStock"
+    PrecisionRule="true"
+    EntityAttrName="MaxInStock"
+    EntityUsage="Inventory"
+    AliasName="MAX_IN_STOCK"/>
   <ViewCriteria
     Name="ShiftPossibilitiesCriteria"
     ViewObjectName="de.adfcommunity.altaui.model.queries.ProductWarehouseShiftView"
