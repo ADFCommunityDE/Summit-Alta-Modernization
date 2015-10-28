@@ -6,21 +6,8 @@
       <shared/>
     </data-control-scope>
     <view id="__inventory-control">
-      <page>/fragments/inventory-control.jsff</page>
+      <page>/WEB-INF/inventory-control/low-stock-products-landing.jsff</page>
     </view>
-    <task-flow-call id="low-stock-products">
-      <task-flow-reference>
-        <document>/WEB-INF/inventory-control/low-stock-products.xml</document>
-        <id>low-stock-products</id>
-      </task-flow-reference>
-    </task-flow-call>
-    <control-flow-rule id="__1">
-      <from-activity-id>__inventory-control</from-activity-id>
-      <control-flow-case id="__2">
-        <from-outcome>low-stock-products</from-outcome>
-        <to-activity-id>low-stock-products</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
     <use-page-fragments/>
   </task-flow-definition>
 </adfc-config>
