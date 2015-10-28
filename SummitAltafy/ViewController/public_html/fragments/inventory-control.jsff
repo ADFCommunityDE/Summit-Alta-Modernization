@@ -1,32 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
-                xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core">
-    <c:set var="viewcontrollerBundle" value="#{adfBundle['de.adfcommunity.altaui.view.bundle.images']}"/>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
     <af:panelGroupLayout id="pgl1" layout="horizontal" halign="center">
-        <af:link id="l1" action="low-stock-products">
-            <?audit suppress oracle.jdeveloper.jsp.validate-children?>
-            <af:panelGroupLayout id="pgl2" layout="vertical" halign="center" styleClass="Tile">
-                <af:outputFormatted value="Low Stock Products" id="of1" styleClass="TileHeaderText"/>
-                <af:image id="i1" source="#{viewcontrollerBundle['de.adfcommunity.altaui.images.warning']}"
-                          shortDesc="Low Stock Products"/>
-                <f:facet name="separator">
-                    <af:separator id="s3"/>
-                </f:facet>
-            </af:panelGroupLayout>
-        </af:link>
-        <af:link id="l2" iconPosition="top" icon="">
-            <?audit suppress oracle.jdeveloper.jsp.validate-children?>
-            <af:panelGroupLayout id="pgl3" layout="vertical" halign="center" styleClass="Tile">
-                <af:outputFormatted value="Premium Customers" id="of2" styleClass="TileHeaderText"/>
-                <af:image id="i2" source="#{viewcontrollerBundle['de.adfcommunity.altaui.images.topcustomers']}"
-                          shortDesc="Premium Customers"/>
-                <f:facet name="separator">
-                    <af:separator id="s2"/>
-                </f:facet>
-            </af:panelGroupLayout>
-        </af:link>
-        <f:facet name="separator">
-            <af:spacer width="10" height="10" id="s1"/>
-        </f:facet>
+        <af:outputText value="Hier erscheint bald ein Übersichts-Diagramm zum Lagerbestand der Produkte" id="ot1"/>
     </af:panelGroupLayout>
 </ui:composition>
