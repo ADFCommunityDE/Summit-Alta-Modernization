@@ -5,6 +5,11 @@
     <data-control-scope>
       <shared/>
     </data-control-scope>
+    <managed-bean id="__9">
+      <managed-bean-name>controller</managed-bean-name>
+      <managed-bean-class>de.adfcommunity.altaui.view.dashboard.beans.DashboardController</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
     <view id="__dashboard">
       <page>/fragments/dashboard.jsff</page>
     </view>
@@ -14,11 +19,53 @@
         <id>low-stock-products</id>
       </task-flow-reference>
     </task-flow-call>
+    <task-flow-call id="refill-stock">
+      <task-flow-reference>
+        <document>/WEB-INF/inventory-control/refill-stock.xml</document>
+        <id>refill-stock</id>
+      </task-flow-reference>
+      <input-parameter id="__4">
+        <name>warehouseToRestock</name>
+        <value>#{pageFlowScope.controller.selectedLowStockWarehouseId}</value>
+      </input-parameter>
+      <input-parameter id="__5">
+        <name>productToRestock</name>
+        <value>#{pageFlowScope.controller.selectedLowStockProductId}</value>
+      </input-parameter>
+    </task-flow-call>
+    <method-call id="restockProductsOfWarehouse">
+      <method>#{pageFlowScope.controller.readCurrentlySelectedLowStockBar}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
     <control-flow-rule id="__1">
       <from-activity-id>__dashboard</from-activity-id>
       <control-flow-case id="__2">
         <from-outcome>low-stock-products</from-outcome>
         <to-activity-id>low-stock-products</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__3">
+        <from-outcome>refill-stock</from-outcome>
+        <to-activity-id>refill-stock</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>refill-stock</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>back_abort</from-outcome>
+        <to-activity-id>__dashboard</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>back_save</from-outcome>
+        <to-activity-id>__dashboard</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id>restockProductsOfWarehouse</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome>refill-stock</from-outcome>
+        <to-activity-id>refill-stock</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <use-page-fragments/>

@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LowStockProducts"
-  Version="12.1.3.10.8"
+  Version="12.2.1.0.31"
   InheritPersonalization="merge"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -23,7 +23,8 @@
        Product.SUGGESTED_WHLSL_PRICE, 
        Product.WHLSL_UNITS, 
        Image.ID AS ID2, 
-       Image.FILENAME"
+       Image.FILENAME, 
+       Product.NAME AS NAME1"
   FromList="S_INVENTORY Inventory, S_WAREHOUSE Warehouse, S_PRODUCT Product, S_IMAGE Image"
   Where="((Inventory.WAREHOUSE_ID = Warehouse.ID) AND (Inventory.PRODUCT_ID = Product.ID)) AND (Product.IMAGE_ID = Image.ID) AND (Inventory.AMOUNT_IN_STOCK &lt;= Inventory.REORDER_POINT)"
   RangeSize="-1">
@@ -188,9 +189,11 @@
     AliasName="VIEW_ATTR"
     SQLType="NUMERIC">
     <TransientExpression
-      trustMode="untrusted"><![CDATA[AmountInStock / ReorderPoint * 100 / SuggestedWhlslPrice]]></TransientExpression>
+      trustMode="untrusted"
+      Name="ExpressionScript"><![CDATA[AmountInStock / ReorderPoint * 100 / SuggestedWhlslPrice]]></TransientExpression>
     <RecalcCondition
-      trustMode="untrusted"><![CDATA[true]]></RecalcCondition>
+      trustMode="untrusted"
+      Name="RecalcExpressionScript"><![CDATA[true]]></RecalcCondition>
     <Dependencies>
       <Item
         Value="AmountInStock"/>
@@ -213,6 +216,14 @@
     EntityAttrName="Filename"
     EntityUsage="Image"
     AliasName="FILENAME"/>
+  <ViewAttribute
+    Name="ProductName"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Name"
+    EntityUsage="Product"
+    AliasName="NAME1"/>
   <AttrArray Name="KeyAttributes">
     <Item Value="ProductId"/>
     <Item Value="WarehouseId"/>

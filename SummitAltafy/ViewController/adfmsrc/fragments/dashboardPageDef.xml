@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="dashboardPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="LowStockProducts" RangeSize="25" DataControl="AltaSummitServiceDataControl"
+              id="LowStockProductsIterator">
+      <sortCriteria>
+        <sort attribute="StockRatio" ascending="true"/>
+      </sortCriteria>
+    </iterator>
+    <taskFlow id="lowstockproducts1" taskFlowId="/WEB-INF/low-stock-products.xml#low-stock-products"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="LowStockProductsIterator" id="LowStockProducts" ChangeEventPolicy="ppr">
+      <nodeDefinition DefName="de.adfcommunity.altaui.model.queries.LowStockProducts" Name="LowStockProducts">
+        <AttrNames>
+          <Item Value="StockRatio"/>
+          <Item Value="AmountInStock"/>
+          <Item Value="MaxInStock"/>
+          <Item Value="ProductName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="LowStockProductsIterator" id="ProductId">
+      <AttrNames>
+        <Item Value="ProductId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LowStockProductsIterator" id="WarehouseId">
+      <AttrNames>
+        <Item Value="WarehouseId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

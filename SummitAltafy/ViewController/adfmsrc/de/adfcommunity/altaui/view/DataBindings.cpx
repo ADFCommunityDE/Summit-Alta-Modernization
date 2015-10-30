@@ -20,6 +20,9 @@
           usageId="de_adfcommunity_altaui_view_refill_stock_refill_stock_ExecuteWithParamsPageDef1"/>
     <page path="/WEB-INF/low-stock-products.xml#low-stock-products@ReloadLowStockProductsAfterRefill"
           usageId="de_adfcommunity_altaui_view_low_stock_products_low_stock_products_ReloadLowStockProductsAfterRefillPageDef"/>
+    <page path="/fragments/dashboard.jsff" usageId="de_adfcommunity_altaui_view_dashboardPageDef"/>
+    <page path="/WEB-INF/dashboard.xml#dashboard@restockProductsOfWarehouse"
+          usageId="de_adfcommunity_altaui_view_dashboard_dashboard_restockProductsOfWarehousePageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="de_adfcommunity_altaui_view_indexPageDef" path="de.adfcommunity.altaui.view.pageDefs.indexPageDef"/>
@@ -32,6 +35,9 @@
           path="inventory_control.refill_stock_refill_stock_ExecuteWithParamsPageDef1"/>
     <page id="de_adfcommunity_altaui_view_low_stock_products_low_stock_products_ReloadLowStockProductsAfterRefillPageDef"
           path="de.adfcommunity.altaui.view.pageDefs.low_stock_products_low_stock_products_ReloadLowStockProductsAfterRefillPageDef"/>
+    <page id="de_adfcommunity_altaui_view_dashboardPageDef" path="fragments.dashboardPageDef"/>
+    <page id="de_adfcommunity_altaui_view_dashboard_dashboard_restockProductsOfWarehousePageDef"
+          path="de.adfcommunity.altaui.view.pageDefs.dashboard_dashboard_restockProductsOfWarehousePageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="AltaSummitServiceDataControl" Package="de.adfcommunity.altaui.model.services"

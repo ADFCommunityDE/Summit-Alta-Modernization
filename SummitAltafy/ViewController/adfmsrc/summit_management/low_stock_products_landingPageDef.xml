@@ -38,5 +38,15 @@
         <Item Value="StockRatio"/>
       </AttrNames>
     </attributeValues>
+    <attributeValues IterBinding="LowStockProductsIterator" id="ProductId">
+      <AttrNames>
+        <Item Value="ProductId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LowStockProductsIterator" id="WarehouseId">
+      <AttrNames>
+        <Item Value="WarehouseId"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31"
+                id="dashboard_dashboard_restockProductsOfWarehousePageDef"
+                Package="de.adfcommunity.altaui.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="LowStockProducts" RangeSize="10" DataControl="AltaSummitServiceDataControl"
+              id="LowStockProductsIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="LowStockProductsIterator" id="ProductId">
+      <AttrNames>
+        <Item Value="ProductId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LowStockProductsIterator" id="WarehouseId">
+      <AttrNames>
+        <Item Value="WarehouseId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>
