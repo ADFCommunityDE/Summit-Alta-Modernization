@@ -16,12 +16,16 @@
                     </af:popup>
                 </f:facet>
                 <f:facet name="appNav">
-                    <af:button text="Dashboard" action="#{viewScope.Page.dashboard}" id="appNavDashboard"
-                               styleClass="AFAppNavbarButton" selected="true" type="radio"/>
-                    <af:button text="Inventory Control" action="#{viewScope.Page.inventorycontrol}" id="appNavInventoryControl"
-                               styleClass="AFAppNavbarButton" selected="false" type="radio"/>
-                    <af:button text="Summit Management" action="#{viewScope.Page.summitmanagement}" id="appNavSummitManagement"
-                               styleClass="AFAppNavbarButton" selected="false" type="radio"/>
+                    <af:toolbar id="t1">
+                        <af:button text="Dashboard" action="#{viewScope.Page.dashboard}" id="appNavDashboard"
+                                   styleClass="AFAppNavbarButton" selected="true" type="radio"/>
+                        <af:button text="Inventory Control" action="#{viewScope.Page.inventorycontrol}"
+                                   id="appNavInventoryControl" styleClass="AFAppNavbarButton" selected="false"
+                                   type="radio"/>
+                        <af:button text="Summit Management" action="#{viewScope.Page.summitmanagement}"
+                                   id="appNavSummitManagement" styleClass="AFAppNavbarButton" selected="false"
+                                   type="radio"/>
+                    </af:toolbar>
                 </f:facet>
                 <f:facet name="globalLinks"/>
                 <f:facet name="footer"/>

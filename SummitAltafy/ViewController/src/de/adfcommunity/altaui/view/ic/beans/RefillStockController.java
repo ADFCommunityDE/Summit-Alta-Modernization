@@ -1,5 +1,7 @@
 package de.adfcommunity.altaui.view.ic.beans;
 
+import java.io.Serializable;
+
 import java.util.Map;
 
 import javax.faces.context.FacesContext;
@@ -13,8 +15,10 @@ import oracle.adf.view.rich.context.AdfFacesContext;
 import oracle.binding.OperationBinding;
 
 
-public class RefillStockController {
-    
+public class RefillStockController implements Serializable {
+    @SuppressWarnings("compatibility:-1864568424941810539")
+    private static final long serialVersionUID = 1L;
+
     private Integer warehouseToRestock;
     private Integer productToRestock;
 
@@ -41,9 +45,10 @@ public class RefillStockController {
 
     /**
      * Any stock that is substracted from a warehouse is added to the main warehouse.
-     * 
+     *
      * @param valueChangeEvent Event that is fired by slider components in refill-stock component
      */
+    @SuppressWarnings("unchecked")
     public void onSliderChange(ValueChangeEvent valueChangeEvent) {
         
         // update initial value of slider to model

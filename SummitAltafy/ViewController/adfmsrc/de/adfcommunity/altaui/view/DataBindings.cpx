@@ -18,10 +18,8 @@
           usageId="de_adfcommunity_altaui_view_refill_stock_refill_stock_ExecuteWithParamsPageDef"/>
     <page path="/WEB-INF/inventory-control/refill-stock.xml#refill-stock@GetCurrentWarehouseWithProduct"
           usageId="de_adfcommunity_altaui_view_refill_stock_refill_stock_ExecuteWithParamsPageDef1"/>
-    <page path="/WEB-INF/inventory-control/low-stock-products.xml#low-stock-products@ReexecuteAfterChanges"
-          usageId="de_adfcommunity_altaui_view_low_stock_products_low_stock_products_ExecutePageDef"/>
-    <page path="/WEB-INF/low-stock-products.xml#low-stock-products@ReexecuteAfterChanges"
-          usageId="de_adfcommunity_altaui_view_low_stock_products_low_stock_products_ReexecuteAfterChangesPageDef"/>
+    <page path="/WEB-INF/low-stock-products.xml#low-stock-products@ReloadLowStockProductsAfterRefill"
+          usageId="de_adfcommunity_altaui_view_low_stock_products_low_stock_products_ReloadLowStockProductsAfterRefillPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="de_adfcommunity_altaui_view_indexPageDef" path="de.adfcommunity.altaui.view.pageDefs.indexPageDef"/>
@@ -32,10 +30,8 @@
     <page id="de_adfcommunity_altaui_view_refill_stock_mainPageDef" path="inventory_control.refill_stock_mainPageDef"/>
     <page id="de_adfcommunity_altaui_view_refill_stock_refill_stock_ExecuteWithParamsPageDef1"
           path="inventory_control.refill_stock_refill_stock_ExecuteWithParamsPageDef1"/>
-    <page id="de_adfcommunity_altaui_view_low_stock_products_low_stock_products_ExecutePageDef"
-          path="inventory_control.low_stock_products_low_stock_products_ExecutePageDef"/>
-    <page id="de_adfcommunity_altaui_view_low_stock_products_low_stock_products_ReexecuteAfterChangesPageDef"
-          path="de.adfcommunity.altaui.view.pageDefs.low_stock_products_low_stock_products_ReexecuteAfterChangesPageDef"/>
+    <page id="de_adfcommunity_altaui_view_low_stock_products_low_stock_products_ReloadLowStockProductsAfterRefillPageDef"
+          path="de.adfcommunity.altaui.view.pageDefs.low_stock_products_low_stock_products_ReloadLowStockProductsAfterRefillPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="AltaSummitServiceDataControl" Package="de.adfcommunity.altaui.model.services"

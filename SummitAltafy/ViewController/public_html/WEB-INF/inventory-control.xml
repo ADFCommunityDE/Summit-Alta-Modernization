@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
   <task-flow-definition id="inventory-control">
-    <default-activity>__inventory-control</default-activity>
+    <default-activity>low-stock-products</default-activity>
     <data-control-scope>
       <shared/>
     </data-control-scope>
-    <view id="__inventory-control">
-      <page>/WEB-INF/inventory-control/low-stock-products-landing.jsff</page>
-    </view>
+    <task-flow-call id="low-stock-products">
+      <task-flow-reference>
+        <document>/WEB-INF/low-stock-products.xml</document>
+        <id>low-stock-products</id>
+      </task-flow-reference>
+    </task-flow-call>
     <use-page-fragments/>
   </task-flow-definition>
 </adfc-config>
