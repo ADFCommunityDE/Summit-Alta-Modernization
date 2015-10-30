@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8"
+                id="refill_stock_refill_stock_ExecuteWithParamsPageDef1" Package="inventory_control"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="ProductInWarehouse" RangeSize="25" DataControl="AltaSummitServiceDataControl"
+              id="ProductInWarehouseIterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="ProductInWarehouseIterator" id="ExecuteWithParams" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="bindProductId" NDValue="#{pageFlowScope.controller.productToRestock}"
+                 NDType="java.lang.Integer"/>
+      <NamedData NDName="bindWarehouseId" NDValue="#{pageFlowScope.controller.warehouseToRestock}"
+                 NDType="java.lang.Integer"/>
+    </action>
+  </bindings>
+</pageDefinition>

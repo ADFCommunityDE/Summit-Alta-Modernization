@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
                 xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces" xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core">
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle" value="#{adfBundle['de.adfcommunity.altaui.view.bundle.images']}"/>
   <af:panelGroupLayout id="pgl1" layout="vertical">
     <af:listView value="#{bindings.LowStockProducts.collectionModel}" var="item"
                  emptyText="#{bindings.LowStockProducts.viewable ? 'No data to display.' : 'Access Denied.'}"
@@ -10,7 +11,14 @@
         <af:panelGridLayout id="pgl2" dimensionsFrom="children">
           <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr1">
             <af:gridCell marginStart="5px" width="65%" id="gc1" valign="middle">
-              <af:panelGroupLayout id="pgl3" layout="horizontal">
+              <af:panelGroupLayout id="pgl3" layout="horizontal" halign="center">
+                <af:link id="l1" action="refillStock">
+                  <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+                  <af:setPropertyListener from="#{item.WarehouseId}" to="#{pageFlowScope.warehouseId}" type="action"/>
+                  <af:setPropertyListener from="#{item.ProductId}" to="#{pageFlowScope.productId}" type="action"/>
+                  <af:image source="#{viewcontrollerBundle['de.adfcommunity.altaui.images.transfer']}" shortDesc="transfer" id="i3"
+                            inlineStyle="height:36px; width:36px;"/>
+                </af:link>
                 <af:spacer width="20" height="10" id="s1"/>
                 <dvt:ledGauge id="ledGauge1" type="rectangle" value="#{item.StockRatio}">
                   <dvt:gaugeThreshold id="thr1" color="#FFFF00"/>
@@ -32,10 +40,11 @@
                 <f:facet name="separator">
                   <af:spacer width="10" height="10" id="s2"/>
                 </f:facet>
+                
               </af:panelGroupLayout>
             </af:gridCell>
             <af:gridCell id="gc2" width="35%" valign="middle">
-              <af:panelGroupLayout id="pgl4" layout="horizontal">
+              <af:panelGroupLayout id="pgl4" layout="horizontal" halign="center">
                 <af:image source="/resources/images/products/#{item.Filename}" shortDesc="#{item.Filename}" id="i2"
                           styleClass="ListItemImages"/>
                 <af:spacer width="10" height="10" id="s3"/>

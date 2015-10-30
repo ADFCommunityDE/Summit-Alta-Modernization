@@ -12,7 +12,13 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  PageIterMode="Full">
+  PageIterMode="Full"
+  ComponentClass="de.adfcommunity.altaui.model.queries.ProductWarehouseShiftViewImpl"
+  ComponentInterface="de.adfcommunity.altaui.model.queries.common.ProductWarehouseShiftView"
+  ClientProxyName="de.adfcommunity.altaui.model.queries.client.ProductWarehouseShiftViewClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll"/>
+  </DesignTime>
   <Properties>
     <SchemaBasedProperties>
       <LABEL
@@ -173,6 +179,27 @@
     EntityAttrName="CountryCode"
     EntityUsage="Countries"
     AliasName="COUNTRY_CODE"/>
+  <ViewAttribute
+    Name="MaxInStock"
+    PrecisionRule="true"
+    EntityAttrName="MaxInStock"
+    EntityUsage="Inventory"
+    AliasName="MAX_IN_STOCK"/>
+  <ViewAttribute
+    Name="OriginalAmountInStock"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Integer"
+    ColumnType="INTEGER"
+    AliasName="VIEW_ATTR"
+    SQLType="INTEGER">
+    <TransientExpression
+      trustMode="untrusted"><![CDATA[AmountInStock]]></TransientExpression>
+    <RecalcCondition
+      trustMode="untrusted"><![CDATA[false]]></RecalcCondition>
+  </ViewAttribute>
   <ViewCriteria
     Name="ShiftPossibilitiesCriteria"
     ViewObjectName="de.adfcommunity.altaui.model.queries.ProductWarehouseShiftView"
@@ -221,6 +248,22 @@
     <Item Value="ProductId"/>
     <Item Value="WarehouseId"/>
   </AttrArray>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="changeStockToValue"
+      MethodName="changeStockToValue">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="warehouseId"
+        Type="java.lang.Integer"/>
+      <Parameter
+        Name="amountInStock"
+        Type="java.lang.Integer"/>
+    </Method>
+  </ClientInterface>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="de.adfcommunity.altaui.model.ModelBundle"/>

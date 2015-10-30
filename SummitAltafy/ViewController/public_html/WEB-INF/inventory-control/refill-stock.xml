@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="refill-stock">
+    <default-activity>GetAllWarehousesThatHaveProductAvailable</default-activity>
+    <transaction>
+      <new-transaction/>
+    </transaction>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__4">
+      <name>warehouseToRestock</name>
+      <value>#{pageFlowScope.controller.warehouseToRestock}</value>
+      <class>java.lang.Integer</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__5">
+      <name>productToRestock</name>
+      <value>#{pageFlowScope.controller.productToRestock}</value>
+      <class>java.lang.Integer</class>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>controller</managed-bean-name>
+      <managed-bean-class>de.adfcommunity.altaui.view.ic.beans.RefillStockController</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <method-call id="GetAllWarehousesThatHaveProductAvailable">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-return id="back_save">
+      <outcome>
+        <name>back_save</name>
+        <commit/>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="home_save">
+      <outcome>
+        <name>home</name>
+        <commit/>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="back_abort">
+      <outcome>
+        <name>back_abort</name>
+        <rollback/>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="home_abort">
+      <outcome>
+        <name>home_abort</name>
+        <rollback/>
+      </outcome>
+    </task-flow-return>
+    <view id="refill-stock-main">
+      <page>/WEB-INF/inventory-control/refill-stock-main.jsff</page>
+    </view>
+    <method-call id="GetCurrentWarehouseWithProduct">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>GetAllWarehousesThatHaveProductAvailable</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>ExecuteWithParams</from-outcome>
+        <to-activity-id>GetCurrentWarehouseWithProduct</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>refill-stock-main</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>back_save</from-outcome>
+        <to-activity-id>back_save</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>back_abort</from-outcome>
+        <to-activity-id>back_abort</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>GetCurrentWarehouseWithProduct</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>ExecuteWithParams</from-outcome>
+        <to-activity-id>refill-stock-main</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>
