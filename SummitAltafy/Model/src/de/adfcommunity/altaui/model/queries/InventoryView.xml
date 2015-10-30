@@ -13,6 +13,14 @@
   CustomQuery="false"
   SelectAllAttributes="false"
   PageIterMode="Full">
+  <Variable
+    Name="bindProductId"
+    Kind="viewcriteria"
+    Type="java.lang.Integer"/>
+  <Variable
+    Name="bindWarehouseId"
+    Kind="viewcriteria"
+    Type="java.lang.Integer"/>
   <EntityUsage
     Name="Inventory"
     Entity="de.adfcommunity.altaui.model.entities.Inventory"/>
@@ -60,4 +68,80 @@
     EntityAttrName="RestockDate"
     EntityUsage="Inventory"
     AliasName="RESTOCK_DATE"/>
+  <ViewAttribute
+    Name="OneThirdOfMaxAmount"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="INTEGER"
+    AliasName="VIEW_ATTR"
+    SQLType="INTEGER">
+    <TransientExpression
+      trustMode="untrusted"><![CDATA[MaxInStock / 3]]></TransientExpression>
+    <RecalcCondition
+      trustMode="untrusted"><![CDATA[true]]></RecalcCondition>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TwoThirdOfMaxAmount"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression
+      trustMode="untrusted"><![CDATA[MaxInStock / 3 * 2]]></TransientExpression>
+    <RecalcCondition
+      trustMode="untrusted"><![CDATA[true]]></RecalcCondition>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="SingleProductOfWarehouseCriteria"
+    ViewObjectName="de.adfcommunity.altaui.model.queries.InventoryView"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="InventoryViewCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ProductId"
+        ViewAttribute="ProductId"
+        Operator="="
+        Conjunction="AND"
+        Value=":bindProductId"
+        IsBindVarValue="true"
+        Required="Required"
+        ValidateBindVars="true"/>
+      <ViewCriteriaItem
+        Name="WarehouseId"
+        ViewAttribute="WarehouseId"
+        Operator="="
+        Conjunction="AND"
+        Value=":bindWarehouseId"
+        IsBindVarValue="true"
+        Required="Required"
+        ValidateBindVars="true"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
 </ViewObject>

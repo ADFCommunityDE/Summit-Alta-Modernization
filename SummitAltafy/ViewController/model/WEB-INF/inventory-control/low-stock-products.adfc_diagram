@@ -15,11 +15,11 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">263.1953</property>
+         name="y">264.84473</property>
+      <property
+         name="x">205.0</property>
       <property
          name="pageFragment">true</property>
-      <property
-         name="x">358.0</property>
    </View>
    <TaskFlowCall
       id="TaskFlowCall3">
@@ -46,26 +46,49 @@
       <property
          name="fromOutcome">refillStock</property>
       <property
-         name="sdm:polyPoints">R50,399.0,262.84473,555.5,264.79883,L50</property>
+         name="sdm:polyPoints">R50,246.00345,264.49414,555.4966,264.79883,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase5"
       from="TaskFlowCall3"
-      to="View2">
+      to="MethodCall7">
       <property
          name="fromOutcome">back_abort</property>
       <property
-         name="sdm:polyPoints">L54,555.4563,268.29883,399.0,266.34473,R54</property>
+         name="sdm:polyPoints">L58,555.5,271.79883,441.5,374.74707,R50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase6"
       from="TaskFlowCall3"
-      to="View2">
+      to="MethodCall7">
       <property
          name="fromOutcome">back_save</property>
       <property
-         name="sdm:polyPoints">L42,555.5,257.79883,399.0874,255.84473,R42</property>
+         name="sdm:polyPoints">L58,555.5,271.79883,444.28485,378.24707,R54</property>
+   </ControlFlowCase>
+   <MethodCall
+      id="MethodCall7">
+      <property
+         name="activityId">ReexecuteAfterChanges</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ReexecuteAfterChanges&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">375.09766</property>
+      <property
+         name="x">400.5</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase8"
+      from="MethodCall7"
+      to="View2">
+      <property
+         name="fromOutcome">Execute</property>
+      <property
+         name="sdm:polyPoints">L50,359.5,374.74707,246.0,267.99414,R54</property>
    </ControlFlowCase>
 </SDM>

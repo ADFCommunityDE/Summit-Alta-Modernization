@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
   <task-flow-definition id="refill-stock">
-    <default-activity>ExecuteWithParams</default-activity>
+    <default-activity>GetAllWarehousesThatHaveProductAvailable</default-activity>
     <transaction>
       <new-transaction/>
     </transaction>
@@ -23,7 +23,7 @@
       <managed-bean-class>de.adfcommunity.altaui.view.ic.beans.RefillStockController</managed-bean-class>
       <managed-bean-scope>pageFlow</managed-bean-scope>
     </managed-bean>
-    <method-call id="ExecuteWithParams">
+    <method-call id="GetAllWarehousesThatHaveProductAvailable">
       <method>#{bindings.ExecuteWithParams.execute}</method>
       <outcome>
         <fixed-outcome>ExecuteWithParams</fixed-outcome>
@@ -56,11 +56,17 @@
     <view id="refill-stock-main">
       <page>/WEB-INF/inventory-control/refill-stock-main.jsff</page>
     </view>
+    <method-call id="GetCurrentWarehouseWithProduct">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
     <control-flow-rule id="__2">
-      <from-activity-id>ExecuteWithParams</from-activity-id>
+      <from-activity-id>GetAllWarehousesThatHaveProductAvailable</from-activity-id>
       <control-flow-case id="__3">
         <from-outcome>ExecuteWithParams</from-outcome>
-        <to-activity-id>refill-stock-main</to-activity-id>
+        <to-activity-id>GetCurrentWarehouseWithProduct</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__6">
@@ -72,6 +78,13 @@
       <control-flow-case id="__8">
         <from-outcome>back_abort</from-outcome>
         <to-activity-id>back_abort</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>GetCurrentWarehouseWithProduct</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>ExecuteWithParams</from-outcome>
+        <to-activity-id>refill-stock-main</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <use-page-fragments/>

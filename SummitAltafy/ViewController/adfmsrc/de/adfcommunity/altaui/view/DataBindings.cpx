@@ -5,15 +5,21 @@
     <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
              className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
     <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
   </definitionFactories>
   <pageMap>
     <page path="/index.jsf" usageId="de_adfcommunity_altaui_view_indexPageDef"/>
     <page path="/WEB-INF/inventory-control/low-stock-products-landing.jsff"
           usageId="de_adfcommunity_altaui_view_low_stock_products_landingPageDef"/>
-    <page path="/WEB-INF/inventory-control/refill-stock.xml#refill-stock@ExecuteWithParams"
-          usageId="de_adfcommunity_altaui_view_refill_stock_refill_stock_ExecuteWithParamsPageDef"/>
     <page path="/WEB-INF/inventory-control/refill-stock-main.jsff"
           usageId="de_adfcommunity_altaui_view_refill_stock_mainPageDef"/>
+    <page path="/WEB-INF/inventory-control/refill-stock.xml#refill-stock@GetAllWarehousesThatHaveProductAvailable"
+          usageId="de_adfcommunity_altaui_view_refill_stock_refill_stock_ExecuteWithParamsPageDef"/>
+    <page path="/WEB-INF/inventory-control/refill-stock.xml#refill-stock@GetCurrentWarehouseWithProduct"
+          usageId="de_adfcommunity_altaui_view_refill_stock_refill_stock_ExecuteWithParamsPageDef1"/>
+    <page path="/WEB-INF/inventory-control/low-stock-products.xml#low-stock-products@ReexecuteAfterChanges"
+          usageId="de_adfcommunity_altaui_view_low_stock_products_low_stock_products_ExecutePageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="de_adfcommunity_altaui_view_indexPageDef" path="de.adfcommunity.altaui.view.pageDefs.indexPageDef"/>
@@ -22,6 +28,10 @@
     <page id="de_adfcommunity_altaui_view_refill_stock_refill_stock_ExecuteWithParamsPageDef"
           path="inventory_control.refill_stock_refill_stock_ExecuteWithParamsPageDef"/>
     <page id="de_adfcommunity_altaui_view_refill_stock_mainPageDef" path="inventory_control.refill_stock_mainPageDef"/>
+    <page id="de_adfcommunity_altaui_view_refill_stock_refill_stock_ExecuteWithParamsPageDef1"
+          path="inventory_control.refill_stock_refill_stock_ExecuteWithParamsPageDef1"/>
+    <page id="de_adfcommunity_altaui_view_low_stock_products_low_stock_products_ExecutePageDef"
+          path="inventory_control.low_stock_products_low_stock_products_ExecutePageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="AltaSummitServiceDataControl" Package="de.adfcommunity.altaui.model.services"

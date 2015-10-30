@@ -5,17 +5,17 @@
    <MethodCall
       id="MethodCall2">
       <property
-         name="activityId">ExecuteWithParams</property>
+         name="activityId">GetAllWarehousesThatHaveProductAvailable</property>
       <property
          name="start">true</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>ExecuteWithParams&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>GetAllWarehousesThatHaveProductAvailable&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">330.5</property>
+         name="y">301.39648</property>
       <property
-         name="x">225.35156</property>
+         name="x">46.351562</property>
    </MethodCall>
    <TaskFlowReturn
       id="TaskFlowReturn3">
@@ -90,19 +90,19 @@
       <property
          name="y">304.59766</property>
       <property
-         name="x">462.0</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">462.0</property>
    </View>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase8"
       from="MethodCall2"
-      to="View7">
+      to="MethodCall11">
       <property
          name="fromOutcome">ExecuteWithParams</property>
       <property
-         name="sdm:polyPoints">R50,266.35156,330.1494,421.0,304.24707,L50</property>
+         name="sdm:polyPoints">R50,87.35156,301.0459,231.35156,302.39648,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -123,5 +123,28 @@
          name="fromOutcome">back_abort</property>
       <property
          name="sdm:polyPoints">B50,462.0,358.24707,683.0,485.59766,L50</property>
+   </ControlFlowCase>
+   <MethodCall
+      id="MethodCall11">
+      <property
+         name="activityId">GetCurrentWarehouseWithProduct</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>GetCurrentWarehouseWithProduct&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">302.74707</property>
+      <property
+         name="x">272.35156</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase12"
+      from="MethodCall11"
+      to="View7">
+      <property
+         name="fromOutcome">ExecuteWithParams</property>
+      <property
+         name="sdm:polyPoints">R50,313.35156,302.39648,421.0,304.24707,L50</property>
    </ControlFlowCase>
 </SDM>

@@ -1,32 +1,65 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
-                xmlns:f="http://java.sun.com/jsf/core">
-  <af:panelHeader text="panelHeader 1" id="ph1">
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle" value="#{adfBundle['de.adfcommunity.altaui.view.bundle.images']}"/>
+  <af:panelHeader text="Refill Stock" id="ph1">
     <f:facet name="context"/>
     <f:facet name="menuBar"/>
-    <f:facet name="toolbar"/>
+    <f:facet name="toolbar">
+      <af:toolbar id="t1">
+        <af:button text="Rollback" id="b3" actionListener="#{bindings.Rollback.execute}" immediate="true"
+                   partialSubmit="false">
+          <af:resetActionListener/>
+        </af:button>
+      </af:toolbar>
+    </f:facet>
     <f:facet name="legend"/>
     <f:facet name="info"/>
-    <af:panelGroupLayout id="pgl1">
-      <af:button text="Save" id="b1" action="back_save"/>
-      <af:button text="Abort" id="b2" action="back_abort"/>
-      <af:panelSplitter id="ps1">
-        <f:facet name="first"/>
-        <f:facet name="second">
-          <af:listView id="lv1" value="#{bindings.ProductWarehouseShift.collectionModel}" var="item">
-            <f:facet name="groupHeaderStamp"/>
-            <af:listItem id="li1">
-              <af:panelGroupLayout id="pgl2" layout="horizontal" valign="middle">
-                <af:outputLabel value="#{item.Country}" id="ol1"/>
-                <af:outputLabel value="#{item.City}" id="ol2"/>
-                <af:outputLabel value="#{item.Address}" id="ol3"/>
-                <af:inputNumberSlider label="#{bindings.AmountInStock.hints.label}" id="ins1"
-                                      value="#{item.AmountInStock}" maximum="#{item.AmountInStock}" simple="true"/>
-              </af:panelGroupLayout>
-            </af:listItem>
-          </af:listView>
+    <af:panelGroupLayout id="pgl1" layout="vertical" halign="center">
+      <af:panelGroupLayout id="pgl5" layout="horizontal">
+        <af:iterator id="i1" value="#{bindings.ProductWarehouseShift.collectionModel}" var="item"
+                     varStatus="itemStatus">
+          <af:panelGroupLayout id="pgl4" layout="vertical" valign="top" halign="center"
+                               inlineStyle="#{itemStatus.count>1 ? 'border-left:2px solid; margin-left:5px; padding-left:5px;border-color:gray;' : ''}margin-right:5px; padding-right:5px;">
+            <af:panelGroupLayout id="pgl2" layout="horizontal">
+              <af:image source="/resources/images/flags/#{item.Country}.png" shortDesc="#{item.Country}" id="i3"/>
+              <af:outputLabel value="#{item.City}" id="ol2"/>
+              <f:facet name="separator">
+                <af:spacer width="5" height="10" id="s1"/>
+              </f:facet>
+            </af:panelGroupLayout>
+            <af:inputNumberSlider label="#{bindings.AmountInStock.hints.label}" id="ins1" value="#{item.AmountInStock}"
+                                  maximum="#{item.OriginalAmountInStock}" simple="true" majorIncrement="-1"
+                                  valueChangeListener="#{pageFlowScope.controller.onSliderChange}" autoSubmit="true">
+              <f:attribute name="WarehouseId" value="#{item.WarehouseId}"/>
+            </af:inputNumberSlider>
+          </af:panelGroupLayout>
+        </af:iterator>
+        <f:facet name="separator"/>
+      </af:panelGroupLayout>
+      <af:panelGroupLayout id="pgl3" halign="center" layout="vertical">
+        <af:image source="#{viewcontrollerBundle['de.adfcommunity.altaui.images.lowercurlybrace']}" id="i2"
+                  inlineStyle="height:20px;" shortDesc="CurlyBrace" styleClass="AFStretchWidth"/>
+        <af:outputLabel value="# products in warehouse no. #{bindings.WarehouseId.inputValue}" id="ol4"/>
+        <dvt:statusMeterGauge id="statusMeterGauge1" minimum="0" maximum="#{bindings.MaxInStock.inputValue}"
+                              value="#{bindings.AmountInStockMainWarehouse.inputValue}" partialTriggers="i1:ins1"
+                              thresholdDisplay="all" indicatorSize="0.3">
+          <dvt:gaugeMetricLabel rendered="true" id="gml1"/>
+          <dvt:gaugeThreshold id="thr1" color="#d62800" maximum="#{bindings.OneThirdOfMaxAmount.inputValue}"/>
+          <dvt:gaugeThreshold id="thr2" color="#ffc600" maximum="#{bindings.TwoThirdOfMaxAmount.inputValue}"/>
+          <dvt:gaugeThreshold id="thr3" color="#00a500"/>
+        </dvt:statusMeterGauge></af:panelGroupLayout>
+      <af:panelGroupLayout id="pgl6">
+        <af:button text="Save" id="b1" action="back_save"/>
+        <af:button text="Abort" id="b2" action="back_abort"/>
+        <f:facet name="separator">
+          <af:spacer width="10" height="10" id="s3"/>
         </f:facet>
-      </af:panelSplitter>
+      </af:panelGroupLayout>
+      <f:facet name="separator">
+        <af:spacer width="10" height="20" id="s2"/>
+      </f:facet>
     </af:panelGroupLayout>
   </af:panelHeader>
 </ui:composition>

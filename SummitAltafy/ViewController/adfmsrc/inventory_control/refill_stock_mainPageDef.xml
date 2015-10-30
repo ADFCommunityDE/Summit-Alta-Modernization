@@ -6,6 +6,8 @@
     <variableIterator id="variables"/>
     <iterator id="ProductWarehouseShiftIterator" Binds="ProductWarehouseShift"
               DataControl="AltaSummitServiceDataControl" RangeSize="25"/>
+    <iterator Binds="ProductInWarehouse" RangeSize="1" DataControl="AltaSummitServiceDataControl"
+              id="ProductInWarehouseIterator"/>
   </executables>
   <bindings>
     <attributeValues IterBinding="ProductWarehouseShiftIterator" id="AmountInStock">
@@ -22,8 +24,45 @@
           <Item Value="City"/>
           <Item Value="Address"/>
           <Item Value="MaxInStock"/>
+          <Item Value="CountryCode"/>
+          <Item Value="OriginalAmountInStock"/>
+          <Item Value="WarehouseId"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <attributeValues IterBinding="ProductInWarehouseIterator" id="AmountInStockMainWarehouse">
+      <AttrNames>
+        <Item Value="AmountInStock"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="MaxInStock" IterBinding="ProductInWarehouseIterator">
+      <AttrNames>
+        <Item Value="MaxInStock"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductInWarehouseIterator" id="OneThirdOfMaxAmount">
+      <AttrNames>
+        <Item Value="OneThirdOfMaxAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductInWarehouseIterator" id="TwoThirdOfMaxAmount">
+      <AttrNames>
+        <Item Value="TwoThirdOfMaxAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductInWarehouseIterator" id="WarehouseId">
+      <AttrNames>
+        <Item Value="WarehouseId"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AltaSummitServiceDataControl"/>
+    <methodAction id="changeStockToValue" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="changeStockToValue" IsViewObjectMethod="true" DataControl="AltaSummitServiceDataControl"
+                  InstanceName="data.AltaSummitServiceDataControl.ProductWarehouseShift"
+                  ReturnName="data.AltaSummitServiceDataControl.methodResults.changeStockToValue_AltaSummitServiceDataControl_ProductWarehouseShift_changeStockToValue_result">
+      <NamedData NDName="warehouseId" NDType="java.lang.Integer"/>
+      <NamedData NDName="amountInStock" NDType="java.lang.Integer"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

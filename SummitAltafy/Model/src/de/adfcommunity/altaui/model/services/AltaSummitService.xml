@@ -26,4 +26,11 @@
       FullName="de.adfcommunity.altaui.model.queries.ProductWarehouseShiftView.ShiftPossibilitiesCriteria"
       Required="true"/>
   </ViewUsage>
+  <ViewUsage
+    Name="ProductInWarehouse"
+    ViewObjectName="de.adfcommunity.altaui.model.queries.InventoryView">
+    <ViewCriteriaUsage
+      Name="SingleProductOfWarehouseCriteria"
+      FullName="de.adfcommunity.altaui.model.queries.InventoryView.SingleProductOfWarehouseCriteria"/>
+  </ViewUsage>
 </AppModule>

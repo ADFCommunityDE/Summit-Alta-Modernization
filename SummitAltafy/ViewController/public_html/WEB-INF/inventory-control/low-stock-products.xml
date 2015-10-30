@@ -22,6 +22,12 @@
         <value>#{pageFlowScope.productId}</value>
       </input-parameter>
     </task-flow-call>
+    <method-call id="ReexecuteAfterChanges">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome>
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
     <control-flow-rule id="__1">
       <from-activity-id>low-stock-products-landing</from-activity-id>
       <control-flow-case id="__2">
@@ -33,10 +39,17 @@
       <from-activity-id>refill-stock</from-activity-id>
       <control-flow-case id="__4">
         <from-outcome>back_abort</from-outcome>
-        <to-activity-id>low-stock-products-landing</to-activity-id>
+        <to-activity-id>ReexecuteAfterChanges</to-activity-id>
       </control-flow-case>
       <control-flow-case id="__5">
         <from-outcome>back_save</from-outcome>
+        <to-activity-id>ReexecuteAfterChanges</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>ReexecuteAfterChanges</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>Execute</from-outcome>
         <to-activity-id>low-stock-products-landing</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
