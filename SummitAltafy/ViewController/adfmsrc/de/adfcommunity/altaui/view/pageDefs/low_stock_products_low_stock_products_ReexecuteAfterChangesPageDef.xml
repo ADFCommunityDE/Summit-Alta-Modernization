@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8"
+                id="low_stock_products_low_stock_products_ReexecuteAfterChangesPageDef"
+                Package="de.adfcommunity.altaui.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="LowStockProducts" RangeSize="25" DataControl="AltaSummitServiceDataControl"
+              id="LowStockProductsIterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="LowStockProductsIterator" id="Execute" RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>
