@@ -8,10 +8,12 @@
     <f:facet name="menuBar"/>
     <f:facet name="toolbar">
       <af:toolbar id="t1">
-        <af:button text="Rollback" id="b3" actionListener="#{bindings.Rollback.execute}" immediate="true"
-                   partialSubmit="false">
-          <af:resetActionListener/>
-        </af:button>
+              <af:link id="l3" actionListener="#{bindings.Rollback.execute}" immediate="true">
+                  <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+      <af:image source="#{viewcontrollerBundle['de.adfcommunity.altaui.images.reload']}" shortDesc="save" id="i_reload"
+                            inlineStyle="height:60px; width:60px;"/>
+                            <af:resetActionListener/>
+                </af:link>
       </af:toolbar>
     </f:facet>
     <f:facet name="legend"/>
@@ -51,8 +53,17 @@
           <dvt:gaugeThreshold id="thr3" color="#00a500"/>
         </dvt:statusMeterGauge></af:panelGroupLayout>
       <af:panelGroupLayout id="pgl6">
-        <af:button text="Save" id="b1" action="back_save"/>
-        <af:button text="Abort" id="b2" action="back_abort"/>
+      
+      <af:link id="l1" action="back_save">
+                  <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+      <af:image source="#{viewcontrollerBundle['de.adfcommunity.altaui.images.save']}" shortDesc="save" id="i_save"
+                            inlineStyle="height:60px; width:60px;"/>
+                </af:link>
+                      <af:link id="l2" action="back_abort">
+                  <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+      <af:image source="#{viewcontrollerBundle['de.adfcommunity.altaui.images.abort']}" shortDesc="abort" id="i_abort"
+                            inlineStyle="height:60px; width:60px;"/>
+                </af:link>
         <f:facet name="separator">
           <af:spacer width="10" height="10" id="s3"/>
         </f:facet>
