@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="dashboardPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <iterator Binds="CustomerView1" RangeSize="-1" DataControl="AltaSummitServiceDataControl" id="CustomerView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="CustomerView1Iterator" id="CustomerView1">
+      <nodeDefinition DefName="de.adfcommunity.altaui.model.queries.CustomerView" Name="CustomerView10">
+        <AttrNames>
+          <Item Value="Latitude"/>
+          <Item Value="Longitude"/>
+          <Item Value="Id"/>
+          <Item Value="Name"/>
+          <Item Value="City"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

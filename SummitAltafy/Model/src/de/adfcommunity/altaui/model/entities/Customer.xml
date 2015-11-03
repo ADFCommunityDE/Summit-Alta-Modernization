@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Customer"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="S_CUSTOMER"
+  AliasName="SCustomer"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="Id"
+    IsNotNull="true"
+    Precision="7"
+    Scale="0"
+    ColumnName="ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="S_CUSTOMER"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="Name"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_CUSTOMER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Phone"
+    Precision="25"
+    ColumnName="PHONE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_CUSTOMER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Address"
+    Precision="400"
+    ColumnName="ADDRESS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_CUSTOMER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="400"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="City"
+    Precision="30"
+    ColumnName="CITY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_CUSTOMER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="State"
+    Precision="20"
+    ColumnName="STATE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_CUSTOMER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CountryId"
+    Precision="7"
+    Scale="0"
+    ColumnName="COUNTRY_ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="S_CUSTOMER"/>
+  <Attribute
+    Name="ZipCode"
+    Precision="75"
+    ColumnName="ZIP_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_CUSTOMER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="75"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreditRatingId"
+    Precision="7"
+    Scale="0"
+    ColumnName="CREDIT_RATING_ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="S_CUSTOMER"/>
+  <Attribute
+    Name="SalesRepId"
+    Precision="7"
+    Scale="0"
+    ColumnName="SALES_REP_ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="S_CUSTOMER"/>
+  <Attribute
+    Name="Comments"
+    Precision="255"
+    ColumnName="COMMENTS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_CUSTOMER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="255"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="GeoLocation"
+    ColumnName="GEO_LOCATION"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="S_CUSTOMER"/>
+  <AccessorAttribute
+    Name="GeoLocations"
+    Association="de.adfcommunity.altaui.model.entities.assoc.CustomerGeoLocationsAssoc"
+    AssociationEnd="de.adfcommunity.altaui.model.entities.assoc.CustomerGeoLocationsAssoc.GeoLocations"
+    AssociationOtherEnd="de.adfcommunity.altaui.model.entities.assoc.CustomerGeoLocationsAssoc.Customer"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SCustomerIdNn">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="S_CUSTOMER_ID_NN"/>
+      <Attr Name="_checkCondition" Value="ID IS NOT NULL"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="SCustomerIdPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="S_CUSTOMER_ID_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="de.adfcommunity.altaui.model.entities.Customer.Id"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SCustomerNameNn">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="S_CUSTOMER_NAME_NN"/>
+      <Attr Name="_checkCondition" Value="NAME IS NOT NULL"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="SCustomerCreditRatingFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="S_CREDIT_RATING_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="S_CUSTOMER_CREDIT_RATING_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="de.adfcommunity.altaui.model.entities.Customer.CreditRatingId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SSalesRepIdFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="S_EMP_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="S_SALES_REP_ID_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="de.adfcommunity.altaui.model.entities.Customer.SalesRepId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_Customer">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="S_GEO_LOCATIONS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_CUSTOMER"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="de.adfcommunity.altaui.model.entities.Customer.GeoLocation"/>
+    </AttrArray>
+  </Key>
+</Entity>

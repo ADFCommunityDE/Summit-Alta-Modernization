@@ -14,12 +14,30 @@
         <id>low-stock-products</id>
       </task-flow-reference>
     </task-flow-call>
+    <task-flow-call id="call_management-taskflow">
+      <task-flow-reference>
+        <document>/WEB-INF/summit-management.xml</document>
+        <id>summit-management</id>
+      </task-flow-reference>
+      <input-parameter id="__5">
+        <name>customerId</name>
+        <value>#{pageFlowScope.customerId}</value>
+        <pass-by-value/>
+      </input-parameter>
+    </task-flow-call>
     <control-flow-rule id="__1">
       <from-activity-id>__dashboard</from-activity-id>
       <control-flow-case id="__2">
         <from-outcome>low-stock-products</from-outcome>
         <to-activity-id>low-stock-products</to-activity-id>
       </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>__dashboard</from-activity-id>
+      <control-flow-case id="__4">
+      <from-outcome>showManagement</from-outcome>
+      <to-activity-id>call_management-taskflow</to-activity-id>
+    </control-flow-case>
     </control-flow-rule>
     <use-page-fragments/>
   </task-flow-definition>

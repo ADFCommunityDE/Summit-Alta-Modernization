@@ -5,9 +5,12 @@
     <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
              className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
     <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
   </definitionFactories>
   <pageMap>
     <page path="/index.jsf" usageId="de_adfcommunity_altaui_view_indexPageDef"/>
+    <page path="/fragments/dashboard.jsff" usageId="de_adfcommunity_altaui_view_dashboardPageDef"/>
     <page path="/WEB-INF/inventory-control/low-stock-products-landing.jsff"
           usageId="de_adfcommunity_altaui_view_low_stock_products_landingPageDef"/>
   </pageMap>
@@ -15,6 +18,7 @@
     <page id="de_adfcommunity_altaui_view_indexPageDef" path="de.adfcommunity.altaui.view.pageDefs.indexPageDef"/>
     <page id="de_adfcommunity_altaui_view_low_stock_products_landingPageDef"
           path="summit_management.low_stock_products_landingPageDef"/>
+    <page id="de_adfcommunity_altaui_view_dashboardPageDef" path="fragments.dashboardPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="AltaSummitServiceDataControl" Package="de.adfcommunity.altaui.model.services"

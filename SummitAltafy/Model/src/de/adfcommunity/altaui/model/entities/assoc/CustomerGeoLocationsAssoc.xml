@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CustomerGeoLocationsAssoc"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="GeoLocations"
+    Cardinality="1"
+    Source="true"
+    Owner="de.adfcommunity.altaui.model.entities.GeoLocations"
+    LockLevel="NONE">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="GeoLocations"/>
+      <Attr Name="_foreignKey" Value="de.adfcommunity.altaui.model.entities.GeoLocations.SGeoLocationsPk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="de.adfcommunity.altaui.model.entities.GeoLocations.Id"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="Customer"
+    Cardinality="-1"
+    Owner="de.adfcommunity.altaui.model.entities.Customer">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Customer"/>
+      <Attr Name="_foreignKey" Value="de.adfcommunity.altaui.model.entities.Customer.fk_Customer"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="de.adfcommunity.altaui.model.entities.Customer.GeoLocation"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>
