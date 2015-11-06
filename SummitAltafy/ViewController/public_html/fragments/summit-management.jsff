@@ -4,40 +4,19 @@
                 xmlns:f="http://java.sun.com/jsf/core">
     <c:set var="viewcontrollerBundle" value="#{adfBundle['de.adfcommunity.altaui.view.bundle.images']}"/>
     <af:panelFormLayout id="pfl1">
-        <af:inputText value="#{bindings.Address.inputValue}" label="#{bindings.Address.hints.label}"
+        <af:inputText value="#{bindings.Address.inputValue}, #{bindings.City.inputValue}, #{bindings.Country.inputValue}" label="#{bindings.Address.hints.label}"
                       required="#{bindings.Address.hints.mandatory}" readOnly="true"
                       columns="#{bindings.Address.hints.displayWidth}"
                       maximumLength="#{bindings.Address.hints.precision}" shortDesc="#{bindings.Address.hints.tooltip}"
                       id="it1">
             <f:validator binding="#{bindings.Address.validator}"/>
-        </af:inputText>
-        <af:inputText value="#{bindings.City.inputValue}" label="#{bindings.City.hints.label}"
-                      required="#{bindings.City.hints.mandatory}" readOnly="true"
-                      columns="#{bindings.City.hints.displayWidth}" maximumLength="#{bindings.City.hints.precision}"
-                      shortDesc="#{bindings.City.hints.tooltip}" id="it2">
-            <f:validator binding="#{bindings.City.validator}"/>
-        </af:inputText>
-        <af:inputText value="#{bindings.Country.inputValue}" label="#{bindings.Country.hints.label}"
-                      required="#{bindings.Country.hints.mandatory}" readOnly="true"
-                      columns="#{bindings.Country.hints.displayWidth}"
-                      maximumLength="#{bindings.Country.hints.precision}" shortDesc="#{bindings.Country.hints.tooltip}"
-                      id="it4">
-            <f:validator binding="#{bindings.Country.validator}"/>
-        </af:inputText>
+        </af:inputText>        
         <af:inputText value="#{bindings.Comments.inputValue}" label="#{bindings.Comments.hints.label}"
                       required="#{bindings.Comments.hints.mandatory}" readOnly="true"
                       columns="#{bindings.Comments.hints.displayWidth}"
                       maximumLength="#{bindings.Comments.hints.precision}"
                       shortDesc="#{bindings.Comments.hints.tooltip}" id="it3">
             <f:validator binding="#{bindings.Comments.validator}"/>
-        </af:inputText>
-        <af:inputText value="#{bindings.CreditRatingId.inputValue}" label="#{bindings.CreditRatingId.hints.label}"
-                      required="#{bindings.CreditRatingId.hints.mandatory}" readOnly="true"
-                      columns="#{bindings.CreditRatingId.hints.displayWidth}"
-                      maximumLength="#{bindings.CreditRatingId.hints.precision}"
-                      shortDesc="#{bindings.CreditRatingId.hints.tooltip}" id="it5">
-            <f:validator binding="#{bindings.CreditRatingId.validator}"/>
-            <af:convertNumber groupingUsed="false" pattern="#{bindings.CreditRatingId.format}"/>
         </af:inputText>
         <af:inputText value="#{bindings.Name.inputValue}" label="#{bindings.Name.hints.label}"
                       required="#{bindings.Name.hints.mandatory}" readOnly="true"
@@ -51,26 +30,10 @@
                       shortDesc="#{bindings.Phone.hints.tooltip}" id="it7">
             <f:validator binding="#{bindings.Phone.validator}"/>
         </af:inputText>
-        <af:inputText value="#{bindings.SalesRepId.inputValue}" label="#{bindings.SalesRepId.hints.label}"
-                      required="#{bindings.SalesRepId.hints.mandatory}" readOnly="true"
-                      columns="#{bindings.SalesRepId.hints.displayWidth}"
-                      maximumLength="#{bindings.SalesRepId.hints.precision}"
-                      shortDesc="#{bindings.SalesRepId.hints.tooltip}" id="it8">
-            <f:validator binding="#{bindings.SalesRepId.validator}"/>
-            <af:convertNumber groupingUsed="false" pattern="#{bindings.SalesRepId.format}"/>
-        </af:inputText>
-        <af:inputText value="#{bindings.State.inputValue}" label="#{bindings.State.hints.label}"
-                      required="#{bindings.State.hints.mandatory}" readOnly="true"
-                      columns="#{bindings.State.hints.displayWidth}" maximumLength="#{bindings.State.hints.precision}"
-                      shortDesc="#{bindings.State.hints.tooltip}" id="it9">
-            <f:validator binding="#{bindings.State.validator}"/>
-        </af:inputText>
-        <af:inputText value="#{bindings.ZipCode.inputValue}" label="#{bindings.ZipCode.hints.label}"
-                      required="#{bindings.ZipCode.hints.mandatory}" readOnly="true"
-                      columns="#{bindings.ZipCode.hints.displayWidth}"
-                      maximumLength="#{bindings.ZipCode.hints.precision}" shortDesc="#{bindings.ZipCode.hints.tooltip}"
-                      id="it10">
-            <f:validator binding="#{bindings.ZipCode.validator}"/>
-        </af:inputText>
+        <af:outputLabel value="More Information" id="ol1"/>
+        <af:link id="it8" text="Sales Representative (#{bindings.SalesRepId.inputValue})">
+        </af:link>
+        <af:link text="Credit Rating (#{bindings.CreditRatingId.inputValue})" id="it5">
+        </af:link>
     </af:panelFormLayout>
 </ui:composition>
