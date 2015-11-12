@@ -12,6 +12,7 @@
           usageId="de_adfcommunity_altaui_view_low_stock_products_landingPageDef"/>
     <page path="/fragments/customer-navigation.jsff" usageId="de_adfcommunity_altaui_view_customer_navigationPageDef"/>
     <page path="/fragments/summit-management.jsff" usageId="de_adfcommunity_altaui_view_summit_managementPageDef"/>
+    <page path="/fragments/dashboard.jsff" usageId="de_adfcommunity_altaui_view_dashboardPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="de_adfcommunity_altaui_view_indexPageDef" path="de.adfcommunity.altaui.view.pageDefs.indexPageDef"/>
@@ -19,6 +20,7 @@
           path="summit_management.low_stock_products_landingPageDef"/>
     <page id="de_adfcommunity_altaui_view_customer_navigationPageDef" path="fragments.customer_navigationPageDef"/>
     <page id="de_adfcommunity_altaui_view_summit_managementPageDef" path="fragments.summit_managementPageDef"/>
+    <page id="de_adfcommunity_altaui_view_dashboardPageDef" path="fragments.dashboardPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="AltaSummitServiceDataControl" Package="de.adfcommunity.altaui.model.services"

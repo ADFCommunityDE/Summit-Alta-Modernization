@@ -4,7 +4,7 @@
 <AppModule
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="AltaSummitService"
-  Version="12.1.3.10.8"
+  Version="12.2.1.0.31"
   InheritPersonalization="merge"
   ClearCacheOnRollback="true"
   LoadComponentsLazily="true">
@@ -27,14 +27,14 @@
       Required="true"/>
   </ViewUsage>
   <ViewUsage
-    Name="CustomersView1"
-    ViewObjectName="de.adfcommunity.altaui.model.queries.CustomersView"/>
-  <ViewUsage
     Name="CountriesView"
     ViewObjectName="de.adfcommunity.altaui.model.queries.CountriesView"/>
   <ViewUsage
     Name="CustomersView"
     ViewObjectName="de.adfcommunity.altaui.model.queries.CustomersView"/>
+  <ViewUsage
+    Name="CustomerView"
+    ViewObjectName="de.adfcommunity.altaui.model.queries.CustomerView"/>
   <ViewLinkUsage
     Name="ViewLink"
     ViewLinkObjectName="de.adfcommunity.altaui.model.queries.links.CountriesOfCustomersLink"

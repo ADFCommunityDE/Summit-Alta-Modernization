@@ -3,7 +3,7 @@
                 Package="fragments">
   <parameters/>
   <executables>
-    <iterator Binds="CustomerView1" RangeSize="-1" DataControl="AltaSummitServiceDataControl" id="CustomerView1Iterator"/>
+    <iterator Binds="CustomerView" RangeSize="-1" DataControl="AltaSummitServiceDataControl" id="CustomerView1Iterator"/>
   </executables>
   <bindings>
     <tree IterBinding="CustomerView1Iterator" id="CustomerView1">
@@ -17,5 +17,30 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <attributeValues IterBinding="CustomerView1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomerView1Iterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomerView1Iterator" id="City">
+      <AttrNames>
+        <Item Value="City"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomerView1Iterator" id="Latitude">
+      <AttrNames>
+        <Item Value="Latitude"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomerView1Iterator" id="Longitude">
+      <AttrNames>
+        <Item Value="Longitude"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>
