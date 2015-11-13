@@ -1,6 +1,39 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:c="http://java.sun.com/jsp/jstl/core">
+                xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
     <c:set var="viewcontrollerBundle" value="#{adfBundle['de.adfcommunity.altaui.view.bundle.images']}"/>
-    
+    <af:panelFormLayout id="pfl1">
+        <af:inputText value="#{bindings.Name.inputValue}" label="#{bindings.Name.hints.label}"
+                      required="#{bindings.Name.hints.mandatory}" readOnly="true"
+                      columns="#{bindings.Name.hints.displayWidth}" maximumLength="#{bindings.Name.hints.precision}"
+                      shortDesc="#{bindings.Name.hints.tooltip}" id="it6">
+            <f:validator binding="#{bindings.Name.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Address.inputValue}, #{bindings.City.inputValue}, #{bindings.Country.inputValue}" label="#{bindings.Address.hints.label}"
+                      required="#{bindings.Address.hints.mandatory}" readOnly="true"
+                      columns="#{bindings.Address.hints.displayWidth}"
+                      maximumLength="#{bindings.Address.hints.precision}" shortDesc="#{bindings.Address.hints.tooltip}"
+                      id="it1">
+            <f:validator binding="#{bindings.Address.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Phone.inputValue}" label="#{bindings.Phone.hints.label}"
+                      required="#{bindings.Phone.hints.mandatory}" readOnly="true"
+                      columns="#{bindings.Phone.hints.displayWidth}" maximumLength="#{bindings.Phone.hints.precision}"
+                      shortDesc="#{bindings.Phone.hints.tooltip}" id="it7">
+            <f:validator binding="#{bindings.Phone.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Comments.inputValue}" label="#{bindings.Comments.hints.label}"
+                      required="#{bindings.Comments.hints.mandatory}" readOnly="true"
+                      columns="#{bindings.Comments.hints.displayWidth}"
+                      maximumLength="#{bindings.Comments.hints.precision}"
+                      shortDesc="#{bindings.Comments.hints.tooltip}" id="it3">
+            <f:validator binding="#{bindings.Comments.validator}"/>
+        </af:inputText>
+        <af:outputLabel value="More Information" id="ol1"/>
+        <af:link id="it8" text="Sales Representative (#{bindings.SalesRepId.inputValue})">
+        </af:link>
+        <af:link text="Credit Rating (#{bindings.CreditRatingId.inputValue})" id="it5">
+        </af:link>
+    </af:panelFormLayout>
 </ui:composition>

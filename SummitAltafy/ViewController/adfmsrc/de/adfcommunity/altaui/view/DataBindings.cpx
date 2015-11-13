@@ -23,6 +23,8 @@
     <page path="/fragments/dashboard.jsff" usageId="de_adfcommunity_altaui_view_dashboardPageDef"/>
     <page path="/WEB-INF/dashboard.xml#dashboard@restockProductsOfWarehouse"
           usageId="de_adfcommunity_altaui_view_dashboard_dashboard_restockProductsOfWarehousePageDef"/>
+    <page path="/fragments/customer-navigation.jsff" usageId="de_adfcommunity_altaui_view_customer_navigationPageDef"/>
+    <page path="/fragments/summit-management.jsff" usageId="de_adfcommunity_altaui_view_summit_managementPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="de_adfcommunity_altaui_view_indexPageDef" path="de.adfcommunity.altaui.view.pageDefs.indexPageDef"/>
@@ -38,6 +40,8 @@
     <page id="de_adfcommunity_altaui_view_dashboardPageDef" path="fragments.dashboardPageDef"/>
     <page id="de_adfcommunity_altaui_view_dashboard_dashboard_restockProductsOfWarehousePageDef"
           path="de.adfcommunity.altaui.view.pageDefs.dashboard_dashboard_restockProductsOfWarehousePageDef"/>
+    <page id="de_adfcommunity_altaui_view_customer_navigationPageDef" path="fragments.customer_navigationPageDef"/>
+    <page id="de_adfcommunity_altaui_view_summit_managementPageDef" path="fragments.summit_managementPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="AltaSummitServiceDataControl" Package="de.adfcommunity.altaui.model.services"

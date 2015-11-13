@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="summit_managementPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CustomersView" RangeSize="25" DataControl="AltaSummitServiceDataControl"
+              id="CustomersViewIterator"/>
+    <iterator Binds="CountriesView" RangeSize="25" DataControl="AltaSummitServiceDataControl"
+              id="CountriesViewIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="CustomersViewIterator" id="Address">
+      <AttrNames>
+        <Item Value="Address"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersViewIterator" id="City">
+      <AttrNames>
+        <Item Value="City"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersViewIterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersViewIterator" id="CountryId">
+      <AttrNames>
+        <Item Value="CountryId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersViewIterator" id="CreditRatingId">
+      <AttrNames>
+        <Item Value="CreditRatingId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersViewIterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersViewIterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersViewIterator" id="Phone">
+      <AttrNames>
+        <Item Value="Phone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersViewIterator" id="SalesRepId">
+      <AttrNames>
+        <Item Value="SalesRepId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersViewIterator" id="State">
+      <AttrNames>
+        <Item Value="State"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersViewIterator" id="ZipCode">
+      <AttrNames>
+        <Item Value="ZipCode"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="CustomersViewIterator" id="First" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="CustomersViewIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="CustomersViewIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="CustomersViewIterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+    <attributeValues IterBinding="CountriesViewIterator" id="Country">
+      <AttrNames>
+        <Item Value="Country"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CountriesViewIterator" id="CountryCode">
+      <AttrNames>
+        <Item Value="CountryCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CountriesViewIterator" id="Id1">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CountriesViewIterator" id="RegionId">
+      <AttrNames>
+        <Item Value="RegionId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

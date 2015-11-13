@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="indexPageDef"
-                Package="de.adfcommunity.altaui.view.pageDefs">
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="customer_navigationPageDef"
+                Package="fragments">
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
-    <taskFlow id="dynamicRegion1" taskFlowId="${viewScope.Page.dynamicTaskFlowId}" activation="deferred"
-              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
-    <iterator Binds="LowStockProducts" RangeSize="10" DataControl="AltaSummitServiceDataControl"
-              id="LowStockProductsIterator"/>
     <iterator Binds="CountriesView" RangeSize="25" DataControl="AltaSummitServiceDataControl"
               id="CountriesViewIterator"/>
     <iterator Binds="CustomersView" RangeSize="25" DataControl="AltaSummitServiceDataControl"
               id="CustomersViewIterator"/>
   </executables>
   <bindings>
-    <attributeValues IterBinding="LowStockProductsIterator" id="ProductId">
-      <AttrNames>
-        <Item Value="ProductId"/>
-      </AttrNames>
-    </attributeValues>
     <tree IterBinding="CountriesViewIterator" id="CountriesView">
       <nodeDefinition DefName="de.adfcommunity.altaui.model.queries.CountriesView" Name="CountriesView0">
         <AttrNames>
@@ -33,5 +24,10 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <attributeValues IterBinding="CountriesViewIterator" id="Country">
+      <AttrNames>
+        <Item Value="Country"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

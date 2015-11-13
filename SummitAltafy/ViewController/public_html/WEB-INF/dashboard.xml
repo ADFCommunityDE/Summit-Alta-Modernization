@@ -39,6 +39,17 @@
         <to-string/>
       </outcome>
     </method-call>
+    <task-flow-call id="call_management-taskflow">
+      <task-flow-reference>
+        <document>/WEB-INF/summit-management.xml</document>
+        <id>summit-management</id>
+      </task-flow-reference>
+      <input-parameter id="__6">
+        <name>customerId</name>
+        <value>#{pageFlowScope.customerId}</value>
+        <pass-by-value/>
+      </input-parameter>
+    </task-flow-call>
     <control-flow-rule id="__1">
       <from-activity-id>__dashboard</from-activity-id>
       <control-flow-case id="__2">
@@ -50,7 +61,7 @@
         <to-activity-id>refill-stock</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
-    <control-flow-rule id="__6">
+    <control-flow-rule id="__12">
       <from-activity-id>refill-stock</from-activity-id>
       <control-flow-case id="__7">
         <from-outcome>back_abort</from-outcome>
@@ -67,6 +78,13 @@
         <from-outcome>refill-stock</from-outcome>
         <to-activity-id>refill-stock</to-activity-id>
       </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id>__dashboard</from-activity-id>
+      <control-flow-case id="__14">
+      <from-outcome>showManagement</from-outcome>
+      <to-activity-id>call_management-taskflow</to-activity-id>
+    </control-flow-case>
     </control-flow-rule>
     <use-page-fragments/>
   </task-flow-definition>

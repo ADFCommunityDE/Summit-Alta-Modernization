@@ -1,9 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html>
 <f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
-        xmlns:c="http://java.sun.com/jsp/jstl/core">
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
     <c:set var="viewcontrollerBundle" value="#{adfBundle['de.adfcommunity.altaui.view.bundle.images']}"/>
     <af:document title="index.jsf" id="d1">
+        <af:messages id="m1"/>
         <af:form id="f1">
             <af:pageTemplate viewId="/oracle/templates/tabletFirstTemplate.jspx" id="pt1">
                 <f:facet name="header">
@@ -37,6 +39,9 @@
                 </f:facet>
                 <f:facet name="globalLinks"/>
                 <f:facet name="footer"/>
+                <f:facet name="start">
+                    <ui:include src="/fragments/customer-navigation.jsff"/>
+                </f:facet>
                 <f:facet name="center">
                     <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"
                                partialTriggers=":::bBarFDC:appNavDashboard :::bBarFDC:appNavInventoryControl :::bBarFDC:appNavSummitManagement"/>

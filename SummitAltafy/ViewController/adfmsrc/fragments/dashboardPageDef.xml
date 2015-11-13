@@ -4,6 +4,7 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
+    <iterator Binds="CustomerView" RangeSize="-1" DataControl="AltaSummitServiceDataControl" id="CustomerView1Iterator"/>
     <iterator Binds="LowStockProducts" RangeSize="25" DataControl="AltaSummitServiceDataControl"
               id="LowStockProductsIterator">
       <sortCriteria>
@@ -32,6 +33,42 @@
     <attributeValues IterBinding="LowStockProductsIterator" id="WarehouseId">
       <AttrNames>
         <Item Value="WarehouseId"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="CustomerView1Iterator" id="CustomerView1">
+      <nodeDefinition DefName="de.adfcommunity.altaui.model.queries.CustomerView" Name="CustomerView10">
+        <AttrNames>
+          <Item Value="Latitude"/>
+          <Item Value="Longitude"/>
+          <Item Value="Id"/>
+          <Item Value="Name"/>
+          <Item Value="City"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="CustomerView1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomerView1Iterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomerView1Iterator" id="City">
+      <AttrNames>
+        <Item Value="City"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomerView1Iterator" id="Latitude">
+      <AttrNames>
+        <Item Value="Latitude"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomerView1Iterator" id="Longitude">
+      <AttrNames>
+        <Item Value="Longitude"/>
       </AttrNames>
     </attributeValues>
   </bindings>

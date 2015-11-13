@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:h="http://java.sun.com/jsf/html">
+  <af:deck id="d1" displayedChild="pgl1" binding="#{CustomerNavigation.deck}">
+    <af:panelGroupLayout id="pgl1">
+      <af:listView value="#{bindings.CountriesView.collectionModel}" var="item"
+                   emptyText="#{bindings.CountriesView.viewable ? 'No data to display.' : 'Access Denied.'}"
+                   fetchSize="#{bindings.CountriesView.rangeSize}" id="lv1" selection="single"
+                   selectionListener="#{CustomerNavigation.selectCountry}">
+        <af:listItem id="li1">
+          <af:panelGridLayout id="pgl3">
+            <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr1">
+              <af:gridCell marginStart="5px" width="80%" id="gc1">
+                <af:outputFormatted value="#{item.bindings.Country.inputValue}" id="of1"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="20%" marginEnd="5px" id="gc2"/>
+            </af:gridRow>
+          </af:panelGridLayout>
+        </af:listItem>
+      </af:listView>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout id="pgl2">
+    <af:button id="b1" text="#{bindings.Country.inputValue}" icon="/resources/images/darkFlipIcon.png"
+               actionListener="#{CustomerNavigation.backToCountry}"/>      
+      <af:listView value="#{bindings.CustomersView.collectionModel}" var="item"
+                   emptyText="#{bindings.CustomersView.viewable ? 'No data to display.' : 'Access Denied.'}"
+                   fetchSize="#{bindings.CustomersView.rangeSize}" id="lv2">
+        <af:listItem id="li2">
+          <af:panelGridLayout id="pgl4">
+            <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr2">
+              <af:gridCell marginStart="5px" width="80%" id="gc3">
+                <af:outputFormatted value="#{item.bindings.Name.inputValue}" id="of2"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="20%" marginEnd="5px" id="gc4"/>
+            </af:gridRow>
+          </af:panelGridLayout>
+        </af:listItem>
+      </af:listView>
+    </af:panelGroupLayout>
+  </af:deck>
+</ui:composition>
