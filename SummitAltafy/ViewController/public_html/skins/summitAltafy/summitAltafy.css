@@ -13,9 +13,9 @@
 .TileHeaderText{
     
     color: #a5a5a5; 
-    font-family: fantasy; 
+    font-family: helvetica; 
     font-size: x-large; 
-    font-weight: bold; 
+    font-weight: normal; 
 }
 
 .ListItemText{

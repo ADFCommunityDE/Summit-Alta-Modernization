@@ -21,7 +21,7 @@
               <dvt:areaLayer layer="countries" id="al2"/>
           </dvt:thematicMap>
       </af:panelGroupLayout>
-        <af:panelGroupLayout id="pgl4" layout="horizontal" halign="center" styleClass="Tile">
+        <af:panelGroupLayout id="pgl4" layout="vertical" halign="center" styleClass="Tile">
             <af:button text="button 1" id="b1" action="refill-stock" visible="false"/>
             <af:outputFormatted value="Low Stock Products" id="of3" styleClass="TileHeaderText"/>
             <dvt:barChart orientation="horizontal" id="barChart1" var="row"
@@ -56,7 +56,7 @@
                 <af:separator id="s4"></af:separator>
             </f:facet>
         </af:panelGroupLayout>
-        <af:link id="l2" iconPosition="top" icon="">
+        <!--<af:link id="l2" iconPosition="top" icon="">
             <?audit suppress oracle.jdeveloper.jsp.validate-children?>
             <af:panelGroupLayout id="pgl3" layout="vertical" halign="center" styleClass="Tile">
                 <af:spacer width="10" height="0" id="s3" visible="false"/>
@@ -70,6 +70,6 @@
         </af:link>
         <f:facet name="separator">
             <af:spacer width="10" height="10" id="s1"/>
-        </f:facet>
+        </f:facet>-->
     </af:panelGroupLayout>
 </ui:composition>
