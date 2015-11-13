@@ -27,7 +27,9 @@
        Product.NAME AS NAME1"
   FromList="S_INVENTORY Inventory, S_WAREHOUSE Warehouse, S_PRODUCT Product, S_IMAGE Image"
   Where="((Inventory.WAREHOUSE_ID = Warehouse.ID) AND (Inventory.PRODUCT_ID = Product.ID)) AND (Product.IMAGE_ID = Image.ID) AND (Inventory.AMOUNT_IN_STOCK &lt;= Inventory.REORDER_POINT)"
-  RangeSize="-1">
+  RangeSize="-1"
+  FetchMode="FETCH_AS_NEEDED"
+  MaxFetchSize="5">
   <Properties>
     <SchemaBasedProperties>
       <LABEL
