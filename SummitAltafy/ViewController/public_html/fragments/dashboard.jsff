@@ -32,9 +32,9 @@
                 </dvt:chartValueFormat>
                 <dvt:chartLegend rendered="false" id="cl1"/>
                 <dvt:chartXAxis id="cxa1">
-                    <dvt:chartTickLabel rendered="false" id="ctl1"/>
-                    <dvt:majorTick rendered="false" id="mt1"/>
-                    <dvt:chartAxisLine rendered="false" id="cal1"/>
+                    <dvt:chartTickLabel rendered="true" id="ctl1"/>
+                    <dvt:majorTick rendered="true" id="mt1"/>
+                    <dvt:chartAxisLine rendered="true" id="cal1"/>
                 </dvt:chartXAxis>
                 <dvt:chartYAxis id="cya1">
                     <dvt:chartTickLabel rendered="false" id="ctl2"/>
@@ -46,7 +46,7 @@
                                        color="#{(row.StockRatio le 0.3)? 'RED' : ((row.StockRatio le  0.7)? 'YELLOW' : 'GREEN')}"
                                        series="#{bindings.LowStockProducts.hints.StockRatio.label}"
                                        value="#{row.StockRatio}"
-                                       group="Only #{row.AmountInStock} of #{row.MaxInStock} items of #{row.ProductName} in Stock">
+                                       group="#{row.ProductName}">
                         <?audit suppress oracle.jdeveloper.jsp.validate-children?>
                     </dvt:chartDataItem>
                 </f:facet>
