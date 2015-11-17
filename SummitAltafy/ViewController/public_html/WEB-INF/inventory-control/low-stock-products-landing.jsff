@@ -21,8 +21,9 @@
                 </af:link>
                 <af:spacer width="20" height="10" id="s1"/>
                 <dvt:ledGauge id="ledGauge1" type="rectangle" value="#{item.StockRatio}">
-                  <dvt:gaugeThreshold id="thr1" color="#FFFF00"/>
-                  <dvt:gaugeThreshold id="gt1" color="#FF0000" maximum="0.3"/>
+                  <dvt:gaugeThreshold id="thr2" color="#00FF00"/>
+                  <dvt:gaugeThreshold id="thr1" color="#FFFF00" maximum="1"/>
+                  <dvt:gaugeThreshold id="gt1" color="#FF0000" maximum="0.5"/>
                   <dvt:gaugeMetricLabel id="gml1" rendered="false"/>
                 </dvt:ledGauge>
                 <af:outputFormatted value="#{item.AmountInStock}" id="of1" styleClass="ListItemText"/>

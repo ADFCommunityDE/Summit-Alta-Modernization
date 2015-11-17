@@ -43,7 +43,7 @@
                 </dvt:chartYAxis>
                 <f:facet name="dataStamp">
                     <dvt:chartDataItem id="di1"
-                                       color="#{(row.StockRatio le 0.3)? 'RED' : ((row.StockRatio le  0.7)? 'YELLOW' : 'GREEN')}"
+                                       color="#{(row.StockRatio le 0.5)? 'RED' : ((row.StockRatio le  1)? 'YELLOW' : 'GREEN')}"
                                        series="#{bindings.LowStockProducts.hints.StockRatio.label}"
                                        value="#{row.StockRatio}"
                                        group="#{row.ProductName}">
